@@ -1,0 +1,49 @@
+@extends('site.layouts.app')
+@section('site.title')
+    @lang('site.home')
+@endsection
+@section('site.css')
+    <link rel="stylesheet" href="{{ asset("site/css/bootstrap.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("site/css/style.css") }}">
+    <link rel="stylesheet" href="{{ asset("site/css/responsive.css") }}">
+    {{--<script src="http://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
+@endsection
+@section('site.content')
+    <!-- Our Coming Soon Page -->
+    <section class="our-coming-soon" style="padding: 0px 0;!important;">
+        <div class="container">
+            <div class="row" {{--style="text-align: center; display: flex;!important;"--}}>
+                <div class="col-xl-6">
+                    <div class="error_page footer_apps_widget">
+                        <div class="erro_code"><h1>Hesab təsdiqi</h1></div>
+                        <p>{{ $data['message'] ?? $data['errors'] }}</p>
+                        <a href="{{ route('site.index') }}" class="btn btn-primary mb-2">Geri Qayt</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+@section('site.js')
+    <script src="{{ asset("site/js/jquery-3.6.0.js") }}"></script>
+    <script src="{{ asset("site/js/jquery-migrate-3.0.0.min.js") }}"></script>
+    <script src="{{ asset("site/js/popper.min.js") }}"></script>
+    <script src="{{ asset("site/js/bootstrap.min.js") }}"></script>
+    <script src="{{ asset("site/js/jquery.mmenu.all.js") }}"></script>
+    <script src="{{ asset("site/js/ace-responsive-menu.js") }}"></script>
+    <script src="{{ asset("site/js/bootstrap-select.min.js") }}"></script>
+    <script src="{{ asset("site/js/isotop.js") }}"></script>
+    <script src="{{ asset("site/js/snackbar.min.js") }}"></script>
+    <script src="{{ asset("site/js/simplebar.js") }}"></script>
+    <script src="{{ asset("site/js/parallax.js") }}"></script>
+    <script src="{{ asset("site/js/scrollto.js") }}"></script>
+    <script src="{{ asset("site/js/jquery-scrolltofixed-min.js") }}"></script>
+    <script src="{{ asset("site/js/jquery.counterup.js") }}"></script>
+    <script src="{{ asset("site/js/wow.min.js") }}"></script>
+    <script src="{{ asset("site/js/progressbar.js") }}"></script>
+    <script src="{{ asset("site/js/slider.js") }}"></script>
+    <script src="{{ asset("site/js/timepicker.js") }}"></script>
+    <!-- Custom script for all pages -->
+    <script src="{{ asset("site/js/script.js") }}"></script>
+@endsection
