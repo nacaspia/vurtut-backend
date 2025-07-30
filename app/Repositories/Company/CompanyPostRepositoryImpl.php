@@ -19,7 +19,7 @@ class CompanyPostRepositoryImpl implements CompanyPostRepository
         }else{
             auth('company')->logout();
             \Session::forget('company_data');
-            return redirect()->route('site.login')->with('success', __('site.success_logout'));
+            return redirect()->route('site.index')->with('success', __('site.success_logout'));
         }
     }
 
