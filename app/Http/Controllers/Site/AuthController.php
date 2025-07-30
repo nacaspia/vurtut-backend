@@ -145,7 +145,7 @@ class AuthController extends Controller
 
             }
         } catch (\Exception $exception) {
-            return response()->json(['success' => false, 'errors' => 'Xətta baş verdi. Biraz sonra yoxlayın.'], 422);
+            return response()->json(['success' => false, 'errors' => 'Xətta baş verdi. Biraz sonra yoxlayın.'.$exception->getMessage()], 422);
         }
     }
 
