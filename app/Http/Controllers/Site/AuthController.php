@@ -110,6 +110,7 @@ class AuthController extends Controller
                     return response()->json(['success' => false, 'errors' => Lang::get('site.has_user_account')], 422);
                 }
                 $user = new User();
+                $user->category_id = 0;
                 $user->bio = '';
                 $user->full_name = $registerRequest->full_name;
                 $user->phone = $registerRequest->phone;

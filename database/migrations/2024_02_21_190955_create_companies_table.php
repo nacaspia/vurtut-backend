@@ -15,7 +15,7 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->index('category_id')->default(0);
+            $table->index('category_id');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->integer('parent_id')->nullable();//borani nermanof filiali
             $table->string('lang',5)->default('az');
