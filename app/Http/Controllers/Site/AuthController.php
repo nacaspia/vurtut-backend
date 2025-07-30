@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -67,6 +68,7 @@ class AuthController extends Controller
 //                $company->parent_id = !empty($registerRequest->parent_id)??null;
 //                $company->type = !empty($registerRequest->parent_id)? 'branch': 'main';
                 $company->full_name = $registerRequest->full_name;
+                $company->full_name = Str::slug($registerRequest->full_name);
                 $company->phone = $registerRequest->phone;
                 $company->email = $registerRequest->email;
                 $company->password = Hash::make($registerRequest->password);
@@ -110,7 +112,6 @@ class AuthController extends Controller
                     return response()->json(['success' => false, 'errors' => Lang::get('site.has_user_account')], 422);
                 }
                 $user = new User();
-                $user->category_id = 0;
                 $user->bio = '';
                 $user->full_name = $registerRequest->full_name;
                 $user->phone = $registerRequest->phone;
