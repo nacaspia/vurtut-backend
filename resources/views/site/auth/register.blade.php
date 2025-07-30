@@ -46,7 +46,7 @@
                 <form id="companyRegister" action="#">
                     <div class="text-danger text-center mt-2" id="generalCompanyRegisterError"></div>
                     <div class="text-success text-center mt-2" id="generalCompanyRegisterSuccess"></div>
-                    <input type="hidden" id="type_user" name="type" value="company">
+                    <input type="hidden" id="type_company" name="type" value="company">
                     <div class="form-group input-group">
                         <input type="text" class="form-control" id="full_name_company" name="full_name" placeholder="Ad/Soyad">
                         <div class="invalid-feedback" id="fullNameCompanyError"></div>
