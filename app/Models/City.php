@@ -24,7 +24,7 @@ class City extends Model
     {
         return $this->hasMany(City::class,'sub_region_id','id')->orderBy('name->az','ASC');
     }
-    
+
     public function subRegions()
     {
         return $this->hasMany(City::class,'sub_region_id','id')->orderBy('name->az','ASC');
