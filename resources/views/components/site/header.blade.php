@@ -126,6 +126,10 @@
                     <li class="list-inline-item">
                         <a class="muser_icon" href="{{ route('site.company.index') }}"><span class="flaticon-avatar"></span></a>
                     </li>
+                @else
+                    <li class="list-inline-item">
+                        <a href="#" class="muser_icon"  data-toggle="modal" data-target=".bd-example-modal-lg"><span class="flaticon-avatar"></span></a>
+                    </li>
                 @endif
                 <li class="list-inline-item"><a class="menubar" href="#menu"><span></span></a></li>
             </ul>
@@ -180,8 +184,8 @@
                 <a href="{{ route('site.news') }}"><span class="title">Bloq və xəbərlər!</span></a>
             </li>
 
-            @if(!empty(auth('user')->user()->id))
-{{--                <li class="cl_btn"><a class="btn btn-block btn-lg btn-thm rounded" href="#"><span class="icon">+</span>Əlavə et</a></li>--}}
+   {{--         @if(!empty(auth('user')->user()->id))
+--}}{{--                <li class="cl_btn"><a class="btn btn-block btn-lg btn-thm rounded" href="#"><span class="icon">+</span>Əlavə et</a></li>--}}{{--
 
             @elseif(!empty(auth('company')->user()->id))
                 <li>
@@ -193,7 +197,7 @@
                         <span class="title">Giriş/Qeydiyyat</span>
                     </a>
                 </li>
-            @endif
+            @endif--}}
         </ul>
     </nav>
 </div>

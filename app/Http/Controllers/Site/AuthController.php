@@ -84,7 +84,7 @@ class AuthController extends Controller
                         'phone' => $company->phone,
                         'email' => $company->email,
                         'subject' => "Qeydiyyat tamamlandı",
-                        'url' => /*config('app.frontend_url').*/'vurtut.test/company/accept/'.$token_send.'/'.$company->id,
+                        'url' => 'https://vurtut.com/company/accept/'.$token_send.'/'.$company->id,
                         'dedicated'=>'register'
                     ];
                     Notification::route('mail', $mail_data['email'])->notify(new Mail($mail_data));
@@ -129,7 +129,7 @@ class AuthController extends Controller
                         'phone' => $user->phone,
                         'email' => $user->email,
                         'subject' => "Qeydiyyat tamamlandı",
-                        'url' => /*config('app.frontend_url').*/'vurtut.test/user/accept/'.$token_send.'/'.$user->id,
+                        'url' => 'https://vurtut.com/user/accept/'.$token_send.'/'.$user->id,
                         'dedicated'=>'register'
                     ];
                     Notification::route('mail', $mail_data['email'])->notify(new Mail($mail_data));
