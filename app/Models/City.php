@@ -20,6 +20,11 @@ class City extends Model
         'slug' => 'array',
     ];
 
+    public function parentCity()
+    {
+        return $this->hasMany(City::class,'sub_region_id','id')->orderBy('name->az','ASC');
+    }
+    
     public function subRegions()
     {
         return $this->hasMany(City::class,'sub_region_id','id')->orderBy('name->az','ASC');
