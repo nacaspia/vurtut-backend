@@ -31,7 +31,7 @@
                         <div class="invalid-feedback" id="passwordUserError"></div>
                     </div>
                     <button type="submit" class="btn btn-log btn-block btn-thm">Qeydiyyat olun</button>
-                    <hr>
+                    {{--<hr>
                     <div class="row">
                         <div class="col-lg-6">
                             <button type="submit" class="btn btn-block btn-fb"><i class="fa fa-facebook float-left mt5"> Facebook ilə giriş edin</i></button>
@@ -39,7 +39,7 @@
                         <div class="col-lg-6">
                             <button type="submit" class="btn btn-block btn-googl"><i class="fa fa-google float-left mt5"></i> Google ilə giriş edin</button>
                         </div>
-                    </div>
+                    </div>--}}
                 </form>
             </div>
             <div class="tab-pane fade" id="company-register" role="tabpanel" aria-labelledby="company-register-tab">
@@ -63,8 +63,8 @@
                         <input type="password" class="form-control" id="password_company" name="password" placeholder="Şifrə">
                         <div class="invalid-feedback" id="passwordCompanyError"></div>
                     </div>
-                    <button type="submit" class="btn btn-log btn-block btn-thm">Qeydiyyat olun</button>
-                    <hr>
+                    <button type="submit" id="companyRegisterBtn" class="btn btn-log btn-block btn-thm">Qeydiyyat olun</button>
+                    {{--<hr>
                     <div class="row">
                         <div class="col-lg-6">
                             <button type="submit" class="btn btn-block btn-fb"><i class="fa fa-facebook float-left mt5"> Facebook ilə giriş edin</i></button>
@@ -72,7 +72,7 @@
                         <div class="col-lg-6">
                             <button type="submit" class="btn btn-block btn-googl"><i class="fa fa-google float-left mt5"></i> Google ilə giriş edin</button>
                         </div>
-                    </div>
+                    </div>--}}
                 </form>
             </div>
         </div>

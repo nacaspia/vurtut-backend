@@ -96,3 +96,6 @@ Route::prefix('/user')->middleware('user')->group(function () {
     //baxilacaq
     //Route::resource('user-post','User\UserPostController');
 });
+Route::fallback(function () {
+    abort(404);
+});

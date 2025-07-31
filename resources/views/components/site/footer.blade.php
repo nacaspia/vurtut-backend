@@ -235,7 +235,10 @@
     });
     $('#companyRegister').on('submit', function (e) {
         e.preventDefault();
-
+        let $btn = $('#companyRegisterBtn');
+        $btn.prop('disabled', true);
+        $btn.find('.btn-text').addClass('d-none');
+        $btn.find('.spinner-border').removeClass('d-none');
         $('.form-control').removeClass('is-invalid');
         $('#fullNameCompanyError, #emailCompanyError, #phoneCompanyError,  #passwordCompanyError, #generalCompanyRegisterSuccess, #generalCompanyRegisterError').text('');
 
@@ -287,6 +290,12 @@
                 } else {
                     $('#generalCompanyRegisterError').text('Xəta baş verdi.');
                 }
+            },
+            complete: function () {
+                // Əməliyyat bitdikdən sonra düyməni əvvəlki vəziyyətə gətir
+                $btn.prop('disabled', false);
+                $btn.find('.btn-text').removeClass('d-none');
+                $btn.find('.spinner-border').addClass('d-none');
             }
         });
     });
