@@ -19,8 +19,8 @@ class CmsUsersSeeder extends Seeder
             'name' => 'Vurtut',
             'surname' => 'Admin',
             'email' => 'admin@vurtut.com',
-            'phone' => '0507027093',
-            'password' => bcrypt('123456'),
+            'phone' => '+994552956727',
+            'password' => bcrypt('Nacaspia@2025@010601140901@vtis.IGG'),
             'status' => 1
         ]);
     }
