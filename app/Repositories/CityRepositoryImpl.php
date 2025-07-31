@@ -15,7 +15,7 @@ class CityRepositoryImpl implements CityRepository
     public function __construct()
     {
         $this->model = new City();
-        $this->cities = City::whereNull('sub_region_id')->with('parentCity')->get();
+        $this->cities = City::whereNull('sub_region_id')/*->with('parentCity')*/->get();
     }
 
     public function getAll()
