@@ -40,7 +40,7 @@ class Mail extends Notification implements ShouldQueue
         $data = $this->data;
 
         return (new MailMessage)
-            ->from('noreply@vivex.az', 'Vurtut.com')#->name('EntranceIndia')
+            ->from('isveren.consulting@gmail.com', 'Vurtut.com')#->name('EntranceIndia')
                 ->view('email.check_status',['data'=>$data])
             ->subject($subject);
     }
