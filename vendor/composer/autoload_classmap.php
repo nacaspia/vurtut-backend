@@ -55,6 +55,7 @@ return array(
     'App\\Http\\Controllers\\Site\\AuthController' => $baseDir . '/app/Http/Controllers/Site/AuthController.php',
     'App\\Http\\Controllers\\Site\\Company\\CompanyController' => $baseDir . '/app/Http/Controllers/Site/Company/CompanyController.php',
     'App\\Http\\Controllers\\Site\\Company\\CompanyPostController' => $baseDir . '/app/Http/Controllers/Site/Company/CompanyPostController.php',
+    'App\\Http\\Controllers\\Site\\Company\\PremiumController' => $baseDir . '/app/Http/Controllers/Site/Company/PremiumController.php',
     'App\\Http\\Controllers\\Site\\Company\\ServicesController' => $baseDir . '/app/Http/Controllers/Site/Company/ServicesController.php',
     'App\\Http\\Controllers\\Site\\HomeController' => $baseDir . '/app/Http/Controllers/Site/HomeController.php',
     'App\\Http\\Controllers\\Site\\User\\UserController' => $baseDir . '/app/Http/Controllers/Site/User/UserController.php',

@@ -562,6 +562,7 @@ class ComposerStaticInit6d08a99a9f4f41e071dbc09b9ee0e247
         'App\\Http\\Controllers\\Site\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/AuthController.php',
         'App\\Http\\Controllers\\Site\\Company\\CompanyController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/Company/CompanyController.php',
         'App\\Http\\Controllers\\Site\\Company\\CompanyPostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/Company/CompanyPostController.php',
+        'App\\Http\\Controllers\\Site\\Company\\PremiumController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/Company/PremiumController.php',
         'App\\Http\\Controllers\\Site\\Company\\ServicesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/Company/ServicesController.php',
         'App\\Http\\Controllers\\Site\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/HomeController.php',
         'App\\Http\\Controllers\\Site\\User\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Site/User/UserController.php',
