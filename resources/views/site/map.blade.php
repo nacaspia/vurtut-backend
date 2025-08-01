@@ -75,6 +75,13 @@
                 zoom: 12,
             });
         }
+        window.initMap = function() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 40.4093, lng: 49.8671 },
+                zoom: 12,
+            });
+        };
+
         var infoBox_ratingType='star-rating';(function($){"use strict";function mainMap() {var ib=new InfoBox(); function locationData (locationImg, locationRating, locationRatingCounter, locationURL, locationTitle, locationAddress, locationPhone, locationColor, locationIcon, locationName, locationStatus, ) {return(''+
             '<div class="map-listing-item">'+
             '<div class="inner-box">'+
