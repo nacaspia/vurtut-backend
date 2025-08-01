@@ -60,7 +60,12 @@
     <script src="{{ asset("site/js/slider.js") }}"></script>
     <script src="{{ asset("site/js/timepicker.js") }}"></script>
     <!-- Google Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8M9rUVW_Og-Z8sTfQSA5HUgRbd4WyW0w&amp;callback=initMap"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8M9rUVW_OgR-Z8sTfQSA5HUgRbd4WyW0w&callback=initMap"
+        async
+        defer
+    ></script>
+
     <script src="{{ asset("site/js/infobox.min.js") }}"></script>
     <script src="{{ asset("site/js/markerclusterer.js") }}"></script>
 {{--    <script src="{{ asset("site/js/maps.js") }}"></script>--}}
