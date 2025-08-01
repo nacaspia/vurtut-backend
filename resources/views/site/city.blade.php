@@ -208,6 +208,16 @@
             $(window).resize(function() {
                 initFilter();
             });
+            $('#mobileFilterForm').on('submit', function(e) {
+                e.preventDefault();
+                filterCompanies('#mobileFilterForm', null, true); // resetPage = true
+            });
+
+            // Desktop form submit düyməsi (Axtar)
+            $('#filterForm').on('submit', function(e) {
+                e.preventDefault();
+                filterCompanies('#filterForm', null, true); // resetPage = true
+            });
         });
     </script>
     <!-- Wrapper End -->

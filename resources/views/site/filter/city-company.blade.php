@@ -64,8 +64,8 @@
                         @endif
                         <li>
                             <div class="search_option_button text-center mt25">
-                                <button type="submit" class="btn btn-block btn-thm mb15">Axtar</button>
-                                <a class="tdu fz14" href="#">Təmizlə</a>
+                                <button type="submit" id="searchButton" class="btn btn-block btn-thm mb15">Axtar</button>
+{{--                                <a class="tdu fz14" href="#">Təmizlə</a>--}}
                             </div>
                         </li>
                     </ul>
