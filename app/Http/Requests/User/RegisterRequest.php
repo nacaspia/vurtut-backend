@@ -26,8 +26,8 @@ class RegisterRequest extends FormRequest
     {
         return [
             'full_name' => 'required',
-            'phone' => 'required',
-            'email' => 'required',
+            'phone' => 'required|unique:users,phone|regex:/^([0-9\s\-\+\(\)]*)$/|min:13',
+            'email' => 'required|unique:users,email|email',
             'password' => 'required',
         ];
     }
@@ -36,6 +36,9 @@ class RegisterRequest extends FormRequest
     {
         return [
             '*.required' =>  Lang::get('validation.required', ['attribute' => ':attribute']),
+            '*.regex' =>  Lang::get('validation.regex', ['attribute' => ':attribute']),
+            '*.unique' =>  Lang::get('validation.unique', ['attribute' => ':attribute']),
+            '*.email' =>  Lang::get('validation.email', ['attribute' => ':attribute']),
         ];
     }
 }
