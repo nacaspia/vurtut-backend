@@ -301,7 +301,6 @@
                                 <div class="popular_listing_slider1">
                                     @if(!empty($allCompaniesIsPremium[0]))
                                         @foreach($allCompaniesIsPremium as $companyIsPremium)
-{{--                                            @dd($companyIsPremium['data']['address'])--}}
                                             <div class="item">
                                                 <div class="feat_property" style="min-height: 404px;max-height: 404px;!important;">
                                                     <div class="thumb">
@@ -537,13 +536,13 @@
                     <div class="for_blog feat_property">
                         <div class="thumb">
                             <img class="img-whp" src="{{ asset("site/images/blog/1.jpg") }}" alt="1.jpg">
-                            <div class="tag bgc-thm2"><a class="text-white" href="page-blog-single.html">Təqdimat çarxı</a></div>
+                            <div class="tag bgc-thm2"><a class="text-white" href="#">Təqdimat çarxı</a></div>
                         </div>
                         <div class="details">
                             <div class="tc_content">
                                 <div class="bp_meta">
                                     <ul>
-                                        <li class="list-inline-item"><a href="https://andainformationtech.com"><span class="flaticon-avatar mr10"></span>ANDA Information Technologies</a></li>
+                                        <li class="list-inline-item"><a href="https://nacaspia.com"><span class="flaticon-avatar mr10"></span>NACaspia Information Technologies</a></li>
                                         <li class="list-inline-item"><a href="#"><span class="flaticon-date mr10"></span> 01 Oktyabr, 2025</a></li>
                                     </ul>
                                 </div>
@@ -556,13 +555,13 @@
                     <div class="for_blog feat_property">
                         <div class="thumb">
                             <img class="img-whp" src="{{ asset("site/images/blog/1.jpg") }}" alt="2.jpg">
-                            <div class="tag bgc-thm2"><a class="text-white" href="page-blog-single.html">Yeni funksiya</a></div>
+                            <div class="tag bgc-thm2"><a class="text-white" href="#">Yeni funksiya</a></div>
                         </div>
                         <div class="details">
                             <div class="tc_content">
                                 <div class="bp_meta">
                                     <ul>
-                                        <li class="list-inline-item"><a href="https://andainformationtech.com"><span class="flaticon-avatar mr10"></span>ANDA Information Technologies</a></li>
+                                        <li class="list-inline-item"><a href="https://nacaspia.com"><span class="flaticon-avatar mr10"></span>NACaspia Information Technologies</a></li>
                                         <li class="list-inline-item"><a href="#"><span class="flaticon-date mr10"></span> 01 Dekabr, 2025</a></li>
                                     </ul>
                                 </div>
@@ -575,13 +574,13 @@
                     <div class="for_blog feat_property">
                         <div class="thumb">
                             <img class="img-whp" src="{{ asset("site/images/blog/1.jpg") }}" alt="3.jpg">
-                            <div class="tag bgc-thm2"><a class="text-white" href="page-blog-single.html">Anons</a></div>
+                            <div class="tag bgc-thm2"><a class="text-white" href="#">Anons</a></div>
                         </div>
                         <div class="details">
                             <div class="tc_content">
                                 <div class="bp_meta">
                                     <ul>
-                                        <li class="list-inline-item"><a href="https://andainformationtech.com"><span class="flaticon-avatar mr10"></span>ANDA Information Technologies</a></li>
+                                        <li class="list-inline-item"><a href="https://nacaspia.com"><span class="flaticon-avatar mr10"></span>NACaspia Information Technologies</a></li>
                                         <li class="list-inline-item"><a href="#"><span class="flaticon-date mr10"></span> 07 Dekabr, 2025</a></li>
                                     </ul>
                                 </div>

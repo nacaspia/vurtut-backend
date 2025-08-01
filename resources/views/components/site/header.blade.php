@@ -58,9 +58,9 @@
                 <li>
                     <a href="{{ route('site.map') }}"><span class="title">Yaxında nə var?</span></a>
                 </li>
-                <li>
+                {{--<li>
                     <a href="{{ route('site.news') }}"><span class="title">Bloq və xəbərlər!</span></a>
-                </li>
+                </li>--}}
                 @if(!empty(auth('user')->user()->id))
                     <li class="user_setting">
                         <div class="dropdown">
@@ -94,8 +94,10 @@
                                     <p> {{auth('company')->user()->full_name}}</p>
                                 </div>
                                 <div class="user_setting_content">
+                                    @if (!empty(auth('company')->user()->country_id) && !empty(auth('company')->user()->city_id))
                                     <a class="dropdown-item active" style="color: #484848;!important;" href="{{ route('site.company.index') }}">Hesabım</a>
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#premiumCompany" style="color: #484848;">Premium Hesab</a>
+                                    @endif
+{{--                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#premiumCompany" style="color: #484848;">Premium Hesab</a>--}}
                                     <a class="dropdown-item" style="color: #484848;!important;" href="{{ route('site.company.logout') }}">Çıxış</a>
                                 </div>
                             </div>
@@ -180,9 +182,9 @@
             <li>
                 <a href="{{ route('site.map') }}"><span class="title">Yaxında nə var?</span></a>
             </li>
-            <li>
+            {{--<li>
                 <a href="{{ route('site.news') }}"><span class="title">Bloq və xəbərlər!</span></a>
-            </li>
+            </li>--}}
 
    {{--         @if(!empty(auth('user')->user()->id))
 --}}{{--                <li class="cl_btn"><a class="btn btn-block btn-lg btn-thm rounded" href="#"><span class="icon">+</span>Əlavə et</a></li>--}}{{--
