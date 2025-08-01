@@ -68,6 +68,13 @@
     <script src="{{ asset("site/js/script.js") }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+        function initMap() {
+            // Xəritəni burada yarat və konfiqurasiya et
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 40.4093, lng: 49.8671 }, // Bakı koordinatları
+                zoom: 12,
+            });
+        }
         var infoBox_ratingType='star-rating';(function($){"use strict";function mainMap() {var ib=new InfoBox(); function locationData (locationImg, locationRating, locationRatingCounter, locationURL, locationTitle, locationAddress, locationPhone, locationColor, locationIcon, locationName, locationStatus, ) {return(''+
             '<div class="map-listing-item">'+
             '<div class="inner-box">'+
