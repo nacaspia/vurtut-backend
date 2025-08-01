@@ -89,9 +89,7 @@
             '</div>'+
             '</div>'+
             '</div>')};
-
-
-            var locations=[
+        var locations=[
                 @foreach($mainCategory as $cateKey => $category)
                     @if(!empty($category['mapCompany']))
                         [locationData('{{ asset("uploads/categories/".$category['image']) }}', '5', '{{++$cateKey}}', '{{ route('site.companyDetails',['slug' => $category['mapCompany']['slug']]) }}', "{{$category['mapCompany']['full_name']}}", '{{$category['mapCompany']['social']['one_phone']}} ', '{{$category['mapCompany']['mainCities']['name'][$currentLang]}}', 'sky', 'flaticon-tent', '{{ $category['title'][$currentLang] }}', 'Now Closed', ), {{$category['mapCompany']['data']['lat']}}, {{$category['mapCompany']['data']['lng']}}, {{++$cateKey}}, '<i class="icon flaticon-find-location"></i>'],
@@ -162,7 +160,7 @@
             google.maps.event.addListener(ib,'domready',function(){if(infoBox_ratingType='numerical-rating'){numericalRating('.infoBox .'+infoBox_ratingType+'');}
                 if(infoBox_ratingType='star-rating'){starRating('.infoBox .'+infoBox_ratingType+'');}});var mapZoomAttr=$('#map').attr('data-map-zoom');var mapScrollAttr=$('#map').attr('data-map-scroll');if(typeof mapZoomAttr!==typeof undefined&&mapZoomAttr!==false){var zoomLevel=parseInt(mapZoomAttr);}else{var zoomLevel=5;}
             if(typeof mapScrollAttr!==typeof undefined&&mapScrollAttr!==false){var scrollEnabled=parseInt(mapScrollAttr);}else{var scrollEnabled=false;}
-            var map=new google.maps.Map(document.getElementById('map'),{zoom:zoomLevel,scrollwheel:scrollEnabled,center:new google.maps.LatLng(40.80,-73.70),mapTypeId:google.maps.MapTypeId.ROADMAP,zoomControl:false,mapTypeControl:false,scaleControl:false,panControl:false,navigationControl:false,streetViewControl:false,gestureHandling:'cooperative',styles:[
+            var map=new google.maps.Map(document.getElementById('map'),{zoom:zoomLevel,scrollwheel:scrollEnabled,center:new google.maps.LatLng(40.4093, 49.8671),mapTypeId:google.maps.MapTypeId.ROADMAP,zoomControl:false,mapTypeControl:false,scaleControl:false,panControl:false,navigationControl:false,streetViewControl:false,gestureHandling:'cooperative',styles:[
                     {
                         "featureType": "water",
                         "elementType": "geometry",
@@ -574,10 +572,6 @@
                 google.maps.event.addDomListener(window, 'load', singleListingMap);
             }
 
-
-
-
-
             function CustomMarker(latlng,map,args,markerIco){this.latlng=latlng;this.args=args;this.markerIco=markerIco;this.setMap(map);}
             CustomMarker.prototype=new google.maps.OverlayView();CustomMarker.prototype.draw=function(){var self=this;var div=this.div;if(!div){div=this.div=document.createElement('div');div.className='map-marker-container';div.innerHTML='<div class="marker-container">'+
                 '<div class="marker-card">'+
@@ -589,7 +583,6 @@
                 google.maps.event.addDomListener(div,"click",function(event){$('.map-marker-container').removeClass('clicked infoBox-opened');google.maps.event.trigger(self,"click");$(this).addClass('clicked infoBox-opened');});if(typeof(self.args.marker_id)!=='undefined'){div.dataset.marker_id=self.args.marker_id;}
                 var panes=this.getPanes();panes.overlayImage.appendChild(div);}
                 var point=this.getProjection().fromLatLngToDivPixel(this.latlng);if(point){div.style.left=(point.x)+'px';div.style.top=(point.y)+'px';}};CustomMarker.prototype.remove=function(){if(this.div){this.div.parentNode.removeChild(this.div);this.div=null;$(this).removeClass('clicked');}};CustomMarker.prototype.getPosition=function(){return this.latlng;};})(this.jQuery);
-
     </script>
     @if(!empty(auth('user')->user()->id))
         <script>
