@@ -60,32 +60,13 @@
     <script src="{{ asset("site/js/slider.js") }}"></script>
     <script src="{{ asset("site/js/timepicker.js") }}"></script>
     <!-- Google Maps -->
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8M9rUVW_OgR-Z8sTfQSA5HUgRbd4WyW0w&callback=initMap"
-        async
-        defer
-    ></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8M9rUVW_OgR-Z8sTfQSA5HUgRbd4WyW0w&callback=initMap"></script>
 
     <script src="{{ asset("site/js/infobox.min.js") }}"></script>
     <script src="{{ asset("site/js/markerclusterer.js") }}"></script>
-{{--    <script src="{{ asset("site/js/maps.js") }}"></script>--}}
-    <!-- Custom script for all pages -->
     <script src="{{ asset("site/js/script.js") }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        function initMap() {
-            // Xəritəni burada yarat və konfiqurasiya et
-            const map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 40.4093, lng: 49.8671 }, // Bakı koordinatları
-                zoom: 12,
-            });
-        }
-        window.initMap = function() {
-            const map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: 40.4093, lng: 49.8671 },
-                zoom: 12,
-            });
-        };
 
         var infoBox_ratingType='star-rating';(function($){"use strict";function mainMap() {var ib=new InfoBox(); function locationData (locationImg, locationRating, locationRatingCounter, locationURL, locationTitle, locationAddress, locationPhone, locationColor, locationIcon, locationName, locationStatus, ) {return(''+
             '<div class="map-listing-item">'+
