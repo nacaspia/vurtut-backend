@@ -45,23 +45,36 @@ class AuthController extends Controller
             //istifadəçi yoxlanışı
             $userEmail = User::where('email',$registerRequest->email)->first();
             $userPhone = User::where('phone',$registerRequest->phone)->first();
+            if (!empty($userEmail) || !empty($userPhone)) {
+                $companyLog = [
+                    'obj_id' => !empty($userEmail) ? $userEmail->id : $userPhone->id,
+                    'subj_id' => !empty($userEmail) ? $userEmail->id : $userPhone->id,
+                    'subj_table' => 'users',
+                    'actions' => 'register',
+                    'type' => 'users',
+                    'note' => Lang::get('site.has_user_account')
+                ];
+                LogsHelper::convert($companyLog);
+                return response()->json(['success' => false, 'errors' => Lang::get('site.has_user_account')], 422);
+            }
+
             //şirkət yoxlanışı
             $companyEmail = Company::where('email',$registerRequest->email)->first();
             $companyPhone = Company::where('phone',$registerRequest->phone)->first();
+            if (!empty($companyEmail) || !empty($companyPhone)) {
+                $companyLog = [
+                    'subj_id' => !empty($companyEmail)? $companyEmail->id: $companyPhone->id,
+                    'subj_table' => 'companies',
+                    'actions' => 'register',
+                    'type' => 'company',
+                    'note' => Lang::get('site.has_company_account')
+                ];
+                LogsHelper::convert($companyLog);
+                return response()->json(['success' => false, 'errors' => Lang::get('site.has_user_account')], 422);
+            }
 
             if ($type=='company'){
-                if (!empty($userEmail) || !empty($userPhone)) {
-                    $companyLog = [
-                        'obj_id' => !empty($userEmail) ? $userEmail->id : $userPhone->id,
-                        'subj_id' => !empty($userEmail) ? $userEmail->id : $userPhone->id,
-                        'subj_table' => 'users',
-                        'actions' => 'register',
-                        'type' => 'users',
-                        'note' => Lang::get('site.has_user_account')
-                    ];
-                    LogsHelper::convert($companyLog);
-                    return response()->json(['success' => false, 'errors' => Lang::get('site.has_user_account')], 422);
-                }
+
 
                 $company = new Company();
 //                $company->category_id = $registerRequest->category_id;
@@ -100,17 +113,7 @@ class AuthController extends Controller
                     return response()->json(['success' => true,'message' =>  Lang::get('site.has_register_email')], 200);
                 }
             }elseif ($type=='user'){
-                if (!empty($companyEmail) || !empty($companyPhone)) {
-                    $companyLog = [
-                        'subj_id' => !empty($companyEmail)? $companyEmail->id: $companyPhone->id,
-                        'subj_table' => 'companies',
-                        'actions' => 'register',
-                        'type' => 'company',
-                        'note' => Lang::get('site.has_company_account')
-                    ];
-                    LogsHelper::convert($companyLog);
-                    return response()->json(['success' => false, 'errors' => Lang::get('site.has_user_account')], 422);
-                }
+
                 $user = new User();
                 $user->bio = '';
                 $user->full_name = $registerRequest->full_name;
