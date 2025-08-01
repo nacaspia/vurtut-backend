@@ -528,7 +528,7 @@
                             </ul>
 
                         </div>
-                        @if(!empty(auth('user')->user()->id))
+                        @if(!empty(auth('user')->user()->id) && $company['category']['is_reservation']== true)
                             <div class="sidebar_contact_business_widget">
                                 <h4 class="title mb25">Rezervasiya et</h4>
                                 <form id="reservationForm">
