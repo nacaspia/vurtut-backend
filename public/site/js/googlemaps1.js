@@ -112,7 +112,7 @@ function initialize() {
     name: 'style_KINESB'
   };
 
-var image = '../../images/resource/mapmarker.png';
+var image = '../site/images/resource/mapmarker.png';
   var marker = new google.maps.Marker({
       position: Kine,
       map: map,
