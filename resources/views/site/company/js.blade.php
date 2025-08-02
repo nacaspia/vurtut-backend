@@ -106,7 +106,9 @@
                 if (response.success) {
                     $('#generalSettingsSuccess').text(response.message);
                     $('.settings_modal').modal('show'); // modalı göstər
-                    // window.location.reload();
+                    $('.settings_modal .close').on('click', function () {
+                        location.reload();
+                    });
                 }
             },
             error: function (xhr) {
@@ -221,6 +223,9 @@
                 if (response.success) {
                     $('#generalSettingsSuccess').text(response.message);
                     $('.settings_modal').modal('show'); // modalı göstər
+                    $('.settings_modal .close').on('click', function () {
+                        location.reload();
+                    });
                 }
             },
             error: function (xhr) {
@@ -272,6 +277,9 @@
                 if (response.success) {
                     $('#generalSettingsError').text(response.message);
                     $('.settings_modal').modal('show'); // modalı göstər
+                    $('.settings_modal .close').on('click', function () {
+                        location.reload();
+                    });
                 }
             },
             error: function (xhr) {
