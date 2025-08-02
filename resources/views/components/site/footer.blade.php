@@ -51,7 +51,7 @@
                         <li class="df"><span class="flaticon-pin mr15"></span><a>Azerbaycan, Bakı şəhəri</a></li>
                         <li><span class="flaticon-phone mr15"></span><a href="tel:+994552956727">+994552956727</a></li>
                         <li><span class="flaticon-phone mr15"></span><a href="tel:+994552952767">+994552952767</a></li>
-                        <li><span class="flaticon-email mr15"></span><a href="mailto:nacaspia.main@gmail.com">nacaspia.main@gmail.com</a></li>
+                        <li><span class="flaticon-email mr15"></span><a href="mailto:info@nacaspia.com">info@nacaspia.com</a></li>
                         <li><span></span><a href="{{ route('site.contact') }}"><b>Ətraflı</b></a></li>
                     </ul>
                 </div>
@@ -62,7 +62,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{{ route('site.faqs') }}">FAQ</a></li>
                         <li><a href="{{ route('site.about') }}">Haqqımızda</a></li>
-                        <li><a href="{{ route('site.career') }}">Karyera</a></li>
+{{--                        <li><a href="{{ route('site.career') }}">Karyera</a></li>--}}
                         <li><a href="{{ route('site.how-we-work') }}">Necə işləyirik</a></li>
                         <li><a href="{{ route('site.terms-of-use') }}">Şərtlər və qaydalar</a></li>
                         <li><a href="{{ route('site.privacy-policy') }}">Məxfilik siyasəti</a></li>
