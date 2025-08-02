@@ -212,12 +212,18 @@
                 name: 'style_KINESB'
             };
 
-            var image = '{{ asset('site/images/gps.png') }}';
+            var image = {
+                url: '{{ asset('site/images/gps.png') }}',  // İkon şəkilin URL-i
+                size: new google.maps.Size(32, 32),               // Orijinal ölçü
+                origin: new google.maps.Point(0, 0),              // İkonun başlanğıc nöqtəsi
+                anchor: new google.maps.Point(16, 32),            // İkonun "göyərçin quyruğu" nöqtəsi (aşağı ortası)
+                scaledSize: new google.maps.Size(32, 32)          // Xəritədə görünəcək ölçü (ölçüləndir)
+            };
             var marker = new google.maps.Marker({
                 position: Kine,
                 map: map,
                 animation: google.maps.Animation.DROP,
-                title: 'B4318, Gumfreston SA70 8RA, United Kingdom',
+                title: 'Bakı şəhəri Nərmanov rayonu',
                 icon: image
             });
 
