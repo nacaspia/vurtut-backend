@@ -212,7 +212,7 @@
                 name: 'style_KINESB'
             };
 
-            var image = '/site/images/resource/mapmarker.png';
+            var image = '{{ asset('site/images/gps.png') }}';
             var marker = new google.maps.Marker({
                 position: Kine,
                 map: map,
