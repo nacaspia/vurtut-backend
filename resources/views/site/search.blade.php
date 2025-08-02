@@ -33,14 +33,14 @@
                                             <form class="bgc-white bgct-767 pl30 pt10 pl0-767" action="{{ route('site.search') }}" method="GET">
                                                 <div class="form-row align-items-center">
                                                     <div class="col-auto home_form_input mb20-xsd">
-                                                        <label class="sr-only">Username</label>
+                                                        <label class="sr-only">Müəssisə kateqoryası</label>
                                                         <div class="input-group style1 mb-2 mb0-767">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text pl0 pb0-767">Nə?</div>
                                                             </div>
                                                             <div class="select-wrap style1-dropdown">
                                                                 <select name="category_id" class="form-control js-searchBox">
-                                                                    <option value="">müəssisə, xidmət, məhsul...</option>
+                                                                    <option value="">Müəssisə kateqoryası/option>
                                                                     @if(!empty($mainCategories[0]))
                                                                         @foreach($mainCategories as $category)
                                                                             <option value="{{$category['id']}}">{{$category['title'][$currentLang]}}</option>
