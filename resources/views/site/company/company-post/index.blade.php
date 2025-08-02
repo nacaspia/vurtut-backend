@@ -76,42 +76,6 @@
                     @endforeach
                 @endif
             </div>
-
-            {{--<div class="row">
-                <div class="col-lg-12">
-                    <div class="mbp_pagination mt10">
-                        <ul class="page_navigation">
-                            --}}{{-- Previous link --}}{{--
-                            <li class="page-item {{ $companyPosts->onFirstPage() ? 'disabled' : '' }}">
-                                <a class="page-link" href="{{ $companyPosts->previousPageUrl() ?? '#' }}" tabindex="-1" aria-disabled="{{ $companyPosts->onFirstPage() ? 'true' : 'false' }}">
-                                    <span class="fa fa-angle-left"></span>
-                                </a>
-                            </li>
-
-                            --}}{{-- Pagination Elements --}}{{--
-                            @for ($i = 1; $i <= $companyPosts->lastPage(); $i++)
-                                @if ($i == $companyPosts->currentPage())
-                                    <li class="page-item active" aria-current="page">
-                                        <a class="page-link" href="#">{{ $i }} <span class="sr-only">(current)</span></a>
-                                    </li>
-                                @elseif ($i <= 3 || $i > $companyPosts->lastPage() - 2 || abs($i - $companyPosts->currentPage()) <= 1)
-                                    <li class="page-item"><a class="page-link" href="{{ $companyPosts->url($i) }}">{{ $i }}</a></li>
-                                @elseif ($i == 4 || $i == $companyPosts->lastPage() - 3)
-                                    <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                @endif
-                            @endfor
-
-                            --}}{{-- Next link --}}{{--
-                            <li class="page-item {{ $companyPosts->hasMorePages() ? '' : 'disabled' }}">
-                                <a class="page-link" href="{{ $companyPosts->nextPageUrl() ?? '#' }}">
-                                    <span class="fa fa-angle-right"></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>--}}
-
         </div>
     </section>
     <div class="settings_modal modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
@@ -139,80 +103,83 @@
     </div>
 @endsection
 @section('company.js')
-    <script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const imageInput = document.getElementById('image');
+        const preview = document.getElementById('imagePreview');
+        const container = document.getElementById('previewContainer');
+        const label = document.getElementById('imageLabel');
+        const removeBtn = document.getElementById('removeImage');
 
-        document.getElementById('image').addEventListener('change', function (event) {
-            const file = event.target.files[0];
-            const preview = document.getElementById('imagePreview');
-            const container = document.getElementById('previewContainer');
-            const label = document.getElementById('imageLabel');
+        // Şəkil yüklənərkən önizləmə
+        if (imageInput) {
+            imageInput.addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        preview.src = e.target.result;
+                        container.style.display = 'block';
+                        label.style.display = 'none';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
 
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    preview.src = e.target.result;
-                    container.style.display = 'block';
-                    label.style.display = 'none';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-        document.getElementById('removeImage').addEventListener('click', function () {
-            const input = document.getElementById('image');
-            const preview = document.getElementById('imagePreview');
-            const container = document.getElementById('previewContainer');
-            const label = document.getElementById('imageLabel');
-            input.value = '';
-            preview.src = '#';
-            container.style.display = 'none';
-            label.style.display = 'block';
-        });
+        // Şəkli silmə düyməsi
+        if (removeBtn) {
+            removeBtn.addEventListener('click', function () {
+                imageInput.value = '';
+                preview.src = '#';
+                container.style.display = 'none';
+                label.style.display = 'block';
+            });
+        }
 
+        // Formun AJAX ilə göndərilməsi
         $('#companyPost').on('submit', function (e) {
             e.preventDefault();
             $('.form-control').removeClass('is-invalid');
             $('#imageError, #generalError, #generalSuccess').text('');
+
             let formData = new FormData();
             formData.append('image', $('#image')[0].files[0]);
 
             $.ajax({
                 url: '{{ route('site.company-post.store') }}',
-                method: 'POST', // PUT üçün method POST olacaq, çünki FormData PUT-u dəstəkləmir
+                method: 'POST',
                 data: formData,
                 processData: false,
                 contentType: false,
                 success: function (response) {
                     if (response.success) {
                         $('#generalSuccess').text(response.message);
-                        $('.settings_modal').modal('show'); // modalı göstər
-                        // window.location.reload();
+                        $('.settings_modal').modal('show');
                         $('.settings_modal .close').on('click', function () {
                             location.reload();
                         });
-
                     }
                 },
                 error: function (xhr) {
                     if (xhr.status === 422) {
                         const res = xhr.responseJSON;
-                        if (res.errors) {
-                            if (res.errors.image) {
-                                $('#image').addClass('is-invalid');
-                                $('#imageError').removeClass('d-none').addClass('d-block').text(res.errors.image[0]);
-                            }
-
+                        if (res.errors && res.errors.image) {
+                            $('#image').addClass('is-invalid');
+                            $('#imageError').removeClass('d-none').addClass('d-block').text(res.errors.image[0]);
                         } else if (res.message) {
                             $('#generalError').removeClass('d-none').addClass('d-block').text(res.message);
-                            $('.settings_modal').modal('show'); // modalı göstər
+                            $('.settings_modal').modal('show');
                         }
                     } else {
                         $('#generalError').removeClass('d-none').addClass('d-block').text('Naməlum xəta baş verdi.');
-                        $('.settings_modal').modal('show'); // modalı göstər
+                        $('.settings_modal').modal('show');
                     }
                 }
             });
         });
 
+        // Şəkli silmək üçün AJAX
         $(document).on('click', '.delete-image-btn', function () {
             const postId = $(this).data('id');
             const card = $(this).closest('.post-image-card');
@@ -227,7 +194,8 @@
                     },
                     success: function (response) {
                         if (response.success) {
-                            card.remove(); // DOM-dan şəkli sil
+                            card.remove();
+                            location.reload();
                         } else {
                             alert('Silinmə zamanı xəta baş verdi.');
                         }
@@ -238,6 +206,6 @@
                 });
             }
         });
-
-    </script>
+    });
+</script>
 @endsection

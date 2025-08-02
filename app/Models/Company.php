@@ -95,4 +95,8 @@ class Company extends Authenticatable
     {
         return $this->hasMany(Reservation::class, 'company_id', 'id')->orderBy('created_at', 'DESC');
     }
+
+    public function companyService() {
+        return $this->hasMany(CompanyService::class, 'company_id', 'id')->with('category','subCategory');
+    }
 }

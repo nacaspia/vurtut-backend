@@ -23,6 +23,7 @@
         localStorage.setItem('layoutDirection', 'ltr');
     }
 </script>
+@yield('admin.js')
 <!-- for demo purpose -->
 </body>
 </html>

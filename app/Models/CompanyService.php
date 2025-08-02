@@ -13,7 +13,7 @@ class CompanyService extends Model
 
     protected $fillable = [
         'company_id',
-        'category_id',
+        'parent_category_id',
         'sub_category_id',
         'title',
         'description',
@@ -24,6 +24,10 @@ class CompanyService extends Model
         'share',
         'like'
     ];
+
+    public function category() {
+        return $this->hasOne(Category::class, 'id', 'parent_category_id');
+    }
 
     public function subCategory() {
         return $this->hasOne(Category::class, 'id', 'sub_category_id');

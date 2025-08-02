@@ -4,6 +4,12 @@
 @endsection
 @section('admin.css')
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/vendor/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/vendor/css/OverlayScrollbars.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/vendor/css/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/vendor/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
+    <link rel="stylesheet" id="primaryColor" href="{{ asset('admin/assets/css/blue-color.css') }}">
 @endsection
 @section('admin.content')
     <div class="main-content">
@@ -13,9 +19,9 @@
         @include('components.admin.error')
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('admin.companies.update',$company['id']) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
+{{--                <form action="{{ route('admin.companies.update',$company['id']) }}" method="POST" enctype="multipart/form-data">--}}
+{{--                    @csrf--}}
+{{--                    @method('PUT')--}}
                     <div class="panel">
                         <div class="panel-header">
                             <nav>
@@ -217,34 +223,40 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-catalog" role="tabpanel" aria-labelledby="nav-catalog-tab" tabindex="0">
-                                    <div class="social-information mb-25">
-                                        <div class="row g-3">
-                                            <div class="col-12">
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i
-                                                            class="fa-light fa-lock"></i></span>
-                                                    <input type="password" class="form-control" name="current_password"
-                                                           placeholder="@lang('admin.current_password')">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i
-                                                            class="fa-light fa-lock"></i></span>
-                                                    <input type="password" class="form-control" name="new_password"
-                                                           placeholder="@lang('admin.new_password')">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="input-group">
-                                                    <span class="input-group-text"><i
-                                                            class="fa-light fa-lock"></i></span>
-                                                    <input type="password" class="form-control" name="confirm_password"
-                                                           placeholder="@lang('admin.confirm_password')">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
+                                    <table class="table table-dashed table-hover digi-dataTable all-product-table table-striped" id="allProductTable">
+                                        <thead>
+                                        <tr>
+                                            <th>Xitmət / Məhsul</th>
+                                            <th>Qiymət</th>
+                                            <th>Ətraflı</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(!empty($company['companyService'][0]))
+                                                @foreach($company['companyService'] as $companyService)
+                                                    <tr>
+                                                        <td>
+                                                            <div class="table-product-card">
+                                                                <div class="part-img">
+                                                                    <img src="{{ asset('uploads/company-services/'.$companyService['image']) }}" alt="Image">
+                                                                </div>
+                                                                <div class="part-txt">
+                                                                    <span class="product-name">{{$companyService['title']}}</span>
+                                                                    <span class="product-category">Category: {{$companyService['category']['title']['az']}}/{{$companyService['subCategory']['title']['az']}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>{{$companyService['price']}} AZN</td>
+                                                        <td>{{$companyService['description']}}</td>
+                                                        <td><button class="btn btn-sm btn-primary" id="status{{$companyService['id']}}">@if($companyService['status']) Aktiv @else Deaktiv @endif</button></td>
+                                                    </tr>
+                                                @endforeach
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                    <div class="table-bottom-control"></div>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -252,14 +264,50 @@
                             </div>
                         </div>
                     </div>
-                </form>
+{{--                </form>--}}
             </div>
         </div>
     </div>
 @endsection
-
 @section('admin.js')
+    <script src="{{ asset('admin/assets/vendor/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/vendor/js/jquery.overlayScrollbars.min.js') }}"></script>
     <script src="{{ asset('admin/assets/vendor/js/select2.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/select2-init.js') }}"></script>
+    <script src="{{ asset('admin/assets/vendor/js/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/vendor/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/main.js') }}"></script>
+    @if(!empty($company['companyService'][0]))
+        @foreach($company['companyService'] as $companyService)
+            <script>
+                document.getElementById("status{{$companyService['id']}}") && document.getElementById("status{{$companyService['id']}}").addEventListener("click", function() {
+                    Swal.fire({
+                        title: "Statusu dəyişmək istəyirsiniz?",
+                        text: "Zəhmət olmasa seçiminizi təsdiqləyin.",
+                        icon: "question",
+                        showCancelButton: true,
+                        confirmButtonText: "Yadda saxla",
+                        cancelButtonText: "Bağla",
+                        buttonsStyling: false,
+                        customClass: {
+                            confirmButton: "btn btn-sm btn-primary",
+                            cancelButton: "btn btn-sm btn-secondary",
+                            closeButton: "btn btn-sm btn-icon btn-danger",
+                        },
+                        showCloseButton: true,
+                        closeButtonHtml: "<i class='fa-light fa-xmark'></i>",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Burada yadda saxla əməliyyatı yerinə yetir
+                            console.log("Status yadda saxlanıldı.");
+                        } else if (result.dismiss === Swal.DismissReason.cancel) {
+                            console.log("Əməliyyat ləğv edildi.");
+                        }
+                    });
+                });
+            </script>
+        @endforeach
+    @endif
+{{--    <script src="{{ asset('admin/assets/js/sweet-alert-init.js') }}"></script>--}}
 @endsection
 

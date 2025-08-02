@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
     <link rel="stylesheet" id="primaryColor" href="{{ asset('admin/assets/css/blue-color.css') }}">
     <link rel="stylesheet" id="rtlStyle" href="#">
+    @yield('admin.css')
 </head>
 <body class="body-padding body-p-top light-theme">
 <!-- preloader start -->

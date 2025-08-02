@@ -48,7 +48,7 @@ class CompanyController extends Controller
     public function settings() {
         $currentLang = $this->currentLang;
         $company = Company::with('category','country','mainCities','subRegion')->find($this->company->id);
-        $mainCompanies = Company::where(['status' => 1])->whereNull('parent_id')->get();
+        $mainCompanies = Company::where(['status' => 1,'category_id' => $company['category_id']])->whereNull('parent_id')->get();
         $categories = Category::where('status',1)->whereNull('parent_id')->get();
         $countries = Country::where('status',1)->get();
         $serviceTypes = ServiceType::where(['status' => 1])->orderBy('name->' . $this->currentLang, 'ASC')->get();

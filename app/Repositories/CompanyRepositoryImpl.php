@@ -18,7 +18,7 @@ class CompanyRepositoryImpl implements CompanyRepository
 
     public function getAll()
     {
-        return $this->model->with(['category','country','mainCities','subRegion','userLikes','comments','posts'])->orderBy('id','DESC')->get();
+        return $this->model->with(['category','country','mainCities','subRegion','userLikes','comments','posts','companyService'])->orderBy('id','DESC')->get();
     }
 
     public function create(array $data)
