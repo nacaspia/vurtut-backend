@@ -27,8 +27,8 @@
                             $data = $companyByTrends['data'];
                         @endphp
                         <ul class="prop_details mb0 mt15">
-                            <li class="list-inline-item"><a href="tel:{{ $companyByTrends['phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyByTrends['phone'] }}</a></li>
-                            <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{ $data['address'] }}</a></li>
+                            <li class="list-inline-item"><a href="tel:{{ $companyByTrends['phone'] ?? '' }}"><span class="flaticon-phone pr5"></span> {{ $companyByTrends['phone'] ?? '' }}</a></li>
+                            <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                         </ul>
                     </div>
                     <div class="fp_footer">
@@ -36,11 +36,11 @@
                             @if(!empty($companyByTrends['category']['image']))
                                 <li class="list-inline-item">
                                     <a href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}">
-                                        <img src="{{ asset("uploads/categories/".$companyByTrends['category']['image']) }}" alt="{{$companyByTrends['category']['title'][$currentLang]}}" style="max-height: 28px;!important;">
+                                        <img src="{{ asset("uploads/categories/".$companyByTrends['category']['image']) }}" alt="{{$companyByTrends['category']['title'][$currentLang] ?? ''}}" style="max-height: 28px;!important;">
                                     </a>
                                 </li>
                             @endif
-                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}">{{ $companyByTrends['category']['title'][$currentLang] }}</a></li>
+                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}">{{ $companyByTrends['category']['title'][$currentLang] ?? '' }}</a></li>
                         </ul>
                         <ul class="fp_meta float-right mb0">
                             <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}"><span class="flaticon-zoom"></span></a></li>

@@ -28,8 +28,8 @@
                             $data = $companyCategory['data'];
                         @endphp
                         <ul class="prop_details mb0">
-                            <li class="list-inline-item"><a href="tel:{{ $companyCategory['phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyCategory['phone'] }}</a></li>
-                            <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{ $data['address'] }}</a></li>
+                            <li class="list-inline-item"><a href="tel:{{ $companyCategory['phone'] ?? '' }}"><span class="flaticon-phone pr5"></span> {{ $companyCategory['phone'] ?? '' }}</a></li>
+                            <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                         </ul>
                     </div>
                     <div class="fp_footer">
@@ -41,7 +41,7 @@
                                     </a>
                                 </li>
                             @endif
-                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}">{{ $companyCategory['category']['title'][$currentLang] }}</a></li>
+                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}">{{ $companyCategory['category']['title'][$currentLang] ?? '' }}</a></li>
                         </ul>
                         <ul class="fp_meta float-right mb0">
                             <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><span class="flaticon-zoom"></span></a></li>
