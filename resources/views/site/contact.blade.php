@@ -23,7 +23,7 @@
                                 <li><span class="flaticon-phone mr15"></span><a href="tel:+994552952767">+994552952767</a></li>
                                 <li><span class="flaticon-email mr15"></span><a href="mailto:info@nacaspia.com">info@nacaspia.com</a></li>
                             </ul>
-                            <a class="tdu text-thm direction" href="#">Get Direction</a>
+{{--                            <a class="tdu text-thm direction" href="#">Get Direction</a>--}}
                         </div>
                     </div>
                 </div>
