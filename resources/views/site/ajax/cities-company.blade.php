@@ -28,8 +28,8 @@
                             $data = $companyCity['data'];
                         @endphp
                         <ul class="prop_details mb0">
-                            <li class="list-inline-item"><a href="tel:{{ $companyCity['phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyCity['phone'] }}</a></li>
-                            <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{ $data['address'] }}</a></li>
+                            <li class="list-inline-item"><a href="tel:{{ $companyCity['phone']?? null }}"><span class="flaticon-phone pr5"></span> {{ $companyCity['phone'] ?? '' }}</a></li>
+                            <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? null }}</a></li>
                         </ul>
                     </div>
                     <div class="fp_footer">
@@ -37,11 +37,11 @@
                             @if(!empty($companyCity['category']['image']))
                                 <li class="list-inline-item">
                                     <a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}">
-                                        <img src="{{ asset("uploads/categories/".$companyCity['category']['image']) }}" alt="{{$companyCity['category']['title'][$currentLang]}}" style="max-height: 28px;!important;">
+                                        <img src="{{ asset("uploads/categories/".$companyCity['category']['image']) }}" alt="{{$companyCity['category']['title'][$currentLang] ?? ''}}" style="max-height: 28px;!important;">
                                     </a>
                                 </li>
                             @endif
-                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}">{{ $companyCity['category']['title'][$currentLang] }}</a></li>
+                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}">{{$companyCity['category']['title'][$currentLang] ?? ''}}</a></li>
                         </ul>
                         <ul class="fp_meta float-right mb0">
                             <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}"><span class="flaticon-zoom"></span></a></li>
