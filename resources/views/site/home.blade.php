@@ -252,7 +252,7 @@
                                 <div class="properti_city">
                                     <div class="thumb">
                                         <a href="{{ route('site.city',['citySlug' => $city['slug'][$currentLang]]) }}">
-                                            <img class="img-fluid w100" src="{{ asset("uploads/cities/".$city['image']) }}" alt="{{$city['name'][$currentLang]}}">
+                                            <img class="img-fluid w100" src="{{ asset("uploads/cities/".$city['image']) }}" alt="{{$city['name'][$currentLang]}}" style="min-width: 442px;!important;">
                                         </a>
                                     </div>
                                     <div class="overlay">
