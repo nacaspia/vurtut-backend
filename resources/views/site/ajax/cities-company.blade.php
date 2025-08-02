@@ -37,7 +37,7 @@
                             @if(!empty($companyCity['category']['image']))
                                 <li class="list-inline-item">
                                     <a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}">
-                                        <img src="{{ asset("uploads/categories/".$companyCity['category']['image']) }}" alt="{{$companyCity['category']['title'][$currentLang]}}">
+                                        <img src="{{ asset("uploads/categories/".$companyCity['category']['image']) }}" alt="{{$companyCity['category']['title'][$currentLang]}}" style="max-height: 28px;!important;">
                                     </a>
                                 </li>
                             @endif

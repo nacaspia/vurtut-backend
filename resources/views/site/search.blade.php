@@ -127,7 +127,7 @@
                                             @if(!empty($company['category']['image']))
                                                 <li class="list-inline-item">
                                                     <a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}">
-                                                        <img src="{{ asset("uploads/categories/".$company['category']['image']) }}" alt="{{$company['category']['title'][$currentLang]}}">
+                                                        <img src="{{ asset("uploads/categories/".$company['category']['image']) }}" alt="{{$company['category']['title'][$currentLang]}}"  style="max-height: 28px;!important;">
                                                     </a>
                                                 </li>
                                             @endif

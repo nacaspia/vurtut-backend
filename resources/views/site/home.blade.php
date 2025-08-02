@@ -336,7 +336,7 @@
                                                                 @if(!empty($companyIsPremium['category']['image']))
                                                                 <li class="list-inline-item">
                                                                     <a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">
-                                                                        <img src="{{ asset("uploads/categories/".$companyIsPremium['category']['image']) }}" alt="{{$companyIsPremium['category']['title'][$currentLang]}}">
+                                                                        <img src="{{ asset("uploads/categories/".$companyIsPremium['category']['image']) }}" alt="{{$companyIsPremium['category']['title'][$currentLang]}}" style="max-height: 28px;!important;">
                                                                     </a>
                                                                 </li>
                                                                 @endif
@@ -408,7 +408,7 @@
                                                                         @if(!empty($companyIsPremium['category']['image']))
                                                                             <li class="list-inline-item">
                                                                                 <a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">
-                                                                                    <img src="{{ asset("uploads/categories/".$companyIsPremium['category']['image']) }}" alt="{{$companyIsPremium['category']['title'][$currentLang]}}">
+                                                                                    <img src="{{ asset("uploads/categories/".$companyIsPremium['category']['image']) }}" alt="{{$companyIsPremium['category']['title'][$currentLang]}}"  style="max-height: 28px;!important;">
                                                                                 </a>
                                                                             </li>
                                                                         @endif
