@@ -91,8 +91,8 @@ function initialize() {
         ]
     }
 ];
-  var myGent = new google.maps.LatLng(40.6946703,-73.9280182);
-  var Kine = new google.maps.LatLng(40.6946703,-73.9280182);
+    var myGent = new google.maps.LatLng(40.403216, 49.867081); // Nərimanov rayonu
+    var Kine   = new google.maps.LatLng(40.403216, 49.867081); // Eyni koordinat
   var mapOptions = {
     zoom: 11,
     mapTypeControl: true,
@@ -107,7 +107,7 @@ function initialize() {
     streetViewControl: false,
     center: myGent
   }
-  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);  
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   var styledMapOptions = {
     name: 'style_KINESB'
   };
