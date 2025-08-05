@@ -24,7 +24,7 @@
                             <ul class="sasw_list style2 mb0">
                                 <li class="search_area">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="search" name="search" placeholder="İstədiyin müəssəni axtar...">
+                                        <input type="text" class="form-control" id="search" name="search" placeholder="İstədiyin müəssisəni axtar">
                                     </div>
                                 </li>
                                 @if(!empty($cities[0]))
