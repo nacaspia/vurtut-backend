@@ -84,7 +84,7 @@
             '</div>'+
             '</div>'+
             '<div class="bottom-box">'+
-            '<div class="places"><div class="place '+ locationColor +'"><span class="icon '+ locationIcon +'" ></span> '+ locationName +' </div></div>'+
+            '<div class="places"><div class="place '+ locationColor +'"><span class="icon '+ locationIcon +'" ></span><a href="'+locationURL+'"> '+ locationName +' </a></div></div>'+
             '<div class="status">'+ locationStatus +'</div>'+
             '</div>'+
             '</div>'+
@@ -92,7 +92,7 @@
         var locations=[
                 @foreach($mainCategory as $cateKey => $category)
                     @if(!empty($category['mapCompany']))
-                        [locationData('{{ asset("uploads/categories/".$category['image']) }}', '5', '{{++$cateKey}}', '{{ route('site.companyDetails',['slug' => $category['mapCompany']['slug']]) }}', "{{$category['mapCompany']['full_name']}}", '{{$category['mapCompany']['social']['one_phone']}} ', '{{$category['mapCompany']['mainCities']['name'][$currentLang]}}', 'sky', 'flaticon-tent', '{{ $category['title'][$currentLang] }}', 'Now Closed', ), {{$category['mapCompany']['data']['lat']}}, {{$category['mapCompany']['data']['lng']}}, {{++$cateKey}}, '<i class="icon flaticon-find-location"></i>'],
+                        [locationData('{{ asset("uploads/categories/".$category['image']) }}', '5', '{{++$cateKey}}', '{{ route('site.companyDetails',['slug' => $category['mapCompany']['slug']]) }}', "{{$category['mapCompany']['full_name']}}", '{{$category['mapCompany']['mainCities']['name'][$currentLang]}}', '{{$category['mapCompany']['social']['one_phone']}} ',  'sky', 'flaticon-tent', '{{ $category['title'][$currentLang] }}', 'Now Closed', ), {{$category['mapCompany']['data']['lat']}}, {{$category['mapCompany']['data']['lng']}}, {{++$cateKey}}, '<i class="icon flaticon-find-location"></i>'],
                    @endif
                 @endforeach
              ];
