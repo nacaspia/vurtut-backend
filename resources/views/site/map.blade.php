@@ -73,7 +73,7 @@
             '<div class="inner-box">'+
             '<div class="infoBox-close"><i class="fa fa-times"></i></div>'+
             '<div class="image-box">'+
-            '<a href="'+locationURL+'"><figure class="image"><img src="'+locationImg+'" alt=""></figure></a>'+
+            '<a href="'+locationURL+'" target="_blank"><figure class="image"><img src="'+locationImg+'" alt=""></figure></a>'+
             '<div class="content">'+
             '<div class="'+infoBox_ratingType+'" data-rating="'+locationRating+'"><div class="rating-counter">('+locationRatingCounter+' reviews)</div></div>'+
             '<h3><a href="'+locationURL+'">' + locationTitle + '<span class="icon icon-verified"></span></a></h3>'+
@@ -84,7 +84,7 @@
             '</div>'+
             '</div>'+
             '<div class="bottom-box">'+
-            '<div class="places"><div class="place '+ locationColor +'"><span class="icon '+ locationIcon +'" ></span><a href="'+locationURL+'"> '+ locationName +' </a></div></div>'+
+            '<div class="places"><div class="place '+ locationColor +'"><span class="icon '+ locationIcon +'" ></span><a href="'+locationURL+'" target="_blank"> '+ locationName +' </a></div></div>'+
             '<div class="status">'+ locationStatus +'</div>'+
             '</div>'+
             '</div>'+
