@@ -46,6 +46,9 @@ Route::post('/login-accept', 'AuthController@loginAccept')->name('loginAccept');
 Route::post('/register-accept', 'AuthController@registerAccept')->name('registerAccept');
 Route::get('/company/accept/{token}/{id}', 'AuthController@companyAccept');
 Route::get('/user/accept/{token}/{id}', 'AuthController@userAccept');
+Route::post('/forgot-status', 'AuthController@forgotStatus')->name('forgotStatus');
+Route::get('/forgot-password', 'AuthController@forgotPassword')->name('forgotPassword');
+Route::post('/forgot-set-password', 'AuthController@forgotSetPassword')->name('forgotSetPassword');
 ///login register
 
 Route::prefix('/company')->middleware('company')->group(function () {

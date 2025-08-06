@@ -130,10 +130,97 @@
 </section>
 <a class="scrollToHome" href="#"><i class="fa fa-angle-up"></i></a>
 </div>
-
+@include('site.auth.forgot-password')
 @yield('site.js')
-
+<!-- jQuery -->
 <script>
+    $('#forgetForm').on('submit', function (e) {
+        e.preventDefault();
+
+        $('.form-control').removeClass('is-invalid');
+        $('#emailPasswordError, #generalPasswordSuccess, #generalPasswordError').text('');
+
+        $.ajax({
+            url: '{{ route('site.forgotStatus') }}',
+            method: 'POST',
+            data: {
+                email: $('#emailPassword').val(),
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function (response) {
+                $('#generalPasswordSuccess').text(response.message);
+                $('.sign_up_modal').modal('show');
+                $('.sign_up_modal .close').on('click', function () {
+                    location.reload();
+                });
+            },
+            error: function (xhr) {
+                if (xhr.status === 422) {
+                    const res = xhr.responseJSON;
+
+                    if (res.errors) {
+                        if (res.errors.email) {
+                            $('#emailPassword').addClass('is-invalid');
+                            $('#emailPasswordError').text(res.errors.email[0]);
+                        }
+                    } else if (res.error) {
+                        $('#generalPasswordError').text(res.error);
+                    }
+                } else {
+                    $('#generalPasswordError').text('Naməlum xəta baş verdi.');
+                }
+            }
+        });
+    });
+    $('#passwordForm').on('submit', function (e) {
+        e.preventDefault();
+        $('.form-control').removeClass('is-invalid');
+        $('#newPasswordError, #confNewPasswordError, #generalPasswordError, #generalPasswordSuccess').text('');
+        let formData = new FormData();
+        formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+        formData.append('id', $('#idPassword').val());
+        formData.append('email', $('#emailPassword').val());
+        formData.append('new_password', $('#new_password').val());
+        formData.append('conf_new_password', $('#conf_new_password').val());
+        $.ajax({
+            url: '{{ route('site.forgotSetPassword') }}',
+            method: 'POST', // PUT üçün method POST olacaq, çünki FormData PUT-u dəstəkləmir
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    $('#generalPasswordSuccess').text(response.message);
+                    $('.settings_modal').modal('show'); // modalı göstər
+                    $('.settings_modal .close').on('click', function () {
+                        location.reload();
+                    });
+                }
+            },
+            error: function (xhr) {
+                if (xhr.status === 422) {
+                    const res = xhr.responseJSON;
+                    if (res.errors) {
+                        if (res.errors.new_password) {
+                            $('#new_password').addClass('is-invalid');
+                            $('#newPasswordError').removeClass('d-none').addClass('d-block').text(res.errors.new_password[0]);
+                        }
+
+                        if (res.errors.conf_new_password) {
+                            $('#conf_new_password').addClass('is-invalid');
+                            $('#confNewPasswordError').removeClass('d-none').addClass('d-block').text(res.errors.conf_new_password[0]);
+                        }
+
+                    } else if (res.message) {
+                        $('#generalPasswordError').text(res.message);
+                    }
+                } else {
+                    $('#generalPasswordError').text('Naməlum xəta baş verdi.');
+                }
+            }
+        });
+    });
+
     $('#loginForm').on('submit', function (e) {
         e.preventDefault();
 

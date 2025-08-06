@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 use App\Helpers\Company\Tokenizer;
 use App\Helpers\LogsHelper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Site\ChangePasswordRequest;
 use App\Http\Requests\User\RegisterRequest;
 use App\Models\Category;
 use App\Models\Company;
@@ -285,4 +286,112 @@ class AuthController extends Controller
             }
         }
     }
+
+
+    public function forgotStatus(Request $request)
+    {
+        $email = $request->email;
+        $valdate = Validator::make([
+            'email' => $email
+        ], [
+            'email' => 'required|email'
+        ], [
+            '*.required' => Lang::get('site.required'),
+            'email.email' => Lang::get('site.email_format')
+        ]);
+
+        if ($valdate->fails())
+        {
+            return response()->json(['success' => false,'errors' => $valdate->errors()], 422);
+        }elseif ($valdate->passes()) {
+            //istifadəçi yoxlanışı
+            $userEmail = User::where('email',$email)->first();
+            //şirkət yoxlanışı
+            $companyEmail = Company::where('email',$email)->first();
+            if (empty($userEmail) && empty($companyEmail)) {
+                return response()->json(['success' => false, 'errors' => 'Belə istifadəçi tapılmadı'], 422);
+            }
+            $id =$companyEmail->id ?? $userEmail->id;
+            $mail_data = [
+                'id' => $companyEmail->id ?? $userEmail->id,
+                'full_name' => $companyEmail->full_name ?? $userEmail->full_name,
+                'phone' => $companyEmail->phone ?? $userEmail->phone,
+                'email' => $companyEmail->email ?? $userEmail->email,
+                'subject' => "Şifrənizi yeniləyin",
+                'url' => 'http://vurtut.test/forgot-password?id='.$id.'&email='.$email,
+                'dedicated'=>'forgot-password'
+            ];
+            Notification::route('mail', $mail_data['email'])->notify(new Mail($mail_data));
+            return response()->json(['success' => true, 'message' =>'Zəhmət olmasa şifrəni yeniləmək üçün e-poçtunuzu yoxlayın'],200);
+        }
+    }
+
+    public function forgotPassword(Request $request) {
+        $id = $request->id;
+        $email = $request->email;
+
+        //istifadəçi yoxlanışı
+        $userEmail = User::where(['id' => $id, 'email' => $email])->first();
+        //şirkət yoxlanışı
+        $companyEmail = Company::where(['id' => $id, 'email' => $email])->first();
+
+        if (empty($userEmail) && empty($companyEmail)) {
+            return response()->json(['success' => false, 'errors' => 'Belə istifadəçi tapılmadı'], 422);
+        }
+        $data = $userEmail ?? $companyEmail;
+        return view('site.auth.new-password',compact('data'));
+    }
+
+    public function forgotSetPassword(Request $changePasswordRequest) {
+        $valdate = Validator::make($changePasswordRequest->all(), [
+//            'old_password' => 'required',
+            'new_password' => 'required|min:6',
+            'conf_new_password' => 'required_with:new_password|same:new_password|min:6',
+        ], [
+            '*.required' => Lang::get('site.required'),
+        ]);
+        if ($valdate->fails()) {
+            return response()->json(['success' => false, 'error' => $valdate->errors()],422);
+        }
+        $id = $changePasswordRequest->id;
+        $email = $changePasswordRequest->email;
+
+        //istifadəçi yoxlanışı
+        $userEmail = User::where(['id' => $id, 'email' => $email])->first();
+        //şirkət yoxlanışı
+        $companyEmail = Company::where(['id' => $id, 'email' => $email])->first();
+
+        try {
+            if (empty($userEmail) && empty($companyEmail)) {
+                return response()->json(['success' => false, 'errors' => 'Belə istifadəçi tapılmadı'], 422);
+            }
+
+            $data = $userEmail ?? $companyEmail;
+            $data->password = Hash::make($changePasswordRequest->new_password);
+            $data->save();
+            $log = [
+                'obj_id' => $data->id,
+                'subj_id' => $data->id,
+                'subj_table' => $userEmail? 'users' : 'companies',
+                'actions' => 'forgotSetPassword',
+                'type' =>  $userEmail? 'users' : 'companies',
+                'note' => Lang::get('site.success_up')
+            ];
+            LogsHelper::convert($log);
+            return response()->json(['success' => true, 'message' => "Şifrə yeniləndi"],200);
+
+        } catch (\Exception $exception) {
+            $log = [
+                'obj_id' => $data->id,
+                'subj_id' => $data->id,
+                'subj_table' => $userEmail? 'users' : 'companies',
+                'actions' => 'forgotSetPassword',
+                'type' =>  $userEmail? 'users' : 'companies',
+                'note' => 'errors '. $exception->getMessage()
+            ];
+            LogsHelper::convert($log);
+            return response()->json(['success' => false, 'message' => Lang::get('site.error_up')],422);
+        }
+    }
+
 }

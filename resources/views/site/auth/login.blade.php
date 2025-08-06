@@ -10,9 +10,9 @@
                 <div class="invalid-feedback" id="passwordError"></div>
             </div>
             <div class="form-group custom-control custom-checkbox">
-                {{--<input type="checkbox" class="custom-control-input" id="exampleCheck1">
-                <label class="custom-control-label" for="exampleCheck1">Şifrəyi xatırla</label>--}}
-{{--                <a class="btn-fpswd float-right" href="page-my-logout.html">Şifrənizi unutmusunuz?</a>--}}
+{{--                <input type="checkbox" class="custom-control-input" id="exampleCheck1">--}}
+{{--                <label class="custom-control-label" for="exampleCheck1">Şifrəyi xatırla</label>--}}
+                <a href="#" class="btn-fpswd float-right"  data-toggle="modal" data-target=".bd-example-modal-fg"> Şifrənizi unutmusunuz?</a>
             </div>
             <button type="submit" class="btn btn-log btn-block btn-thm">Giriş edin</button>
             <div class="text-danger text-center mt-2" id="generalError"></div>
