@@ -12,7 +12,7 @@
             <a href="{{ route('site.index') }}" class="navbar_brand float-left dn-smd">
                 <img class="logo1 img-fluid rounded-circle" src="{{ asset("site/images/Vurtut logo icon/vurtut.com.svg") }}" alt="vurtut" width="50" length="50">
                 <img class="logo2 img-fluid rounded-circle" src="{{ asset("site/images/Vurtut logo icon/vurtut.com.svg") }}" alt="vurtut" width="50" length="50">
-                <span>vurtut.com</span>
+                <span style="text-transform: lowercase;!important;">vurtut.com</span>
             </a>
             <ul id="respMenu" class="ace-responsive-menu text-right" data-menu-style="horizontal">
                 <li>
@@ -118,7 +118,7 @@
         <div class="header stylehome1">
             <div class="main_logo_home2 text-left">
                 <img class="nav_logo_img img-fluid mt15" src="{{ asset("site/images/Vurtut logo icon/Vurtut.com.png") }}" alt="Vurtut" style="border-radius: 34px;!important;" width="50" length="50">
-                <span class="mt15">vurtut.com</span>
+                <span class="mt15" style="text-transform: lowercase;!important;">vurtut.com</span>
             </div>
             <ul class="menu_bar_home2">
                 <li class="list-inline-item"><a class="custom_search_with_menu_trigger msearch_icon" href="#" data-toggle="modal" data-target="#staticBackdrop"></a></li>
