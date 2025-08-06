@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt50">
+            {{--<div class="row mt50">
                 <div class="col-md-8 col-lg-4">
                     <div class="funfact_one style2 text-center">
                         <div class="details">
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                {{--<div class="col-md-6 col-lg-3">
+                --}}{{--<div class="col-md-6 col-lg-3">
                     <div class="funfact_one style2 text-center">
                         <div class="details">
                             <ul>
@@ -67,8 +67,8 @@
                             <h4 class="ff_title">Team members</h4>
                         </div>
                     </div>
-                </div>--}}
-            </div>
+                </div>--}}{{--
+            </div>--}}
         </div>
     </section>
 
