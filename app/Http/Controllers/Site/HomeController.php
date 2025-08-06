@@ -423,7 +423,7 @@ class HomeController extends Controller
 
     public function howWeWork() {
         $currentLang = $this->currentLang;
-        $staticPage = StaticPage::where('type','terms-of-use')->first();
+        $staticPage = StaticPage::where('type','how-we-work')->first();
         return view('site.how-we-work',compact('currentLang','staticPage'));
     }
 
