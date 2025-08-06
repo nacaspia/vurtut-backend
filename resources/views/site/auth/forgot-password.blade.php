@@ -15,7 +15,7 @@
                                 <div class="invalid-feedback" id="emailPasswordError"></div>
                             </div>
                             <button type="submit" class="btn btn-log btn-block btn-thm">Göndər</button>
-                            <div class="text-danger text-center mt-2" id="generalPasswordSuccess"></div>
+                            <div class="text-success text-center mt-2" id="generalPasswordSuccess"></div>
                             <div class="text-danger text-center mt-2" id="generalPasswordError"></div>
                         </form>
                     </div>
