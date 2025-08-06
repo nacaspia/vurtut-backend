@@ -224,6 +224,7 @@
     $('#loginForm').on('submit', function (e) {
         e.preventDefault();
 
+        $('#loginBtn').prop('disabled', true).html('Gözləyin...');
         $('.form-control').removeClass('is-invalid');
         $('#emailError, #passwordError, #generalError').text('');
 
@@ -238,6 +239,9 @@
             success: function (response) {
                 if (response.success) {
                     window.location.href = response.route;
+                } else {
+                    // ✅ Əgər cavab uğurlu deyilsə, button-u bərpa et
+                    $('#loginBtn').prop('disabled', false).html('Daxil ol');
                 }
             },
             error: function (xhr) {
@@ -260,12 +264,16 @@
                 } else {
                     $('#generalError').text('Naməlum xəta baş verdi.');
                 }
+
+                // ✅ Əgər cavab uğurlu deyilsə, button-u bərpa et
+                $('#loginBtn').prop('disabled', false).html('Daxil ol');
             }
         });
     });
     $('#userRegister').on('submit', function (e) {
         e.preventDefault();
 
+        $('#userRegisterBtn').prop('disabled', true).html('Gözləyin...');
         $('.form-control').removeClass('is-invalid');
         $('#fullNameUserError, #emailUserError, #phoneUserError,  #passwordUserError, #generalUserRegisterSuccess, #generalUserRegisterError').text('');
 
@@ -284,9 +292,12 @@
                 if (response.success) {
                     $('#generalUserRegisterSuccess').text(response.message);// Formun bütün inputlarını təmizlə
                     $('#userRegister')[0].reset(); // loginForm -> sənin formanın ID-si
+                }else {
+                    $('#userRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
                 }
             },
             error: function (xhr) {
+                $('#userRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
                 if (xhr.status === 422) {
                     const res = xhr.responseJSON;
                     if (res.errors) {
@@ -322,10 +333,7 @@
     });
     $('#companyRegister').on('submit', function (e) {
         e.preventDefault();
-        let $btn = $('#companyRegisterBtn');
-        $btn.prop('disabled', true);
-        $btn.find('.btn-text').addClass('d-none');
-        $btn.find('.spinner-border').removeClass('d-none');
+        $('#companyRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
         $('.form-control').removeClass('is-invalid');
         $('#fullNameCompanyError, #emailCompanyError, #phoneCompanyError,  #passwordCompanyError, #generalCompanyRegisterSuccess, #generalCompanyRegisterError').text('');
 
@@ -344,9 +352,12 @@
                 if (response.success) {
                     $('#generalCompanyRegisterSuccess').text(response.message);// Formun bütün inputlarını təmizlə
                     $('#companyRegister')[0].reset(); // loginForm -> sənin formanın ID-si
+                }else {
+                    $('#companyRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
                 }
             },
             error: function (xhr) {
+                $('#companyRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
                 if (xhr.status === 422) {
                     const res = xhr.responseJSON;
                     if (res.errors) {

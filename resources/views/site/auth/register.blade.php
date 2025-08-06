@@ -30,7 +30,7 @@
                         <input type="password" class="form-control" id="password_user" name="password" placeholder="Şifrə">
                         <div class="invalid-feedback" id="passwordUserError"></div>
                     </div>
-                    <button type="submit" class="btn btn-log btn-block btn-thm">Qeydiyyat olun</button>
+                    <button type="submit" id="userRegisterBtn" class="btn btn-log btn-block btn-thm">Qeydiyyat olun</button>
                     {{--<hr>
                     <div class="row">
                         <div class="col-lg-6">

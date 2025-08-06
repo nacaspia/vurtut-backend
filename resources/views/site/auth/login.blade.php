@@ -14,7 +14,7 @@
 {{--                <label class="custom-control-label" for="exampleCheck1">Şifrəyi xatırla</label>--}}
                 <a href="#" class="btn-fpswd float-right"  data-toggle="modal" data-target=".bd-example-modal-fg"> Şifrənizi unutmusunuz?</a>
             </div>
-            <button type="submit" class="btn btn-log btn-block btn-thm">Giriş edin</button>
+            <button type="submit" id="loginBtn" class="btn btn-log btn-block btn-thm">Giriş edin</button>
             <div class="text-danger text-center mt-2" id="generalError"></div>
             {{--<hr>
             <div class="row mt30">
