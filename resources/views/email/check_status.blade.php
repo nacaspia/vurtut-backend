@@ -10,15 +10,6 @@
         <td align="center">
             <table width="600" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; margin: 30px auto; padding: 20px; border-radius: 8px;">
 
-                <!-- Logo -->
-                <tr>
-                    <td align="center" style="padding-bottom: 20px;">
-                        <a href="https://vurtut.com">
-                            <img src="https://vurtut.com/site/images/Vurtut%20logo%20icon/vurtut.com.svg" alt="Vurtut Logo" width="150" style="display: block;">
-                        </a>
-                    </td>
-                </tr>
-
                 <!-- Başlıq -->
                 <tr>
                     <td align="center" style="font-size: 22px; font-weight: bold; color: #333333; padding-bottom: 30px;">
