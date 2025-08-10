@@ -36,7 +36,7 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="wrap-custom-file mb50">
-                                                <input type="file"  class="form-control"  name="image_settings" id="image_settings" accept=".gif, .jpg, .png" hidden />
+                                                <input type="file"  class="form-control"  name="image_settings" id="image_settings" accept=".gif, .jpg, .png, .svg, .jpge" hidden />
                                                 <label for="image_settings" class="custom-file-label" id="imageLabel" @if(!empty($user['image'])) style="background-image: url('{{ asset('uploads/user/'.$user['image']) }}');" @endif>
                                                     <span>Profil şəkili yüklə</span>
                                                     <small class="file_title">Maksimum 15 MB</small>
