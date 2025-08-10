@@ -29,7 +29,7 @@ class UserController extends Controller
         $this->currentLang = Lang::getLocale();
         $this->user = auth('user')->user();
 //        dd($this->user);
-         if (!empty($this->user->country_id) && !empty($this->user->city_id)) {
+         if (empty($this->user->country_id) && empty($this->user->city_id)) {
              return self::settings();
          }
     }
