@@ -292,6 +292,7 @@
                 if (response.success) {
                     $('#generalUserRegisterSuccess').text(response.message);// Formun bütün inputlarını təmizlə
                     $('#userRegister')[0].reset(); // loginForm -> sənin formanın ID-si
+                    $('#userRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
                 }else {
                     $('#userRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
                 }
@@ -328,12 +329,13 @@
                 } else {
                     $('#generalUserRegisterError').text('Xəta baş verdi.');
                 }
+
             }
         });
     });
     $('#companyRegister').on('submit', function (e) {
         e.preventDefault();
-        $('#companyRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
+        $('#companyRegisterBtn').prop('disabled', false).html('Gözləyin...');
         $('.form-control').removeClass('is-invalid');
         $('#fullNameCompanyError, #emailCompanyError, #phoneCompanyError,  #passwordCompanyError, #generalCompanyRegisterSuccess, #generalCompanyRegisterError').text('');
 
@@ -352,6 +354,7 @@
                 if (response.success) {
                     $('#generalCompanyRegisterSuccess').text(response.message);// Formun bütün inputlarını təmizlə
                     $('#companyRegister')[0].reset(); // loginForm -> sənin formanın ID-si
+                    $('#companyRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
                 }else {
                     $('#companyRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
                 }
