@@ -28,6 +28,9 @@ class UserController extends Controller
     {
         $this->currentLang = Lang::getLocale();
         $this->user = auth('user')->user();
+         if (!empty($this->user['country_id']) && !empty($this->user['city_id'])) {
+             return self::settings();
+         }
     }
 
     public function index()
