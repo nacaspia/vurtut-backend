@@ -28,16 +28,15 @@ class UserController extends Controller
     {
         $this->currentLang = Lang::getLocale();
         $this->user = auth('user')->user();
-        $user = $this->user;
-        if ($user['country_id'] == null && $user['city_id'] == null) {
-            return self::settings();
-        }
     }
 
     public function index()
     {
         $currentLang = $this->currentLang;
         $user = User::where(['id' => $this->user->id])->with('userLikes')->first();
+        if ($user['country_id'] == null && $user['city_id'] == null) {
+            return self::settings();
+        }
         return view('site.user.home', compact('currentLang','user'));
     }
 
