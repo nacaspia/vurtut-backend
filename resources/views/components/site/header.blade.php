@@ -17,7 +17,7 @@
             <ul id="respMenu" class="ace-responsive-menu text-right" data-menu-style="horizontal">
                 <li>
                     <a href="#"><span class="title">Trendlər</span></a>
-                    <ul>
+                    <ul class="scrol-menu">
                         <li><a href="{{ route('site.trends',['slug'=>'premium']) }}">Premium olanlar</a></li>
                         <li><a href="{{ route('site.trends',['slug'=>'visit']) }}">Ən çox ziyarət edilənlər</a></li>
                         <li><a href="{{ route('site.trends',['slug'=>'loved']) }}">Ən çox sevilənlər</a></li>
@@ -28,7 +28,7 @@
                 <!--Burada seherler cox olacaq javascriptle hereketli yazmaq lazimdi siyahiyi men yaza bilmedim-->
                 <li>
                     <a href="#"><span class="title">Şəhərlər</span></a>
-                    <ul>
+                    <ul class="scrol-menu">
                         @if(!empty($cities[0]))
                             @foreach($cities as $city)
                                 <li>
@@ -47,7 +47,7 @@
                 </li>
                 <li>
                     <a href="#"><span class="title">Kateqoriyalar</span></a>
-                    <ul>
+                    <ul class="scrol-menu">
                         @if(!empty($categories[0]))
                             @foreach($categories as $category)
                                 <li><a href="{{ route('site.category',['categorySlug' => $category['slug'][$currentLang]]) }}">{{ $category['title'][$currentLang] }}</a></li>
