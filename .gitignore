@@ -1,4 +1,4 @@
 *.sqlite*
 .env
-public/uploads
-public/uploadsold
+/public/uploads
+/public/uploadsold
