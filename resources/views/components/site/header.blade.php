@@ -28,7 +28,7 @@
                 <!--Burada seherler cox olacaq javascriptle hereketli yazmaq lazimdi siyahiyi men yaza bilmedim-->
                 <li>
                     <a href="#"><span class="title">Şəhərlər</span></a>
-                    <ul class="scrol-menu">
+                    <ul {{--class="scrol-menu"--}}>
                         @if(!empty($cities[0]))
                             @foreach($cities as $city)
                                 <li>
