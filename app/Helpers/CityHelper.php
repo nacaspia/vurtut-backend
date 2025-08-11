@@ -18,7 +18,8 @@ class CityHelper
             $slug[$code] = Str::slug(trim($request->input("name.".$code, '')));
         }
         if($request->hasFile('image')){
-            $image = time().$request->image->extension();
+//            $image = time().'.'.$request->image->extension();
+            $image = $request->image->getClientOriginalName();
             $request->image->move(public_path('uploads/cities'), $image);
         }else{
             $image = !empty($city->image)? $city->image: NULL;
