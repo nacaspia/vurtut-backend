@@ -36,6 +36,23 @@
     <link href="{{ asset("site/images/Vurtut logo icon/Vurtut.com.ico") }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
     <link href="{{ asset("site/images/Vurtut logo icon/Vurtut.com.ico") }}" sizes="128x128" rel="shortcut icon" />
     @yield('site.css')
+    <style>
+        .scrol-menu {
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /* İstəyə bağlı scrollbar dizaynı */
+        .scrol-menu::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .scrol-menu::-webkit-scrollbar-thumb {
+            background-color: #aaa;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
 <div class="wrapper">

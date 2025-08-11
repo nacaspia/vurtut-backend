@@ -34,7 +34,7 @@
                                 <li>
                                     <a href="{{ route('site.city',['citySlug' => $city['slug'][$currentLang]]) }}">{{$city['name'][$currentLang]}}</a>
                                     @if(!empty($city['subRegions'][0]))
-                                        <ul>
+                                        <ul class="scrol-menu">
                                             @foreach($city['subRegions'] as $subRegion)
                                                 <li><a href="{{ route('site.city',['citySlug' => $city['slug'][$currentLang], 'subRegionSlug' => $subRegion['slug'][$currentLang]]) }}">{{ $subRegion['name']['az'] }}</a></li>
                                             @endforeach
