@@ -150,7 +150,8 @@ class CompanyController extends Controller
             }
 
             if($settingsRequest->hasFile('image')){
-                $image_name = time().'.'.$settingsRequest->image->extension();
+//                $image_name = time().'.'.$settingsRequest->image->extension();
+                $image_name = $settingsRequest->image->getClientOriginalName();
                 $image_url = $settingsRequest->image->move(public_path('uploads/company'), $image_name);
                 $image = $image_url->getFilename();
             }else{

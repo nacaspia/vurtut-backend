@@ -7,7 +7,8 @@ class CompanyPostHelper
     {
         $company = auth('company')->user()->id;
         if($request->hasFile('image')){
-            $image_name = time().'.'.$request->image->extension();
+//            $image_name = time().'.'.$request->image->extension();
+            $image_name = $request->image->getClientOriginalName();
             $request->image->move(public_path('uploads/company-posts'), $image_name);
         }else{
             $image_name = !empty($image)? $image: NULL;

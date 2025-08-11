@@ -142,7 +142,8 @@ class UserController extends Controller
             }
 //            dd($settingsRequest->hasFile('image'));
             if($settingsRequest->hasFile('image')){
-                $image_name = time().'.'.$settingsRequest->image->extension();
+//                $image_name = time().'.'.$settingsRequest->image->extension();
+                $image_name = $settingsRequest->image->getClientOriginalName();
                 $image_url = $settingsRequest->image->move(public_path('uploads/user'), $image_name);
                 $image = $image_url->getFilename();
             }else{

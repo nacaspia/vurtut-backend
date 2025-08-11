@@ -106,7 +106,8 @@ class ServicesController extends Controller
             }
 
             if($servicesRequest->hasFile('image')){
-                $image_name = time().'.'.$servicesRequest->image->extension();
+//                $image_name = time().'.'.$servicesRequest->image->extension();
+                $image_name = $servicesRequest->image->getClientOriginalName();
                 $image_url = $servicesRequest->image->move(public_path('uploads/company-services'), $image_name);
                 $image = $image_url->getFilename();
             }
