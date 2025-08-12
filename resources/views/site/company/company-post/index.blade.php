@@ -35,7 +35,7 @@
                                     <div class="wrap-custom-file mb50">
                                         <input type="file"  class="form-control"  name="image" id="image" accept=".gif, .jpg, .png" hidden />
                                         <label for="image" class="custom-file-label" id="imageLabel" style="border-radius: 0%;  height: 150px; width: 150px;!important;">
-                                            <span>Şəkil yüklə</span>
+                                            <span style="left: 163px;!important;">Şəkil yüklə</span>
                                         </label>
                                         <div id="previewContainer" style="margin-top: 10px; display: none;">
                                             <img id="imagePreview" src="#" alt="Şəkil" style="max-width: 200px; display: block; margin-bottom: 10px;" />
