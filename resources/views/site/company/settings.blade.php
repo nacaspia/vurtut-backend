@@ -100,7 +100,7 @@
                                             <div class="my_profile_setting_input ui_kit_select_search form-group">
                                                 <label for="category_id">Category</label>
                                                 <select class="form-control"  id="category_id" name="category_id">
-                                                    <option value="" >-Müəssisə kateqoryanızı seçin</option>
+                                                    <option value="" >-Müəssisə kateqoriyanızı seçin</option>
                                                     @if(!empty($categories[0]))
                                                         @foreach($categories as $category)
                                                             <option value="{{ $category['id'] }}" @if($company['category_id'] === $category['id']) selected @endif>{{ $category['title'][$currentLang] }}</option>

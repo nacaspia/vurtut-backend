@@ -12,7 +12,7 @@ return [
     'email' => 'E-poçt',
     'phone' => 'Mobil nömrə',
     'password' => 'Şifrə',
-    'company_category' => 'Şirkət kateqoryanız',
+    'company_category' => 'Şirkət kateqoriyanız',
     'privacy_policy_content' => 'Vurtut şərtləri ilə razısınız?',
     'privacy_policy' => 'Gizlilik Siyasəti',
     'terms_and_conditions' => 'Şərtlər və Qaydalar',

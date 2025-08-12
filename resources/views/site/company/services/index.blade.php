@@ -180,9 +180,9 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="my_profile_setting_input ui_kit_select_search form-group">
-                        <label>Kateqorya</label>
+                        <label>Kateqoriya</label>
                         <select class="form-control" id="filter_sub_category_id" name="filter_sub_category_id" data-width="100%">
-                            <option value="">-Kateqorya seç</option>
+                            <option value="">-Kateqoriya seç</option>
                         </select>
                     </div>
                 </div>
@@ -322,7 +322,7 @@
                         data: { category_id: categoryId },
                         success: function (response) {
                             if (response.success) {
-                                let subCatOptions = '<option value="">-Kateqorya seçin</option>';
+                                let subCatOptions = '<option value="">-Kateqoriya seçin</option>';
 
                                 response.subCompaniesCategory.forEach(subCategory => {
                                     if (subCategory.sub_category_id == categoryId) {
@@ -331,7 +331,7 @@
                                 });
                                 $('#sub_category_id').html(subCatOptions);
                             } else {
-                                $('#sub_category_id').html('<option value="">-Kateqorya tapılmadı</option>');
+                                $('#sub_category_id').html('<option value="">-Kateqoriya tapılmadı</option>');
                             }
                         },
                         error: function () {
@@ -339,7 +339,7 @@
                         }
                     });
                 } else {
-                    $('#sub_category_id').html('<option value="">-Kateqorya seçin</option>');
+                    $('#sub_category_id').html('<option value="">-Kateqoriya seçin</option>');
                 }
             });
         });
@@ -355,7 +355,7 @@
                         data: { category_id: categoryId },
                         success: function (response) {
                             if (response.success) {
-                                let subCatOptions = '<option value="">-Kateqorya seçin</option>';
+                                let subCatOptions = '<option value="">-Kateqoriya seçin</option>';
 
                                 response.subCompaniesCategory.forEach(subCategory => {
                                     if (subCategory.sub_category_id == categoryId) {
@@ -364,7 +364,7 @@
                                 });
                                 $('#filter_sub_category_id').html(subCatOptions);
                             } else {
-                                $('#filter_sub_category_id').html('<option value="">-Kateqorya tapılmadı</option>');
+                                $('#filter_sub_category_id').html('<option value="">-Kateqoriya tapılmadı</option>');
                             }
                         },
                         error: function () {
@@ -372,7 +372,7 @@
                         }
                     });
                 } else {
-                    $('#filter_sub_category_id').html('<option value="">-Kateqorya seçin</option>');
+                    $('#filter_sub_category_id').html('<option value="">-Kateqoriya seçin</option>');
                 }
             });
         });

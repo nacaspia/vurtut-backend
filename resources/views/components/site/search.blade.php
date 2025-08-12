@@ -16,8 +16,8 @@
             <!-- header-search-input end -->
             <!-- header-search-input -->
             <div class="header-search-input header-search_selectinpt">
-                <select data-placeholder="Kateqorya" name="category_id" class="chosen-select no-radius">
-                    <option value="">Bütün kateqorya</option>
+                <select data-placeholder="Kateqoriya" name="category_id" class="chosen-select no-radius">
+                    <option value="">Bütün kateqoriya</option>
                     @if(!empty($categories[0]))
                         @foreach($categories as $category)
                             <option value="{{$category['id']}}" @if(!empty($_GET['category_id']) && (int)$_GET['category_id'] ==$category['id']) selected @endif>{{$category['title']['az']}}</option>
@@ -26,7 +26,7 @@
                 </select>
             </div>
            {{-- <div class="header-search-input header-search_selectinpt">
-                <select data-placeholder="Kateqorya" name="company_category_id" class="chosen-select no-radius">
+                <select data-placeholder="Kateqoriya" name="company_category_id" class="chosen-select no-radius">
                     <option value="">Bütün qiymətləndirmə</option>
                     <option value="">@lang('site.cleanliness')</option>
                     <option value="">@lang('site.comfort')</option>

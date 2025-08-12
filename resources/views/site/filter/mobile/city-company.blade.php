@@ -32,7 +32,7 @@
                                         <div class="search_option_two">
                                             <div class="sidebar_select_options">
                                                 <select class="selectpicker w100 show-tick" id="category_id" name="category_id">
-                                                    <option value="">Bütün kateqoryalar</option>
+                                                    <option value="">Bütün kateqoriyalar</option>
                                                     @foreach($mainCategories as $mainCategory)
                                                         <option value="{{ $mainCategory['id'] }}">{{$mainCategory['title'][$currentLang]}}</option>
                                                     @endforeach
