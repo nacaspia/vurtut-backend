@@ -244,7 +244,7 @@
                                         </div>
                                         <div class="col-xl-12">
                                             <div class="my_profile_setting_input">
-                                                <button type="submit" class="btn update_btn">Yadda saxla</button>
+                                                <button type="submit" id="settingsCountry" class="btn update_btn">Yadda saxla</button>
                                             </div>
                                         </div>
                                     </div>
@@ -290,7 +290,7 @@
                                         </div>
                                         <div class="col-xl-12">
                                             <div class="my_profile_setting_input">
-                                                <button type="submit" class="btn update_btn style2">Məlumatları yenilə</button>
+                                                <button type="submit" id="settingsButton" class="btn update_btn style2">Məlumatları yenilə</button>
                                             </div>
                                         </div>
                                     </div>
@@ -324,7 +324,7 @@
                                          </div>
                                         <div class="col-xl-12">
                                             <div class="my_profile_setting_input">
-                                                <button type="submit" class="btn update_btn style2">Şifrəni dəyiş</button>
+                                                <button type="submit" id="settingsPassButton" class="btn update_btn style2">Şifrəni dəyiş</button>
                                             </div>
                                         </div>
                                     </div>

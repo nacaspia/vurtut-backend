@@ -69,6 +69,7 @@
         $('.form-control').removeClass('is-invalid');
         $('#imageSettingsError, #parentSettingsError, #categorySettingsError, #countrySettingsError, #citySettingsError, #fullNameSettingsError, #onePhoneSettingsError, #twoPhoneSettingsError, #oneEmailSettingsError, #bioSettingsError, facebookSettingsError, linkedinSettingsError,tiktokSettingsError,instagramSettingsError, hoursSettingsError, #generalSettingsError, #generalSettingsSuccess').text('');
         let formData = new FormData();
+        $('#settingsCountry').prop('disabled', true).html('Gözləyin...');
         formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
         formData.append('_method', 'PUT'); // Laravel PUT istəklər üçün
         formData.append('image', $('#image_settings')[0].files[0]);
@@ -112,6 +113,7 @@
                 }
             },
             error: function (xhr) {
+                $('#settingsCountry').prop('disabled', true).html('Yadda saxla');
                 if (xhr.status === 422) {
                     const res = xhr.responseJSON;
                     if (res.errors) {
@@ -205,6 +207,7 @@
         $('.form-control').removeClass('is-invalid');
         $('#emailRegisterSettingsError, #phoneRegisterSettingsError, #addressRegisterSettingsError, #generalRegisterSettingsError, #generalRegisterSettingsSuccess').text('');
         let formData = new FormData();
+        $('#settingsButton').prop('disabled', true).html('Gözləyin...');
         formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
         formData.append('_method', 'PUT'); // Laravel PUT istəklər üçün
         formData.append('email', $('#emailRegister').val());
@@ -229,6 +232,7 @@
                 }
             },
             error: function (xhr) {
+                $('#settingsButton').prop('disabled', true).html('Məlumatları yenilə');
                 if (xhr.status === 422) {
                     const res = xhr.responseJSON;
                     if (res.errors) {
@@ -262,6 +266,7 @@
         $('.form-control').removeClass('is-invalid');
         $('#oldPasswordError, #newPasswordError, #confNewPasswordError, #generalSettingsPasswordError, #generalSettingsPasswordSuccess').text('');
         let formData = new FormData();
+        $('#settingsPassButton').prop('disabled', true).html('Gözləyin...')
         formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
         formData.append('_method', 'PUT'); // Laravel PUT istəklər üçün
         formData.append('old_password', $('#old_password').val());
@@ -283,6 +288,7 @@
                 }
             },
             error: function (xhr) {
+                $('#settingsPassButton').prop('disabled', true).html('Şifrəni dəyiş')
                 if (xhr.status === 422) {
                     const res = xhr.responseJSON;
                     if (res.errors) {

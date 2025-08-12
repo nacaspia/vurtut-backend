@@ -155,6 +155,7 @@
 
             let formData = new FormData();
             formData.append('image', $('#image')[0].files[0]);
+            $('#saveImage').prop('disabled', true).html('Gözləyin...');
 
             $.ajax({
                 url: '{{ route('site.company-post.store') }}',
@@ -172,6 +173,7 @@
                     }
                 },
                 error: function (xhr) {
+                    $('#saveImage').prop('disabled', true).html('Yadda saxla');
                     if (xhr.status === 422) {
                         const res = xhr.responseJSON;
                         if (res.errors && res.errors.image) {
