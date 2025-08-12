@@ -3,7 +3,7 @@
     <div class="col-lg-12">
         <div class="dashboard_navigationbar dn db-992">
             <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn"><i class="fa fa-bars pr10"></i>İstifadəçi bölməsi</button>
+                <button onclick="myFunction()" class="dropbtn"><i class="fa fa-bars pr10"></i>Müəssisə bölməsi</button>
                 <ul id="myDropdown" class="dropdown-content">
                     <li><a class="{{ Route::currentRouteName() === 'site.company.index' ? 'active' : '' }}" href="{{ route('site.company.index') }}"><span class="flaticon-web-page"></span>Müəssisəm</a></li>
                     <li><a class="{{ Route::currentRouteName() === 'site.company.settings' ? 'active' : '' }}" href="{{ route('site.company.settings') }}"><span class="flaticon-avatar"></span>Parametrlər</a></li>
