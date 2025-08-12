@@ -146,7 +146,7 @@ class CompanyController extends Controller
                     $cityId = $city->sub_region_id;
                     $subRegionId = $city->id;
                 }else{
-                    $cityId = $city->sub_region_id;
+                    $cityId = $city->id;
                 }
             }else {
                 $cityId = $company->city_id;
