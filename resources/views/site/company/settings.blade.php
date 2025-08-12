@@ -226,7 +226,7 @@
                                         <div class="col-lg-12">
                                             <h4 class="mb30">Xüsusiyyətlər</h4>
                                             <div class="my_profile_setting_input ui_kit_select_search form-group list_hightlights df">
-                                                <ul class="add_listing selectable-list">
+                                                <ul class="add_listing selectable-list" style="margin-top: -12px;!important;">
                                                     <div class="invalid-feedback" id="servicesSettingsError"></div>
                                                     @foreach($serviceTypes->slice(0, ceil($serviceTypes->count() / 2)) as $service)
 {{--                                                        @dd($company['service_type'][$service->id])--}}
@@ -240,7 +240,7 @@
                                                         </li>
                                                     @endforeach
                                                 </ul>
-                                                <ul class="add_listing selectable-list ml100 ml0-xxsd">
+                                                <ul class="add_listing selectable-list">
                                                     <div class="invalid-feedback" id="servicesSettingsError"></div>
                                                     @foreach($serviceTypes->slice(ceil($serviceTypes->count() / 2)) as $service)
                                                         <li>
