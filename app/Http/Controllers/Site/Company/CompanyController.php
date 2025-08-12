@@ -39,7 +39,7 @@ class CompanyController extends Controller
             return self::settings();
         }
         $currentLang = $this->currentLang;
-        $company = Company::with('category', 'comments','posts','companyReservation')->whereNotNull('image')->where(['id' => $this->company->id])->first();
+        $company = Company::with('category', 'comments','posts','companyReservation','mainCities','subRegion')->whereNotNull('image')->where(['id' => $this->company->id])->first();
         $companyCategories = [];
         if (!empty($company['catalogues'][0])) {
             $companyCategories = CompanyCategory::with('catalogies')->where(['company_id' => $company['id']])->get();
