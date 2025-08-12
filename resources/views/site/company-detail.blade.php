@@ -521,7 +521,7 @@
                                         elseif (isset($company['time'][$day]) && $company['time'][$day] == 3)
                                             $dateTime = '7 / 24';
                                         else
-                                            $dateTime = 'Bagli'
+                                            $dateTime = 'Bağlı'
                                         ?>
                                     <li><a href="#">@lang('site.'.$day) <span class="float-right">{{ $dateTime }}</span></a></li>
                                 @endforeach

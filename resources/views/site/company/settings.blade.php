@@ -214,7 +214,7 @@
                                                                  <option value="1" @if(isset($company['time'][$day]) && $company['time'][$day] == 1) selected @endif>9:00 - 22:00</option>
                                                                 <option value="2" @if(isset($company['time'][$day]) && $company['time'][$day] == 2) selected @endif>11:00 - 6:00</option>
                                                                 <option value="3" @if(isset($company['time'][$day]) && $company['time'][$day] == 3) selected @endif>7 / 24</option>
-                                                                <option value="0" @if(isset($company['time'][$day]) && $company['time'][$day] == 0) selected @endif>Bagli</option>
+                                                                <option value="0" @if(isset($company['time'][$day]) && $company['time'][$day] == 0) selected @endif>Bağlı</option>
                                                             </select>
                                                         </div>
                                                         <div class="invalid-feedback" id="hoursSettingsError"></div>
