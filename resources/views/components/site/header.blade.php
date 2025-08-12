@@ -117,7 +117,7 @@
     <div class="mobile-menu">
         <div class="header stylehome1">
             <div class="main_logo_home2 text-left">
-                <a href="{{ route('site.index') }}" style="width: 56px;
+                <a href="{{ route('site.index') }}" style="display: inline-flex; align-items: center; text-decoration: none;width: 56px;
     height: 57px;
     padding: 0px;
     top: 0px;
