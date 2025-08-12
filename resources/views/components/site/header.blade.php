@@ -121,7 +121,7 @@
     height: 57px;
     padding: 0px;
     top: 0px;
-    right: 329px;!important;">
+    right: 310px;!important;">
                     <img class="nav_logo_img img-fluid mt15" src="{{ asset('site/images/Vurtut logo icon/Vurtut.com.png') }}" alt="Vurtut" style="border-radius: 34px !important;" width="50" height="50">
                     <span class="mt15" style="text-transform: lowercase !important; margin-left: 8px;">vurtut.com</span>
                 </a>
