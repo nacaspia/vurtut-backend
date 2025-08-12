@@ -16,7 +16,7 @@
 @endsection
 @section('site.content')
     <!--Aşağıdakı hissə nə işə yarayır bilmədim-->
-    <section class="modal fade search_dropdown" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+   {{-- <section class="modal fade search_dropdown" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-body">
@@ -165,7 +165,7 @@
             </div>
         </div>
     </section>
-
+--}}
     <section class="home-one home1-overlay bg-img2">
         <div class="container">
             <div class="row posr">
