@@ -120,11 +120,11 @@
             <div class="col-md-4 col-lg-4">
                 <div class="footer_social_widget text-right tac-smd mt10 home2">
                     <ul class="mb0">
-                        <li class="list-inline-item"><a href="{{(!empty($settings['social']) &&  !empty($settings['social']['facebook']))? $settings['social']['facebook']: null}}"><i class="fa fa-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="{{(!empty($settings['social']) &&  !empty($settings['social']['youtube']))? $settings['social']['youtube']: null}}"><i class="fa fa-youtube"></i></a></li>
-                        <li class="list-inline-item"><a href="{{(!empty($settings['social']) &&  !empty($settings['social']['tiktok']))? $settings['social']['tiktok']: null}}">T</a></li>
-                        <li class="list-inline-item"><a href="{{(!empty($settings['social']) &&  !empty($settings['social']['instagram']))? $settings['social']['instagram']: null}}"><i class="fa fa-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="{{(!empty($settings['social']) &&  !empty($settings['social']['linkedin']))? $settings['social']['linkedin']: null}}"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a href="{{(!empty($settings['social']) &&  !empty($settings['social']['facebook']))? $settings['social']['facebook']: 'https://www.facebook.com/share/p/17EtUAhM9y/'}}"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="{{(!empty($settings['social']) &&  !empty($settings['social']['youtube']))? $settings['social']['youtube']: 'https:/youtube.com/nacaspia'}}"><i class="fa fa-youtube"></i></a></li>
+                        <li class="list-inline-item"><a href="{{(!empty($settings['social']) &&  !empty($settings['social']['tiktok']))? $settings['social']['tiktok']: 'https:/tiktok.com/nacaspia'}}">T</a></li>
+                        <li class="list-inline-item"><a href="{{(!empty($settings['social']) &&  !empty($settings['social']['instagram']))? $settings['social']['instagram']: 'https:/instagram.com/vurtut_com'}}"><i class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="{{(!empty($settings['social']) &&  !empty($settings['social']['linkedin']))? $settings['social']['linkedin']: 'https://www.linkedin.com/showcase/vurtut-com/'}}"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
