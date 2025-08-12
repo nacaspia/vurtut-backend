@@ -240,7 +240,7 @@
                                                         </li>
                                                     @endforeach
                                                 </ul>
-                                                <ul class="add_listing selectable-list">
+                                                <ul class="add_listing selectable-list"  style="margin-top: -12px;!important;">
                                                     <div class="invalid-feedback" id="servicesSettingsError"></div>
                                                     @foreach($serviceTypes->slice(ceil($serviceTypes->count() / 2)) as $service)
                                                         <li>
