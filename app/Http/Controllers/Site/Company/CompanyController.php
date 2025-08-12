@@ -34,6 +34,10 @@ class CompanyController extends Controller
 
     public function index()
     {
+        $company = $this->company;
+        if ($company['category_id'] == null && $company['country_id'] == null && $company['city_id'] == null) {
+            return self::settings();
+        }
         $currentLang = $this->currentLang;
         $company = Company::with('category', 'comments','posts','companyReservation')->whereNotNull('image')->where(['id' => $this->company->id])->first();
         $companyCategories = [];
