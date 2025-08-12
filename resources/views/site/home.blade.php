@@ -8,9 +8,9 @@
             color: red;
         }
     </style>
-    <link rel="stylesheet" href="{{ asset("site/css/bootstrap.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("site/css/style.css") }}">
-    <link rel="stylesheet" href="{{ asset("site/css/responsive.css") }}">
+    <link rel="stylesheet" href="{{ asset("site/css/bootstrap.min.css") }}?v={{ time() }}">
+    <link rel="stylesheet" href="{{ asset("site/css/style.css") }}?v={{ time() }}">
+    <link rel="stylesheet" href="{{ asset("site/css/responsive.css") }}?v={{ time() }}">
   {{--  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
 @endsection
