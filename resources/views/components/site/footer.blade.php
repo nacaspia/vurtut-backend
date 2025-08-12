@@ -123,7 +123,7 @@
                         <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['facebook']))? $settings['social']['facebook']: 'https://www.facebook.com/share/p/17EtUAhM9y/'}}"><i class="fa fa-facebook"></i></a></li>
                         <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['youtube']))? $settings['social']['youtube']: 'https://www.youtube.com/@nacaspia'}}"><i class="fa fa-youtube"></i></a></li>
                         <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['tiktok']))? $settings['social']['tiktok']: 'https://www.tiktok.com/@nacaspia?is_from_webapp=1&sender_device=pc'}}">T</a></li>
-                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['instagram']))? $settings['social']['instagram']: 'https:/instagram.com/@vurtut_com'}}"><i class="fa fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['instagram']))? $settings['social']['instagram']: 'https://www.instagram.com/@vurtut_com'}}"><i class="fa fa-instagram"></i></a></li>
                         <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['linkedin']))? $settings['social']['linkedin']: 'https://www.linkedin.com/showcase/vurtut-com/'}}"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
