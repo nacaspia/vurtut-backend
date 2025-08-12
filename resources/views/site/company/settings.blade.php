@@ -14,7 +14,6 @@
         }
     </style>
     <!-- Bootstrap & jQuery (əgər daxil edilməyibsə) -->
-{{--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />--}}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -85,7 +84,7 @@
                                             <div class="my_profile_setting_input ui_kit_select_search form-group">
                                                 <label for="parent_id">Tabeçilik</label>
                                                 <select class="form-control" id="parent_id" name="parent_id" >
-                                                    <option value="" >-Seçin</option>
+                                                    <option value="" >Seçin</option>
                                                     <option value="01" @if($company['type'] === 'main') selected @endif>Əsas müəssisə</option>
                                                     @if(!empty($mainCompanies[0]))
                                                         @foreach($mainCompanies as $mainCompany)
@@ -100,7 +99,7 @@
                                             <div class="my_profile_setting_input ui_kit_select_search form-group">
                                                 <label for="category_id">Category</label>
                                                 <select class="form-control"  id="category_id" name="category_id">
-                                                    <option value="" >-Müəssisə kateqoriyanızı seçin</option>
+                                                    <option value="" >Müəssisə kateqoriyanızı seçin</option>
                                                     @if(!empty($categories[0]))
                                                         @foreach($categories as $category)
                                                             <option value="{{ $category['id'] }}" @if($company['category_id'] === $category['id']) selected @endif>{{ $category['title'][$currentLang] }}</option>
@@ -115,7 +114,7 @@
                                             <div class="my_profile_setting_input form-group mt100-500">
                                                 <label for="country_id_settings">Ölkə</label>
                                                 <select class="form-control" id="country_id_settings" name="country_id_settings" >
-                                                    <option value="" @if($company['country_id']== '') selected @endif>-Ölkə seçin</option>
+                                                    <option value="" @if($company['country_id']== '') selected @endif>Ölkə seçin</option>
                                                     @if(!empty($countries[0]))
                                                         @foreach($countries as $country)
                                                             <option value="{{$country['id']}}" @if($company['country_id']== $country->id) selected @endif>{{$country['name'][$currentLang]}}</option>
@@ -129,7 +128,7 @@
                                             <div class="my_profile_setting_input form-group mt100-500">
                                                 <label for="city_id_settings">Şəhər/Rayon</label>
                                                 <select class="form-control" id="city_id_settings" name="city_id_settings" >
-                                                    <option value="" @if($company['city_id']== '') selected @endif>-Şəhər/Rayon seçin</option>
+                                                    <option value="" @if($company['city_id']== '') selected @endif>Şəhər/Rayon seçin</option>
                                                     @if(!empty($company['city_id']) && !empty($company['city']['id'])&& !empty($company['subRegion']['id']))
                                                         <option value="{{ $company['subRegion']['id'] }}" selected>{{ $company['city']['name'][$currentLang] }}/{{ $company['subRegion']['name'][$currentLang] }}</option>
                                                     @elseif(!empty($company['city_id']) && !empty($company['city']['id'])&& empty($company['subRegion']['id']))
@@ -196,8 +195,7 @@
                                                     @foreach(['Mon','Tue','Wed','Thu','Fri','Sat','Sun'] as $key => $day)
                                                         <li class="list-inline-item">
                                                             <a class="nav-link @if($key == 0) active @endif" id="tab-{{ $day }}" data-toggle="tab" href="#content-{{ $day }}" role="tab">
-                                                                {{ $day }}
-                                                                {{--                                                            <input type="hidden" name="day[]" id="day{{$day}}" value="{{ $key }}">--}}
+                                                                @lang('site.'.$day)
                                                             </a>
                                                         </li>
                                                     @endforeach
@@ -210,7 +208,7 @@
                                                 @foreach(['Mon','Tue','Wed','Thu','Fri','Sat','Sun'] as $key => $day)
                                                     <div class="tab-pane fade @if($key == 0) show active @endif" id="content-{{ $day }}" role="tabpanel">
                                                         <div class="my_profile_setting_input form-group mt100-500">
-                                                            <label>İş vaxtı ({{ $day }})</label>
+                                                            <label>İş vaxtı (@lang('site.'.$day))</label>
                                                             <select class="form-control" id="hours{{ $day }}" name="hours[{{ $day }}]">
                                                                 <option value="">-Seç</option>
                                                                  <option value="1" @if(isset($company['time'][$day]) && $company['time'][$day] == 1) selected @endif>9:00 - 22:00</option>

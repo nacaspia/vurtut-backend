@@ -523,7 +523,7 @@
                                         else
                                             $dateTime = 'Bagli'
                                         ?>
-                                    <li><a href="#">{{$day}} <span class="float-right">{{ $dateTime }}</span></a></li>
+                                    <li><a href="#">@lang('site.'.$day) <span class="float-right">{{ $dateTime }}</span></a></li>
                                 @endforeach
                             </ul>
 

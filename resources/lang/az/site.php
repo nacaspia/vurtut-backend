@@ -201,4 +201,11 @@ return [
     //method
     'changePasswordUpdate' => 'Şifrəni yeniləmək',
     'settingsUpdate' => 'Şəxsi məlumatları yeniləmək',
+    'Mon' => 'Bazar ertəsi',
+    'Tue' => 'Çərşənbə axşamı',
+    'Wed' => 'Çərşənbə',
+    'Thu' => 'Cümə axşamı',
+    'Fri' => 'Cümə',
+    'Sat' => 'Şənbə',
+    'Sun' => 'Bazar',
 ];
