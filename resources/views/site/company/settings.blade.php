@@ -44,7 +44,10 @@
                                                     <small class="file_title">Maksimum 15 MB</small>
                                                 </label>
                                                 <div id="previewContainer" style="margin-top: 10px; display: none;">
-                                                    <img id="imagePreview" src="@if(empty($company['image']))#@else {{ asset('uploads/company/'.$company['image']) }}@endif" alt="Şəkil" style="max-width: 200px; display: block; margin-bottom: 10px;" />
+                                                    <img id="imagePreview" src="@if(empty($company['image']))#@else {{ asset('uploads/company/'.$company['image']) }}@endif" alt="Şəkil" style="    max-width: 145px;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 117px;!important;" />
                                                     <button type="button" id="removeImage" class="btn btn-danger btn-sm">Sil</button>
                                                 </div>
                                                 <div class="invalid-feedback" id="imageSettingsError"></div>
