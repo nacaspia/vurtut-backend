@@ -101,15 +101,18 @@
         <div class="row">
             <div class="col-md-4 col-lg-4">
                 <div class="copyright-widget mt10 mb15-767 home2">
+                    <a href="https://nacaspia.com" target="_blank">
                     <p>© By NACaspia Informaion Technologies MMC</p>
+                    </a>
                 </div>
             </div>
             <div class="col-md-4 col-lg-4">
                 <div class="footer_logo_widget text-center mb15-767 home2">
                     <div class="wrapper">
                         <div class="logo text-center">
-                            <img style="max-width: 26%; border-radius: 50px!important;" src="{{ asset("site/images/Vurtut logo icon/vurtut.com.svg") }}" alt="vurtut">
-                            <span class="logo_title pl15">VURTUT</span>
+                            <a href="https://nacaspia.com" target="_blank">
+                                <img style="max-width: 26%; border-radius: 50px!important;" src="{{ asset("site/images/Vurtut logo icon/na-logo.png") }}" alt=" NACaspia Informaion Technologies MMC">
+                            </a>
                         </div>
                     </div>
                 </div>
