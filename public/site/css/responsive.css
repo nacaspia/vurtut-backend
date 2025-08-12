@@ -1637,7 +1637,7 @@
     }
 
     .properti_city .thumb, .properti_city .thumb img {
-        height: 250px;
+        /*height: 250px;*/
     }
 
     .properti_city.home3 .thumb, .properti_city.home3 .thumb img {
