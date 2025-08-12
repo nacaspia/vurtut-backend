@@ -12,6 +12,15 @@
             border-radius: 50%;
             display: block;
         }
+        @media only screen and (max-width: 500px) {
+            .wrap-custom-file label span, .wrap-custom-file label.file-ok span {
+                display: block;
+                left: 0;
+                position: relative;
+                top: 7px;!important;
+                width: 129px;!important;
+            }
+        }
     </style>
 @endsection
 @section('company.content')
