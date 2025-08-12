@@ -117,9 +117,16 @@
     <div class="mobile-menu">
         <div class="header stylehome1">
             <div class="main_logo_home2 text-left">
-                <img class="nav_logo_img img-fluid mt15" src="{{ asset("site/images/Vurtut logo icon/Vurtut.com.png") }}" alt="Vurtut" style="border-radius: 34px;!important;" width="50" length="50">
-                <span class="mt15" style="text-transform: lowercase;!important;">vurtut.com</span>
+                <a href="{{ route('site.index') }}" style="width: 56px;
+    height: 57px;
+    padding: 0px;
+    top: 0px;
+    right: 329px;!important;">
+                    <img class="nav_logo_img img-fluid mt15" src="{{ asset('site/images/Vurtut logo icon/Vurtut.com.png') }}" alt="Vurtut" style="border-radius: 34px !important;" width="50" height="50">
+                    <span class="mt15" style="text-transform: lowercase !important; margin-left: 8px;">vurtut.com</span>
+                </a>
             </div>
+
             <ul class="menu_bar_home2">
                 <li class="list-inline-item"><a class="custom_search_with_menu_trigger msearch_icon" href="#" data-toggle="modal" data-target="#staticBackdrop"></a></li>
                 @if(!empty(auth('user')->user()->id))
