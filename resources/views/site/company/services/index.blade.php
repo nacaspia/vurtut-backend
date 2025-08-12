@@ -157,6 +157,7 @@
     <section class="our-shop pb80">
         <div class="container">
             <div class="row justify-content-center">
+                @include('site.company.layouts.mobile-menu')
                 <div class="col-lg-6">
                     <div class="breadcrumb_content style2 mb20">
                         <h2 class="breadcrumb_title">Xidmətlər</h2>

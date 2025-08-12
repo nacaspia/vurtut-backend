@@ -14,6 +14,7 @@
     <section class="our-dashbord dashbord bgc-f4">
         <div class="container">
             <div class="row">
+                @include('site.company.layouts.mobile-menu')
                 <div class="col-lg-12 mb15">
                     <div class="breadcrumb_content style2">
                         <h2 class="breadcrumb_title float-left">Rezervasiyalar</h2>

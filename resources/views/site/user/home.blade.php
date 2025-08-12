@@ -11,7 +11,7 @@
     <section class="our-dashbord dashbord bgc-f4">
         <div class="container">
             <div class="row">
-               @include('site.user.layouts.mobile-menu')
+                @include('site.user.layouts.mobile-menu')
                 <div class="col-lg-9">
                     <div class="author_content">
                         <div class="author_thumb float-left fn-xsd mr20">
