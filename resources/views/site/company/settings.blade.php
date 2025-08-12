@@ -374,7 +374,9 @@
         let geocoder;
 
         function initMap() {
-            const defaultLocation = { lat: 40.4093, lng: 49.8671 }; // Bakı üçün
+            var lat = {{  $company['data']['lat'] ?? 40.4093 }};
+            var lng = {{  $company['data']['lng'] ?? 49.8671 }};
+            const defaultLocation = { lat: lat, lng: lng }; // Bakı üçün
             map = new google.maps.Map(document.getElementById("map-canvas"), {
                 zoom: 13,
                 center: defaultLocation,
