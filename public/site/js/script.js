@@ -1,5 +1,5 @@
 (function($) {
-    
+
     "use strict";
 
     /* ----- Preloader ----- */
@@ -87,14 +87,14 @@
             }
         };
     });
-    
+
     $(".mouse_scroll").on('click', function() {
         $('html, body').animate({
             scrollTop: $("#feature-property, #property-city").offset().top
         }, 1000);
     });
     /** Main Menu Custom Script End **/
-    
+
     /* ----- Blog innerpage sidebar according ----- */
     $(document).on('ready', function() {
         $('.collapse').on('show.bs.collapse', function () {
@@ -103,7 +103,7 @@
         $('.collapse').on('hide.bs.collapse', function () {
             $(this).siblings('.card-header').removeClass('active');
         });
-        
+
         $(function () {
           $('[data-toggle="tooltip"]').tooltip()
         })
@@ -149,7 +149,7 @@
     $('#countdown').countdown({
         year: cd
     });
-    
+
     /* ----- fact-counter ----- */
     function counterNumber() {
         $('div.timer').counterUp({
@@ -256,13 +256,13 @@
     };
 
     jQuery(document).on('ready',function(){
-        jQuery(window).stellar({ 
+        jQuery(window).stellar({
             horizontalScrolling: false,
             hideDistantElements: true,
             verticalScrolling: !isMobile.any(),
             scrollProperty: 'scroll',
             responsive: true
-        });          
+        });
     });
 
     /* ----- MagnificPopup ----- */
@@ -314,7 +314,7 @@
             new WOW().init();
         })
     }
-    
+
     /* ----- Date & time Picker ----- */
     if($('.datepicker').length){
         $('.datepicker').datetimepicker();
@@ -334,10 +334,10 @@
                 jQuery('#cycle-loader').hide();
                 jQuery('#maximage').fadeIn('fast');
             }
-        });        
+        });
         // Helper function to Fill and Center the HTML5 Video
         jQuery('#html5video').maximage('maxcover');
-            
+
         // To show it is dynamic html text
         jQuery('.in-slide-content').delay(2000).fadeIn();
     }
@@ -508,57 +508,34 @@
         })
     }
 
-    /*  Team-Slider-Owl-carousel  */
-    if($('.feature_place_home2_slider').length){
+    if ($('.feature_place_home2_slider').length) {
         $('.feature_place_home2_slider').owlCarousel({
-            loop:true,
-            margin:30,
-            dots:false,
-            nav:true,
-            rtl:false,
-            autoplayHoverPause:false,
+            loop: false, // loop true edirsənsə, element sayı kifayət qədər olmalıdır
+            margin: 30,
+            dots: false,
+            nav: true,
+            rtl: false,
+            autoplayHoverPause: false,
             autoplay: false,
-            singleItem: true,
             smartSpeed: 1200,
             navText: [
-              '<i class="flaticon-arrow-pointing-to-left"></i>',
-              '<i class="flaticon-arrow-pointing-to-right"></i>'
+                '<i class="flaticon-arrow-pointing-to-left"></i>',
+                '<i class="flaticon-arrow-pointing-to-right"></i>'
             ],
             responsive: {
-                0: {
-                    items: 1,
-                    center: false
-                },
-                480:{
-                    items:1,
-                    center: false
-                },
-                520:{
-                    items:2,
-                    center: false
-                },
-                600: {
-                    items: 2,
-                    center: false
-                },
-                768: {
-                    items: 2
-                },
-                992: {
-                    items: 3
-                },
-                1200: {
-                    items: 4
-                },
-                1366: {
-                    items: 4
-                },
-                1400: {
-                    items: 4
-                }
+                0: { items: 1, center: false },
+                480: { items: 1, center: false },
+                520: { items: 2, center: false },
+                600: { items: 2, center: false },
+                768: { items: 2 },
+                992: { items: 3 },
+                1200: { items: 4 },
+                1366: { items: 4 },
+                1400: { items: 4 }
             }
-        })
+        });
     }
+
 
     /*  Team-Slider-Owl-carousel  */
     if($('.feature_place_home3_slider').length){
@@ -835,14 +812,14 @@
                 $('.scrollToHome').fadeOut();
             }
         });
-        
+
         //Click event to scroll to top
         $('.scrollToHome').on('click',function(){
             $('html, body').animate({scrollTop : 0},800);
             return false;
         });
     }
-    
+
     /* ----- Mega Dropdown Content ----- */
     $(document).on('ready', function(){
         $("#show_advbtn, #show_advbtn2").on('click',function(){
@@ -887,7 +864,7 @@
         $(".mega_tags_dropdown").on('click', function(){
             $(".tag_dropdown_content").toggle(500);
         });
-        
+
         $('.sticky-nav-tabs-container li').on('click', function(){
             $('.sticky-nav-tabs-container li').removeClass('active');
             $(this).addClass('active');
@@ -907,7 +884,7 @@
         $(".select-wrap.style2-dropdown input.refineText.formTextbox").on('click',function(){
             $(".select-wrap.style1-dropdown ul.searchBoxElement").hide();
         });
-        
+
     });
 
 
@@ -921,7 +898,7 @@
         wowAnimation();
         mobileNavToggle();
 
-        
+
         // extending for text toggle
         $.fn.extend({
             toggleText: function(a, b){
@@ -942,7 +919,7 @@
                 return this.text(this.text() == b ? a : b);
             }
         });
-    
+
         if ($('.showBtns').length) {
             $('.showBtns').on('click', function() {
                 $(this).toggleText2('Show Filter', 'Hide Filter');
@@ -952,7 +929,7 @@
         }
 
     });
-    
+
 /* ======
    When document is loading, do
    ====== */
@@ -961,7 +938,7 @@
         // add your functions
         counterNumber();
         preloaderLoad();
-        
+
     });
     // window on Scroll function
     $(window).on('scroll', function() {
