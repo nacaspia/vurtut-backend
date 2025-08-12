@@ -86,7 +86,6 @@ return [
     'error_add' => 'Məlumat qeydə alınmadı. Zəhmət olmasa yenidən cəhd edin',
     'success_logout' => 'Sistemdən uğurla çıxış etdiniz. Tezliklə gözləyirik',
     'hello' => 'Salam',
-    'has_company_account' => 'Qeyd etdiyiniz e-poçt və ya mobil nömrə vardı şirkət kimi yaradılıb artıq.',
     'datetime' => 'Tarix',
     'change_password' => 'Şifrəni yenilə',
     'current_password' => 'Cari şifrə',
@@ -100,7 +99,8 @@ return [
     //user account
     'user_account' => 'İstifadəçi Hesabı',
     'users' => 'İstifadəçilər',
-    'has_user_account' => 'Qeyd etdiyiniz e-poçt və ya mobil nömrə istifadəçi kimi yaradılıb artıq.',
+    'has_user_account' => 'Daxil etdiyiniz e-poçt və ya mobil nömrə ilə artıq istifadəçi hesabı mövcuddur.',
+    'has_company_account' => 'Daxil etdiyiniz e-poçt və ya mobil nömrə ilə artıq müəssisə hesabı mövcuddur.',
     'post' => 'Post',
     'follower' => 'İzləmə',
     'gender' => 'Cins',

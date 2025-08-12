@@ -16,9 +16,17 @@
             <div class="row" {{--style="text-align: center; display: flex;!important;"--}}>
                 <div class="col-xl-6">
                     <div class="error_page footer_apps_widget">
-                        <div class="erro_code"><h1>Hesab təsdiqi</h1></div>
-                        <p>{{ $data['message'] ?? $data['errors'] }}</p>
-                        <a href="{{ route('site.index') }}" class="btn btn-primary mb-2">Geri Qayt</a>
+                        <div class="error_code">
+                            <h1>Hesab Təsdiqi</h1>
+                        </div>
+                        @php
+                            $type = isset($data['errors']) ? 'danger' : 'success';
+                            $message = $data['message'] ?? $data['errors'] ?? '';
+                        @endphp
+                        <div class="alert alert-{{ $type }}">
+                            {{ $message }}
+                        </div>
+                        <a href="{{ route('site.index') }}" class="btn btn-primary mb-2">Əsas Səhifəyə Qayıt</a>
                     </div>
                 </div>
             </div>

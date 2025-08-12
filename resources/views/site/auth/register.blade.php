@@ -48,7 +48,7 @@
                     <div class="text-success text-center mt-2" id="generalCompanyRegisterSuccess"></div>
                     <input type="hidden" id="type_company" name="type" value="company">
                     <div class="form-group input-group">
-                        <input type="text" class="form-control" id="full_name_company" name="full_name" placeholder="Ad/Soyad">
+                        <input type="text" class="form-control" id="full_name_company" name="full_name" placeholder="Müəssisənizin adı">
                         <div class="invalid-feedback" id="fullNameCompanyError"></div>
                     </div>
                     <div class="form-group input-group">

@@ -71,7 +71,7 @@ class AuthController extends Controller
                     'note' => Lang::get('site.has_company_account')
                 ];
                 LogsHelper::convert($companyLog);
-                return response()->json(['success' => false, 'errors' => Lang::get('site.has_user_account')], 422);
+                return response()->json(['success' => false, 'errors' => Lang::get('site.has_company_account')], 422);
             }
 
             if ($type=='company'){
@@ -286,7 +286,6 @@ class AuthController extends Controller
             }
         }
     }
-
 
     public function forgotStatus(Request $request)
     {
