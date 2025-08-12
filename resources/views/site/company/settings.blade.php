@@ -111,7 +111,7 @@
                                         </div>
 
                                         <div class="col-lg-6">
-                                            <div class="my_profile_setting_input form-group mt100-500">
+                                            <div class="my_profile_setting_input form-group">
                                                 <label for="country_id_settings">Ölkə</label>
                                                 <select class="form-control" id="country_id_settings" name="country_id_settings" >
                                                     <option value="" @if($company['country_id']== '') selected @endif>Ölkə seçin</option>
@@ -125,7 +125,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="my_profile_setting_input form-group mt100-500">
+                                            <div class="my_profile_setting_input form-group">
                                                 <label for="city_id_settings">Şəhər/Rayon</label>
                                                 <select class="form-control" id="city_id_settings" name="city_id_settings" >
                                                     <option value="" @if($company['city_id']== '') selected @endif>Şəhər/Rayon seçin</option>
@@ -207,7 +207,7 @@
                                             <div class="tab-content" id="dayTabContent">
                                                 @foreach(['Mon','Tue','Wed','Thu','Fri','Sat','Sun'] as $key => $day)
                                                     <div class="tab-pane fade @if($key == 0) show active @endif" id="content-{{ $day }}" role="tabpanel">
-                                                        <div class="my_profile_setting_input form-group mt100-500">
+                                                        <div class="my_profile_setting_input form-group">
                                                             <label>İş vaxtı (@lang('site.'.$day))</label>
                                                             <select class="form-control" id="hours{{ $day }}" name="hours[{{ $day }}]">
                                                                 <option value="">-Seç</option>
