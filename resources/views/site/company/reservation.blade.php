@@ -78,7 +78,7 @@
                                                     <h5 class="card-title mb-2">🗓️ {{ date('Y-m-d',strtotime($userReservation['date'])) }}  ⏰ {{ date('H:i',strtotime($userReservation['date'])) }}</h5>
                                                     <p class="mb-1"><strong>Ad Soyad:</strong>{{ $userReservation['full_name'] }}</p>
                                                     <p class="mb-1"><strong>Əlaqə nömrəsi:</strong>{{ $userReservation['phone'] }}</p>
-                                                    <p class="mb-1"><strong>Yer/Masa sayı:</strong> {{ $userReservation['place_count'] }}</p>
+{{--                                                    <p class="mb-1"><strong>Yer/Masa sayı:</strong> {{ $userReservation['place_count'] }}</p>--}}
                                                     <p class="mb-1"><strong>Adam sayı:</strong> {{ $userReservation['person_count'] }}</p>
                                                     <p class="mb-0"><strong>Əlavə məlumat:</strong> {{ $userReservation['text'] }}</p>
                                                     <p><strong>Rezervasiya cavabı:</strong> <span class="text-muted">{{ $userReservation['company_text'] ?? 'Rezervasiya cavablandırılmayıb.' }}</span></p>

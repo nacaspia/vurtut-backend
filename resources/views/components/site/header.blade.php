@@ -28,18 +28,18 @@
                 <!--Burada seherler cox olacaq javascriptle hereketli yazmaq lazimdi siyahiyi men yaza bilmedim-->
                 <li>
                     <a href="#"><span class="title">Şəhərlər</span></a>
-                    <ul {{--class="scrol-menu"--}}>
+                    <ul class="scrol-menu">
                         @if(!empty($cities[0]))
                             @foreach($cities as $city)
                                 <li>
                                     <a href="{{ route('site.city',['citySlug' => $city['slug'][$currentLang]]) }}">{{$city['name'][$currentLang]}}</a>
-                                    @if(!empty($city['subRegions'][0]))
+                                    {{--@if(!empty($city['subRegions'][0]))
                                         <ul class="scrol-menu">
                                             @foreach($city['subRegions'] as $subRegion)
                                                 <li><a href="{{ route('site.city',['citySlug' => $city['slug'][$currentLang], 'subRegionSlug' => $subRegion['slug'][$currentLang]]) }}">{{ $subRegion['name']['az'] }}</a></li>
                                             @endforeach
                                         </ul>
-                                    @endif
+                                    @endif--}}
                                 </li>
                             @endforeach
                         @endif

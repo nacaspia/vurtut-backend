@@ -42,7 +42,7 @@
                                                     <small class="file_title">Maksimum 15 MB</small>
                                                 </label>
                                                 <div id="previewContainer" style="margin-top: 10px; display: none;">
-                                                    <img id="imagePreview" src="@if(empty($user['image']))#@else {{ asset('uploads/user/'.$user['image']) }}@endif" alt="Şəkil" style="max-width: 200px; display: block; margin-bottom: 10px;" />
+                                                    <img id="imagePreview" src="@if(empty($user['image']))#@else {{ asset('uploads/user/'.$user['image']) }}@endif" alt="Şəkil" style="max-width: 145px;display: block; margin-bottom: 10px; border-radius: 117px;!important;" />
                                                     <button type="button" id="removeImage" class="btn btn-danger btn-sm">Sil</button>
                                                 </div>
                                             </div>
@@ -107,7 +107,7 @@
 
                                         <div class="col-xl-12">
                                             <div class="my_profile_setting_input">
-                                                <button type="submit" class="btn update_btn">Yadda saxla</button>
+                                                <button type="submit" id="settingsButton" class="btn update_btn">Yadda saxla</button>
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@
                                         </div>
                                         <div class="col-xl-12">
                                             <div class="my_profile_setting_input">
-                                                <button type="submit" class="btn update_btn style2">Şifrəni dəyiş</button>
+                                                <button type="submit" id="settingsPasswordButton" class="btn update_btn style2">Şifrəni dəyiş</button>
                                             </div>
                                         </div>
                                     </div>
@@ -254,6 +254,7 @@
             $('.form-control').removeClass('is-invalid');
             $('#imageSettingsError, #countrySettingsError, #citySettingsError, #fullNameSettingsError, #phoneSettingsError, #emailSettingsError, #bioSettingsError, #generalSettingsError, #generalSettingsSuccess').text('');
             let formData = new FormData();
+            $('#settingsButton').prop('disabled', true).html('Gözləyin...');
             formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
             formData.append('_method', 'PUT'); // Laravel PUT istəklər üçün
             formData.append('image', $('#image_settings')[0].files[0]);
@@ -273,9 +274,13 @@
                     if (response.success) {
                         $('#generalSettingsSuccess').text(response.message);
                         $('.settings_modal').modal('show'); // modalı göstər
+                        $('.settings_modal .close').on('click', function () {
+                            location.reload();
+                        });
                     }
                 },
                 error: function (xhr) {
+                    $('#settingsButton').prop('disabled', false).html('Məlumatları yenilə');
                     if (xhr.status === 422) {
                         const res = xhr.responseJSON;
                         if (res.errors) {
@@ -328,6 +333,7 @@
             $('.form-control').removeClass('is-invalid');
             $('#oldPasswordError, #newPasswordError, #confNewPasswordError, #generalSettingsPasswordError, #generalSettingsPasswordSuccess').text('');
             let formData = new FormData();
+            $('#settingsPasswordButton').prop('disabled', true).html('Gözləyin...');
             formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
             formData.append('_method', 'PUT'); // Laravel PUT istəklər üçün
             formData.append('old_password', $('#old_password').val());
@@ -343,9 +349,13 @@
                     if (response.success) {
                         $('#generalSettingsError').text(response.message);
                         $('.settings_modal').modal('show'); // modalı göstər
+                        $('.settings_modal .close').on('click', function () {
+                            location.reload();
+                        });
                     }
                 },
                 error: function (xhr) {
+                    $('#settingsPasswordButton').prop('disabled', false).html('Məlumatları yenilə');
                     if (xhr.status === 422) {
                         const res = xhr.responseJSON;
                         if (res.errors) {

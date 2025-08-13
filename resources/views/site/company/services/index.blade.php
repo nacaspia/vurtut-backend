@@ -168,9 +168,9 @@
 {{--                <form action="" method="GET">--}}
                 <div class="col-lg-3">
                     <div class="my_profile_setting_input ui_kit_select_search form-group">
-                        <label>Xidmət</label>
+                        <label>Əsas Kateqoriya</label>
                         <select class="form-control"  id="filter_category_id" name="filter_category_id" data-width="100%">
-                            <option value="">-Xidməti seç</option>
+                            <option value="">Əsas Kateqoriya seç</option>
                             @if(!empty($mainCompaniesCategory[0]))
                                 @foreach($mainCompaniesCategory as $mainCategory)
                                     <option value="{{$mainCategory['id']}}">{{ $mainCategory['title'][$currentLang] }}</option>
@@ -181,9 +181,9 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="my_profile_setting_input ui_kit_select_search form-group">
-                        <label>Kateqoriya</label>
+                        <label>Alt Kateqoriya</label>
                         <select class="form-control" id="filter_sub_category_id" name="filter_sub_category_id" data-width="100%">
-                            <option value="">-Kateqoriya seç</option>
+                            <option value="">Alt Kateqoriya seç</option>
                         </select>
                     </div>
                 </div>
@@ -195,7 +195,7 @@
 {{--                </form>--}}
                 <div class="col-lg-6 d-flex justify-content-end">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productAddModal" style="border-radius:12px;">
-                        <span class="flaticon-shopping-bag pr-2 fz20"></span> Məhsul əlavə et
+                        <span class="flaticon-shopping-bag pr-2 fz20"></span> Əlavə et
                     </button>
                 </div>
             </div>
@@ -215,9 +215,9 @@
                     <div class="modal-body">
                         <form id="productForm" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="category_id">Xidmət kateqoriyası</label>
+                                <label for="category_id">Əsas kateqoriyalar</label>
                                 <select class="form-control" id="category_id" name="category_id">
-                                    <option value="">Kateqoriya seçin</option>
+                                    <option value="">Əsas kateqoriyalar seçin</option>
                                     @if(!empty($mainCompaniesCategory[0]))
                                         @foreach($mainCompaniesCategory as $mainCategory)
                                             <option value="{{$mainCategory['id']}}">{{ $mainCategory['title'][$currentLang] }}</option>
@@ -227,15 +227,15 @@
                                 <div class="invalid-feedback" id="categoryError"></div>
                             </div>
                             <div class="form-group">
-                                <label for="sub_category_id">Məhsul kateqoriyası</label>
+                                <label for="sub_category_id">Alt kateqoriya</label>
                                 <select class="form-control" id="sub_category_id" name="sub_category_id">
-                                    <option value="">Kateqoriya seçin</option>
+                                    <option value="">Alt Kateqoriya seçin</option>
                                 </select>
                                 <div class="invalid-feedback" id="subCategoryError"></div>
                             </div>
 
                             <div class="form-group">
-                                <label for="product_name">Məhsul adı</label>
+                                <label for="product_name">Adı</label>
                                 <input type="text" class="form-control" id="product_name" name="product_name">
                                     <div class="invalid-feedback" id="productNameError"></div>
                             </div>
@@ -257,7 +257,7 @@
                                 <textarea class="form-control" id="description" name="description" rows="3" placeholder="Məhsul haqqında məlumat..."></textarea>
                                 <div class="invalid-feedback" id="descriptionError"></div>
                             </div>
-                            <button type="submit" class="btn btn-success">Yadda saxla</button>
+                            <button type="submit" id="serviceButton" class="btn btn-success">Yadda saxla</button>
                         </form>
                     </div>
 
@@ -268,14 +268,14 @@
             <div class="modal-dialog" role="document" style="max-width: 500px;">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Məhsul Haqqında Məlumat</h5>
+                        <h5 class="modal-title">Məlumat</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
-                        <p><strong>Məhsul adı:</strong> <span id="infoName"></span></p>
+                        <p><strong>Adı:</strong> <span id="infoName"></span></p>
                         <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
                         <p><strong>Təsvir:</strong> <span id="infoDescription"></span></p>
                         <img id="infoImage" src="" alt="Məhsul şəkli" class="img-fluid rounded mt-2">
@@ -442,6 +442,7 @@
             $('.form-control').removeClass('is-invalid');
             $('#categoryError, #subCategoryError, #productNameError, #priceError, #imageError, #descriptionError, #generalError, #generalSuccess').text('');
             let formData = new FormData();
+            $('#serviceButton').prop('disabled', false).html('Gözləyin...');
             formData.append('category_id', $('#category_id').val());
             formData.append('sub_category_id', $('#sub_category_id').val());
             formData.append('product_name', $('#product_name').val());
@@ -466,6 +467,7 @@
                     }
                 },
                 error: function (xhr) {
+                    $('#serviceButton').prop('disabled', false).html('Yadda saxla');
                     if (xhr.status === 422) {
                         const res = xhr.responseJSON;
                         if (res.errors) {

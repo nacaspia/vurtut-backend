@@ -113,7 +113,7 @@
                 }
             },
             error: function (xhr) {
-                $('#settingsCountry').prop('disabled', true).html('Yadda saxla');
+                $('#settingsCountry').prop('disabled', false).html('Yadda saxla');
                 if (xhr.status === 422) {
                     const res = xhr.responseJSON;
                     if (res.errors) {
@@ -232,7 +232,7 @@
                 }
             },
             error: function (xhr) {
-                $('#settingsButton').prop('disabled', true).html('Məlumatları yenilə');
+                $('#settingsButton').prop('disabled', false).html('Məlumatları yenilə');
                 if (xhr.status === 422) {
                     const res = xhr.responseJSON;
                     if (res.errors) {
@@ -288,7 +288,7 @@
                 }
             },
             error: function (xhr) {
-                $('#settingsPassButton').prop('disabled', true).html('Şifrəni dəyiş')
+                $('#settingsPassButton').prop('disabled', false).html('Şifrəni dəyiş')
                 if (xhr.status === 422) {
                     const res = xhr.responseJSON;
                     if (res.errors) {

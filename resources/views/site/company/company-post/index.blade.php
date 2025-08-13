@@ -173,7 +173,7 @@
                     }
                 },
                 error: function (xhr) {
-                    $('#saveImage').prop('disabled', true).html('Yadda saxla');
+                    $('#saveImage').prop('disabled', false).html('Yadda saxla');
                     if (xhr.status === 422) {
                         const res = xhr.responseJSON;
                         if (res.errors && res.errors.image) {

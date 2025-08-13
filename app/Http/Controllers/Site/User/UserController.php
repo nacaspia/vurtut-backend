@@ -272,7 +272,7 @@ class UserController extends Controller
             'date' => 'required|date',
             'full_name' => 'required|string',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-            'place_count' => 'required|integer',
+//            'place_count' => 'required|integer',
             'person_count' => 'required|integer',
             'text' => 'required|string|max:65535',
         ],[
@@ -286,7 +286,7 @@ class UserController extends Controller
             $reservation->date = $request->date;
             $reservation->full_name = $request->full_name;
             $reservation->phone = $request->phone;
-            $reservation->place_count = $request->place_count;
+            $reservation->place_count = $request->place_count ?? 0;
             $reservation->person_count = $request->person_count;
             $reservation->text = $request->text;
             $reservation->save();

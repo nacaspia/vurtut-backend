@@ -528,67 +528,69 @@
                             </ul>
 
                         </div>
-                        @if(!empty(auth('user')->user()->id) && $company['category']['is_reservation']== true)
-                            <div class="sidebar_contact_business_widget">
-                                <h4 class="title mb25">Rezervasiya et</h4>
-                                <form id="reservationForm">
-                                    <input type="hidden" name="company_id" id="company_id" value="{{$company['id']}}">
-                                    <ul class="business_contact mb0">
+                        @if($company['category']['is_reservation']== true && empty(auth('company')->user()->id))
+                            @if(!empty(auth('user')->user()->id))
+                                <div class="sidebar_contact_business_widget">
+                                    <h4 class="title mb25">Rezervasiya et</h4>
+                                    <form id="reservationForm">
+                                        <input type="hidden" name="company_id" id="company_id" value="{{$company['id']}}">
+                                        <ul class="business_contact mb0">
 
-                                        <li class="search_area">
-                                            <div class="form-group">
-                                                <input type="datetime-local" class="form-control" id="date" name="date"
-                                                       placeholder="Tarix">
-                                                <div class="invalid-feedback" id="dateError"></div>
-                                            </div>
-                                        </li>
-                                        <li class="search_area">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="full_name" name="full_name"
-                                                       placeholder="Ad Soyad">
-                                                <div class="invalid-feedback" id="fullNameError"></div>
-                                            </div>
-                                        </li>
-                                        <li class="search_area">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="phone" name="phone"
-                                                       placeholder="Əlaqə nömrəsi">
-                                                <div class="invalid-feedback" id="phoneError"></div>
-                                            </div>
-                                        </li>
-                                        <li class="search_area">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="place_count"
-                                                       name="place_count" placeholder="Yer/Masa sayı">
-                                                <div class="invalid-feedback" id="placeCountError"></div>
-                                            </div>
-                                        </li>
-                                        <li class="search_area">
-                                            <div class="form-group">
-                                                <input type="number" class="form-control" id="person_count"
-                                                       name="person_count" placeholder="Adam sayı">
-                                                <div class="invalid-feedback" id="personCountError"></div>
-                                            </div>
-                                        </li>
-                                        <li class="search_area">
-                                            <div class="form-group">
-                                                <textarea id="text" name="text" class="form-control" rows="5"
-                                                          placeholder="Əlavə məlumat"></textarea>
-                                                <div class="invalid-feedback" id="textError"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="search_option_button">
-                                                <button type="submit" class="btn btn-block btn-thm h55">Göndər</button>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </form>
-                            </div>
-                        @else
-                            <div class="sidebar_contact_business_widget">
-                                <h4 class="title mb25">Rezervasiya etmək üçün hesabınızı aktiv edin</h4>
-                            </div>
+                                            <li class="search_area">
+                                                <div class="form-group">
+                                                    <input type="datetime-local" class="form-control" id="date" name="date"
+                                                           placeholder="Tarix">
+                                                    <div class="invalid-feedback" id="dateError"></div>
+                                                </div>
+                                            </li>
+                                            <li class="search_area">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="full_name" name="full_name"
+                                                           placeholder="Ad Soyad">
+                                                    <div class="invalid-feedback" id="fullNameError"></div>
+                                                </div>
+                                            </li>
+                                            <li class="search_area">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="phone" name="phone"
+                                                           placeholder="Əlaqə nömrəsi">
+                                                    <div class="invalid-feedback" id="phoneError"></div>
+                                                </div>
+                                            </li>
+                                            {{--<li class="search_area">
+                                                <div class="form-group">
+                                                    <input type="number" class="form-control" id="place_count"
+                                                           name="place_count" placeholder="Yer/Masa sayı">
+                                                    <div class="invalid-feedback" id="placeCountError"></div>
+                                                </div>
+                                            </li>--}}
+                                            <li class="search_area">
+                                                <div class="form-group">
+                                                    <input type="number" class="form-control" id="person_count"
+                                                           name="person_count" placeholder="Adam sayı">
+                                                    <div class="invalid-feedback" id="personCountError"></div>
+                                                </div>
+                                            </li>
+                                            <li class="search_area">
+                                                <div class="form-group">
+                                                    <textarea id="text" name="text" class="form-control" rows="5"
+                                                              placeholder="Əlavə məlumat"></textarea>
+                                                    <div class="invalid-feedback" id="textError"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="search_option_button">
+                                                    <button type="submit" id="reservationButton" class="btn btn-block btn-thm h55">Göndər</button>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </form>
+                                </div>
+                            @else
+                                <div class="sidebar_contact_business_widget">
+                                    <h4 class="title mb25">Rezervasiya etmək üçün hesabınızı aktiv edin</h4>
+                                </div>
+                            @endif
                         @endif
                     </div>
                 </div>
@@ -600,14 +602,14 @@
         <div class="modal-dialog" role="document" style="max-width: 500px;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Məhsul Haqqında Məlumat</h5>
+                    <h5 class="modal-title">Məlumat</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
-                    <p><strong>Məhsul adı:</strong> <span id="infoName"></span></p>
+                    <p><strong>Adı:</strong> <span id="infoName"></span></p>
                     <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
                     <p><strong>Təsvir:</strong> <span id="infoDescription"></span></p>
                     <img id="infoImage" src="" alt="Məhsul şəkli" class="img-fluid rounded mt-2">
@@ -840,12 +842,13 @@
                 $('.form-control').removeClass('is-invalid');
                 $('#dateError, #fullNameError, #phoneError, #placeCountError, #personCountError, #textError, #generalReservationError, #generalReservationSuccess').text('');
                 let formData = new FormData();
+                $('#reservationButton').prop('disabled', false).html('Gözləyin...');
                 formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
                 formData.append('date', $('#date').val());
                 formData.append('company_id', $('#company_id').val());
                 formData.append('full_name', $('#full_name').val());
                 formData.append('phone', $('#phone').val());
-                formData.append('place_count', $('#place_count').val());
+                // formData.append('place_count', $('#place_count').val());
                 formData.append('person_count', $('#person_count').val());
                 formData.append('text', $('#text').val());
                 $.ajax({
@@ -858,9 +861,14 @@
                         if (response.success) {
                             $('#generalReservationSuccess').text(response.message);
                             $('.settings_modal').modal('show'); // modalı göstər
+                            // window.location.reload();
+                            $('.settings_modal .close').on('click', function () {
+                                location.reload();
+                            });
                         }
                     },
                     error: function (xhr) {
+                        $('#reservationButton').prop('disabled', false).html('Yenidən qeyd et');
                         if (xhr.status === 422) {
                             const res = xhr.responseJSON;
                             if (res.errors) {
