@@ -216,7 +216,6 @@
                                                 <ul class="add_listing selectable-list" style="margin-top: -12px;!important;">
                                                     <div class="invalid-feedback" id="servicesSettingsError"></div>
                                                     @foreach($serviceTypes->slice(0, ceil($serviceTypes->count() / 2)) as $service)
-{{--                                                        @dd($company['service_type'][$service->id])--}}
                                                         <li>
                                                             <div class="custom-control custom-checkbox">
                                                                 <input type="checkbox" @if(isset($company['service_type']) && in_array($service->id, $company['service_type'])) checked @endif class="custom-control-input" id="services{{ $service->id }}" name="services[]" value="{{ $service->id }}">
