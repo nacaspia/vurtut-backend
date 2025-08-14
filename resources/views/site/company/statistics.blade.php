@@ -43,7 +43,7 @@
                     <div class="stat-card">
                         <div class="icon"><span class="flaticon-love"></span></div>
                         <div class="detais">
-                            <div class="timer">{{ $company['like'] }}</div>
+                            <div class="timer">{{ $company['like'] ?? 0 }}</div>
                             <p>Sevənlər</p>
                         </div>
                     </div>
