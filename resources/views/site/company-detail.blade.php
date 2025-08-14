@@ -612,7 +612,7 @@
                     <p><strong>Adı:</strong> <span id="infoName"></span></p>
                     <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
                     <p><strong>Təsvir:</strong> <span id="infoDescription"></span></p>
-                    <img id="infoImage" src="" alt="Məhsul şəkli" class="img-fluid rounded mt-2">
+                    <img id="infoImage" src="" alt="Məhsul şəkli" class="img-fluid rounded mt-2" style="max-height: 150px;!important;">
                 </div>
             </div>
         </div>
