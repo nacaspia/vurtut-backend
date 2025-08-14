@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Site\User;
 
+use App\Events\ReservationCreated;
 use App\Helpers\LogsHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
@@ -290,7 +291,7 @@ class UserController extends Controller
             $reservation->person_count = $request->person_count;
             $reservation->text = $request->text;
             $reservation->save();
-
+//            broadcast(new ReservationCreated($reservation))->toOthers();
             $log = [
                 'obj_id' => $this->user->id,
                 'company_id' => $request->company_id,

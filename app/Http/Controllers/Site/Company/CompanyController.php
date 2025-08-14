@@ -75,13 +75,13 @@ class CompanyController extends Controller
         $currentLang = $this->currentLang;
         $users = User::where(['status' => 1])
             ->whereHas('companyReservation', function ($q) {
-                $q->where('company_id', $this->company->id);
+                $q->where('company_id', $this->company->id)
+                    ->where('date', '>=', Carbon::now());
             })
             ->with(['companyReservation' => function ($q) {
                 $q->where('company_id', $this->company->id)
                     ->where('date', '>=', Carbon::now());
             }])->get();
-
         return view('site.company.reservation',compact('currentLang','users'));
     }
 

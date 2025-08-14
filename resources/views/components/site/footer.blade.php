@@ -135,8 +135,14 @@
 </div>
 @include('site.auth.forgot-password')
 @yield('site.js')
+<script>
+    document.getElementById('logoDiv').addEventListener('click', function() {
+        window.location.href = "{{ route('site.index') }}";
+    });
+</script>
 <!-- jQuery -->
 <script>
+
     $('#forgetForm').on('submit', function (e) {
         e.preventDefault();
 
