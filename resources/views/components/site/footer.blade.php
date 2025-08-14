@@ -127,7 +127,7 @@
                         <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['linkedin']))? $settings['social']['linkedin']: 'https://www.linkedin.com/showcase/vurtut-com/'}}"><i class="fa fa-linkedin"></i></a></li>
                     </ul>
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
 </section>
