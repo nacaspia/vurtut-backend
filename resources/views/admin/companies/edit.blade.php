@@ -244,7 +244,7 @@
                                                                 </div>
                                                                 <div class="part-txt">
                                                                     <span class="product-name">{{$companyService['title']}}</span>
-                                                                    <span class="product-category">Category: {{$companyService['category']['title']['az']}}/{{$companyService['subCategory']['title']['az']}}</span>
+                                                                    <span class="product-category">Kateqoriya: {{$companyService['category']['title']['az']}}/{{$companyService['subCategory']['title']['az']}}</span>
                                                                 </div>
                                                             </div>
                                                         </td>

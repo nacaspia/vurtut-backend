@@ -10,11 +10,11 @@
 {{--                                <li class="list-inline-item"><a href="#">Open</a></li>--}}
                         </ul>
                         <ul class="listing_reviews">
-                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
+                            <li class="list-inline-item"><a class="text-white" href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}"><span class="fa fa-star"></span></a></li>
+                            <li class="list-inline-item"><a class="text-white" href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}"><span class="fa fa-star"></span></a></li>
+                            <li class="list-inline-item"><a class="text-white" href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}"><span class="fa fa-star"></span></a></li>
+                            <li class="list-inline-item"><a class="text-white" href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}"><span class="fa fa-star"></span></a></li>
+                            <li class="list-inline-item"><a class="text-white" href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}"><span class="fa fa-star"></span></a></li>
                             <li class="list-inline-item"><a class="text-white total_review" href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}">({{count($companyByTrends['comments'])}} Rəy)</a></li>
                         </ul>
                     </div>
@@ -28,7 +28,7 @@
                         @endphp
                         <ul class="prop_details mb0 mt15">
                             <li class="list-inline-item"><a href="tel:{{ $companyByTrends['phone'] ?? '' }}"><span class="flaticon-phone pr5"></span> {{ $companyByTrends['phone'] ?? '' }}</a></li>
-                            <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
+                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}"><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                         </ul>
                     </div>
                     <div class="fp_footer">
@@ -52,7 +52,7 @@
                                        data-liked="{{ (!empty($companyByTrends['userLikes']['user_id']) && $companyByTrends['userLikes']['user_id'] == auth('user')->user()->id) ?? false }}">
                                         <span class="flaticon-love {{ (!empty($companyByTrends['userLikes']['user_id']) && $companyByTrends['userLikes']['user_id'] == auth('user')->user()->id)? 'active' : '' }}"></span>
                                     </a>
-                                    {{--                                                                    <a class="icon" href="#"><span class="flaticon-love"></span></a>--}}
+                                    {{--                                                                    <a class="icon" href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}"><span class="flaticon-love"></span></a>--}}
                                 </li>
                             @endif
                         </ul>

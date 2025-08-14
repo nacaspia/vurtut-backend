@@ -40,9 +40,9 @@
                 <div class="col-xl-7">
                     <div class="single_property_title mt30-767">
                         <div class="media">
-                            <img class="mr-3" style="max-width: 13%;!important;"
+                            <img class="mr-3"
                                  src="{{ !empty($company->image)? asset("uploads/company/".$company->image): asset('site/images/Vurtut logo icon/account.png') }}"
-                                 alt="agency2.png">
+                                 alt="{{$company->full_name}} - vurtut.com" style="width:145px; height:145px; border-radius:50%; object-fit:cover; display:block; margin-bottom:10px;" oading="lazy">
                             <div class="media-body mt20">
                                 <h2 class="mt-0">{{$company->full_name}}
                                     ({{ $company['type'] === 'main'? 'Əsas Filial': 'Filial' }})</h2>
@@ -181,7 +181,7 @@
                                     </div>
                                     @if(!empty($serviceTypes[0]) && !empty($company['service_type']))
                                         @foreach($serviceTypes as $serviceType)
-                                            @if(!in_array($serviceType->id, $company['service_type']))
+                                            @if(in_array($serviceType->id, $company['service_type']))
                                                 <div class="col-md-6 col-lg-6 col-xl-4 pl0 pr0 pl15-767">
                                                     <div class="listing_feature_iconbox mb30">
                                                         <div class="icon float-left mr10"><span

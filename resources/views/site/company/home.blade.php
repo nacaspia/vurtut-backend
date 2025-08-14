@@ -37,7 +37,7 @@
                 <div class="col-xl-7">
                     <div class="single_property_title mt30-767">
                         <div class="media">
-                            <img class="mr-3" style="max-width: 13%;!important;" src="{{ !empty($company->image)? asset("uploads/company/".$company->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="agency2.png">
+                            <img class="mr-3" src="{{ !empty($company->image)? asset("uploads/company/".$company->image): asset('site/images/Vurtut logo icon/account.png') }}" style="width:145px; height:145px; border-radius:50%; object-fit:cover; display:block; margin-bottom:10px;" oading="lazy">
                             <div class="media-body mt20">
                                 <h2 class="mt-0">{{$company->full_name}} ({{ $company['type'] === 'main'? 'Əsas Filial': 'Filial' }})</h2>
                                 <ul class="mb0 agency_profile_contact">

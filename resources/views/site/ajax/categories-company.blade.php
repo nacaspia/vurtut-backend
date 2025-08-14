@@ -1,7 +1,7 @@
 @if(!empty($allCompaniesByCategory[0]))
     @foreach($allCompaniesByCategory as $companyCategory)
         <div class="col-md-6 col-lg-6">
-            <div class="feat_property" style="min-height: 404px;max-height: 404px;!important;">
+            <div class="feat_property">
                 <div class="thumb">
                     <img class="img-whp" style="width: 100%; max-height: 164px; object-fit: contain; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$companyCategory['image']) }}" alt="{{ $companyCategory['full_name'] }}">
                     <div class="thmb_cntnt">
@@ -10,11 +10,11 @@
 {{--                            <li class="list-inline-item"><a href="#">Open</a></li>--}}
                         </ul>
                         <ul class="listing_reviews">
-                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
+                            <li class="list-inline-item"><a class="text-white" href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><span class="fa fa-star"></span></a></li>
+                            <li class="list-inline-item"><a class="text-white" href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><span class="fa fa-star"></span></a></li>
+                            <li class="list-inline-item"><a class="text-white" href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><span class="fa fa-star"></span></a></li>
+                            <li class="list-inline-item"><a class="text-white" href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><span class="fa fa-star"></span></a></li>
+                            <li class="list-inline-item"><a class="text-white" href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><span class="fa fa-star"></span></a></li>
                             <li class="list-inline-item"><a class="text-white total_review" href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}">({{count($companyCategory['comments'])}} Rəy)</a></li>
                         </ul>
                     </div>
@@ -29,7 +29,7 @@
                         @endphp
                         <ul class="prop_details mb0">
                             <li class="list-inline-item"><a href="tel:{{ $companyCategory['phone'] ?? '' }}"><span class="flaticon-phone pr5"></span> {{ $companyCategory['phone'] ?? '' }}</a></li>
-                            <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
+                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                         </ul>
                     </div>
                     <div class="fp_footer">

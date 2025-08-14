@@ -15,7 +15,7 @@
                 <div class="col-lg-9">
                     <div class="author_content">
                         <div class="author_thumb float-left fn-xsd mr20">
-                            <img style="max-width: 115px;!important;" src="{{ !empty($user->image)? asset("uploads/user/".$user->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="author2.png">
+                            <img src="{{ !empty($user->image)? asset("uploads/user/".$user->image): asset('site/images/Vurtut logo icon/account.png') }}" style="width:145px; height:145px; border-radius:50%; object-fit:cover; display:block; margin-bottom:10px;" oading="lazy">
                         </div>
                         <div class="author_details">
                             <h2 class="author_title">{{$user->full_name}}</h2>
