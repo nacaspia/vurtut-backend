@@ -29,7 +29,7 @@ class CategoryController extends Controller
     {
         $categories = $this->categoryRepository->getAll();
         $locales = Translation::where('status',1)->get();
-        $parentCategories = Category::whereNotNull('parent_id')->get();
+        $parentCategories = Category::whereNotNull('parent_id')->whereNull('sub_category_id')->get();
         return view('admin.category.index', compact('categories','parentCategories','locales'));
     }
 
