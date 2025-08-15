@@ -97,6 +97,7 @@ Route::prefix('/user')->middleware('user')->group(function () {
     Route::post('/reservation-send', 'User\UserController@reservationSend')->name('user.reservationSend');
     Route::post('/review-send', 'User\UserController@reviewSend')->name('user.reviewSend');
 
+    
     //baxilacaq
     //Route::resource('user-post','User\UserPostController');
 });
