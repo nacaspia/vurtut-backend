@@ -25,8 +25,7 @@ class HomeController extends Controller
         $this->currentLang = 'az';
     }
 
-    public function index()
-    {
+    public function index() {
         $currentLang = $this->currentLang;
         $categories = Category::
             whereNull(['parent_id'])
