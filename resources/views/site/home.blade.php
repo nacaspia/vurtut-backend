@@ -15,157 +15,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
 @endsection
 @section('site.content')
-    <!--Aşağıdakı hissə nə işə yarayır bilmədim-->
-   {{-- <section class="modal fade search_dropdown" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="popup_modal_wrapper">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <a class="close closer" data-dismiss="modal" aria-label="Close" href="#"><span><img src="{{ asset('site/images/icons/close.svg') }}" alt=""></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12 mb30">
-                                    <h3>Filter by Category</h3>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-cutlery"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Restaurant</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-shopping-bag"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Shopping</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-tent"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Outdoor Activities</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-desk-bell"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Hotels</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-mirror"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Beautu & Spa</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-brake"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Automotive</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 mb15 mt20">
-                                    <h3>Explore Hot Location</h3>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{ asset("site/images/property/pc18.jpg") }}" alt="pc18.jpg"></div>
-                                        <div class="details">
-                                            <h4>Miami</h4>
-                                            <p>62 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{ asset("site/images/property/pc18.jpg") }}" alt="pc19.jpg"></div>
-                                        <div class="details">
-                                            <h4>Roma</h4>
-                                            <p>92 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{ asset("site/images/property/pc18.jpg") }}" alt="pc20.jpg"></div>
-                                        <div class="details">
-                                            <h4>New Delhi</h4>
-                                            <p>12 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{ asset("site/images/property/pc18.jpg") }}" alt="pc21.jpg"></div>
-                                        <div class="details">
-                                            <h4>London</h4>
-                                            <p>74 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{ asset("site/images/property/pc18.jpg") }}" alt="pc22.jpg"></div>
-                                        <div class="details">
-                                            <h4>Amsterdam</h4>
-                                            <p>62 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{ asset("site/images/property/pc18.jpg") }}" alt="pc23.jpg"></div>
-                                        <div class="details">
-                                            <h4>Berlin</h4>
-                                            <p>92 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{ asset("site/images/property/pc18.jpg") }}" alt="pc24.jpg"></div>
-                                        <div class="details">
-                                            <h4>Paris</h4>
-                                            <p>12 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="{{ asset("site/images/property/pc18.jpg") }}" alt="pc25.jpg"></div>
-                                        <div class="details">
-                                            <h4>New Zealand</h4>
-                                            <p>74 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
---}}
     <section class="home-one home1-overlay bg-img2">
         <div class="container">
             <div class="row posr">
@@ -182,8 +31,7 @@
                                         <div class="home_adv_srch_form home2">
                                             <form class="bgc-white bgct-767 pl30 pt10 pl0-767" action="{{ route('site.search') }}" method="GET">
                                                 <div class="form-row align-items-center">
-
-                                                    <div class="col-auto home_form_input">
+                                                    <div class="col-auto home_form_input mb20-xsd">
                                                         <label class="sr-only">Müəssisə kateqoriyası</label>
                                                         <div class="input-group style mb-2 mb0-767">
                                                             <div class="input-group-prepend">
@@ -212,7 +60,7 @@
                                                                     <option value="">Sənin şəhərin</option>
                                                                     @if(!empty($cities[0]))
                                                                         @foreach($cities as $city)
-                                                                    <option value="{{$city['id']}}">{{$city['name'][$currentLang]}}</option>
+                                                                            <option value="{{$city['id']}}">{{$city['name'][$currentLang]}}</option>
                                                                         @endforeach
                                                                     @endif
                                                                 </select>
@@ -323,7 +171,7 @@
                                                     </div>
                                                     <div class="details">
                                                         <div class="tc_content">
-                                                            <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>
+{{--                                                            <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>--}}
                                                             <h4>{{ $companyIsPremium['full_name'] }}</h4>
                                                             <p>{{ \Illuminate\Support\Str::limit($companyIsPremium['text'], 50, '...') }}</p>
                                                             @php $data = $companyIsPremium['data']; @endphp
@@ -416,7 +264,7 @@
                                                                         <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">{{ $companyIsPremium['category']['title'][$currentLang] }}</a </li>
                                                                     </ul>
                                                                     <ul class="fp_meta float-right mb0">
-                                                                        <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}"><span class="flaticon-zoom"></span> Daha ətraflı</a></li>
+                                                                        <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}"><span class="flaticon-zoom"></span> Daha ətraflı</a></li>
                                                                         @if(!empty(auth('user')->user()->id))
                                                                             <li class="list-inline-item">
                                                                                 <a href="javascript:void(0);" class="like-btn icon"

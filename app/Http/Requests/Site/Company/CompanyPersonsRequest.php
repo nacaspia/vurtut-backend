@@ -27,6 +27,8 @@ class CompanyPersonsRequest extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
+            'age' => 'required|min:18|integer',
+            'experience' => 'required|integer',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ];
     }
@@ -35,7 +37,11 @@ class CompanyPersonsRequest extends FormRequest
     public function messages()
     {
         return [
-            '*.required' =>  Lang::get('validation.required', ['attribute' => ':attribute'])
+            '*.required' =>  Lang::get('validation.required', ['attribute' => ':attribute']),
+            '*.image' =>  Lang::get('validation.image', ['attribute' => ':attribute']),
+            '*.mimes' =>  Lang::get('validation.mimes', ['attribute' => ':attribute']),
+            '*.min' =>  Lang::get('validation.min', ['attribute' => ':attribute', 'min' => ':min']),
+            '*.integer' =>  Lang::get('validation.integer', ['attribute' => ':attribute']),
         ];
     }
 }

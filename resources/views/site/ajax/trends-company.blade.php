@@ -22,7 +22,7 @@
                 <div class="details">
                     <div class="tc_content">
                         <h4>{{ $companyByTrends['full_name'] }}</h4>
-                        <p><img class="list_simg rounded-circle mr5" src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"> {{ \Illuminate\Support\Str::limit($companyByTrends['text'], 50, '...') }}</p>
+                        <p>{{ \Illuminate\Support\Str::limit($companyByTrends['text'], 50, '...') }}</p>
                         @php
                             $data = $companyByTrends['data'];
                         @endphp

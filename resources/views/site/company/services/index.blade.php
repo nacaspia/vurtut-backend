@@ -73,6 +73,12 @@
         <div class="modal fade sign_up_modal bd-example-modal-lg" id="productAddModal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 450px; width: 100%;">
                 <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="modal-body">
                         <form id="productForm" enctype="multipart/form-data">
                             <input type="hidden" id="category_id" name="category_id" value="{{ $subCompaniesCategory[0]['sub_category_id'] }}">
@@ -123,7 +129,7 @@
                             </div>--}}
 
                             <div class="form-group">
-                                <label for="product_name">Adı</label>
+                                <label for="product_name">Xidmətin Adı</label>
                                 <input type="text" class="form-control" id="product_name" name="product_name">
                                     <div class="invalid-feedback" id="productNameError"></div>
                             </div>
@@ -141,7 +147,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="description">Təsvir</label>
+                                <label for="description">Xidmətin  Təsvir</label>
                                 <textarea class="form-control" id="description" name="description" rows="3" placeholder="Ətraflı haqqında məlumat..."></textarea>
                                 <div class="invalid-feedback" id="descriptionError"></div>
                             </div>
@@ -168,12 +174,15 @@
                             </div>
                             <div class="col-lg-6 col-xl-6">
                                 <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
-                                @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
-                                    <p><strong>Usta:</strong> <span id="infoPerson"></span></p>
-                                @endif
-                                <p><strong>Adı:</strong> <span id="infoName"></span></p>
+                                <p><strong>Xidmətin Adı:</strong> <span id="infoName"></span></p>
                                 <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
-                                <p><strong>Təsvir:</strong> <br><span id="infoDescription"></span></p>
+                                <p><strong>Xidmətin Təsvir:</strong> <br><span id="infoDescription"></span></p>
+                                @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                                    <p><strong>Ustanın Adı:</strong> <span id="infoPerson"></span></p>
+                                    <p><strong>Ustanın Yaşı:</strong> <span id="infoPersonAge"></span></p>
+                                    <p><strong>Ustanın Təcrübəsi:</strong> <span id="infoPersonExperience"></span></p>
+                                    <p><strong>Ətraflı məlumat:</strong> <span id="infoPersonDescription"></span></p>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -325,6 +334,9 @@
                     document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
                     @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
                     document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
+                    document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age');
+                    document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience');
+                    document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description');
                     @endif
                     document.getElementById('infoName').innerText = btn.getAttribute('data-name');
                     document.getElementById('infoPrice').innerText = btn.getAttribute('data-price');

@@ -32,7 +32,7 @@
                                         <div class="home_adv_srch_form">
                                             <form class="bgc-white bgct-767 pl30 pt10 pl0-767" action="{{ route('site.search') }}" method="GET">
                                                 <div class="form-row align-items-center">
-                                                    <div class="col-auto home_form_input">
+                                                    <div class="col-auto home_form_input mb20-xsd">
                                                         <label class="sr-only">Müəssisə kateqoriyası</label>
                                                         <div class="input-group style mb-2 mb0-767">
                                                             <div class="input-group-prepend">
@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="details">
                                     <div class="tc_content">
-                                        <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>
+{{--                                        <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>--}}
                                         <h4>{{ $company['full_name'] }}</h4>
                                         <p>{{ \Illuminate\Support\Str::limit($company['text'], 50, '...') }}</p>
                                         @php $data = $company['data']; @endphp
@@ -135,6 +135,8 @@
                                         </ul>
                                         <ul class="fp_meta float-right mb0">
                                             {{--                                                                <li class="list-inline-item"><a href="#"><span class="flaticon-zoom"></span></a></li>--}}
+
+                                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}"><span class="flaticon-zoom"></span> Daha ətraflı</a></li>
 
                                             @if(!empty(auth('user')->user()->id))
                                                 <li class="list-inline-item">

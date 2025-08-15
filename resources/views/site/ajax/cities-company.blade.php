@@ -22,7 +22,7 @@
                 </div>
                 <div class="details">
                     <div class="tc_content">
-                        <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>
+{{--                        <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>--}}
                         <h4>{{ $companyCity['full_name'] }}</h4>
                         <p>{{ \Illuminate\Support\Str::limit($companyCity['text'], 50, '...') }}</p>
                         @php

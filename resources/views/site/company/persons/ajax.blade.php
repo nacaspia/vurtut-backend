@@ -10,7 +10,7 @@
                     <div class="price_content">
                         <h5 class="item-tile">{{$persons['name']}}</h5>
                     </div>
-                    <button class="btn btn-block btn-thm viewProductDetail" data-toggle="modal" data-target="#productInfoModal" data-name="{{$persons['name']}}" data-description="{{$persons['text']}}" data-image="{{ asset('uploads/company-persons/'.$persons['image']) }}">
+                    <button class="btn btn-block btn-thm viewProductDetail" data-toggle="modal" data-target="#productInfoModal" data-name="{{$persons['name']}}"  data-age="{{$persons['age']}}"  data-experience="{{$persons['experience']}}" data-description="{{$persons['text']}}" data-image="{{ asset('uploads/company-persons/'.$persons['image']) }}">
                         <span class="flaticon-view"></span> Ətraflı
                     </button>
                 </div>

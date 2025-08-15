@@ -21,7 +21,7 @@
                 </div>
                 <div class="details">
                     <div class="tc_content">
-                        <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>
+{{--                        <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>--}}
                         <h4>{{ $companyCategory['full_name'] }}</h4>
                         <p>{{ \Illuminate\Support\Str::limit($companyCategory['text'], 50, '...') }}</p>
                         @php

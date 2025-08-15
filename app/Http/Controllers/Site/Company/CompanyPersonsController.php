@@ -75,6 +75,8 @@ class CompanyPersonsController extends Controller
             $companyPerson = new CompanyPerson();
             $companyPerson->company_id = $company->id;
             $companyPerson->name = $companyPersonsRequest->name;
+            $companyPerson->age = $companyPersonsRequest->age;
+            $companyPerson->experience = $companyPersonsRequest->experience;
             $companyPerson->text = $companyPersonsRequest->description;
             $companyPerson->image = $image_name ?? null;
             $companyPerson->status = 0;
