@@ -6,6 +6,7 @@ use App\Helpers\LogsHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Company\ServicesRequest;
 use App\Models\Category;
+use App\Models\CompanyPerson;
 use App\Models\CompanyService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
@@ -27,8 +28,12 @@ class ServicesController extends Controller
      */
     public function index(Request $request)
     {
+        $company = $this->company;
         $currentLang = $this->currentLang;
         $mainCompaniesCategory = Category::whereNull('sub_category_id')->where(['status' => 1,'parent_id' => $this->company->category_id])->get();
+        $companyPersons = CompanyPerson::where('company_id', $this->company->id)->get();
+
+        $subCompaniesCategory = Category::whereNotNull('sub_category_id')->where(['status' => 1, 'parent_id' => $this->company->category_id])->get();
         $query = CompanyService::with('subCategory')->where('company_id', $this->company->id);
 
         if (!empty($request->filter_category_id)) {
@@ -39,7 +44,7 @@ class ServicesController extends Controller
             $query->where('sub_category_id', $request->filter_sub_category_id);
         }
 
-        $companyServices = $query->orderBy('id', 'DESC')->paginate(1);
+        $companyServices = $query->orderBy('id', 'DESC')->paginate(6);
 
         // AJAX sorğusu gəlibsə, yalnız HTML partial qaytar
         if ($request->ajax()) {
@@ -51,7 +56,7 @@ class ServicesController extends Controller
                 'pagination' => $pagination,
             ]);
         }
-        return view('site.company.services.index',compact('currentLang','mainCompaniesCategory','companyServices'));
+        return view('site.company.services.index',compact('currentLang','mainCompaniesCategory','subCompaniesCategory','companyServices','company','companyPersons'));
     }
 
     public function subCategories(Request $request)
@@ -105,8 +110,14 @@ class ServicesController extends Controller
                 $subCategoryId = $company->sub_category_id;
             }
 
+            if (!empty($servicesRequest->person_id)) {
+                $person_id = CompanyPerson::where(['company_id' => $company->id,  'id' => $servicesRequest->person_id])->first();
+                $person_id = $person_id->id;;
+            }else {
+                $person_id = $company->person_id ?? null;
+            }
+
             if($servicesRequest->hasFile('image')){
-//                $image_name = time().'.'.$servicesRequest->image->extension();
                 $image_name = $servicesRequest->image->getClientOriginalName();
                 $image_url = $servicesRequest->image->move(public_path('uploads/company-services'), $image_name);
                 $image = $image_url->getFilename();
@@ -116,6 +127,7 @@ class ServicesController extends Controller
             $companyService->company_id = $company->id;
             $companyService->parent_category_id = $categoryId;
             $companyService->sub_category_id = $subCategoryId;
+            $companyService->person_id = $person_id;
             $companyService->title = $servicesRequest->product_name;
             $companyService->description = $servicesRequest->description;
             $companyService->price = $servicesRequest->price;
@@ -143,7 +155,7 @@ class ServicesController extends Controller
                 'note' => 'errors '. $exception->getMessage()
             ];
             LogsHelper::convert($log);
-            return response()->json(['success' => false, 'message' => $exception->getMessage() /*Lang::get('site.error_up')*/],422);
+            return response()->json(['success' => false, 'message' =>  Lang::get('site.error_up')],422);
         }
     }
 

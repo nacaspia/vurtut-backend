@@ -182,15 +182,16 @@
                                         <div class="home_adv_srch_form home2">
                                             <form class="bgc-white bgct-767 pl30 pt10 pl0-767" action="{{ route('site.search') }}" method="GET">
                                                 <div class="form-row align-items-center">
-                                                    <div class="col-auto home_form_input mb20-xsd">
-                                                        <label class="sr-only">Username</label>
-                                                        <div class="input-group style1 mb-2 mb0-767">
+
+                                                    <div class="col-auto home_form_input">
+                                                        <label class="sr-only">Müəssisə kateqoriyası</label>
+                                                        <div class="input-group style mb-2 mb0-767">
                                                             <div class="input-group-prepend">
-                                                                <div class="input-group-text pl0 pb0-767">Nə?</div>
+                                                                <div class="input-group-text pb0-767">Nə?</div>
                                                             </div>
-                                                            <div class="select-wrap style1-dropdown">
-                                                                <select name="category_id" class="form-control js-searchBox">
-                                                                    <option value="">müəssisə, xidmət, məhsul...</option>
+                                                            <div class="select-wrap style2-dropdown">
+                                                                <select name="category_id" class="form-control js-searchBox2">
+                                                                    <option value="">Müəssisə kateqoriyası</option>
                                                                     @if(!empty($mainCategories[0]))
                                                                         @foreach($mainCategories as $category)
                                                                             <option value="{{$category['id']}}">{{$category['title'][$currentLang]}}</option>
@@ -201,7 +202,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-auto home_form_input">
-                                                        <label class="sr-only">Username</label>
+                                                        <label class="sr-only">Sənin şəhərin</label>
                                                         <div class="input-group style2 mb-2 mb0-767">
                                                             <div class="input-group-prepend">
                                                                 <div class="input-group-text pb0-767">Harada?</div>
@@ -343,7 +344,7 @@
                                                                 <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">{{ $companyIsPremium['category']['title'][$currentLang] }}</a></li>
                                                             </ul>
                                                             <ul class="fp_meta float-right mb0">
-                                                                <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}"><span class="flaticon-zoom"></span></a></li>
+                                                                <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}"><span class="flaticon-zoom"></span> Daha ətraflı</a></li>
 
                                                                 @if(!empty(auth('user')->user()->id))
                                                                 <li class="list-inline-item">
@@ -412,10 +413,10 @@
                                                                                 </a>
                                                                             </li>
                                                                         @endif
-                                                                        <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">{{ $companyIsPremium['category']['title'][$currentLang] }}</a></li>
+                                                                        <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">{{ $companyIsPremium['category']['title'][$currentLang] }}</a </li>
                                                                     </ul>
                                                                     <ul class="fp_meta float-right mb0">
-{{--                                                                        <li class="list-inline-item"><a href="#"><span class="flaticon-zoom"></span></a></li>--}}
+                                                                        <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyByTrends['slug']]) }}"><span class="flaticon-zoom"></span> Daha ətraflı</a></li>
                                                                         @if(!empty(auth('user')->user()->id))
                                                                             <li class="list-inline-item">
                                                                                 <a href="javascript:void(0);" class="like-btn icon"

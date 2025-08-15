@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 
+
 class UserController extends Controller
 {
     protected $user;
@@ -291,7 +292,7 @@ class UserController extends Controller
             $reservation->person_count = $request->person_count;
             $reservation->text = $request->text;
             $reservation->save();
-//            broadcast(new ReservationCreated($reservation))->toOthers();
+//            broadcast(new ReservationCreated($reservation));
             $log = [
                 'obj_id' => $this->user->id,
                 'company_id' => $request->company_id,

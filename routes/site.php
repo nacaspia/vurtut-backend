@@ -59,6 +59,7 @@ Route::prefix('/company')->middleware('company')->group(function () {
     Route::resource('company-post','Company\CompanyPostController');
     Route::get('/sub-categories', 'Company\ServicesController@subCategories')->name('company.subCategories');
     Route::resource('company-services','Company\ServicesController');
+    Route::resource('company-persons','Company\CompanyPersonsController');
     Route::get('/statistics', 'Company\CompanyController@statistics')->name('company.statistics');
     Route::get('/reservation', 'Company\CompanyController@reservation')->name('company.reservation');
     Route::put('/reservation-update/{id}', 'Company\CompanyController@reservationUpdate')->name('company.reservationUpdate');

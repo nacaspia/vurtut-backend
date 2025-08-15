@@ -87,10 +87,21 @@
         formData.append('linkedin', $('#linkedin').val());
         formData.append('tiktok', $('#tiktok').val());
         // Tüm saatleri (her gün için) FormData'ya ekle
-        $('select[name^="hours"]').each(function () {
+        $('select[name^="hours_type"]').each(function () {
             let day = $(this).attr('name').match(/\[(.*?)\]/)[1]; // Mon, Tue vs.
-            formData.append(`hours[${day}]`, $(this).val());
+            let container = $(this).closest('.form-inline');
+
+            // Select dəyərini əlavə et
+            formData.append(`hours_type[${day}]`, $(this).val());
+
+            // Inputları əlavə et (yalnız varsa)
+            let start = container.find('.start_date').val() || '';
+            let end = container.find('.end_date').val() || '';
+
+            formData.append(`hours[${day}][start]`, start);
+            formData.append(`hours[${day}][end]`, end);
         });
+
 
 // Seçilen servis checkboxlarını FormData'ya ekle
         $('input[name="services[]"]:checked').each(function () {

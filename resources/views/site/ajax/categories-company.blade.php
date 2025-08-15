@@ -44,7 +44,7 @@
                             <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}">{{ $companyCategory['category']['title'][$currentLang] ?? '' }}</a></li>
                         </ul>
                         <ul class="fp_meta float-right mb0">
-                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><span class="flaticon-zoom"></span></a></li>
+                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><span class="flaticon-zoom"></span> Daha ətraflı</a></li>
                             @if(!empty(auth('user')->user()->id))
                                 <li class="list-inline-item">
                                     <a href="javascript:void(0);" class="like-btn icon"

@@ -3,155 +3,6 @@
 
 @endsection
 @section('company.content')
-    <section class="modal fade search_dropdown" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="popup_modal_wrapper">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <a class="close closer" data-dismiss="modal" aria-label="Close" href="#"><span><img src="images/icons/close.svg" alt=""></span></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12 mb30">
-                                    <h3>Filter by Category</h3>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-cutlery"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Restaurant</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-shopping-bag"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Shopping</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-tent"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Outdoor Activities</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-desk-bell"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Hotels</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-mirror"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Beautu & Spa</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-4 col-xl-2">
-                                    <div class="icon-box text-center">
-                                        <div class="icon"><span class="flaticon-brake"></span></div>
-                                        <div class="content-details">
-                                            <div class="title">Automotive</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-12 mb15 mt20">
-                                    <h3>Explore Hot Location</h3>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="images/property/pc18.jpg" alt="pc18.jpg"></div>
-                                        <div class="details">
-                                            <h4>Miami</h4>
-                                            <p>62 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="images/property/pc19.jpg" alt="pc19.jpg"></div>
-                                        <div class="details">
-                                            <h4>Roma</h4>
-                                            <p>92 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="images/property/pc20.jpg" alt="pc20.jpg"></div>
-                                        <div class="details">
-                                            <h4>New Delhi</h4>
-                                            <p>12 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="images/property/pc21.jpg" alt="pc21.jpg"></div>
-                                        <div class="details">
-                                            <h4>London</h4>
-                                            <p>74 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="images/property/pc22.jpg" alt="pc22.jpg"></div>
-                                        <div class="details">
-                                            <h4>Amsterdam</h4>
-                                            <p>62 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="images/property/pc23.jpg" alt="pc23.jpg"></div>
-                                        <div class="details">
-                                            <h4>Berlin</h4>
-                                            <p>92 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="images/property/pc24.jpg" alt="pc24.jpg"></div>
-                                        <div class="details">
-                                            <h4>Paris</h4>
-                                            <p>12 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
-                                    <div class="property_city_home6 tac-xsd">
-                                        <div class="thumb"><img class="w100" src="images/property/pc25.jpg" alt="pc25.jpg"></div>
-                                        <div class="details">
-                                            <h4>New Zealand</h4>
-                                            <p>74 Listings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Hazirdi -->
     <section class="our-shop pb80">
@@ -160,7 +11,7 @@
                 @include('site.company.layouts.mobile-menu')
                 <div class="col-lg-6">
                     <div class="breadcrumb_content style2 mb20">
-                        <h2 class="breadcrumb_title">Xidmətlər</h2>
+                        <h2 class="breadcrumb_title">{{ $mainCompaniesCategory[0]['title'][$currentLang] ?? 'Xidmətlər və Məhsullar' }}</h2>
                     </div>
                 </div>
             </div>
@@ -168,6 +19,24 @@
 {{--                <form action="" method="GET">--}}
                 <div class="col-lg-3">
                     <div class="my_profile_setting_input ui_kit_select_search form-group">
+                        <label>Kateqoriya</label>
+                        <select class="form-control" id="filter_sub_category_id" name="filter_sub_category_id" data-width="100%">
+                            <option value="">Kateqoriya seç</option>
+                            @if(!empty($subCompaniesCategory[0]))
+                                @foreach($subCompaniesCategory as $subCategory)
+                                    <option value="{{$subCategory['id']}}">{{ $subCategory['title'][$currentLang] }}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                        <a href="{{ route("site.company-persons.index") }}" class="btn btn-success"  style="border-radius:12px;">
+                            <span class="flaticon-view"></span> Ustalar
+                        </a>
+                    @endif
+                    {{--<div class="my_profile_setting_input ui_kit_select_search form-group">
                         <label>Əsas Kateqoriya</label>
                         <select class="form-control"  id="filter_category_id" name="filter_category_id" data-width="100%">
                             <option value="">Əsas Kateqoriya seç</option>
@@ -177,15 +46,7 @@
                                 @endforeach
                             @endif
                         </select>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="my_profile_setting_input ui_kit_select_search form-group">
-                        <label>Alt Kateqoriya</label>
-                        <select class="form-control" id="filter_sub_category_id" name="filter_sub_category_id" data-width="100%">
-                            <option value="">Alt Kateqoriya seç</option>
-                        </select>
-                    </div>
+                    </div>--}}
                 </div>
 {{--                <div class="col-lg-2">--}}
 {{--                    <button type="submit" class="btn btn-success">--}}
@@ -195,7 +56,7 @@
 {{--                </form>--}}
                 <div class="col-lg-6 d-flex justify-content-end">
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productAddModal" style="border-radius:12px;">
-                        <span class="flaticon-shopping-bag pr-2 fz20"></span> Əlavə et
+                        + Əlavə et
                     </button>
                 </div>
             </div>
@@ -214,7 +75,34 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <form id="productForm" enctype="multipart/form-data">
+                            <input type="hidden" id="category_id" name="category_id" value="{{ $subCompaniesCategory[0]['sub_category_id'] }}">
                             <div class="form-group">
+                                <label for="sub_category_id">Kateqoriyalar</label>
+                                <select class="form-control" id="sub_category_id" name="sub_category_id">
+                                    <option value="">Kateqoriya seçin</option>
+                                    @if(!empty($subCompaniesCategory[0]))
+                                        @foreach($subCompaniesCategory as $subCategory)
+                                            <option value="{{$subCategory['id']}}">{{ $subCategory['title'][$currentLang] }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                <div class="invalid-feedback" id="subCategoryError"></div>
+                            </div>
+                            @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                           <div class="form-group">
+                                <label for="person_id">Ustalar</label>
+                                <select class="form-control" id="person_id" name="person_id">
+                                    <option value="">Usta seçin</option>
+                                    @if(!empty($companyPersons[0]))
+                                        @foreach($companyPersons as $companyPerson)
+                                            <option value="{{$companyPerson['id']}}">{{ $companyPerson['name'] }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                                <div class="invalid-feedback" id="subCategoryError"></div>
+                            </div>
+                            @endif
+                           {{-- <div class="form-group">
                                 <label for="category_id">Əsas kateqoriyalar</label>
                                 <select class="form-control" id="category_id" name="category_id">
                                     <option value="">Əsas kateqoriyalar seçin</option>
@@ -225,14 +113,14 @@
                                     @endif
                                 </select>
                                 <div class="invalid-feedback" id="categoryError"></div>
-                            </div>
-                            <div class="form-group">
+                            </div>--}}
+                           {{-- <div class="form-group">
                                 <label for="sub_category_id">Alt kateqoriya</label>
                                 <select class="form-control" id="sub_category_id" name="sub_category_id">
                                     <option value="">Alt Kateqoriya seçin</option>
                                 </select>
                                 <div class="invalid-feedback" id="subCategoryError"></div>
-                            </div>
+                            </div>--}}
 
                             <div class="form-group">
                                 <label for="product_name">Adı</label>
@@ -254,7 +142,7 @@
 
                             <div class="form-group">
                                 <label for="description">Təsvir</label>
-                                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Məhsul haqqında məlumat..."></textarea>
+                                <textarea class="form-control" id="description" name="description" rows="3" placeholder="Ətraflı haqqında məlumat..."></textarea>
                                 <div class="invalid-feedback" id="descriptionError"></div>
                             </div>
                             <button type="submit" id="serviceButton" class="btn btn-success">Yadda saxla</button>
@@ -274,11 +162,20 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
-                        <p><strong>Adı:</strong> <span id="infoName"></span></p>
-                        <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
-                        <p><strong>Təsvir:</strong> <span id="infoDescription"></span></p>
-                        <img id="infoImage" src="" alt="Məhsul şəkli" class="img-fluid rounded mt-2" style="max-height: 150px;!important;">
+                        <div class="row">
+                            <div class="col-lg-4 col-xl-4">
+                                <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2" style="max-height: 150px;!important;">
+                            </div>
+                            <div class="col-lg-6 col-xl-6">
+                                <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
+                                @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                                    <p><strong>Usta:</strong> <span id="infoPerson"></span></p>
+                                @endif
+                                <p><strong>Adı:</strong> <span id="infoName"></span></p>
+                                <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
+                                <p><strong>Təsvir:</strong> <br><span id="infoDescription"></span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -289,7 +186,7 @@
         <div class="modal-dialog modal-md mt100" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="text-align: center;display: flex!important;">
-                    <h4> -Qeydiyyat tamamlanması</h4>
+                    <h4> Məlumat tamamlanması</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body container pb20 pl0 pr0 pt0">
@@ -377,8 +274,6 @@
                 }
             });
         });
-
-
         function fetchFilteredServices(url = '{{ route("site.company-services.index") }}') {
             const categoryId = $('#filter_category_id').val();
             const subCategoryId = $('#filter_sub_category_id').val();
@@ -428,6 +323,9 @@
             detailButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
+                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                    document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
+                    @endif
                     document.getElementById('infoName').innerText = btn.getAttribute('data-name');
                     document.getElementById('infoPrice').innerText = btn.getAttribute('data-price');
                     document.getElementById('infoDescription').innerText = btn.getAttribute('data-description');
@@ -449,6 +347,7 @@
             formData.append('price', $('#price').val());
             formData.append('image', $('#image')[0].files[0]);
             formData.append('description', $('#description').val());
+            formData.append('person_id', $('#person_id').val());
             $.ajax({
                 url: '{{ route('site.company-services.store') }}',
                 method: 'POST', // PUT üçün method POST olacaq, çünki FormData PUT-u dəstəkləmir

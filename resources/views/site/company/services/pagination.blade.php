@@ -1,3 +1,4 @@
+@if(!empty($companyServices[0]) && $companyServices->lastPage()!=1)
 <div class="mbp_pagination mt10">
     <ul class="page_navigation">
         {{-- Previous link --}}
@@ -6,7 +7,6 @@
                 <span class="fa fa-angle-left"></span>
             </a>
         </li>
-
         @for ($i = 1; $i <= $companyServices->lastPage(); $i++)
             @if ($i == $companyServices->currentPage())
                 <li class="page-item active"><a class="page-link" href="#">{{ $i }}</a></li>
@@ -16,7 +16,6 @@
                 <li class="page-item"><a class="page-link" href="#">...</a></li>
             @endif
         @endfor
-
         {{-- Next link --}}
         <li class="page-item {{ $companyServices->hasMorePages() ? '' : 'disabled' }}">
             <a class="page-link" href="{{ $companyServices->nextPageUrl() ?? '#' }}">
@@ -25,3 +24,4 @@
         </li>
     </ul>
 </div>
+@endif

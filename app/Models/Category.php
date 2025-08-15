@@ -12,7 +12,7 @@ class Category extends Model
     protected $table = 'categories';
 
     protected $fillable = [
-        'id','parent_id','sub_category_id','image','title','slug','status','type','created_at','updated_at'
+        'id','parent_id','sub_category_id','image','title','slug','is_persons','is_reservation','status','type','created_at','updated_at'
     ];
 
     protected $casts = [

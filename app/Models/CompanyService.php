@@ -15,6 +15,7 @@ class CompanyService extends Model
         'company_id',
         'parent_category_id',
         'sub_category_id',
+        'person_id',
         'title',
         'description',
         'price',
@@ -31,5 +32,9 @@ class CompanyService extends Model
 
     public function subCategory() {
         return $this->hasOne(Category::class, 'id', 'sub_category_id');
+    }
+
+    public function person() {
+        return $this->hasOne(CompanyPerson::class, 'id', 'person_id');
     }
 }

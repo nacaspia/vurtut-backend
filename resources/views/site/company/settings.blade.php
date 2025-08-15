@@ -67,8 +67,8 @@
                                         <div class="col-lg-6">
                                             <div class="my_profile_setting_input ui_kit_select_search form-group">
                                                 <label for="parent_id">Tabeçilik</label>
-                                                <select class="form-control" id="parent_id" name="parent_id" >
-                                                    <option value="" >Seçin</option>
+                                                <select class="form-control" id="parent_id" name="parent_id">
+                                                    <option value="">Seçin</option>
                                                     <option value="01" @if($company['type'] === 'main') selected @endif>Əsas müəssisə</option>
                                                     @if(!empty($mainCompanies[0]))
                                                         @foreach($mainCompanies as $mainCompany)
@@ -82,7 +82,7 @@
                                         <div class="col-lg-6">
                                             <div class="my_profile_setting_input ui_kit_select_search form-group">
                                                 <label for="category_id">Kateqoriya</label>
-                                                <select class="form-control"  id="category_id" name="category_id">
+                                                <select class="form-control"  id="category_id" name="category_id" @if(!empty($company['category_id'])) disabled="disabled" @endif>
                                                     <option value="" >Müəssisə kateqoriyanızı seçin</option>
                                                     @if(!empty($categories[0]))
                                                         @foreach($categories as $category)
@@ -172,12 +172,12 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-15">
                                             <h4 class="float-left fn-414 mb30">İş vaxtı</h4>
                                             <div class="opening_hour_day_list float-right">
                                                 <ul class="mb0 nav nav-tabs" id="dayTabs" role="tablist">
                                                     @foreach(['Mon','Tue','Wed','Thu','Fri','Sat','Sun'] as $key => $day)
-                                                        <li class="list-inline-item">
+                                                        <li class="list-inline-item" style="margin-right: 0.0rem;!important;">
                                                             <a class="nav-link @if($key == 0) active @endif" id="tab-{{ $day }}" data-toggle="tab" href="#content-{{ $day }}" role="tab">
                                                                 @lang('site.'.$day)
                                                             </a>
@@ -193,16 +193,41 @@
                                                     <div class="tab-pane fade @if($key == 0) show active @endif" id="content-{{ $day }}" role="tabpanel">
                                                         <div class="my_profile_setting_input form-group">
                                                             <label>İş vaxtı (@lang('site.'.$day))</label>
-                                                            <select class="form-control" id="hours{{ $day }}" name="hours[{{ $day }}]">
-                                                                <option value="">-Seç</option>
-                                                                 <option value="1" @if(isset($company['time'][$day]) && $company['time'][$day] == 1) selected @endif>9:00 - 22:00</option>
-                                                                <option value="2" @if(isset($company['time'][$day]) && $company['time'][$day] == 2) selected @endif>11:00 - 6:00</option>
-                                                                <option value="3" @if(isset($company['time'][$day]) && $company['time'][$day] == 3) selected @endif>7 / 24</option>
-                                                                <option value="0" @if(isset($company['time'][$day]) && $company['time'][$day] == 0) selected @endif>Bağlı</option>
-                                                            </select>
+
+                                                            <div class="form-inline" style="gap: 10px;">
+                                                                <div class="form-inline" style="gap: 10px;">
+                                                                    @php
+                                                                        $type = $company['time'][$day]['hours_type'] ?? 0;
+                                                                        $start = $company['time'][$day]['start'] ?? '00:00';
+                                                                        $end = $company['time'][$day]['end'] ?? '23:59';
+                                                                    @endphp
+
+                                                                    <select class="form-control hours_type" name="hours_type[{{ $day }}]">
+                                                                        <option value="">Seçin</option>
+                                                                        <option value="1" @if($type == 1) selected @endif>Açıq</option>
+                                                                        <option value="0" @if($type == 0) selected @endif>Bağlı</option>
+                                                                    </select>
+
+                                                                    <input type="time" class="form-control start_date" name="hours[{{ $day }}][start]" value="{{ $start }}">
+                                                                    <span> </span>
+                                                                    <input type="time" class="form-control end_date" name="hours[{{ $day }}][end]" value="{{ $end }}">
+                                                                </div>
+
+                                                                {{--<select class="form-control hours_type" id="hours_type{{ $day }}" name="hours_type[{{ $day }}]">
+                                                                    <option value="">Seçin</option>
+                                                                    <option value="1" @if(isset($company['time'][$day]) && $company['time'][$day] == 0) selected @endif>Açıq</option>
+                                                                    <option value="0" @if(isset($company['time'][$day]) && $company['time'][$day] == 0) selected @endif>Bağlı</option>
+                                                                </select>
+                                                                <input  type="time" class="form-control start_date" id="start_time{{ $day }}"
+                                                                       name="hours[{{ $day }}][start]" value="00:00">
+                                                                <span>-</span>
+                                                                <input  type="time"  class="form-control end_date" id="end_time{{ $day }}"
+                                                                       name="hours[{{ $day }}][end]" value="23:59">--}}
+                                                            </div>
                                                         </div>
                                                         <div class="invalid-feedback" id="hoursSettingsError"></div>
                                                     </div>
+
                                                 @endforeach
                                             </div>
                                         </div>
@@ -363,8 +388,47 @@
 @section('company.js')
     <script src="{{ asset('site/js/googlemaps1.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8M9rUVW_Og-Z8sTfQSA5HUgRbd4WyW0w&callback=initMap&libraries=places" async defer></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <input type="text" id="date" class="form-control start_date" placeholder="Tarix">
+    <input type="text" id="date" class="form-control end_date" placeholder="Tarix">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
+        flatpickr(".start_date", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            time_24hr: true
+        });
+
+        flatpickr(".end_date", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            time_24hr: true
+        });
+    </script>
+    <script>
+        document.querySelectorAll('.hours_type').forEach(select => {
+            const container = select.closest('.form-inline');
+            const inputs = container.querySelectorAll('.start_date, .end_date');
+
+            function toggleInputs() {
+                if (select.value === "1") {
+                    inputs.forEach(i => i.style.display = "inline-block");
+                } else {
+                    inputs.forEach(i => i.style.display = "none");
+                }
+            }
+
+            // səhifə yüklənəndə vəziyyəti yoxla
+            toggleInputs();
+
+            // seçim dəyişdikdə
+            select.addEventListener('change', toggleInputs);
+        });
+    </script>
+    <script>
+
         let map;
         let marker;
         let geocoder;

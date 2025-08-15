@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.Models.CmsUser.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel('company.{companyId}', function ($user, $companyId) {
+    // İstifadəçinin company_id-si ilə match olmalıdır
+    return (int) $user->company_id === (int) $companyId;
+});

@@ -11,8 +11,8 @@
                         <h5 class="item-tile">{{$service['title']}}</h5>
                         <p class="price">{{$service['price']}} AZN</p>
                     </div>
-                    <button class="btn btn-block btn-thm viewProductDetail" data-toggle="modal" data-target="#productInfoModal" data-category="{{$service['subCategory']['title'][$currentLang]}}" data-name="{{$service['title']}}" data-price="{{$service['price']}}" data-description="{{$service['description']}}" data-image="{{ asset('uploads/company-services/'.$service['image']) }}">
-                        <span class="flaticon-shopping-bag"></span> Ətraflı
+                    <button class="btn btn-block btn-thm viewProductDetail" data-toggle="modal" data-target="#productInfoModal" data-category="{{$service['subCategory']['title'][$currentLang]}}" data-person="{{$service['person']['name'] ?? null}}" data-name="{{$service['title']}}" data-price="{{$service['price']}}" data-description="{{$service['description']}}" data-image="{{ asset('uploads/company-services/'.$service['image']) }}">
+                        <span class="flaticon-view"></span> Ətraflı
                     </button>
                 </div>
             </div>

@@ -324,17 +324,16 @@
                             <h4 class="title mb15">İşləmə saatları {{--<small class="text-thm2 float-right">Now Open</small>--}}</h4>
                             <ul class="list_details mb0">
                                 @foreach(['Mon','Tue','Wed','Thu','Fri','Sat','Sun'] as $key => $day)
-                                    <?php
-                                        if(isset($company['time'][$day]) && $company['time'][$day] == 1)
-                                            $dateTime = '9:00 - 22:00';
-                                        elseif(isset($company['time'][$day]) && $company['time'][$day] == 2)
-                                            $dateTime = '11:00 - 6:00';
-                                        elseif(isset($company['time'][$day]) && $company['time'][$day] == 3)
-                                            $dateTime = '7 / 24';
-                                        else
-                                            $dateTime = 'Bagli'
-                                    ?>
-                                    <li><a href="#">{{$day}} <span class="float-right">{{ $dateTime }}</span></a></li>
+                                    @php
+                                        $type = $company['time'][$day]['hours_type'] ?? 0;
+                                        $start = $company['time'][$day]['start'] ?? '00:00';
+                                        $end = $company['time'][$day]['end'] ?? '23:59';
+                                        $date = 'Bağlı';
+                                        if ($type == 1) {
+                                            $date = $start .' - '. $end ;
+                                        }
+                                    @endphp
+                                    <li><a href="#">@lang('site.'.$day) <span class="float-right">{{$date}}</span></a></li>
                                 @endforeach
 
                                 {{--<li><a href="#">Tuesday <span class="float-right">6:30 am – 4:00 pm</span></a></li>

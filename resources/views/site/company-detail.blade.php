@@ -10,17 +10,21 @@
         .flaticon-love.active {
             color: red;
         }
+
         .fa-star-m {
             color: #ffc401;
             transition: color 0.3s;
         }
+
         .fa-star.text-warning,
         .fa-star.checked {
             color: #ffc401 !important;
         }
+
         .review_star i.text-warning {
             color: #ffc107 !important;
         }
+
         .rating-stars {
             display: flex;
             gap: 3px;
@@ -42,7 +46,9 @@
                         <div class="media">
                             <img class="mr-3"
                                  src="{{ !empty($company->image)? asset("uploads/company/".$company->image): asset('site/images/Vurtut logo icon/account.png') }}"
-                                 alt="{{$company->full_name}} - vurtut.com" style="width:145px; height:145px; border-radius:50%; object-fit:cover; display:block; margin-bottom:10px;" oading="lazy">
+                                 alt="{{$company->full_name}} - vurtut.com"
+                                 style="width:145px; height:145px; border-radius:50%; object-fit:cover; display:block; margin-bottom:10px;"
+                                 oading="lazy">
                             <div class="media-body mt20">
                                 <h2 class="mt-0">{{$company->full_name}}
                                     ({{ $company['type'] === 'main'? 'Əsas Filial': 'Filial' }})</h2>
@@ -77,15 +83,17 @@
                         <div class="spss style2 mt30 float-right fn-lg">
                             <ul class="mb0">
                                 <li class="list-inline-item icon">
-                                    <a href="#" class="shareBtn" data-id="{{ $company->id }}"><span class="flaticon-upload"></span></a>
+                                    <a href="#" class="shareBtn" data-id="{{ $company->id }}"><span
+                                            class="flaticon-upload"></span></a>
                                 </li>
                                 @if(!empty(auth('user')->user()->id))
                                     <li class="list-inline-item icon">
-                                        <a href="javascript:void(0);"  class="like-btn icon"
+                                        <a href="javascript:void(0);" class="like-btn icon"
                                            data-item-id="{{ $company['id'] }}"
                                            data-item-type="company"
                                            data-liked="{{ (!empty($company['userLikes']['user_id']) && $company['userLikes']['user_id'] == auth('user')->user()->id) ?? false }}">
-                                            <span class="flaticon-love {{ (!empty($company['userLikes']['user_id']) && $company['userLikes']['user_id'] == auth('user')->user()->id)? 'active' : '' }}"></span>
+                                            <span
+                                                class="flaticon-love {{ (!empty($company['userLikes']['user_id']) && $company['userLikes']['user_id'] == auth('user')->user()->id)? 'active' : '' }}"></span>
                                         </a>
                                         {{--                                                                    <a class="icon" href="#"><span class="flaticon-love"></span></a>--}}
                                     </li>
@@ -244,11 +252,12 @@
                                                                             data-toggle="modal"
                                                                             data-target="#productInfoModal"
                                                                             data-category="{{$service['subCategory']['title'][$currentLang]}}"
+                                                                            data-person="{{$service['person']['name'] ?? null}}"
                                                                             data-name="{{$service['title']}}"
                                                                             data-price="{{$service['price']}}"
                                                                             data-description="{{$service['description']}}"
                                                                             data-image="{{ asset('uploads/company-services/'.$service['image']) }}">
-                                                                            <span class="flaticon-shopping-bag"></span>
+                                                                            <span class="flaticon-view"></span>
                                                                             Ətraflı
                                                                         </button>
                                                                     </div>
@@ -265,7 +274,7 @@
                             </div>
                         </div>
                         @if(!empty($company['comments'][0]))
-                            <?php
+                                <?php
                                 $comments = $company['comments'];
 
                                 $avgCleanliness = round($comments->avg('cleanliness'), 1);
@@ -277,190 +286,199 @@
                                 ])->filter()->avg(), 2);
 
                                 $reviewCount = $comments->count();
-                            ?>
-                        <div class="col-lg-12 pl0 pl15-767">
-                            <div class="custom_reivews mt30 mb30 row">
-                                <div class="col-lg-12">
-                                    <h4 class="mb25">{{ $overallAverage }} ({{ $reviewCount }} rəy)</h4>
-                                </div>
-                                @php
-                                    $categories = [
-                                        'Təmizlik' => $avgCleanliness,
-                                        'Heyət' => $avgStaff,
-                                        'Rahatlıq' => $avgComfort,
-                                        'İmkanlar' => $avgFacilities,
-                                    ];
-                                @endphp
-
-                                @foreach($categories as $title => $score)
-                                    <div class="col-lg-3 col-md-6 mb-3 d-flex align-items-center">
-                                        <div class="me-2" style="width: 90px;">{{ $title }}</div>
-                                        <div class="rating-stars">
-                                            @for ($i = 1; $i <= 5; $i++)
-                                                <i class="fa fa-star{{ $i <= round($score) ? '' : '-o' }}"></i>
-                                            @endfor
-                                        </div>
+                                ?>
+                            <div class="col-lg-12 pl0 pl15-767">
+                                <div class="custom_reivews mt30 mb30 row">
+                                    <div class="col-lg-12">
+                                        <h4 class="mb25">{{ $overallAverage }} ({{ $reviewCount }} rəy)</h4>
                                     </div>
-                                @endforeach
-                            </div>
-                        </div>
+                                    @php
+                                        $categories = [
+                                            'Təmizlik' => $avgCleanliness,
+                                            'Heyət' => $avgStaff,
+                                            'Rahatlıq' => $avgComfort,
+                                            'İmkanlar' => $avgFacilities,
+                                        ];
+                                    @endphp
 
-                        <div class="col-lg-12 pl0 pl15-767">
-                            <div class="listing_single_reviews">
-                                <div class="product_single_content mb30">
-                                    @foreach($company['comments'] as $comment)
-                                    <div class="mbp_first media">
-                                        <img style="max-width: 10%;!important;" src="{{ !empty($comment['users']->image)? asset("uploads/user/".$comment['users']->image): asset('site/images/Vurtut logo icon/account.png') }}" class="mr-3"
-                                             alt="reviewer2.png">
-                                        <div class="media-body">
-                                            <h4 class="sub_title mt-0">{{ $comment['users']->full_name }}</h4>
-                                            <div class="sspd_postdate fz14 mb20">{{ \Carbon\Carbon::parse($comment->created_at)->format('Y-m-d H:i') }}
-                                                <div class="sspd_review pull-right">
-                                                    <ul class="mb0 pl15">
-                                                        @php
-                                                            $rating = round(($comment->cleanliness + $comment->comfort + $comment->staff + $comment->facilities) / 4);
-                                                        @endphp
-
-                                                        @for ($i = 1; $i <= 5; $i++)
-                                                            <li class="list-inline-item">
-                                                                <a href="#">
-                                                                    <i class="fa fa-star fa-star-m{{ $i <= $rating ? '' : '-o' }}"></i>
-                                                                </a>
-                                                            </li>
-                                                        @endfor
-                                                    </ul>
-                                                </div>
+                                    @foreach($categories as $title => $score)
+                                        <div class="col-lg-3 col-md-6 mb-3 d-flex align-items-center">
+                                            <div class="me-2" style="width: 90px;">{{ $title }}</div>
+                                            <div class="rating-stars">
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    <i class="fa fa-star{{ $i <= round($score) ? '' : '-o' }}"></i>
+                                                @endfor
                                             </div>
-                                            <p class="fz14 mt10">{!! $comment['comment'] !!}</p>
-                                            @if(!empty(auth('company')->user()->id) && auth('company')->user()->id == $company['id'] && $comment->committer->count() == 0)
-                                                <a class="text-thm tdu reply-btn" href="#" data-id="{{ $comment['id'] }}">Cavablandır</a>
-                                                <!-- Cavab form konteyneri -->
-                                                <div class="reply-form mt-3 d-none"></div>
-                                            @endif
-                                            @if ($comment->committer->count())
-                                                @foreach ($comment->committer as $reply)
-                                                <br>
-                                                <div class="mbp_first media">
-                                                    <img style="max-width: 10%;!important;" src="{{ !empty($comment['company']->image)? asset("uploads/company/".$comment['company']->image): asset('site/images/Vurtut logo icon/account.png') }}" class="mr-3"
-                                                         alt="{{ $reply->company->full_name }}">
-                                                    <div class="media-body">
-                                                        <h4 class="sub_title mt-0">{{ $reply->company->full_name }}</h4>
-                                                        <div class="sspd_postdate fz14 mb20">{{ \Carbon\Carbon::parse($reply->created_at)->format('Y-m-d H:i') }}
-
-                                                        </div>
-                                                        <p class="fz14 mt10">{{ $reply->comment }}</p>
-                                                    </div>
-                                                </div>
-                                                @endforeach
-                                            @endif
                                         </div>
-                                    </div>
                                     @endforeach
                                 </div>
                             </div>
-                        </div>
+
+                            <div class="col-lg-12 pl0 pl15-767">
+                                <div class="listing_single_reviews">
+                                    <div class="product_single_content mb30">
+                                        @foreach($company['comments'] as $comment)
+                                            <div class="mbp_first media">
+                                                <img style="max-width: 10%;!important;"
+                                                     src="{{ !empty($comment['users']->image)? asset("uploads/user/".$comment['users']->image): asset('site/images/Vurtut logo icon/account.png') }}"
+                                                     class="mr-3"
+                                                     alt="reviewer2.png">
+                                                <div class="media-body">
+                                                    <h4 class="sub_title mt-0">{{ $comment['users']->full_name }}</h4>
+                                                    <div
+                                                        class="sspd_postdate fz14 mb20">{{ \Carbon\Carbon::parse($comment->created_at)->format('Y-m-d H:i') }}
+                                                        <div class="sspd_review pull-right">
+                                                            <ul class="mb0 pl15">
+                                                                @php
+                                                                    $rating = round(($comment->cleanliness + $comment->comfort + $comment->staff + $comment->facilities) / 4);
+                                                                @endphp
+
+                                                                @for ($i = 1; $i <= 5; $i++)
+                                                                    <li class="list-inline-item">
+                                                                        <a href="#">
+                                                                            <i class="fa fa-star fa-star-m{{ $i <= $rating ? '' : '-o' }}"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                @endfor
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <p class="fz14 mt10">{!! $comment['comment'] !!}</p>
+                                                    @if(!empty(auth('company')->user()->id) && auth('company')->user()->id == $company['id'] && $comment->committer->count() == 0)
+                                                        <a class="text-thm tdu reply-btn" href="#"
+                                                           data-id="{{ $comment['id'] }}">Cavablandır</a>
+                                                        <!-- Cavab form konteyneri -->
+                                                        <div class="reply-form mt-3 d-none"></div>
+                                                    @endif
+                                                    @if ($comment->committer->count())
+                                                        @foreach ($comment->committer as $reply)
+                                                            <br>
+                                                            <div class="mbp_first media">
+                                                                <img style="max-width: 10%;!important;"
+                                                                     src="{{ !empty($comment['company']->image)? asset("uploads/company/".$comment['company']->image): asset('site/images/Vurtut logo icon/account.png') }}"
+                                                                     class="mr-3"
+                                                                     alt="{{ $reply->company->full_name }}">
+                                                                <div class="media-body">
+                                                                    <h4 class="sub_title mt-0">{{ $reply->company->full_name }}</h4>
+                                                                    <div
+                                                                        class="sspd_postdate fz14 mb20">{{ \Carbon\Carbon::parse($reply->created_at)->format('Y-m-d H:i') }}
+
+                                                                    </div>
+                                                                    <p class="fz14 mt10">{{ $reply->comment }}</p>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
                         @endif
 
                         @if(!empty(auth('user')->user()->id) && auth('user')->user()->id != $company['comments']->last()?->users->id)
-                        <div class="col-lg-12 pl0 pl15-767">
-                            <div class="single_page_review_form p30-lg mb30-991">
-                                <div class="wrapper">
-                                    <h4>Rəy bildir</h4>
-                                    <form class="review_form">
-                                        <input type="hidden" id="company_id" name="company_id" value="{{ $company['id'] }}">
-                                        <input type="hidden" id="user_id" name="user_id" value="{{ auth('user')->user()->id }}">
-                                        <input type="hidden" name="cleanliness" id="cleanliness" value="0">
-                                        <input type="hidden" name="comfort" id="comfort" value="0">
-                                        <input type="hidden" name="staff" id="staff" value="0">
-                                        <input type="hidden" name="facilities" id="facilities" value="0">
-                                        <div class="custom_reivews row mt40 mb30">
-                                            <div class="col-lg-2 pr0">
-                                                <div class="title">Təmizlik</div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="review_star text-right">
-                                                    <ul>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                    </ul>
+                            <div class="col-lg-12 pl0 pl15-767">
+                                <div class="single_page_review_form p30-lg mb30-991">
+                                    <div class="wrapper">
+                                        <h4>Rəy bildir</h4>
+                                        <form class="review_form">
+                                            <input type="hidden" id="company_id" name="company_id"
+                                                   value="{{ $company['id'] }}">
+                                            <input type="hidden" id="user_id" name="user_id"
+                                                   value="{{ auth('user')->user()->id }}">
+                                            <input type="hidden" name="cleanliness" id="cleanliness" value="0">
+                                            <input type="hidden" name="comfort" id="comfort" value="0">
+                                            <input type="hidden" name="staff" id="staff" value="0">
+                                            <input type="hidden" name="facilities" id="facilities" value="0">
+                                            <div class="custom_reivews row mt40 mb30">
+                                                <div class="col-lg-2 pr0">
+                                                    <div class="title">Təmizlik</div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="review_star text-right">
+                                                        <ul>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 pr0">
+                                                    <div class="title">Rahatlıq</div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="review_star text-right">
+                                                        <ul>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 pr0">
+                                                    <div class="title">Heyət</div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="review_star text-right">
+                                                        <ul>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-2 pr0">
+                                                    <div class="title">İmkanlar</div>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <div class="review_star text-right">
+                                                        <ul>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                            <li class="list-inline-item"><a href="#"><i
+                                                                        class="fa fa-star"></i></a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-2 pr0">
-                                                <div class="title">Rahatlıq</div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="review_star text-right">
-                                                    <ul>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 pr0">
-                                                <div class="title">Heyət</div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="review_star text-right">
-                                                    <ul>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 pr0">
-                                                <div class="title">İmkanlar</div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="review_star text-right">
-                                                    <ul>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                        <li class="list-inline-item"><a href="#"><i
-                                                                    class="fa fa-star"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
+                                            <div class="form-group">
                                             <textarea class="form-control" id="commit" name="commit" rows="7"
                                                       placeholder="Sənin rəyin"></textarea>
-                                            <div class="invalid-feedback d-none" id="commitError"></div>
-                                        </div>
-                                        <button type="submit" class="btn btn-thm">Göndər</button>
-                                    </form>
+                                                <div class="invalid-feedback d-none" id="commitError"></div>
+                                            </div>
+                                            <button type="submit" class="btn btn-thm">Göndər</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endif
                     </div>
                 </div>
@@ -513,17 +531,17 @@
                                 saatları {{--<small class="text-thm2 float-right">Now Open</small>--}}</h4>
                             <ul class="list_details mb0">
                                 @foreach(['Mon','Tue','Wed','Thu','Fri','Sat','Sun'] as $key => $day)
-                                        <?php
-                                        if (isset($company['time'][$day]) && $company['time'][$day] == 1)
-                                            $dateTime = '9:00 - 22:00';
-                                        elseif (isset($company['time'][$day]) && $company['time'][$day] == 2)
-                                            $dateTime = '11:00 - 6:00';
-                                        elseif (isset($company['time'][$day]) && $company['time'][$day] == 3)
-                                            $dateTime = '7 / 24';
-                                        else
-                                            $dateTime = 'Bağlı'
-                                        ?>
-                                    <li><a href="#">@lang('site.'.$day) <span class="float-right">{{ $dateTime }}</span></a></li>
+                                    @php
+                                        $type = $company['time'][$day]['hours_type'] ?? 0;
+                                        $start = $company['time'][$day]['start'] ?? '00:00';
+                                        $end = $company['time'][$day]['end'] ?? '23:59';
+                                        $date = 'Bağlı';
+                                        if ($type == 1) {
+                                            $date = $start .' - '. $end ;
+                                        }
+                                    @endphp
+                                    <li><a href="#">@lang('site.'.$day) <span class="float-right">{{$date}}</span></a>
+                                    </li>
                                 @endforeach
                             </ul>
 
@@ -533,19 +551,22 @@
                                 <div class="sidebar_contact_business_widget">
                                     <h4 class="title mb25">Rezervasiya et</h4>
                                     <form id="reservationForm">
-                                        <input type="hidden" name="company_id" id="company_id" value="{{$company['id']}}">
+                                        <input type="hidden" name="company_id" id="company_id"
+                                               value="{{$company['id']}}">
                                         <ul class="business_contact mb0">
 
                                             <li class="search_area">
                                                 <div class="form-group">
-                                                    <input type="datetime-local" class="form-control" id="date" name="date"
+                                                    <input type="datetime-local" class="form-control" id="date"
+                                                           name="date"
                                                            placeholder="Tarix">
                                                     <div class="invalid-feedback" id="dateError"></div>
                                                 </div>
                                             </li>
                                             <li class="search_area">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" id="full_name" name="full_name"
+                                                    <input type="text" class="form-control" id="full_name"
+                                                           name="full_name"
                                                            placeholder="Ad Soyad">
                                                     <div class="invalid-feedback" id="fullNameError"></div>
                                                 </div>
@@ -580,7 +601,9 @@
                                             </li>
                                             <li>
                                                 <div class="search_option_button">
-                                                    <button type="submit" id="reservationButton" class="btn btn-block btn-thm h55">Göndər</button>
+                                                    <button type="submit" id="reservationButton"
+                                                            class="btn btn-block btn-thm h55">Göndər
+                                                    </button>
                                                 </div>
                                             </li>
                                         </ul>
@@ -608,11 +631,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
-                    <p><strong>Adı:</strong> <span id="infoName"></span></p>
-                    <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
-                    <p><strong>Təsvir:</strong> <span id="infoDescription"></span></p>
-                    <img id="infoImage" src="" alt="Məhsul şəkli" class="img-fluid rounded mt-2" style="max-height: 150px;!important;">
+                    <div class="row">
+                        <div class="col-lg-4 col-xl-4">
+                            <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2"
+                                 style="max-height: 150px;!important;">
+                        </div>
+                        <div class="col-lg-6 col-xl-6">
+                            <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
+                            @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                                <p><strong>Usta:</strong> <span id="infoPerson"></span></p>
+                            @endif
+                            <p><strong>Adı:</strong> <span id="infoName"></span></p>
+                            <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
+                            <p><strong>Təsvir:</strong> <br><span id="infoDescription"></span></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -694,7 +727,7 @@
                     "featureType": 'all',
                     "elementType": 'labels',
                     "stylers": [
-                        { visibility: 'simplified' }
+                        {visibility: 'simplified'}
                     ]
                 },
                 {
@@ -770,8 +803,8 @@
                     ]
                 }
             ];
-            var myGent = new google.maps.LatLng({{$company['data']['lat'] ?? ''}},{{$company['data']['lng'] ?? ''}});
-            var Kine =  new google.maps.LatLng({{$company['data']['lat'] ?? ''}},{{$company['data']['lng'] ?? ''}});
+            var myGent = new google.maps.LatLng({{$company['data']['lat'] ?? ''}}, {{$company['data']['lng'] ?? ''}});
+            var Kine = new google.maps.LatLng({{$company['data']['lat'] ?? ''}}, {{$company['data']['lng'] ?? ''}});
             var mapOptions = {
                 zoom: 11,
                 mapTypeControl: true,
@@ -810,7 +843,25 @@
             map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
 
         }
+
         google.maps.event.addDomListener(window, 'load', initialize);
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const detailButtons = document.querySelectorAll('.viewProductDetail');
+
+            detailButtons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
+                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                    document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
+                    @endif
+                    document.getElementById('infoName').innerText = btn.getAttribute('data-name');
+                    document.getElementById('infoPrice').innerText = btn.getAttribute('data-price');
+                    document.getElementById('infoDescription').innerText = btn.getAttribute('data-description');
+                    document.getElementById('infoImage').src = btn.getAttribute('data-image');
+                });
+            });
+        });
     </script>
     @if(!empty(auth('user')->user()->id))
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -824,19 +875,6 @@
             });
         </script>
         <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const detailButtons = document.querySelectorAll('.viewProductDetail');
-
-                detailButtons.forEach(function (btn) {
-                    btn.addEventListener('click', function () {
-                        document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
-                        document.getElementById('infoName').innerText = btn.getAttribute('data-name');
-                        document.getElementById('infoPrice').innerText = btn.getAttribute('data-price');
-                        document.getElementById('infoDescription').innerText = btn.getAttribute('data-description');
-                        document.getElementById('infoImage').src = btn.getAttribute('data-image');
-                    });
-                });
-            });
             $('#reservationForm').on('submit', function (e) {
                 e.preventDefault();
                 $('.form-control').removeClass('is-invalid');
@@ -997,7 +1035,7 @@
             });
         </script>
         <script>
-        $(document).on('click', '.like-btn', function (e) {
+            $(document).on('click', '.like-btn', function (e) {
                 e.preventDefault();
 
                 const $btn = $(this);

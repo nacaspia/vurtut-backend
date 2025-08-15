@@ -2,6 +2,7 @@
     @foreach($allCompaniesByCity as $companyCity)
         <div class="col-md-6 col-lg-6">
             <div class="feat_property"{{-- style="min-height: 404px;max-height: 404px;!important;"--}}>
+
                 <div class="thumb">
                     <img class="img-whp" style="width: 100%; max-height: 164px; object-fit: contain; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$companyCity['image']) }}" alt="{{ $companyCity['full_name'] }}">
                     <div class="thmb_cntnt">
@@ -44,7 +45,7 @@
                             <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}">{{$companyCity['category']['title'][$currentLang] ?? ''}}</a></li>
                         </ul>
                         <ul class="fp_meta float-right mb0">
-                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}"><span class="flaticon-zoom"></span></a></li>
+                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}"><span class="flaticon-zoom"></span> Daha ətraflı</a></li>
                             @if(!empty(auth('user')->user()->id))
                                 <li class="list-inline-item">
                                     <a href="javascript:void(0);" class="like-btn icon"

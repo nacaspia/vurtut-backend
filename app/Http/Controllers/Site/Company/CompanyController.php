@@ -125,7 +125,7 @@ class CompanyController extends Controller
                 $parentId = $company->parent_id;
             }
 
-            if (!empty($settingsRequest->category_id)) {
+            if (!empty($settingsRequest->category_id) && empty($company->category_id)) {
                 $category = Category::where(['id' => $settingsRequest->category_id])->first();
                 $categoryId = $category->id;;
             }else {
@@ -171,6 +171,13 @@ class CompanyController extends Controller
                 'instagram' => $settingsRequest->instagram,
                 'linkedin' => $settingsRequest->linkedin,
             ];
+            $time = [];
+            foreach ($settingsRequest->hours_type as $day => $type) {
+                if ($type == 1) { // Açıq
+                    $dayHours = $settingsRequest->hours[$day] ?? ['start' => '', 'end' => ''];
+                    $time[$day] = array_merge($dayHours, ['hours_type' => $settingsRequest->hours_type[$day] ?? 0]);
+                }
+            }
             Company::where('id',$company->id)->update([
                 'parent_id' => $parentId ?? null,
                 'type' => $parentId? 'branch': 'main',
@@ -183,7 +190,7 @@ class CompanyController extends Controller
                 'text' => $settingsRequest->bio ?? '',
                 'image' => $image_name,
                 'social' => $social,
-                'time' => $settingsRequest['hours'],
+                'time' => $time,  // yalnız açıq günlərin start/end saatları
                 'service_type' => $settingsRequest['services'],
             ]);
             $log = [
