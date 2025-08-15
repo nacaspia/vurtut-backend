@@ -28,8 +28,13 @@ class HomeController extends Controller
     public function index()
     {
         $currentLang = $this->currentLang;
+        $categories = Category::
+            whereNull(['parent_id'])
+            ->with('companies')->where(['status' => 1])
+            ->orderBy('title->'.$this->currentLang,'ASC')->get();
         $mainCategories = Category::
             whereNull(['parent_id'])
+            ->whereHas('companiesIsPremium') // yalnız premium elanları olanları gətirir
             ->with('companies','companiesIsPremium')->where(['status' => 1])
             ->orderBy('title->'.$this->currentLang,'ASC')->get();
 

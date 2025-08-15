@@ -40,8 +40,8 @@
                                                             <div class="select-wrap style2-dropdown">
                                                                 <select name="category_id" class="form-control js-searchBox2">
                                                                     <option value="">Müəssisə kateqoriyası</option>
-                                                                    @if(!empty($mainCategories[0]))
-                                                                        @foreach($mainCategories as $category)
+                                                                    @if(!empty($categories[0]))
+                                                                        @foreach($categories as $category)
                                                                             <option value="{{$category['id']}}">{{$category['title'][$currentLang]}}</option>
                                                                         @endforeach
                                                                     @endif
@@ -121,6 +121,8 @@
         </div>
     </section>
 
+
+    @if(!empty($allCompaniesIsPremium[0]))
     <section class="bgc-f4">
         <div class="container">
             <div class="row justify-content-center">
@@ -293,6 +295,7 @@
             </div>
         </div>
     </section>
+    @endif
 
     <!-- Kommentə aldım burayı hələlik
     <section id="why-chose" class="whychose_us pb70">
@@ -370,77 +373,77 @@
         </div>
     </section> -->
 
-    <section class="our-blog bgc-f4 pb70">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offset-lg-3">
-                    <div class="main-title text-center">
-                        <h2>Ən son yeniliklər və anonslar</h2>
-                        <p>Biz daima yenilənirik – yeni funksiyalar, təkmilləşdirilmiş dizayn və daha çox!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 col-xl-4">
-                    <div class="for_blog feat_property">
-                        <div class="thumb">
-                            <img class="img-whp" src="{{ asset("site/images/blog/1.jpg") }}" alt="1.jpg">
-                            <div class="tag bgc-thm2"><a class="text-white" href="#">Təqdimat çarxı</a></div>
-                        </div>
-                        <div class="details">
-                            <div class="tc_content">
-                                <div class="bp_meta">
-                                    <ul>
-                                        <li class="list-inline-item"><a href="https://nacaspia.com"><span class="flaticon-avatar mr10"></span>NACaspia Information Technologies</a></li>
-                                        <li class="list-inline-item"><a href="#"><span class="flaticon-date mr10"></span> 01 Oktyabr, 2025</a></li>
-                                    </ul>
-                                </div>
-                                <h4>Vurtut.com - Gələcəyin platforması</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-4">
-                    <div class="for_blog feat_property">
-                        <div class="thumb">
-                            <img class="img-whp" src="{{ asset("site/images/blog/1.jpg") }}" alt="2.jpg">
-                            <div class="tag bgc-thm2"><a class="text-white" href="#">Yeni funksiya</a></div>
-                        </div>
-                        <div class="details">
-                            <div class="tc_content">
-                                <div class="bp_meta">
-                                    <ul>
-                                        <li class="list-inline-item"><a href="https://nacaspia.com"><span class="flaticon-avatar mr10"></span>NACaspia Information Technologies</a></li>
-                                        <li class="list-inline-item"><a href="#"><span class="flaticon-date mr10"></span> 01 Dekabr, 2025</a></li>
-                                    </ul>
-                                </div>
-                                <h4>Rezervasiya - funksiyası Vurtut-la daha rahat!</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-4">
-                    <div class="for_blog feat_property">
-                        <div class="thumb">
-                            <img class="img-whp" src="{{ asset("site/images/blog/1.jpg") }}" alt="3.jpg">
-                            <div class="tag bgc-thm2"><a class="text-white" href="#">Anons</a></div>
-                        </div>
-                        <div class="details">
-                            <div class="tc_content">
-                                <div class="bp_meta">
-                                    <ul>
-                                        <li class="list-inline-item"><a href="https://nacaspia.com"><span class="flaticon-avatar mr10"></span>NACaspia Information Technologies</a></li>
-                                        <li class="list-inline-item"><a href="#"><span class="flaticon-date mr10"></span> 07 Dekabr, 2025</a></li>
-                                    </ul>
-                                </div>
-                                <h4>Canlı sifariş xidməti - 2026 ilə birlikdə gəlir!</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section class="our-blog bgc-f4 pb70">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-6 offset-lg-3">--}}
+{{--                    <div class="main-title text-center">--}}
+{{--                        <h2>Ən son yeniliklər və anonslar</h2>--}}
+{{--                        <p>Biz daima yenilənirik – yeni funksiyalar, təkmilləşdirilmiş dizayn və daha çox!</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-md-6 col-lg-4 col-xl-4">--}}
+{{--                    <div class="for_blog feat_property">--}}
+{{--                        <div class="thumb">--}}
+{{--                            <img class="img-whp" src="{{ asset("site/images/blog/1.jpg") }}" alt="1.jpg">--}}
+{{--                            <div class="tag bgc-thm2"><a class="text-white" href="#">Təqdimat çarxı</a></div>--}}
+{{--                        </div>--}}
+{{--                        <div class="details">--}}
+{{--                            <div class="tc_content">--}}
+{{--                                <div class="bp_meta">--}}
+{{--                                    <ul>--}}
+{{--                                        <li class="list-inline-item"><a href="https://nacaspia.com"><span class="flaticon-avatar mr10"></span>NACaspia Information Technologies</a></li>--}}
+{{--                                        <li class="list-inline-item"><a href="#"><span class="flaticon-date mr10"></span> 01 Oktyabr, 2025</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                                <h4>Vurtut.com - Gələcəyin platforması</h4>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-6 col-lg-4 col-xl-4">--}}
+{{--                    <div class="for_blog feat_property">--}}
+{{--                        <div class="thumb">--}}
+{{--                            <img class="img-whp" src="{{ asset("site/images/blog/1.jpg") }}" alt="2.jpg">--}}
+{{--                            <div class="tag bgc-thm2"><a class="text-white" href="#">Yeni funksiya</a></div>--}}
+{{--                        </div>--}}
+{{--                        <div class="details">--}}
+{{--                            <div class="tc_content">--}}
+{{--                                <div class="bp_meta">--}}
+{{--                                    <ul>--}}
+{{--                                        <li class="list-inline-item"><a href="https://nacaspia.com"><span class="flaticon-avatar mr10"></span>NACaspia Information Technologies</a></li>--}}
+{{--                                        <li class="list-inline-item"><a href="#"><span class="flaticon-date mr10"></span> 01 Dekabr, 2025</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                                <h4>Rezervasiya - funksiyası Vurtut-la daha rahat!</h4>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-6 col-lg-4 col-xl-4">--}}
+{{--                    <div class="for_blog feat_property">--}}
+{{--                        <div class="thumb">--}}
+{{--                            <img class="img-whp" src="{{ asset("site/images/blog/1.jpg") }}" alt="3.jpg">--}}
+{{--                            <div class="tag bgc-thm2"><a class="text-white" href="#">Anons</a></div>--}}
+{{--                        </div>--}}
+{{--                        <div class="details">--}}
+{{--                            <div class="tc_content">--}}
+{{--                                <div class="bp_meta">--}}
+{{--                                    <ul>--}}
+{{--                                        <li class="list-inline-item"><a href="https://nacaspia.com"><span class="flaticon-avatar mr10"></span>NACaspia Information Technologies</a></li>--}}
+{{--                                        <li class="list-inline-item"><a href="#"><span class="flaticon-date mr10"></span> 07 Dekabr, 2025</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                                <h4>Canlı sifariş xidməti - 2026 ilə birlikdə gəlir!</h4>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
     <!-- Kommentə aldım burayı hələlik
     <section class="our-pricing pb70">
@@ -532,7 +535,7 @@
             </div>
         </div>
     </section>-->
-    <section class="divider bg-img5 parallax" data-stellar-background-ratio="0.2">
+    <section class="divider bg-img5 parallax" data-stellar-background-ratio="0.2" style="background-position: 100% -715.433px">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
