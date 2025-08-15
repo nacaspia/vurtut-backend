@@ -132,7 +132,7 @@ class ServicesController extends Controller
             $companyService->description = $servicesRequest->description;
             $companyService->price = $servicesRequest->price;
             $companyService->image = $image_name ?? null;
-            $companyService->status = 0;
+            $companyService->status = 1;
             $companyService->save();
 
             $log = [

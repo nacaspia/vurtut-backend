@@ -79,7 +79,7 @@ class CompanyPersonsController extends Controller
             $companyPerson->experience = $companyPersonsRequest->experience;
             $companyPerson->text = $companyPersonsRequest->description;
             $companyPerson->image = $image_name ?? null;
-            $companyPerson->status = 0;
+            $companyPerson->status = 1;
             $companyPerson->save();
 
             $log = [
