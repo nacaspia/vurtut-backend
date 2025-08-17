@@ -65,7 +65,7 @@ Route::prefix('/company')->middleware('company')->group(function () {
     Route::put('/reservation-update/{id}', 'Company\CompanyController@reservationUpdate')->name('company.reservationUpdate');
 
     //premium hesab
-    Route::post('/premiumRedirectToBank', 'Company\PremiumController@redirectToBank')->name('company.premium.redirectToBank');
+    Route::get('/premiumRedirectToBank', 'Company\PremiumController@redirectToBank')->name('company.premium.redirectToBank');
     Route::post('/premiumPaymentCallback', 'Company\PremiumController@paymentCallback')->name('company.premium.paymentCallback');
 
     //ajax
