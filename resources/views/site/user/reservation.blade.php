@@ -65,7 +65,7 @@
                                         <img class="img-fluid" style="max-width: 64px;!important;" src="{{ !empty($company->image)? asset("uploads/company/".$company->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="author2.png">
                                         <div class="meta">
                                             <h5 class="name">{{ $company['full_name'] }}</h5>
-                                            <p class="preview">Sorğu göndərilmə tarixi: {{ $company['userReservation']->first()?->date ?? 'Məlumat yoxdur' }}</p>
+                                            <p class="preview">Sorğu göndərilmə tarixi: {{ $company['userReservation']->first()?->created_at ?? 'Məlumat yoxdur' }}</p>
                                         </div>
                                     </div>
                                 </div>

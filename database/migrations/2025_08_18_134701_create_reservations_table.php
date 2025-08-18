@@ -15,10 +15,10 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('company_id');
-            $table->foreign('company_id')->references('id')->on('companies');
+            $table->index('company_id');
+            $table->foreignId('company_id')->constrained('companies')->onDelete('cascade');
+            $table->index('user_id');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->dateTime('date');
             $table->string('full_name',255);
             $table->string('phone',13);

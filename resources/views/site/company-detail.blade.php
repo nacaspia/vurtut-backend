@@ -192,8 +192,13 @@
                                             @if(in_array($serviceType->id, $company['service_type']))
                                                 <div class="col-md-6 col-lg-6 col-xl-4 pl0 pr0 pl15-767">
                                                     <div class="listing_feature_iconbox mb30">
-                                                        <div class="icon float-left mr10"><span
-                                                                class="flaticon-credit-card"></span></div>
+                                                        <div class="icon float-left mr10">
+                                                            @if(!empty($serviceType['icon']))
+                                                                {!! $serviceType['icon'] !!}
+                                                            @else
+                                                                <span class="flaticon-credit-card"></span>
+                                                            @endif
+                                                        </div>
                                                         <div class="details">
                                                             <div
                                                                 class="title">{{ $serviceType['name'][$currentLang] }}</div>
@@ -252,15 +257,17 @@
                                                                             data-toggle="modal"
                                                                             data-target="#productInfoModal"
                                                                             data-category="{{$service['subCategory']['title'][$currentLang]}}"
-                                                                            data-person="{{$service['person']['name'] ?? null}}"
-                                                                            data-name="{{$service['title']}}"
-                                                                            data-price="{{$service['price']}}"
+                                                                            @if(!empty($service['person']))
+                                                                                data-person-image="{{ asset('uploads/company-persons/'.$service['person']['image']) }}"
+                                                                                data-person="{{$service['person']['name'] ?? null}}"
+                                                                                data-age="{{$service['person']['age'] ?? ''}}"
+                                                                                data-experience="{{$service['person']['experience'] ?? null}}"
+                                                                                data-person-description="{{$service['person']['description'] ?? null}}"
+                                                                            @endif
+                                                                            data-name="{{$service['title']}}" data-price="{{$service['price']}}"
                                                                             data-description="{{$service['description']}}"
-                                                                            data-image="{{ asset('uploads/company-services/'.$service['image']) }}"
-                                                                            data-age="{{$service['person']['age'] ?? ''}}"
-                                                                            data-experience="{{$service['person']['experience'] ?? null}}"
-                                                                            data-person-description="{{$service['person']['description'] ?? null}}">
-                                                                            <span class="flaticon-view"></span>
+                                                                            data-image="{{ asset('uploads/company-services/'.$service['image']) }}">
+                                                                            <span class="flaticon-view"></span> Ətraflı
                                                                             Ətraflı
                                                                         </button>
                                                                     </div>
@@ -638,6 +645,8 @@
                         <div class="col-lg-4 col-xl-4">
                             <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2"
                                  style="max-height: 150px;!important;">
+                            <img id="infoPersonImage" src="" alt="Şəkli" class="img-fluid rounded mt-2"
+                                 style="max-height: 150px;!important;">
                         </div>
                         <div class="col-lg-6 col-xl-6">
                             <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
@@ -859,6 +868,7 @@
                 btn.addEventListener('click', function () {
                     document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
                     @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                    document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image');
                     document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
                     document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age');
                     document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience');

@@ -29,9 +29,16 @@
                 </div>
 
                 <div class="col-lg-6 d-flex justify-content-end">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productAddModal" style="border-radius:12px;">
-                        + Əlavə et
-                    </button>
+                    <div class="col-lg-3" style="left: 52px;!important;">
+                        <a href="{{ route("site.company-services.index") }}" class="btn btn-success"  style="border-radius:12px;">
+                             Geri
+                        </a>
+                    </div>
+                    <div class="col-lg-3">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productAddModal" style="border-radius:12px;">
+                            + Əlavə et
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

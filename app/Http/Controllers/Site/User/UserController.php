@@ -282,6 +282,9 @@ class UserController extends Controller
         ]);
 
         try {
+            // Məsələn: User modeli
+            $userTimezone = $this->user->timezone ?? config('app.timezone');
+
             $reservation = new Reservation();
             $reservation->company_id = $request->company_id;
             $reservation->user_id = $this->user->id;
@@ -291,6 +294,7 @@ class UserController extends Controller
             $reservation->place_count = $request->place_count ?? 0;
             $reservation->person_count = $request->person_count;
             $reservation->text = $request->text;
+            $reservation->created_at = date('Y-m-d H:i:s',strtotime($userTimezone));;
             $reservation->save();
 //            broadcast(new ReservationCreated($reservation));
             $log = [
@@ -329,6 +333,8 @@ class UserController extends Controller
         ]);
 
         try {
+            // Məsələn: User modeli
+            $userTimezone = $this->user->timezone ?? config('app.timezone');
             $companyCommit = new CompanyCommit();
             $companyCommit->company_id = $request->company_id;
             $companyCommit->user_id = $this->user->id;
@@ -337,6 +343,7 @@ class UserController extends Controller
             $companyCommit->staf = $request->staff ?? 0;
             $companyCommit->facilities = $request->facilities ?? 0;
             $companyCommit->comment = $request->commit;
+            $companyCommit->created_at = date('Y-m-d H:i:s',strtotime($userTimezone));
             $companyCommit->save();
 
             $log = [

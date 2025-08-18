@@ -3,7 +3,6 @@
 
 @endsection
 @section('company.content')
-
     <!-- Hazirdi -->
     <section class="our-shop pb80">
         <div class="container">
@@ -11,7 +10,7 @@
                 @include('site.company.layouts.mobile-menu')
                 <div class="col-lg-6">
                     <div class="breadcrumb_content style2 mb20">
-                        <h2 class="breadcrumb_title">{{ $mainCompaniesCategory[0]['title'][$currentLang] ?? 'Xidmətlər və Məhsullar' }}</h2>
+                        <h2 class="breadcrumb_title">Kataloq{{--{{ $mainCompaniesCategory[0]['title'][$currentLang] ?? 'Xidmətlər və Məhsullar' }}--}}</h2>
                     </div>
                 </div>
             </div>
@@ -19,9 +18,9 @@
 {{--                <form action="" method="GET">--}}
                 <div class="col-lg-3">
                     <div class="my_profile_setting_input ui_kit_select_search form-group">
-                        <label>Kateqoriya</label>
+                        <label>Kataloq</label>
                         <select class="form-control" id="filter_sub_category_id" name="filter_sub_category_id" data-width="100%">
-                            <option value="">Kateqoriya seç</option>
+                            <option value="">Bütün xidmətlər</option>
                             @if(!empty($subCompaniesCategory[0]))
                                 @foreach($subCompaniesCategory as $subCategory)
                                     <option value="{{$subCategory['id']}}">{{ $subCategory['title'][$currentLang] }}</option>
@@ -31,11 +30,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
-                        <a href="{{ route("site.company-persons.index") }}" class="btn btn-success"  style="border-radius:12px;">
-                            <span class="flaticon-view"></span> Ustalar
-                        </a>
-                    @endif
+
                     {{--<div class="my_profile_setting_input ui_kit_select_search form-group">
                         <label>Əsas Kateqoriya</label>
                         <select class="form-control"  id="filter_category_id" name="filter_category_id" data-width="100%">
@@ -48,22 +43,26 @@
                         </select>
                     </div>--}}
                 </div>
-{{--                <div class="col-lg-2">--}}
-{{--                    <button type="submit" class="btn btn-success">--}}
-{{--                         Filtr et--}}
-{{--                    </button>--}}
-{{--                </div>--}}
+
 {{--                </form>--}}
                 <div class="col-lg-6 d-flex justify-content-end">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productAddModal" style="border-radius:12px;">
-                        + Əlavə et
-                    </button>
+                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                    <div class="col-lg-3" style="left: 52px;!important;">
+                            <a href="{{ route("site.company-persons.index") }}" class="btn btn-success"  style="border-radius:12px;">
+                                <span class="flaticon-view"></span> Ustalar
+                            </a>
+                    </div>
+                    @endif
+                    <div class="col-lg-3">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productAddModal" style="border-radius:12px;">
+                            + Əlavə et
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row mx-auto" id="services-wrapper" style="max-width: 1170px;">
             @include('site.company.services.ajax')
-
         </div>
         <div class="row">
             <div class="col-lg-12" id="pagination-wrapper">
@@ -171,6 +170,7 @@
                         <div class="row">
                             <div class="col-lg-4 col-xl-4">
                                 <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2" style="max-height: 150px;!important;">
+                                <img id="infoPersonImage" src="" alt="Şəkli" class="img-fluid rounded mt-2" style="max-height: 150px;!important;">
                             </div>
                             <div class="col-lg-6 col-xl-6">
                                 <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
@@ -333,6 +333,7 @@
                 btn.addEventListener('click', function () {
                     document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
                     @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                    document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image');
                     document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
                     document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age');
                     document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience');
