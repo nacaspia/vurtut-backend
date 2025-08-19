@@ -893,7 +893,8 @@
             flatpickr("#date", {
                 enableTime: true,
                 dateFormat: "Y-m-d H:i",
-                time_24hr: true
+                time_24hr: true,
+                minDate: "today" // bu tarixdən gerisini seçmək olmur
             });
         </script>
         <script>
