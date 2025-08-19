@@ -24,13 +24,16 @@ class ServicesRequest extends FormRequest
      */
     public function rules()
     {
+        $isCreate = $this->isMethod('post');
         return [
+            'image' => $isCreate
+                ? 'required|mimes:jpeg,png,jpg,gif,svg'
+                : 'nullable',
             'category_id' => 'required',
             'sub_category_id' => 'required',
             'product_name' => 'required',
             'price' => 'required',
-            'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'description' => 'required'
         ];
     }
 

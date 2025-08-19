@@ -14,7 +14,9 @@
                 </div>
                 <div class="stat-row col-lg-2 col-md-4 col-sm-6 mb-4">
                     <div class="stat-card">
-                        <div class="icon"><span class="flaticon-list"></span></div>
+                        <div class="icon">
+                            <i class="fa fa-street-view"></i>
+                        </div>
                         <div class="detais">
                             <div class="timer">{{ $company['reads'] }}</div>
                             <p>Ziyarət edənlər</p>
@@ -23,7 +25,9 @@
                 </div>
                 <div class="statt-row col-lg-2 col-md-4 col-sm-6 mb-4">
                     <div class="stat-card">
-                        <div class="icon"><span class="flaticon-note"></span></div>
+                        <div class="icon">
+                            <i class="fa fa-comment"></i>
+                        </div>
                         <div class="detais">
                             <div class="timer">{{ count($company['comments']) }}</div>
                             <p>Rəy və reytinq</p>
@@ -32,7 +36,9 @@
                 </div>
                 <div class="stat-row col-lg-2 col-md-4 col-sm-6 mb-4">
                     <div class="stat-card">
-                        <div class="icon"><span class="flaticon-chat"></span></div>
+                        <div class="icon">
+                            <i class="fa fa-calendar-check-o"></i>
+                        </div>
                         <div class="detais">
                             <div class="timer">{{ count($company['companyReservation']) }}</div>
                             <p>Rezervasiyalar</p>
@@ -41,7 +47,9 @@
                 </div>
                 <div class="stat-row col-lg-2 col-md-4 col-sm-6 mb-4">
                     <div class="stat-card">
-                        <div class="icon"><span class="flaticon-love"></span></div>
+                        <div class="icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
                         <div class="detais">
                             <div class="timer">{{ $company['like'] ?? 0 }}</div>
                             <p>Sevənlər</p>
@@ -50,7 +58,9 @@
                 </div>
                 <div class="stat-row col-lg-2 col-md-4 col-sm-6 mb-4">
                     <div class="stat-card">
-                        <div class="icon"><span class="flaticon-chat"></span></div>
+                        <div class="icon">
+                            <i class="fa fa-share"></i>
+                        </div>
                         <div class="detais">
                             <div class="timer">{{ $company['share'] }}</div>
                             <p>Paylaşımlar</p>
@@ -59,7 +69,9 @@
                 </div>
                 <div class="stat-row col-lg-2 col-md-4 col-sm-6 mb-4">
                     <div class="stat-card">
-                        <div class="icon"><span class="flaticon-chat"></span></div>
+                        <div class="icon">
+                            <i class="fa fa-building"></i>
+                        </div>
                         <div class="detais">
                             <div class="timer">{{ count($company['parent']) }}</div>
                             <p>Filiallar</p>

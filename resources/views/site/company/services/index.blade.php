@@ -3,7 +3,6 @@
 
 @endsection
 @section('company.content')
-
     <!-- Hazirdi -->
     <section class="our-shop pb80">
         <div class="container">
@@ -11,7 +10,7 @@
                 @include('site.company.layouts.mobile-menu')
                 <div class="col-lg-6">
                     <div class="breadcrumb_content style2 mb20">
-                        <h2 class="breadcrumb_title">{{ $mainCompaniesCategory[0]['title'][$currentLang] ?? 'Xidmətlər və Məhsullar' }}</h2>
+                        <h2 class="breadcrumb_title">Kataloq{{--{{ $mainCompaniesCategory[0]['title'][$currentLang] ?? 'Xidmətlər və Məhsullar' }}--}}</h2>
                     </div>
                 </div>
             </div>
@@ -19,9 +18,9 @@
 {{--                <form action="" method="GET">--}}
                 <div class="col-lg-3">
                     <div class="my_profile_setting_input ui_kit_select_search form-group">
-                        <label>Kateqoriya</label>
+                        <label>Kataloq</label>
                         <select class="form-control" id="filter_sub_category_id" name="filter_sub_category_id" data-width="100%">
-                            <option value="">Kateqoriya seç</option>
+                            <option value="">Bütün xidmətlər</option>
                             @if(!empty($subCompaniesCategory[0]))
                                 @foreach($subCompaniesCategory as $subCategory)
                                     <option value="{{$subCategory['id']}}">{{ $subCategory['title'][$currentLang] }}</option>
@@ -31,11 +30,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
-                        <a href="{{ route("site.company-persons.index") }}" class="btn btn-success"  style="border-radius:12px;">
-                            <span class="flaticon-view"></span> Ustalar
-                        </a>
-                    @endif
+
                     {{--<div class="my_profile_setting_input ui_kit_select_search form-group">
                         <label>Əsas Kateqoriya</label>
                         <select class="form-control"  id="filter_category_id" name="filter_category_id" data-width="100%">
@@ -48,22 +43,26 @@
                         </select>
                     </div>--}}
                 </div>
-{{--                <div class="col-lg-2">--}}
-{{--                    <button type="submit" class="btn btn-success">--}}
-{{--                         Filtr et--}}
-{{--                    </button>--}}
-{{--                </div>--}}
+
 {{--                </form>--}}
                 <div class="col-lg-6 d-flex justify-content-end">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productAddModal" style="border-radius:12px;">
-                        + Əlavə et
-                    </button>
+                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                    <div class="col-lg-3" style="left: 28px;!important;">
+                            <a href="{{ route("site.company-persons.index") }}" class="btn btn-success"  style="border-radius:12px;">
+                                <span class="flaticon-view"></span> Ustalar
+                            </a>
+                    </div>
+                    @endif
+                    <div class="col-lg-3">
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#productAddModal" style="border-radius:12px;">
+                            + Əlavə et
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="row mx-auto" id="services-wrapper" style="max-width: 1170px;">
             @include('site.company.services.ajax')
-
         </div>
         <div class="row">
             <div class="col-lg-12" id="pagination-wrapper">
@@ -158,37 +157,6 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="productInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document" style="max-width: 500px;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Məlumat</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-lg-4 col-xl-4">
-                                <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2" style="max-height: 150px;!important;">
-                            </div>
-                            <div class="col-lg-6 col-xl-6">
-                                <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
-                                <p><strong>Xidmətin Adı:</strong> <span id="infoName"></span></p>
-                                <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
-                                <p><strong>Xidmətin Təsvir:</strong> <br><span id="infoDescription"></span></p>
-                                @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
-                                    <p><strong>Ustanın Adı:</strong> <span id="infoPerson"></span></p>
-                                    <p><strong>Ustanın Yaşı:</strong> <span id="infoPersonAge"></span></p>
-                                    <p><strong>Ustanın Təcrübəsi:</strong> <span id="infoPersonExperience"></span></p>
-                                    <p><strong>Ətraflı məlumat:</strong> <span id="infoPersonDescription"></span></p>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <div class="settings_modal modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
@@ -206,6 +174,8 @@
                                 <div class="login_form">
                                     <div class="text-danger text-center mt-2" id="generalError" style="font-weight: bold;!important;"></div>
                                     <div class="text-success text-center mt-2" id="generalSuccess" style="font-weight: bold;!important;"></div>
+                                    <div class="text-danger text-center mt-2" id="editgeneralError" style="font-weight: bold;!important;"></div>
+                                    <div class="text-success text-center mt-2" id="editgeneralSuccess" style="font-weight: bold;!important;"></div>
                                 </div>
                             </div>
                         </div>
@@ -333,6 +303,7 @@
                 btn.addEventListener('click', function () {
                     document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
                     @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                    document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image');
                     document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
                     document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age');
                     document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience');
@@ -345,7 +316,6 @@
                 });
             });
         });
-
 
         $('#productForm').on('submit', function (e) {
             e.preventDefault();
@@ -416,6 +386,86 @@
                         $('.settings_modal').modal('show'); // modalı göstər
                     }
                 }
+            });
+        });
+        $(document).ready(function() {
+            $('form[id^="productEditForm"]').each(function() {
+                let form = $(this);
+                let editId = form.find('input[type="hidden"]').val();
+
+                form.on('submit', function(e) {
+                    e.preventDefault();
+                    $('.form-control').removeClass('is-invalid');
+                    $('#editcategoryError, #editsubCategoryError, #editproductNameError, #editpriceError, #editimageError, #editdescriptionError, #editgeneralError, #editgeneralSuccess').text('');
+                    let formData = new FormData();
+                    formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+                    formData.append('_method', 'PUT'); // Laravel PUT istəklər üçün
+                    $('#serviceButton').prop('disabled', false).html('Gözləyin...');
+                    formData.append('category_id', $('#edit_category_id').val());
+                    formData.append('sub_category_id', $('#edit_sub_category_id').val());
+                    formData.append('product_name', $('#edit_product_name').val());
+                    formData.append('price', $('#edit_price').val());
+                    formData.append('image', $('#edit_image')[0].files[0]);
+                    formData.append('description', $('#edit_description').val());
+                    formData.append('person_id', $('#edit_person_id').val());
+                    $.ajax({
+                        url: '/company/company-services/' + editId,
+                        method: 'POST', // PUT üçün method POST olacaq, çünki FormData PUT-u dəstəkləmir
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function (response) {
+                            if (response.success) {
+                                $('#editgeneralSuccess').text(response.message);
+                                $('.settings_modal').modal('show'); // modalı göstər
+                                // window.location.reload();
+                                $('.settings_modal .close').on('click', function () {
+                                    location.reload();
+                                });
+
+                            }
+                        },
+                        error: function (xhr) {
+                            $('#serviceButton').prop('disabled', false).html('Yadda saxla');
+                            if (xhr.status === 422) {
+                                const res = xhr.responseJSON;
+                                if (res.errors) {
+                                    if (res.errors.category_id) {
+                                        $('#edit_category_id').addClass('is-invalid');
+                                        $('#editcategoryError').removeClass('d-none').addClass('d-block').text(res.errors.category_id[0]);
+                                    }
+                                    if (res.errors.sub_category_id) {
+                                        $('#edit_sub_category_id').addClass('is-invalid');
+                                        $('edit#subCategoryError').removeClass('d-none').addClass('d-block').text(res.errors.sub_category_id[0]);
+                                    }
+                                    if (res.errors.product_name) {
+                                        $('#edit_product_name').addClass('is-invalid');
+                                        $('#editproductNameError').removeClass('d-none').addClass('d-block').text(res.errors.product_name[0]);
+                                    }
+                                    if (res.errors.price) {
+                                        $('#edit_price').addClass('is-invalid');
+                                        $('#editpriceError').removeClass('d-none').addClass('d-block').text(res.errors.price[0]);
+                                    }
+                                    if (res.errors.description) {
+                                        $('#edit_description').addClass('is-invalid');
+                                        $('#editdescriptionError').removeClass('d-none').addClass('d-block').text(res.errors.description[0]);
+                                    }
+                                    if (res.errors.image) {
+                                        $('#edit_image').addClass('is-invalid');
+                                        $('#editimageError').removeClass('d-none').addClass('d-block').text(res.errors.image[0]);
+                                    }
+
+                                } else if (res.message) {
+                                    $('#editgeneralError').removeClass('d-none').addClass('d-block').text(res.message);
+                                    $('.settings_modal').modal('show'); // modalı göstər
+                                }
+                            } else {
+                                $('#editgeneralError').removeClass('d-none').addClass('d-block').text('Naməlum xəta baş verdi.');
+                                $('.settings_modal').modal('show'); // modalı göstər
+                            }
+                        }
+                    });
+                });
             });
         });
     </script>

@@ -139,7 +139,13 @@
                                             @if(in_array($serviceType->id, $company['service_type']))
                                             <div class="col-md-6 col-lg-6 col-xl-4 pl0 pr0 pl15-767">
                                                 <div class="listing_feature_iconbox mb30">
-                                                    <div class="icon float-left mr10"><span class="flaticon-credit-card"></span></div>
+                                                    <div class="icon float-left mr10">
+                                                        @if(!empty($serviceType['icon']))
+                                                            {!! $serviceType['icon'] !!}
+                                                        @else
+                                                            <span class="flaticon-credit-card"></span>
+                                                        @endif
+                                                    </div>
                                                     <div class="details">
                                                         <div class="title">{{ $serviceType['name'][$currentLang] }}</div>
                                                     </div>

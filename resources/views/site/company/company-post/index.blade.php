@@ -2,72 +2,103 @@
 @section('company.css')
     <link rel="stylesheet" href="{{ asset("site/css/bootstrap.min.css") }}">
     <style>
-        #imageLabel {
-            transition: transform 0.3s ease;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            display: block;
+        .upload-card {
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
         }
-        @media only screen and (max-width: 500px) {
-            .wrap-custom-file label span, .wrap-custom-file label.file-ok span {
-                display: block;
-                left: 0;
-                position: relative;
-                top: 7px;!important;
-                width: 129px;!important;
-            }
+        .upload-card:hover {
+            border-color: #007bff;
+            background: #f9f9f9;
+            cursor: pointer;
         }
+        .upload-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #888;
+        }
+        .upload-placeholder i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .preview-box {
+            width: 100%;
+            aspect-ratio: 1/1; /* Kvadrat saxlamaq üçün */
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .preview-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
     </style>
 @endsection
 @section('company.content')
     <!-- About Text Content -->
-    <section class="about-section pb70">
+    <section class="about-section">
         <div class="container">
             <div class="row">
                 @include('site.company.layouts.mobile-menu')
-                <div class="col-lg-12 mb15">
-                    <div class="breadcrumb_content style2">
-                        <h2 class="breadcrumb_title float-left">Qalereya</h2>
-                    </div>
-                </div>
-                @if(count($companyPosts) <6)
-                <div class="col-xl-12">
-                    <div class="my_dashboard_review mt30">
-                        <form id="companyPost" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="wrap-custom-file mb50">
-                                        <input type="file"  class="form-control"  name="image" id="image" accept=".gif, .jpg, .png" hidden />
-                                        <label for="image" class="custom-file-label" id="imageLabel" style="border-radius: 0%;  height: 150px; width: 150px;!important;">
-                                            <span style="left: 163px;!important;">Şəkil yüklə</span>
-                                        </label>
-                                        <div id="previewContainer" style="margin-top: 10px; display: none;">
-                                            <img id="imagePreview" src="#" alt="Şəkil" style="max-width: 200px; display: block; margin-bottom: 10px;" />
-                                            <div style="display: flex; gap: 10px;width: 123%;">
-                                                <button type="button" id="removeImage" class="btn btn-danger btn-sm">Sil</button>
-                                                <button type="submit" id="saveImage" class="btn btn-success btn-sm">Yadda saxla</button>
-                                            </div>
-                                        </div>
-                                        <div class="invalid-feedback" id="imageError"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                @endif
+{{--                <div class="col-lg-12 mb15">--}}
+{{--                    <div class="breadcrumb_content style2">--}}
+{{--                        <h2 class="breadcrumb_title float-left">Qalereya</h2>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </section>
 
-    <section class="about-section pb70">
+    <section class="about-section">
         <div class="container">
             <div class="row">
+                @if(count($companyPosts) <6)
+                    <div class="col-sm-6 col-md-6 col-lg-4 post-image-card">
+                        <div class="my_dashboard_review" style="padding: 62px;!important;">
+                            <form id="companyPost" enctype="multipart/form-data" class="upload-card">
+                                @csrf
+                                <label for="image" class="upload-label" id="uploadLabel">
+                                    <div class="upload-placeholder">
+                                        <i class="fa fa-plus"></i>
+                                        <span>Şəkil yüklə</span>
+                                    </div>
+                                </label>
+
+                                <input type="file" class="d-none" name="image" id="image" accept="image/*">
+
+                                <div id="previewContainer" class="text-center mt-3" style="display: none;">
+                                    <img id="imagePreview" src="#" alt="Şəkil"
+                                         class="rounded mb-2"
+                                         style="max-width: 200px; max-height: 200px; object-fit: cover; border-radius: 8px;">
+
+                                    <!-- Sil düyməsi (sol yuxarıda) -->
+                                    <button type="button" id="removeImage"
+                                            class="btn btn-sm btn-danger"
+                                            style="position: absolute; top: 8px; left: 28px; z-index: 5;">
+                                        Sil
+                                    </button>
+
+                                    <!-- Yadda saxla düyməsi (sağ yuxarıda) -->
+                                    <button type="submit" id="saveImage"
+                                            class="btn btn-sm btn-success"
+                                            style="position: absolute; top: 8px; right: 26px; z-index: 5;">
+                                        Yadda saxla
+                                    </button>
+                                </div>
+
+                                <div class="invalid-feedback" id="imageError"></div>
+                            </form>
+
+                        </div>
+                    </div>
+                @endif
                 @if(!empty($companyPosts[0]))
                     @foreach($companyPosts as $post)
                         <div class="col-sm-6 col-md-6 col-lg-4 post-image-card" data-id="{{ $post->id }}">
@@ -113,7 +144,36 @@
     </div>
 @endsection
 @section('company.js')
-<script>
+    <script>
+        document.getElementById('image').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            const previewContainer = document.getElementById('previewContainer');
+            const imagePreview = document.getElementById('imagePreview');
+            const uploadLabel = document.getElementById('uploadLabel');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;
+                    previewContainer.style.display = 'block';
+                    uploadLabel.style.display = 'none'; // + şəkil yüklə gizlənir
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Sil düyməsi
+        document.getElementById('removeImage').addEventListener('click', function () {
+            const previewContainer = document.getElementById('previewContainer');
+            const uploadLabel = document.getElementById('uploadLabel');
+            const imageInput = document.getElementById('image');
+
+            imageInput.value = '';
+            previewContainer.style.display = 'none';
+            uploadLabel.style.display = 'block'; // + şəkil yüklə geri gəlir
+        });
+    </script>
+    <script>
     document.addEventListener('DOMContentLoaded', function () {
         const imageInput = document.getElementById('image');
         const preview = document.getElementById('imagePreview');

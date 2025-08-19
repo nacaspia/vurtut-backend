@@ -55,7 +55,15 @@
 .flaticon-web-page:before { content: "\f11b"; }
 .flaticon-list:before { content: "\f11c"; }
 .flaticon-note:before { content: "\f11d"; }
-.flaticon-edit:before { content: "\f11e"; }
+    .flaticon-photo:before { content: "\f120"; }
+    .flaticon-gallery:before { content: "\f121"; }
+    .flaticon-image:before { content: "\f122"; }
+
+    .flaticon-bar-chart:before { content: "\f123"; }
+    .flaticon-analytics:before { content: "\f124"; }
+    .flaticon-growth:before { content: "\f125"; }
+
+    .flaticon-edit:before { content: "\f11e"; }
 .flaticon-delete:before { content: "\f11f"; }
 .flaticon-view:before { content: "\f120"; }
 .flaticon-badge:before { content: "\f121"; }

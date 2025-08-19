@@ -319,8 +319,10 @@ class CompanyController extends Controller
                 return response()->json(['success' => false, 'errors' => "Məlumat tapılmadı yenidən yoxlanış edin!"],422);
             }
 
+            $timezone = $this->company->timezone ?? config('app.timezone');
             $reservation->company_text = $company_text;
             $reservation->status = $request->status;
+            $reservation->created_at = date('Y-m-d H:i:s',strtotime($timezone));
             $reservation->save();
             $log = [
                 'user_id' => $reservation->user_id,
@@ -357,6 +359,7 @@ class CompanyController extends Controller
         ]);
 
         try {
+            $timezone = $this->company->timezone ?? config('app.timezone');
             $mainCommit  = CompanyCommit::where(['id' => $request->comment_id])->whereNull('committer_id')->first();
             if (empty($mainCommit)) {
                 return response()->json(['success' => false, 'message' =>Lang::get('site.error_up')],422);
@@ -370,6 +373,7 @@ class CompanyController extends Controller
             $companyCommit->staf =  0;
             $companyCommit->facilities = 0;
             $companyCommit->comment = $request->reply;
+            $companyCommit->created_at = date('Y-m-d H:i:s',strtotime($timezone));
             $companyCommit->save();
 
             $log = [

@@ -188,9 +188,79 @@ class ServicesController extends Controller
      * @param  \App\Models\CompanyService  $companyService
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CompanyService $companyService)
+    public function update($id, ServicesRequest $servicesRequest)
     {
-        //
+
+        $valdate = Validator::make($servicesRequest->all(), $servicesRequest->rules(), $servicesRequest->messages());
+        if ($valdate->fails()) {
+            return response()->json(['success' => false, 'error' => $valdate->errors()],422);
+        }
+        $company =  $this->company;
+        try {
+            $companyService = CompanyService::where(['company_id' => $company->id, 'id' => $id])->first();
+            if (!empty($servicesRequest->category_id)) {
+                $category = Category::where(['parent_id' => $company->category_id,'id' => $servicesRequest->category_id])->first();
+                $categoryId = $category->id;;
+            }else {
+                $categoryId = $companyService->category_id;
+            }
+
+            if (!empty($servicesRequest->category_id)) {
+                $subCategory = Category::where(['parent_id' => $company->category_id, 'sub_category_id' => $categoryId, 'id' => $servicesRequest->sub_category_id])->first();
+                $subCategoryId = $subCategory->id;;
+            }else {
+                $subCategoryId = $companyService->sub_category_id;
+            }
+
+            if (!empty($servicesRequest->person_id)) {
+                $person_id = CompanyPerson::where(['company_id' => $company->id,  'id' => $servicesRequest->person_id])->first();
+                $person_id = $person_id->id;;
+            }else {
+                $person_id = $companyService->person_id ?? null;
+            }
+
+            if($servicesRequest->hasFile('image')){
+                $image_name = $servicesRequest->image->getClientOriginalName();
+                $image_url = $servicesRequest->image->move(public_path('uploads/company-services'), $image_name);
+                $image = $image_url->getFilename();
+            } else {
+                $image_name = $companyService->image ?? null;
+            }
+
+
+            $companyService->company_id = $company->id;
+            $companyService->parent_category_id = $categoryId;
+            $companyService->sub_category_id = $subCategoryId;
+            $companyService->person_id = $person_id;
+            $companyService->title = $servicesRequest->product_name;
+            $companyService->description = $servicesRequest->description;
+            $companyService->price = $servicesRequest->price;
+            $companyService->image = $image_name ?? null;
+            $companyService->status = 1;
+            $companyService->save();
+
+            $log = [
+                'obj_id' => $company->id,
+                'subj_id' => $companyService->id,
+                'subj_table' => 'company_services',
+                'actions' => 'update',
+                'type' => 'company',
+                'note' => Lang::get('site.success_up')
+            ];
+            LogsHelper::convert($log);
+            return response()->json(['success' => true, 'message' =>Lang::get('site.success_up')],200);
+        } catch (\Exception $exception) {
+            $log = [
+                'obj_id' => $company->id,
+                'subj_id' => null,
+                'subj_table' => 'company_services',
+                'actions' => 'update',
+                'type' => 'company',
+                'note' => 'errors '. $exception->getMessage()
+            ];
+            LogsHelper::convert($log);
+            return response()->json(['success' => false, 'message' =>   $exception->getMessage()],422);
+        }
     }
 
     /**
@@ -199,8 +269,13 @@ class ServicesController extends Controller
      * @param  \App\Models\CompanyService  $companyService
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CompanyService $companyService)
+    public function destroy($id, Request $request)
     {
-        //
+        $companyService = CompanyService::where(['company_id' => $this->company->id, 'id' => $id])->first();
+        if (empty($companyService)) {
+            return redirect()->back()->withErrors(['error' => __('site.errors_delete')]);
+        }
+        $companyService->delete();
+        return redirect()->back()->with('success', __('site.success_delete'));
     }
 }

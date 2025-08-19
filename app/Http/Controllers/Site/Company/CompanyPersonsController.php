@@ -134,9 +134,55 @@ class CompanyPersonsController extends Controller
      * @param  \App\Models\CompanyPerson  $companyPerson
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CompanyPerson $companyPerson)
+    public function update($id, CompanyPersonsRequest $companyPersonsRequest)
     {
-        //
+        $valdate = Validator::make($companyPersonsRequest->all(), $companyPersonsRequest->rules(), $companyPersonsRequest->messages());
+        if ($valdate->fails()) {
+            return response()->json(['success' => false, 'error' => $valdate->errors()],422);
+        }
+        $company =  $this->company;
+        try {
+
+            $companyPerson = CompanyPerson::where(['company_id' => $company->id,'id'=> $id])->first();
+            if($companyPersonsRequest->hasFile('image')){
+                $image_name = $companyPersonsRequest->image->getClientOriginalName();
+                $image_url = $companyPersonsRequest->image->move(public_path('uploads/company-persons'), $image_name);
+                $image = $image_url->getFilename();
+            }else{
+                $image_name = $companyPerson->image;
+            }
+
+            $companyPerson->company_id = $company->id;
+            $companyPerson->name = $companyPersonsRequest->name;
+            $companyPerson->age = $companyPersonsRequest->age;
+            $companyPerson->experience = $companyPersonsRequest->experience;
+            $companyPerson->text = $companyPersonsRequest->description;
+            $companyPerson->image = $image_name ?? null;
+            $companyPerson->status = 1;
+            $companyPerson->save();
+
+            $log = [
+                'obj_id' => $company->id,
+                'subj_id' => $companyPerson->id,
+                'subj_table' => 'company_persons',
+                'actions' => 'update',
+                'type' => 'company',
+                'note' => Lang::get('site.success_up')
+            ];
+            LogsHelper::convert($log);
+            return response()->json(['success' => true, 'message' =>Lang::get('site.success_up')],200);
+        } catch (\Exception $exception) {
+            $log = [
+                'obj_id' => $company->id,
+                'subj_id' => $id,
+                'subj_table' => 'company_persons',
+                'actions' => 'update',
+                'type' => 'company',
+                'note' => 'errors '. $exception->getMessage()
+            ];
+            LogsHelper::convert($log);
+            return response()->json(['success' => false, 'message' => $exception->getMessage().' ' .Lang::get('site.error_up')],422);
+        }
     }
 
     /**
@@ -145,8 +191,13 @@ class CompanyPersonsController extends Controller
      * @param  \App\Models\CompanyPerson  $companyPerson
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CompanyPerson $companyPerson)
+    public function destroy($id, Request $request)
     {
-        //
+        $companyPerson = CompanyPerson::where(['company_id' => $this->company->id,'id'=> $id])->first();
+        if (empty($companyPerson)) {
+            return redirect()->back()->withErrors(['error' => __('site.errors_delete')]);
+        }
+        $companyPerson->delete();
+        return redirect()->back()->with('success', __('site.success_delete'));
     }
 }
