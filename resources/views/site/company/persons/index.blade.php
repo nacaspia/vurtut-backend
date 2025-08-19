@@ -7,11 +7,11 @@
         <div class="container">
             <div class="row justify-content-center">
                 @include('site.company.layouts.mobile-menu')
-                <div class="col-lg-6">
-                    <div class="breadcrumb_content style2 mb20">
-                        <h2 class="breadcrumb_title">Ustalar</h2>
-                    </div>
-                </div>
+{{--                <div class="col-lg-6">--}}
+{{--                    <div class="breadcrumb_content style2 mb20">--}}
+{{--                        <h2 class="breadcrumb_title">Ustalar</h2>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
             <div class="row align-items-center mb-3">
 {{--                <form action="" method="GET">--}}
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="col-lg-6 d-flex justify-content-end">
-                    <div class="col-lg-3" style="left: 52px;!important;">
+                    <div class="col-lg-3" style="left: 66px;!important;">
                         <a href="{{ route("site.company-services.index") }}" class="btn btn-success"  style="border-radius:12px;">
                              Geri
                         </a>
@@ -94,33 +94,6 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="productInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document" style="max-width: 500px;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Məlumat</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="row">
-                            <div class="col-lg-4 col-xl-4">
-                                <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2" style="max-height: 150px;!important;">
-                            </div>
-                            <div class="col-lg-6 col-xl-6">
-                                <p><strong>Ustanın Adı:</strong> <span id="infoName"></span></p>
-                                <p><strong>Ustanın Yaşı:</strong> <span id="infoAge"></span></p>
-                                <p><strong>Ustanın Təcrübəsi:</strong> <span id="infoExperience"></span></p>
-                                <p><strong>Ətraflı məlumat:</strong> <span id="infoDescription"></span></p>
-                            </div>
-                        </div>
-{{--                        <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2" style="max-height: 150px;!important;">--}}
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
     <div class="settings_modal modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
@@ -138,6 +111,8 @@
                                 <div class="login_form">
                                     <div class="text-danger text-center mt-2" id="generalError" style="font-weight: bold;!important;"></div>
                                     <div class="text-success text-center mt-2" id="generalSuccess" style="font-weight: bold;!important;"></div>
+                                    <div class="text-danger text-center mt-2" id="generalEditError" style="font-weight: bold;!important;"></div>
+                                    <div class="text-success text-center mt-2" id="generalEditSuccess" style="font-weight: bold;!important;"></div>
                                 </div>
                             </div>
                         </div>
@@ -149,6 +124,30 @@
 @endsection
 @section('company.js')
     <script>
+
+        $(document).on('click', '#infoİd', function () {
+            // Modal məlumatlarını götür
+            let id = $(this).text();
+            let name = $('#infoName').text();
+            let age = $('#infoAge').text();
+            let experience = $('#infoExperience').text();
+            let description = $('#infoDescription').text();
+            let image = $('#infoImage').attr('src');
+
+            // Edit modal input-larına doldur
+            $('#editId').val(id);
+            $('#editName').val(name);
+            $('#editAge').val(age);
+            $('#editExperience').val(experience);
+            $('#editDescription').val(description);
+            $('#editPreview').attr('src', image);
+
+            // Info modalı bağla
+            $('#productInfoModal').modal('hide');
+            // Edit modalı aç
+            $('#productEditModal1').modal('show');
+        });
+
         function fetchFilteredPersons(url = '{{ route("site.company-persons.index") }}') {
             const status = $('#filter_status').val();
 
@@ -188,22 +187,6 @@
 
             fetchFilteredPersons(url); // kliklənmiş səhifənin linki ilə sorğu
         });
-
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const detailButtons = document.querySelectorAll('.viewProductDetail');
-
-            detailButtons.forEach(function (btn) {
-                btn.addEventListener('click', function () {
-                    document.getElementById('infoName').innerText = btn.getAttribute('data-name');
-                    document.getElementById('infoAge').innerText = btn.getAttribute('data-age');
-                    document.getElementById('infoExperience').innerText = btn.getAttribute('data-experience');
-                    document.getElementById('infoDescription').innerText = btn.getAttribute('data-description');
-                    document.getElementById('infoImage').src = btn.getAttribute('data-image');
-                });
-            });
-        });
-
 
         $('#productForm').on('submit', function (e) {
             e.preventDefault();
@@ -269,6 +252,62 @@
                         $('.settings_modal').modal('show'); // modalı göstər
                     }
                 }
+            });
+        });
+        $(document).ready(function() {
+            $('form[id^="productEditForm"]').each(function() {
+                let form = $(this);
+                let editId = form.find('input[type="hidden"]').val();
+
+                form.on('submit', function(e) {
+                    e.preventDefault();
+
+                    // Validation mesajlarını təmizlə
+                    form.find('.form-control').removeClass('is-invalid');
+                    form.find('.invalid-feedback').text('');
+
+                    let formData = new FormData();
+                    formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+                    formData.append('_method', 'PUT'); // Laravel PUT istəklər üçün
+                    formData.append('name', $('#editName'+editId).val());
+                    formData.append('image', $('#editImage'+editId)[0].files[0]);
+                    formData.append('age', $('#editAge'+editId).val());
+                    formData.append('experience', $('#editExperience'+editId).val());
+                    formData.append('description', $('#editDescription'+editId).val());
+
+                    $('#serviceEditButton'+editId).prop('disabled', true).html('Gözləyin...');
+
+                    $.ajax({
+                        url: '/company/company-persons/' + editId,
+                        method: 'POST',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function(response) {
+                            $('#serviceEditButton'+editId).prop('disabled', false).html('Yadda saxla');
+                            $('#generalSuccess').text(response.message);
+                            $('.settings_modal').modal('show'); // modalı göstər
+                            // window.location.reload();
+                            $('.settings_modal .close').on('click', function () {
+                                location.reload();
+                            });
+                        },
+                        error: function(xhr) {
+                            $('#serviceEditButton'+editId).prop('disabled', false).html('Yadda saxla');
+                            if (xhr.status === 422) {
+                                let errors = xhr.responseJSON.errors;
+                                if (errors.name) $('#editName'+editId).addClass('is-invalid').next().text(errors.name[0]);
+                                if (errors.image) $('#editImage'+editId).addClass('is-invalid').next().text(errors.image[0]);
+                                if (errors.age) $('#editAge'+editId).addClass('is-invalid').next().text(errors.age[0]);
+                                if (errors.experience) $('#editExperience'+editId).addClass('is-invalid').next().text(errors.experience[0]);
+                                if (errors.description) $('#editDescription'+editId).addClass('is-invalid').next().text(errors.description[0]);
+                            } else {
+                                $('#generalError').removeClass('d-none').addClass('d-block').text('Naməlum xəta baş verdi.');
+                                $('.settings_modal').modal('show'); // modalı göstər
+                            }
+                        }
+                    });
+                });
             });
         });
     </script>

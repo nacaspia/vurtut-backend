@@ -24,12 +24,15 @@ class CompanyPersonsRequest extends FormRequest
      */
     public function rules()
     {
+        $isCreate = $this->isMethod('post');
         return [
+            'image' => $isCreate
+                ? 'required|mimes:jpeg,png,jpg,gif,svg'
+                : 'nullable',
             'name' => 'required',
             'description' => 'required',
             'age' => 'required|min:18|integer',
-            'experience' => 'required|integer',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'experience' => 'required|integer'
         ];
     }
 
