@@ -37,10 +37,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 <section class="footer_one home2">
     <div class="container pb70">
         <div class="row">

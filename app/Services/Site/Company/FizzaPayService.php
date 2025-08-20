@@ -2,6 +2,7 @@
 
 namespace App\Services\Site\Company;
 
+use App\Models\PaymentLog;
 use Illuminate\Support\Facades\Http;
 
 class FizzaPayService
@@ -14,35 +15,47 @@ class FizzaPayService
 
     public function __construct()
     {
-        $this->merchantName = env('FPAY_MERCHANT_NAME');
-        $this->username     = env('FPAY_USERNAME');
-        $this->userid    = env('FPAY_USERID');
-        $this->password     = env('FPAY_PASSWORD');
-        $this->secretKey    = env('FPAY_SECRET_KEY');
+        $this->merchantName = config('payment.fizzapay.merchant_name');
+        $this->username     = config('payment.fizzapay.username');
+        $this->userid    = config('payment.fizzapay.userid');
+        $this->password     = config('payment.fizzapay.password');
+        $this->secretKey    = config('payment.fizzapay.secret_key');
     }
 
     // Login və token almaq
     public function login()
     {
         $url = "https://payments.fpay.az/fizzapay/login/LoginWebUser";
-
-        $response = Http::withBasicAuth($this->username, $this->password)
-            ->asJson()
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+        ])
+            ->withBasicAuth($this->username, $this->password)
             ->post($url, [
                 'username' => $this->username,
-                'password' => $this->password
+                'password' => $this->password,
             ]);
 
-        return $response->successful() ? $response->json() : null;
+        $data = $response->json(); // artıq işləyəcək
+
+        return $data ??  null;
     }
 
     // Payment key yaratmaq
-    public function createPayment($amount, $orderId)
+    public function createPayment($amount, $orderId, $companyId = null, $userId = null)
     {
         $login = $this->login();
-
         if (!$login || empty($login['token'])) {
-            return null;
+            PaymentLog::create([
+                'company_id' => $companyId,
+                'user_id' => $userId,
+                'payment_id' => null,
+                'request' => ['amount' => $amount, 'orderId' => $orderId, 'companyId' => $companyId],
+                'response' => $login,
+                'status' => $login->status(),
+                'message' => 'Ödəniş xidmətinə qoşulma mümkün olmadı'
+            ]);
+            return ['success' => false, 'message' => 'Ödəniş xidmətinə qoşulma mümkün olmadı'];
         }
 
         $webUserId = $login['webUserId'];
@@ -51,11 +64,12 @@ class FizzaPayService
         $description = "Premium_$orderId";
         $cardType    = "v"; // Visa
         $hashCode    = md5("{$this->secretKey}{$this->merchantName}{$cardType}{$amount}{$description}");
-
         $url = "https://payments.fpay.az/fizzapay/fpay/GetPaymentKey";
 
-        $response = Http::withBasicAuth($this->username, $this->password)
-            ->asJson()
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+        ])->withBasicAuth($this->username, $this->password)
             ->post($url, [
                 "merchantName" => $this->merchantName,
                 "amount"       => $amount,
@@ -64,10 +78,20 @@ class FizzaPayService
                 "description"  => $description,
                 "webUserId"    => $webUserId,
                 "token"        => $token,
+                "redirectUrl" => route('site.company.premium.paymentCallback'),
                 "hashCode"     => $hashCode
             ]);
-
-        return $response->successful() ? $response->json() : null;
+        PaymentLog::create([
+            'company_id' => $companyId,
+            'user_id' => $userId,
+            'payment_id' => null,
+            'request' => json_encode([['amount' => $amount, 'orderId' => $orderId, 'companyId' => $companyId]]),
+            'response' => $response,
+            'status' => $response->successful(),
+            'message' => '$response->body()'
+        ]);
+        $data = $response->json();
+        return  $data ??  null;
     }
 
     // Payment status yoxlamaq
@@ -76,13 +100,15 @@ class FizzaPayService
         $hashCode = md5("{$this->secretKey}{$paymentKey}{$amount}");
         $url = "https://payments.fpay.az/fizzapay/fpay/GetPaymentResult";
 
-        $response = Http::withBasicAuth($this->username, $this->password)
-            ->asJson()
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+        ])->withBasicAuth($this->username, $this->password)
             ->post($url, [
                 "paymentKey" => $paymentKey,
                 "hashCode"   => $hashCode
             ]);
-
-        return $response->successful() ? $response->json() : null;
+        $data = $response->json();
+        return  $data ??  null;
     }
 }
