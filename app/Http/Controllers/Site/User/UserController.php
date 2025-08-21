@@ -11,6 +11,7 @@ use App\Http\Requests\Site\User\SettingsRequest;
 use App\Models\City;
 use App\Models\CompanyCommit;
 use App\Models\Country;
+use App\Models\FcmToken;
 use App\Models\Log;
 use App\Models\Reservation;
 use App\Models\User;
@@ -20,6 +21,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
+use Kreait\Firebase\Messaging\CloudMessage;
+use Kreait\Firebase\Messaging\Notification;
 
 
 class UserController extends Controller
@@ -296,7 +299,20 @@ class UserController extends Controller
             $reservation->text = $request->text;
             $reservation->created_at = date('Y-m-d H:i:s',strtotime($userTimezone));;
             $reservation->save();
-//            broadcast(new ReservationCreated($reservation));
+
+            $token = FcmToken::where(['company_id' => $reservation->company_id])->first();
+
+            // Firebase Messaging instance
+            $messaging = false;
+            if(count($token) === 1){
+                $messaging = CloudMessage::withTarget('token', $token)
+                    ->withNotification(Notification::create(
+                        'Yeni rezervasiya',
+                        "{$reservation->full_name} rezervasiya etdi."
+                    ));
+            }
+
+
             $log = [
                 'obj_id' => $this->user->id,
                 'company_id' => $request->company_id,
@@ -307,7 +323,7 @@ class UserController extends Controller
                 'note' => Lang::get('site.success_up')
             ];
             LogsHelper::convert($log);
-            return response()->json(['success' => true, 'message' =>Lang::get('site.success_up')],200);
+            return response()->json(['success' => true, 'message' => 'Resarvasiya qeydə alındı.'],200);
 
         } catch (\Exception $exception) {
             $log = [

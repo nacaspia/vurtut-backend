@@ -30,8 +30,8 @@ Route::get('/company','HomeController@companies')->name('companies');
 //Route::get('/company/{id}','HomeController@companyDetails')->name('companyDetails');
 Route::get('/contact','HomeController@contact')->name('contact');
 
-
 ///Start Ajax
+Route::post('/apk', 'AjaxController@saveToken')->name('saveToken');
 Route::post('/company/share', 'AjaxController@companyShare')->name('companyShare');
 Route::get('/map-data', 'AjaxController@mapAjax')->name('mapAjax');
 Route::get('/parent-categories', 'AjaxController@parentCategories')->name('parentCategories');
