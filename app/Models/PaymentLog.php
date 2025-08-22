@@ -13,6 +13,8 @@ class PaymentLog extends Model
         'company_id',
         'user_id',
         'payment_id',
+        'payment_key',
+        'amount',
         'request',
         'response',
         'status',

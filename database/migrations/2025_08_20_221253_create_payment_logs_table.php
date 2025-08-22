@@ -18,6 +18,8 @@ class CreatePaymentLogsTable extends Migration
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('payment_id')->nullable();
+            $table->string('payment_key',255)->nullable();
+            $table->string('amount',512)->nullable();
             $table->json('request')->nullable();     // banka və ya payment API-e geden sorgu
             $table->json('response')->nullable();     // bankdan və ya payment API-dən gələn cavab
             $table->string('status')->nullable();     // cavab statusu (success, error və s.)
