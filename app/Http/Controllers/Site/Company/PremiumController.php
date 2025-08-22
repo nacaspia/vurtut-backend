@@ -17,7 +17,7 @@ class PremiumController extends Controller {
     public function redirectToBank(Request $request) {
         $companyId = $this->company->id;
         $limit = (int) $request->input('limit');
-        $amount = config("premium.limits.$limit") * 100;
+        $amount = config("premium.limits.$limit");
         if (!$amount) {
             return back()->with('error', 'Yanlış seçim.');
         }
