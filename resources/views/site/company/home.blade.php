@@ -32,6 +32,20 @@
         <div class="container">
             <div class="row">
                 @include('site.company.layouts.mobile-menu')
+                @if (Session::get('error'))
+                    <div class="col-12 mt-1">
+                        <div class="alert alert-danger" role="alert">
+                            <div class="alert-body">{{ Session::get('error') }}</div>
+                        </div>
+                    </div>
+                @endif
+                @if (Session::get('success'))
+                    <div class="col-12 mt-1">
+                        <div class="alert alert-success" role="alert">
+                            <div class="alert-body">{{ Session::get('success') }}</div>
+                        </div>
+                    </div>
+                @endif
             </div>
             <div class="row mb30">
                 <div class="col-xl-7">

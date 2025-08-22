@@ -66,7 +66,7 @@ Route::prefix('/company')->middleware('company')->group(function () {
 
     //premium hesab
     Route::post('/premiumRedirectToBank', 'Company\PremiumController@redirectToBank')->name('company.premium.redirectToBank');
-    Route::post('/premiumPaymentCallback', 'Company\PremiumController@paymentCallback')->name('company.premium.paymentCallback');
+    Route::get('/payment-callback', 'Company\PremiumController@paymentCallback')->name('company.premium.paymentCallback');
 
     //ajax
     Route::get('/cities', 'Company\CompanyController@cities')->name('company.cities');
