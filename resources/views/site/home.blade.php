@@ -243,7 +243,7 @@
                                                             </div>
                                                             <div class="details">
                                                                 <div class="tc_content">
-                                                                    <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>
+{{--                                                                    <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>--}}
                                                                     <h4>{{ $companyIsPremium['full_name'] }}</h4>
                                                                     <p>{{ \Illuminate\Support\Str::limit($companyIsPremium['text'], 50, '...') }}</p>
                                                                     @php
@@ -251,7 +251,7 @@
                                                                     @endphp
                                                                     <ul class="prop_details mb0">
                                                                         <li class="list-inline-item"><a href="tel:{{ $companyIsPremium['phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyIsPremium['phone'] }}</a></li>
-                                                                        <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{ $data['address'] }}</a></li>
+                                                                        <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                                                                     </ul>
                                                                 </div>
                                                                 <div class="fp_footer">
