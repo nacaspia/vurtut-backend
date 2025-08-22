@@ -179,7 +179,7 @@
                                                             @php $data = $companyIsPremium['data']; @endphp
                                                             <ul class="prop_details mb0">
                                                                 <li class="list-inline-item"><a href="tel:{{ $companyIsPremium['phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyIsPremium['phone'] }}</a></li>
-                                                                <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}"><span class="flaticon-pin pr5"></span>{{ $data['address'] }}</a></li>
+                                                                <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}"><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="fp_footer">
