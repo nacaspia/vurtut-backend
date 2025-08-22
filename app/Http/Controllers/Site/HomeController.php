@@ -28,8 +28,7 @@ class HomeController extends Controller
     public function index() {
         $currentLang = $this->currentLang;
         $categories = Category::
-            whereNull(['parent_id'])
-            ->with('companies')->where(['status' => 1])
+            whereNull(['parent_id'])->where(['status' => 1])
             ->orderBy('title->'.$this->currentLang,'ASC')->get();
         $mainCategories = Category::
             whereNull(['parent_id'])
@@ -42,7 +41,7 @@ class HomeController extends Controller
             ->whereNull(['sub_region_id'])
             ->with('companies')->where(['status' => 1])
             ->orderBy('name->'.$this->currentLang,'ASC')->get();
-        return view('site.home',compact('mainCategories','allCompaniesIsPremium','cities', 'currentLang'));
+        return view('site.home',compact('mainCategories','categories','allCompaniesIsPremium','cities', 'currentLang'));
     }
 
     public function trends(Request $request,$slug)
@@ -390,7 +389,6 @@ class HomeController extends Controller
         }
         $companies = $query->get();
         $mainCategories = Category::whereNull(['parent_id'])
-            ->with('companies','companiesIsPremium')
             ->where(['status' => 1])
             ->orderBy('title->'.$this->currentLang,'ASC')->get();
 
