@@ -18,14 +18,13 @@
                         <label for="premiumDuration">Premium müddəti:</label>
                         <select name="limit" id="premiumDuration" class="form-control" required>
                             @foreach(config("premium.limits") as $limitKey => $limit)
-                                <option value="{{$limitKey}}">{{$limit}}</option>
+                                <option value="{{$limitKey}}">{{$limitKey}} Gün - {{$limit}} AZN</option>
                             @endforeach
 
                         </select>
                     </div>
-
                     <div class="alert alert-info mt-3">
-                        Ödəniş Kapital Bank və ya Paşa Bank vasitəsilə həyata keçiriləcək.
+                        Zəhmət olmasa, ödəniş zamanı qəbizi saxlayın.
                     </div>
                 </div>
 
@@ -37,10 +36,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 <section class="footer_one home2">
     <div class="container pb70">
         <div class="row">

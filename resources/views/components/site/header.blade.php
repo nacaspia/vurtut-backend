@@ -97,7 +97,7 @@
                                     @if (!empty(auth('company')->user()->country_id) && !empty(auth('company')->user()->city_id))
                                     <a class="dropdown-item active" style="color: #484848;!important;" href="{{ route('site.company.index') }}">Hesabım</a>
                                     @endif
-{{--                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#premiumCompany" style="color: #484848;">Premium Hesab</a>--}}
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#premiumCompany" style="color: #484848;">Premium Hesab</a>
                                     <a class="dropdown-item" style="color: #484848;!important;" href="{{ route('site.company.logout') }}">Çıxış</a>
                                 </div>
                             </div>
