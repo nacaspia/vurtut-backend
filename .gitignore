@@ -2,3 +2,4 @@
 .env
 /public/uploads
 storage/ssh_key
+/vendor
