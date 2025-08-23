@@ -242,6 +242,13 @@
             },
             success: function (response) {
                 if (response.success) {
+                    // Əgər Flutter WebView içindədirsə, token + user məlumatını ötür
+                    if (window.flutter_inappwebview) {
+                        window.flutter_inappwebview.callHandler("onLoginSuccess", {
+                            token: response.token, // backenddən gələn token
+                            userId: response.user_id // backenddən gələn user id
+                        });
+                    }
                     window.location.href = response.route;
                 } else {
                     // ✅ Əgər cavab uğurlu deyilsə, button-u bərpa et
