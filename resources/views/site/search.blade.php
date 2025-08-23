@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="{{ asset("site/css/bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset("site/css/style.css") }}">
     <link rel="stylesheet" href="{{ asset("site/css/responsive.css") }}">
-    {{--  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
 @endsection
 @section('site.content')
     <!-- 6th Home Design -->
@@ -92,68 +90,68 @@
                     <div class="row">
                         @if(!empty($companies[0]))
                             @foreach($companies as $company)
-                        <div class="col-md-6 col-lg-4">
-                            <div class="feat_property" style="min-height: 404px;max-height: 404px;!important;">
-                                <div class="thumb">
-                                    <img class="img-whp" style="width: 100%; max-height: 164px; object-fit: contain; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$company['image']) }}" alt="fp1.jpg">
-                                    <div class="thmb_cntnt">
-                                        <ul class="tag mb0">
-                                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}">PEMIUM</a></li>
-                                            {{--                                                                <li class="list-inline-item"><a href="#">Açıq</a></li>--}}
-                                        </ul>
-                                        <ul class="listing_reviews">
-                                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                                            <li class="list-inline-item"><a class="text-white" href="#"><span class="fa fa-star"></span></a></li>
-                                            <li class="list-inline-item"><a class="text-white total_review" href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}">({{count($company['comments'])}} Rəy)</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="details">
-                                    <div class="tc_content">
-{{--                                        <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>--}}
-                                        <h4>{{ $company['full_name'] }}</h4>
-                                        <p>{{ \Illuminate\Support\Str::limit($company['text'], 50, '...') }}</p>
-                                        @php $data = $company['data']; @endphp
-                                        <ul class="prop_details mb0">
-                                            <li class="list-inline-item"><a href="tel:{{ $company['phone'] }}"><span class="flaticon-phone pr5"></span> {{ $company['phone'] }}</a></li>
-                                            <li class="list-inline-item"><a href="#"><span class="flaticon-pin pr5"></span>{{ $data['address'] }}</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="fp_footer">
-                                        <ul class="fp_meta float-left mb0">
-                                            @if(!empty($company['category']['image']))
-                                                <li class="list-inline-item">
+                                <div class="col-md-6 col-lg-6">
+                                    <div class="feat_property"{{-- style="min-height: 404px;max-height: 404px;!important;"--}}>
+                                        <div class="thumb">
+                                            <img class="img-whp" style="width: 100%; max-height: 164px; object-fit: contain; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$company['image']) }}" alt="{{ $company['full_name'] }}">
+                                            <div class="thmb_cntnt">
+                                                <ul class="tag mb0">
+                                                    @if($company['is_premium'] == 1)<li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}"> PEMIUM </a></li>@endif
+                                                </ul>
+                                                <ul class="listing_reviews">
+                                                    <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
+                                                    <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
+                                                    <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
+                                                    <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
+                                                    <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
+                                                    <li class="list-inline-item"><a class="text-white total_review">({{count($company['comments'])}} Rəy)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="details">
+                                            <div class="tc_content">
+                                                <h4>
                                                     <a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}">
-                                                        <img src="{{ asset("uploads/categories/".$company['category']['image']) }}" alt="{{$company['category']['title'][$currentLang]}}"  style="max-height: 28px;!important;">
+                                                        {{ $company['full_name'] }}
                                                     </a>
-                                                </li>
-                                            @endif
-                                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}">{{ $company['category']['title'][$currentLang] }}</a></li>
-                                        </ul>
-                                        <ul class="fp_meta float-right mb0">
-                                            {{--                                                                <li class="list-inline-item"><a href="#"><span class="flaticon-zoom"></span></a></li>--}}
-
-                                            <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}"><span class="flaticon-zoom"></span> Daha ətraflı</a></li>
-
-                                            @if(!empty(auth('user')->user()->id))
-                                                <li class="list-inline-item">
-                                                    <a href="javascript:void(0);" class="like-btn icon"
-                                                       data-item-id="{{ $company['id'] }}"
-                                                       data-item-type="company"
-                                                       data-liked="{{ (!empty($company['userLikes']['user_id']) && $company['userLikes']['user_id'] == auth('user')->user()->id) ?? false }}">
-                                                        <span class="flaticon-love {{ (!empty($company['userLikes']['user_id']) && $company['userLikes']['user_id'] == auth('user')->user()->id)? 'active' : '' }}"></span>
-                                                    </a>
-                                                    {{--                                                                    <a class="icon" href="#"><span class="flaticon-love"></span></a>--}}
-                                                </li>
-                                            @endif
-                                        </ul>
+                                                </h4>
+                                                <p>{{ \Illuminate\Support\Str::limit($company['text'], 50, '...') }}</p>
+                                                @php
+                                                    $data = $company['data'];
+                                                @endphp
+                                                <ul class="prop_details mb0">
+                                                    <li class="list-inline-item"><a href="tel:{{ $company['one_phone']?? $company['phone'] }}"><span class="flaticon-phone pr5"></span> {{ $company['one_phone'] ?? $company['phone'] }}</a></li>
+                                                    <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? null }}</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="fp_footer">
+                                                <ul class="fp_meta float-left mb0">
+                                                    @if(!empty($company['category']['image']))
+                                                        <li class="list-inline-item">
+                                                            <a href="{{ route('site.category',['categorySlug' => $company['category']['slug'][$currentLang]]) }}">
+                                                                <img src="{{ asset("uploads/categories/".$company['category']['image']) }}" alt="{{$company['category']['title'][$currentLang] ?? ''}}" style="max-height: 28px;!important;">
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                    <li class="list-inline-item"><a href="{{ route('site.category',['categorySlug' => $company['category']['slug'][$currentLang]]) }}">{{$company['category']['title'][$currentLang] ?? ''}}</a></li>
+                                                </ul>
+                                                <ul class="fp_meta float-right mb0">
+                                                    <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}"><span class="flaticon-zoom"></span> Daha ətraflı</a></li>
+                                                    @if(!empty(auth('user')->user()->id))
+                                                        <li class="list-inline-item">
+                                                            <a href="javascript:void(0);" class="like-btn icon"
+                                                               data-item-id="{{ $company['id'] }}"
+                                                               data-item-type="company"
+                                                               data-liked="{{ (!empty($company['userLikes']['user_id']) && $company['userLikes']['user_id'] == auth('user')->user()->id) ?? false }}">
+                                                                <span class="flaticon-love {{ (!empty($company['userLikes']['user_id']) && $company['userLikes']['user_id'] == auth('user')->user()->id)? 'active' : '' }}"></span>
+                                                            </a>
+                                                        </li>
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
                             @endforeach
                         @endif
                     </div>

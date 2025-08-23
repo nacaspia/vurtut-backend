@@ -65,7 +65,15 @@ class PremiumController extends Controller {
     protected function makeUserPremium($company, $days) {
         $company->is_premium = true;
         $company->is_paid = true;
-        $company->premium_expires_at = now()->addDays($days);
+
+        if ($company->premium_expires_at && $company->premium_expires_at > now()) {
+            // Premium hələ aktivdirsə → mövcud tarixə gün əlavə et
+            $company->premium_expires_at = $company->premium_expires_at->addDays($days);
+        } else {
+            // Premium bitibsə → bugündən başlayır
+            $company->premium_expires_at = now()->addDays($days);
+        }
+
         $company->save();
     }
 }

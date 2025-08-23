@@ -44,7 +44,7 @@ class ServicesController extends Controller
             $query->where('sub_category_id', $request->filter_sub_category_id);
         }
 
-        $companyServices = $query->orderBy('id', 'DESC')->paginate(6);
+        $companyServices = $query->orderBy('sub_category_id', 'ASC')->paginate(6);
 
         // AJAX sorğusu gəlibsə, yalnız HTML partial qaytar
         if ($request->ajax()) {

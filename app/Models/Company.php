@@ -97,6 +97,6 @@ class Company extends Authenticatable
     }
 
     public function companyService() {
-        return $this->hasMany(CompanyService::class, 'company_id', 'id')->with('category','subCategory');
+        return $this->hasMany(CompanyService::class, 'company_id', 'id')->with('category','subCategory')->orderBy('sub_category_id','ASC');
     }
 }
