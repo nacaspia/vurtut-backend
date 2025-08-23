@@ -638,7 +638,7 @@
         <div class="modal-dialog" role="document" style="max-width: 500px;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Məlumat</h5>
+                    <h5 class="modal-title"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -648,8 +648,10 @@
                         <div class="col-lg-4 col-xl-4">
                             <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2"
                                  style="max-height: 150px;!important;">
+                            @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
                             <img id="infoPersonImage" src="" alt="Şəkli" class="img-fluid rounded mt-2"
                                  style="max-height: 150px;!important;">
+                            @endif
                         </div>
                         <div class="col-lg-6 col-xl-6">
                             <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>

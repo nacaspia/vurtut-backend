@@ -21,7 +21,7 @@
             <div class="modal-dialog" role="document" style="max-width: 500px;">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Məlumat</h5>
+                        <h5 class="modal-title"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
                             <span aria-hidden="true">&times;</span>
                         </button>

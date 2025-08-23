@@ -53,7 +53,19 @@
                         <div class="media">
                             <img class="mr-3" src="{{ !empty($company->image)? asset("uploads/company/".$company->image): asset('site/images/Vurtut logo icon/account.png') }}" style="width:145px; height:145px; border-radius:50%; object-fit:cover; display:block; margin-bottom:10px;" oading="lazy">
                             <div class="media-body mt20">
-                                <h2 class="mt-0">{{$company->full_name}} ({{ $company['type'] === 'main'? 'Əsas Filial': 'Filial' }})</h2>
+                                <?php
+                                $expiresAt = Carbon::parse($company->premium_expires_at); // Tarixi modeldən götürürük
+                                $now = Carbon::now();
+
+                                $daysLeft = $now->diffInDays($expiresAt, false); // false - mənfi dəyəri göstərmək üçün
+
+                                if ($daysLeft > 0) {
+                                    $message = "Premium bitməsinə $daysLeft gün qalıb. <a href='#' data-toggle='modal' data-target='#premiumCompany'  class='btn btn-thm spr_btn'>İndi artırın</a>.";
+                                } else {
+                                    $message = "Premium müddəti bitib. <a href='#' data-toggle='modal' data-target='#premiumCompany'  class='btn btn-thm spr_btn'>Yenidən Premium olun</a>.";
+                                }
+                                ?>
+                                <h2 class="mt-0">{{$company->full_name}} ({{ $company['type'] === 'main'? 'Əsas Filial': 'Filial' }}) </h2>
                                 <ul class="mb0 agency_profile_contact">
                                     <li class="list-inline-item"><a href="#"><span class="flaticon-phone"></span> {{ !empty($company['social']['one_phone'])? $company['social']['one_phone']: null }}</a></li>
                                     <li class="list-inline-item"><a href="#"><span class="flaticon-pin"></span> {{ $company->mainCities['name'][$currentLang] }} @if(!empty($company->subRegion['name'][$currentLang])) / {{ $company->subRegion['name'][$currentLang] }}@endif</a></li>
@@ -67,9 +79,15 @@
                                             <li class="list-inline-item">({{ count($company['comments']) }} rəy)</li>
                                         </ul>
                                     </li>
+                                    <div class="price mt25 fn-lg">
                                     @if($company['is_premium'] ==1)
-                                    <li class="list-inline-item"><a class="price_range" href="#">PREMIUM</a></li>
+                                            {!! $message !!}
+{{--                                            <a class="btn btn-thm spr_btn" href="#">Premiumu Artır</a>--}}
                                     @endif
+{{--                                        <a class="btn btn-thm spr_btn" href="#">İrəli Çək</a>--}}
+
+{{--                                        <a class="btn btn-thm spr_btn" href="#">VIP</a>--}}
+                                    </div>
                                 </ul>
                             </div>
                         </div>

@@ -41,9 +41,6 @@ class CompanyController extends Controller
         $currentLang = $this->currentLang;
         $company = Company::with('category', 'comments','posts','companyReservation','mainCities','subRegion')->whereNotNull('image')->where(['id' => $this->company->id])->first();
         $companyCategories = [];
-        if (!empty($company['catalogues'][0])) {
-            $companyCategories = CompanyCategory::with('catalogies')->where(['company_id' => $company['id']])->get();
-        }
 
         $serviceTypes = ServiceType::where(['status' => 1])->orderBy('name->' . $this->currentLang, 'ASC')->get();
         return view('site.company.home',compact('currentLang','company','companyCategories','serviceTypes'));
