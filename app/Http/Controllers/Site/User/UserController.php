@@ -306,13 +306,15 @@ class UserController extends Controller
             // Firebase Messaging instance
             try {
                 if (!empty($token)) {
-                    $firebase = (new Factory)
+                    // Firebase obyekti yaradılır
+                    $factory = (new Factory)
                         ->withServiceAccount('/var/www/vurtut-backend/config/firebase_credentials.json')
-                        ->withDatabaseUri('https://vurtut-default-rtdb.firebaseio.com')
-                        ->create();
+                        ->withDatabaseUri('https://vurtut-default-rtdb.firebaseio.com');
 
-                    $messaging = $firebase->getMessaging();
-                   $messaging = CloudMessage::withTarget('token', $token)
+                    $messaging = $factory->createMessaging(); // <-- createMessaging istifadə olunur
+
+                    // Mesaj hazırla
+                    $message = CloudMessage::withTarget('token', $token)
                         ->withNotification(
                             Notification::create(
                                 'Yeni rezervasiya',
@@ -320,9 +322,8 @@ class UserController extends Controller
                             )
                         );
 
-                    // Firebase messaging service
-                    $messagingService = app('firebase.messaging');
-                    $result = $messagingService->send($messaging);
+                    // Mesajı göndər
+                    $result = $messaging->send($message);
 
                     return response()->json([
                         'success' => true,
