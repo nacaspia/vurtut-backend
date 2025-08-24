@@ -301,7 +301,7 @@ class UserController extends Controller
             $reservation->save();
 
             $token = FcmToken::where(['company_id' => $reservation->company_id])->first();
-            dd($token);
+
             // Firebase Messaging instance
             $messaging = false;
             if(!empty($token)){
@@ -323,7 +323,7 @@ class UserController extends Controller
                 'note' => Lang::get('site.success_up')
             ];
             LogsHelper::convert($log);
-            return response()->json(['success' => true, 'message' => 'Resarvasiya qeydə alındı.'],200);
+            return response()->json(['success' => true, 'message' => 'Resarvasiya qeydə alındı.--'.$messaging],200);
 
         } catch (\Exception $exception) {
             $log = [
