@@ -303,14 +303,51 @@ class UserController extends Controller
             $token = FcmToken::where(['company_id' => $reservation->company_id])->first();
 
             // Firebase Messaging instance
-            $messaging = false;
-            if(!empty($token)){
-                $messaging = CloudMessage::withTarget('token', $token)
-                    ->withNotification(Notification::create(
-                        'Yeni rezervasiya',
-                        "{$reservation->full_name} rezervasiya etdi."
-                    ));
+            try {
+                if (!empty($token)) {
+                    $messaging = CloudMessage::withTarget('token', $token)
+                        ->withNotification(
+                            Notification::create(
+                                'Yeni rezervasiya',
+                                "{$reservation->full_name} rezervasiya etdi."
+                            )
+                        );
+
+                    // Firebase messaging service
+                    $messagingService = app('firebase.messaging');
+                    $result = $messagingService->send($messaging);
+
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Rezervasiya qeydə alındı',
+                        'firebase_response' => $result,
+                    ], 200);
+                }
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Rezervasiya qeydə alındı (notification göndərilmədi)',
+                ], 200);
+
+            } catch (\Kreait\Firebase\Exception\MessagingException $e) {
+                return response()->json([
+                    'success' => false,
+                    'error' => 'Firebase Messaging xətası: '.$e->getMessage(),
+                ], 500);
+
+            } catch (\Kreait\Firebase\Exception\FirebaseException $e) {
+                return response()->json([
+                    'success' => false,
+                    'error' => 'Firebase ümumi xətası: '.$e->getMessage(),
+                ], 500);
+
+            } catch (\Exception $e) {
+                return response()->json([
+                    'success' => false,
+                    'error' => 'Server xətası: '.$e->getMessage(),
+                ], 500);
             }
+
 
 
             $log = [
