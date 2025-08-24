@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
+use Kreait\Firebase\Factory;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Kreait\Firebase\Messaging\Notification;
 
@@ -353,7 +354,7 @@ class UserController extends Controller
                     'error' => 'Server xətası: '.$e->getMessage(),
                 ], 500);
             }
-            
+
             $log = [
                 'obj_id' => $this->user->id,
                 'company_id' => $request->company_id,
