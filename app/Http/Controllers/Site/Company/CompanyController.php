@@ -12,6 +12,7 @@ use App\Models\City;
 use App\Models\Company;
 use App\Models\CompanyCommit;
 use App\Models\Country;
+use App\Models\FcmToken;
 use App\Models\Log;
 use App\Models\Reservation;
 use App\Models\ServiceType;
@@ -22,6 +23,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Kreait\Firebase\Messaging\CloudMessage;
+use Kreait\Firebase\Messaging\Notification;
 
 class CompanyController extends Controller
 {
@@ -321,6 +324,17 @@ class CompanyController extends Controller
             $reservation->status = $request->status;
             $reservation->created_at = date('Y-m-d H:i:s',strtotime($timezone));
             $reservation->save();
+            $token = FcmToken::where(['user_id' => $reservation->user_id])->first();
+            // Firebase Messaging instance
+            $messaging = false;
+            if(count($token) === 1){
+                $messaging = CloudMessage::withTarget('token', $token)
+                    ->withNotification(Notification::create(
+                        'Rezervasiya məlumatı',
+                        "{$reservation->full_name} rezervasiya qəbul edildi."
+                    ));
+            }
+
             $log = [
                 'user_id' => $reservation->user_id,
                 'obj_id' => $company->id,
