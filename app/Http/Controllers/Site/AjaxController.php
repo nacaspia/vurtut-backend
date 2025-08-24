@@ -84,6 +84,7 @@ class AjaxController extends Controller {
             $company_id = $company->id;
         }elseif ($request->type == 'user') {
             $user = User::where(['id' => $request->userId])->first();
+
             if (empty($user)) {
                 return response()->json(['success' => false, 'error' => "User can't login"], 422);
             }

@@ -11,5 +11,7 @@ class FcmToken extends Model
     protected $table = 'fcm_tokens';
     protected $fillable = [
         'token',
+        'user_id',
+        'company_id',
     ];
 }
