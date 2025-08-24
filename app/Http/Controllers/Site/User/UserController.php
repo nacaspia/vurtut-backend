@@ -304,7 +304,7 @@ class UserController extends Controller
 
             // Firebase Messaging instance
             $messaging = false;
-            if(count($token) === 1){
+            if(!empty($token)){
                 $messaging = CloudMessage::withTarget('token', $token)
                     ->withNotification(Notification::create(
                         'Yeni rezervasiya',

@@ -95,7 +95,6 @@ class AjaxController extends Controller {
             return response()->json(['success' => false, 'error' => "User can't login"], 422);
         }
 
-
         // Əgər token artıq varsa, yenilə, yoxsa əlavə et
         FcmToken::updateOrCreate(['user_id' => $user_id,'company_id' => $company_id,'token' => $request->token]);
         return response()->json(['success' => true, 'message' => 'token saved successfully'], 200);
