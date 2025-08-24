@@ -305,7 +305,13 @@ class UserController extends Controller
             // Firebase Messaging instance
             try {
                 if (!empty($token)) {
-                    $messaging = CloudMessage::withTarget('token', $token)
+                    $firebase = (new Factory)
+                        ->withServiceAccount('/var/www/vurtut-backend/config/firebase_credentials.json')
+                        ->withDatabaseUri('https://vurtut-default-rtdb.firebaseio.com')
+                        ->create();
+
+                    $messaging = $firebase->getMessaging();
+                   $messaging = CloudMessage::withTarget('token', $token)
                         ->withNotification(
                             Notification::create(
                                 'Yeni rezervasiya',
@@ -348,8 +354,11 @@ class UserController extends Controller
                 ], 500);
             }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d11e60af6f66819e5bd3bb95dad30a95a42f8685
             $log = [
                 'obj_id' => $this->user->id,
                 'company_id' => $request->company_id,
