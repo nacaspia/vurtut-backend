@@ -353,12 +353,7 @@ class UserController extends Controller
                     'error' => 'Server xətası: '.$e->getMessage(),
                 ], 500);
             }
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> d11e60af6f66819e5bd3bb95dad30a95a42f8685
+            
             $log = [
                 'obj_id' => $this->user->id,
                 'company_id' => $request->company_id,
