@@ -3,3 +3,4 @@
 /public/uploads
 storage/ssh_key
 /vendor
+/config/firebase_credentials.json
