@@ -301,7 +301,7 @@ class UserController extends Controller
             $reservation->save();
 
             $token = FcmToken::where(['company_id' => $reservation->company_id])->first();
-
+            dd($token);
             // Firebase Messaging instance
             $messaging = false;
             if(!empty($token)){
