@@ -275,7 +275,8 @@ class AuthController extends Controller
                 } else {
                     $route = route('site.company.settings');
                 }
-                return response()->json(['success' => true, 'message' =>Lang::get('site.success_login'), 'token' => $userToken['token'], 'user_id' => $user['id'], 'route' => $route],200);
+
+                return response()->json(['success' => true, 'message' =>Lang::get('site.success_login'), 'token' => $userToken['token'], 'user_id' => $user['id'],'type' => 'company', 'route' => $route],200);
             }elseif (!empty(auth('user')->attempt($loginState)) && auth('user')->user()->status ==1) {
                 $user = auth('user')->user();
                 $userToken = UserToken::where(['user_id' => $user['id']])->orderBy('created_at', 'desc')->first();
@@ -284,7 +285,7 @@ class AuthController extends Controller
                 } else {
                     $route = route('site.user.settings');
                 }
-                return response()->json(['success' => true, 'message' =>Lang::get('site.success_login'), 'token' => $userToken['token'], 'user_id' => $user['id'], 'route' => $route],200);
+                return response()->json(['success' => true, 'message' =>Lang::get('site.success_login'), 'token' => $userToken['token'], 'user_id' => $user['id'],'type' => 'user', 'route' => $route],200);
             } else {
                 return response()->json(['success' => false,'message' => Lang::get('site.error_login')],422);
             }

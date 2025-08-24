@@ -247,6 +247,7 @@
                         window.flutter_inappwebview.callHandler("onLoginSuccess", {
                             token: response.token, // backenddən gələn token
                             userId: response.user_id // backenddən gələn user id
+                            type: response.type // backenddən gələn user id
                         });
                     }
                     window.location.href = response.route;
