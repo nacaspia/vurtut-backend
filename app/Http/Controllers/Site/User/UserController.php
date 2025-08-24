@@ -348,8 +348,6 @@ class UserController extends Controller
                 ], 500);
             }
 
-
-
             $log = [
                 'obj_id' => $this->user->id,
                 'company_id' => $request->company_id,

@@ -1,17 +1,17 @@
 <?php
 return [
-
     'credentials' => [
-        'file' => base_path(env('FIREBASE_CREDENTIALS', 'config/firebase_credentials.json')),
+        'file' => env('FIREBASE_CREDENTIALS'),
     ],
 
-    // Default project ID (string!)
-    'default' => env('FIREBASE_PROJECT_ID', 'vurtut'),
+    'project_id' => env('FIREBASE_PROJECT_ID'),
 
-    // Lazım gələrsə əlavə layihələr
-    'projects' => [
-        'vurtut' => [
-            'credentials' => base_path(env('FIREBASE_CREDENTIALS', 'config/firebase_credentials.json')),
-        ],
+    'database' => [
+        'url' => env('FIREBASE_DATABASE_URL'),
+    ],
+
+    'storage' => [
+        'default_bucket' => env('FIREBASE_STORAGE_BUCKET'),
     ],
 ];
+
