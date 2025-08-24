@@ -305,6 +305,12 @@ class UserController extends Controller
             // Firebase Messaging instance
             try {
                 if (!empty($token)) {
+                    $firebase = (new Factory)
+                        ->withServiceAccount('/var/www/vurtut-backend/config/firebase_credentials.json')
+                        ->withDatabaseUri('https://vurtut-default-rtdb.firebaseio.com')
+                        ->create();
+
+                    $messaging = $firebase->getMessaging();
                     $messaging = CloudMessage::withTarget('token', $token)
                         ->withNotification(
                             Notification::create(
