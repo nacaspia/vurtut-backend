@@ -301,7 +301,7 @@ class UserController extends Controller
             $reservation->created_at = date('Y-m-d H:i:s',strtotime($userTimezone));;
             $reservation->save();
 
-            $token = FcmToken::where(['company_id' => $reservation->company_id])->first();
+            $token = FcmToken::where(['company_id' => $reservation->company_id])->orderBy('id','DESC')->first();
 
             // Firebase Messaging instance
             try {
@@ -314,7 +314,7 @@ class UserController extends Controller
                     $messaging = $factory->createMessaging(); // <-- createMessaging istifadə olunur
 
                     // Mesaj hazırla
-                    $message = CloudMessage::withTarget('token', $token)
+                    $message = CloudMessage::withTarget('token', $token['token'])
                         ->withNotification(
                             Notification::create(
                                 'Yeni rezervasiya',
