@@ -304,7 +304,7 @@ class UserController extends Controller
             $token = FcmToken::where(['company_id' => $reservation->company_id])->orderBy('id','DESC')->first();
 
             // Firebase Messaging instance
-            try {
+//            try {
                 if (!empty($token)) {
                     // Firebase obyekti yaradılır
                     $factory = (new Factory)
@@ -324,20 +324,9 @@ class UserController extends Controller
 
                     // Mesajı göndər
                     $result = $messaging->send($message);
-
-                    return response()->json([
-                        'success' => true,
-                        'message' => 'Rezervasiya qeydə alındı',
-                        'firebase_response' => $result,
-                    ], 200);
                 }
 
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Rezervasiya qeydə alındı (notification göndərilmədi)',
-                ], 200);
-
-            } catch (\Kreait\Firebase\Exception\MessagingException $e) {
+            /*} catch (\Kreait\Firebase\Exception\MessagingException $e) {
                 return response()->json([
                     'success' => false,
                     'error' => 'Firebase Messaging xətası: '.$e->getMessage(),
@@ -354,7 +343,7 @@ class UserController extends Controller
                     'success' => false,
                     'error' => 'Server xətası: '.$e->getMessage(),
                 ], 500);
-            }
+            }*/
 
             $log = [
                 'obj_id' => $this->user->id,
@@ -366,7 +355,7 @@ class UserController extends Controller
                 'note' => Lang::get('site.success_up')
             ];
             LogsHelper::convert($log);
-            return response()->json(['success' => true, 'message' => 'Resarvasiya qeydə alındı.', 'messages' => $messaging ? $messaging->jsonSerialize() : null],200);
+            return response()->json(['success' => true, 'message' => 'Resarvasiya qeydə alındı.'],200);
 
         } catch (\Exception $exception) {
             $log = [

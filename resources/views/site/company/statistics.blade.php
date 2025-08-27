@@ -12,6 +12,7 @@
                         <h2 class="breadcrumb_title float-left">Statistikalar</h2>
                     </div>
                 </div>
+                @if($company['is_premium'] == 1)
                 <div class="stat-row col-lg-2 col-md-4 col-sm-6 mb-4">
                     <div class="stat-card">
                         <div class="icon">
@@ -78,17 +79,33 @@
                         </div>
                     </div>
                 </div>
-                {{--<div class="col-lg-12 col-xl-12">
-                    <div class="application_statics">
-                        <h4>Total Views</h4>
-                        <div class="c_container"></div>
+                @else
+                    <div class="statt-row col-lg-2 col-md-4 col-sm-6 mb-4">
+                        <div class="stat-card">
+                            <div class="icon">
+                                <i class="fa fa-comment"></i>
+                            </div>
+                            <div class="detais">
+                                <div class="timer">{{ count($company['comments']) }}</div>
+                                <p>Rəy və reytinq</p>
+                            </div>
+                        </div>
                     </div>
-                </div>--}}
+                    <div class="stat-row col-lg-2 col-md-4 col-sm-6 mb-4">
+                        <div class="stat-card">
+                            <div class="icon">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="detais">
+                                <div class="timer">{{ $company['like'] ?? 0 }}</div>
+                                <p>Sevənlər</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     </section>
 @endsection
 @section('company.js')
-  {{--  <script src="{{ asset('site/js/chart.min.js') }}"></script>
-    <script src="{{ asset('site/js/chart-custome.js') }}"></script>--}}
 @endsection

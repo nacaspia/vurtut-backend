@@ -559,7 +559,7 @@
                             </ul>
 
                         </div>
-                        @if($company['category']['is_reservation']== true && empty(auth('company')->user()->id))
+                        @if($company['category']['is_reservation']== true && $company['is_premium'] == 1 &&  empty(auth('company')->user()->id))
                             @if(!empty(auth('user')->user()->id))
                                 <div class="sidebar_contact_business_widget">
                                     <h4 class="title mb25">Rezervasiya et</h4>

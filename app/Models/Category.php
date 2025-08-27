@@ -37,7 +37,7 @@ class Category extends Model
 
     public function companies()
     {
-        return $this->hasMany(Company::class,'category_id','id');
+        return $this->hasMany(Company::class,'category_id','id')->orderBy('is_premium','DESC');
     }
     public function mapCompany()
     {
@@ -45,7 +45,7 @@ class Category extends Model
     }
     public function mapCompanies()
     {
-        return $this->hasMany(Company::class,'category_id','id')->with('category')->where(['status'=>1]);
+        return $this->hasMany(Company::class,'category_id','id')->with('category')->where(['status'=>1])->orderBy('is_premium','DESC');
     }
 
     public function companiesIsPremium()

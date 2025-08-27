@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Kreait\Firebase\Factory;
 use Kreait\Firebase\Messaging\CloudMessage;
 use Kreait\Firebase\Messaging\Notification;
 
@@ -324,15 +325,26 @@ class CompanyController extends Controller
             $reservation->status = $request->status;
             $reservation->created_at = date('Y-m-d H:i:s',strtotime($timezone));
             $reservation->save();
-            $token = FcmToken::where(['user_id' => $reservation->user_id])->first();
-            // Firebase Messaging instance
-            $messaging = false;
-            if(count($token) === 1){
-                $messaging = CloudMessage::withTarget('token', $token)
-                    ->withNotification(Notification::create(
-                        'Rezervasiya məlumatı',
-                        "{$reservation->full_name} rezervasiya qəbul edildi."
-                    ));
+            $token = FcmToken::where(['user_id' => $reservation->user_id])-> orderBy('id','DESC')->first();
+            if (!empty($token)) {
+                // Firebase obyekti yaradılır
+                $factory = (new Factory)
+                    ->withServiceAccount('/var/www/vurtut-backend/config/firebase_credentials.json')
+                    ->withDatabaseUri('https://vurtut-default-rtdb.firebaseio.com');
+
+                $messaging = $factory->createMessaging(); // <-- createMessaging istifadə olunur
+
+                // Mesaj hazırla
+                $message = CloudMessage::withTarget('token', $token['token'])
+                    ->withNotification(
+                        Notification::create(
+                            'Rezervasiya qəbulunuz',
+                            "{$company->full_name} rezervasiya müraciətinizə baxdı."
+                        )
+                    );
+
+                // Mesajı göndər
+                $result = $messaging->send($message);
             }
 
             $log = [

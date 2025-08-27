@@ -16,15 +16,16 @@
 
                     <div class="form-group">
                         <label for="premiumDuration">Premium müddəti:</label>
-                        <select name="limit" id="premiumDuration" class="form-control" required>
-                            @foreach(config("premium.limits") as $limitKey => $limit)
-                                <option value="{{$limitKey}}">{{$limitKey}} Gün - {{$limit}} AZN</option>
+                        <select name="plan" id="premiumDuration" class="form-control" required>
+                            @foreach(config("premium.limits") as $planKey => $plan)
+                                <option value="{{ $planKey }}">
+                                    {{ $plan['label'] }}: {{ $plan['amount'] }} AZN
+                                </option>
                             @endforeach
-
                         </select>
                     </div>
                     <div class="alert alert-info mt-3">
-                        Zəhmət olmasa, ödəniş zamanı qəbizi saxlayın.
+                        Korporativ tərəfdaşlıqlar üçün strateji əməkdaşlıq imkanları mövcuddur. Ətraflı məlumat üçün bizimlə rəsmi əlaqə saxlayın.
                     </div>
                 </div>
 

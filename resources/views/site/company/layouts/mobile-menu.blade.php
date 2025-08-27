@@ -10,7 +10,7 @@
                     <li><a class="{{ Route::currentRouteName() === 'site.company.announcements' ? 'active' : '' }}" href="{{ route('site.company.announcements') }}"><span class="flaticon-list"></span>Bildirişlərim</a></li>
                     <li><a class="{{ Route::currentRouteName() === 'site.company-post.index' ? 'active' : '' }}" href="{{ route('site.company-post.index') }}"><span class="flaticon-image"></span>Qalereya</a></li>
                     <li><a class="{{ Route::currentRouteName() === 'site.company-services.index' ? 'active' : '' }}" href="{{ route('site.company-services.index') }}"><span class="flaticon-list"></span>Kataloq</a></li>
-                    @if($company['category']['is_reservation']== true)
+                    @if($company['is_premium'] == 1 && $company['category']['is_reservation']== true)
                         <li><a class="{{ Route::currentRouteName() === 'site.company.reservation' ? 'active' : '' }}" href="{{ route('site.company.reservation') }}"><span class="flaticon-date"></span>Rezervasiyalarım</a></li>
                     @endif
                     <li><a class="{{ Route::currentRouteName() === 'site.company.statistics' ? 'active' : '' }}" href="{{ route('site.company.statistics') }}"><span class="flaticon-bar-chart"></span>Statistikalar</a></li>

@@ -111,7 +111,7 @@ class HomeController extends Controller
             });
         }
 
-        $allCompaniesByTrends = $query->orderBy('id', 'DESC')->limit(5)->get();
+        $allCompaniesByTrends = $query->orderBy('is_premium','DESC')->orderBy('id', 'DESC')->limit(5)->get();
 
         // 🔁 AJAX cavabı (yalnız şirkət hissəsi render olunur)
         if ($request->ajax()) {
@@ -171,7 +171,7 @@ class HomeController extends Controller
             });
         }
 
-        $allCompaniesByCity = $query->orderBy('id', 'DESC')->paginate(10);
+        $allCompaniesByCity = $query->orderBy('is_premium','DESC')->orderBy('id', 'DESC')->paginate(10);
 
         // 🔁 AJAX cavabı (yalnız şirkət hissəsi render olunur)
         if ($request->ajax()) {
@@ -225,7 +225,7 @@ class HomeController extends Controller
             });
         }
 
-        $allCompaniesByCategory = $query->orderBy('id', 'DESC')->paginate(10);
+        $allCompaniesByCategory = $query->orderBy('is_premium','DESC')->orderBy('id', 'DESC')->paginate(10);
 
         // 🔁 AJAX cavabı (yalnız şirkət hissəsi render olunur)
         if ($request->ajax()) {
@@ -387,7 +387,7 @@ class HomeController extends Controller
         if ($request->has('city_id') && !empty($request->city_id)) {
             $query->where('city_id', $request->city_id);
         }
-        $companies = $query->get();
+        $companies = $query->orderBy('is_premium','DESC')->orderBy('id', 'DESC')->get();
         $mainCategories = Category::whereNull(['parent_id'])
             ->where(['status' => 1])
             ->orderBy('title->'.$this->currentLang,'ASC')->get();
