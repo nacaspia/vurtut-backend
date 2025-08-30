@@ -12,7 +12,7 @@
             <a href="{{ route('site.index') }}" class="navbar_brand float-left dn-smd">
                 <img class="logo1 img-fluid rounded-circle" src="{{ asset("site/images/Vurtut logo icon/vurtut.com.svg") }}" alt="vurtut" width="50" length="50">
                 <img class="logo2 img-fluid rounded-circle" src="{{ asset("site/images/Vurtut logo icon/vurtut.com.svg") }}" alt="vurtut" width="50" length="50">
-                <span style="text-transform: lowercase;!important;">vurtut.com</span>
+                <span style="text-transform: lowercase;!important;">vurtut</span>
             </a>
             <ul id="respMenu" class="ace-responsive-menu text-right" data-menu-style="horizontal">
                 <li>
@@ -95,10 +95,11 @@
                                 </div>
                                 <div class="user_setting_content">
                                     @if (!empty(auth('company')->user()->country_id) && !empty(auth('company')->user()->city_id))
-                                        <a class="dropdown-item active" style="color: #484848;!important;" href="{{ route('site.company.index') }}">Hesabım</a>
                                         @if(auth('company')->user()->is_premium != 1)
-                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#premiumCompany" style="color: #484848;">Premium Hesab</a>
+                                            <a class="dropdown-item gold-btn" href="#" data-toggle="modal" data-target="#premiumCompany" style="color: #484848;">⭐Premium Hesab</a>
                                         @endif
+                                        <a class="dropdown-item active" style="color: #484848;!important;" href="{{ route('site.company.index') }}">Hesabım</a>
+
                                     @endif
                                     <a class="dropdown-item" style="color: #484848;!important;" href="{{ route('site.company.logout') }}">Çıxış</a>
                                 </div>
@@ -155,7 +156,7 @@
             <div class="main_logo_home2 text-left" id="logoDiv">
                     <img class="nav_logo_img img-fluid mt15" src="{{ asset('site/images/Vurtut logo icon/Vurtut.com.png') }}" alt="Vurtut"
                          style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
-                    <span class="mt15" style="margin-left: 8px;">vurtut.com</span>
+                    <span class="mt15" style="margin-left: 8px;">vurtut</span>
             </div>
 
             <ul class="menu_bar_home2">

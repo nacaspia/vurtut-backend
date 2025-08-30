@@ -61,8 +61,10 @@
 
                                 if ($daysLeft > 0) {
                                     $message = "Premium bitməsinə $daysLeft gün qalıb. <a href='#' data-toggle='modal' data-target='#premiumCompany'  class='btn btn-thm spr_btn'>İndi artırın</a>.";
-                                } else {
+                                } elseif($daysLeft < 0) {
                                     $message = "Premium müddəti bitib. <a href='#' data-toggle='modal' data-target='#premiumCompany'  class='btn btn-thm spr_btn'>Yenidən Premium olun</a>.";
+                                } else {
+                                    $message = "<a href='#' data-toggle='modal' data-target='#premiumCompany'  class='btn btn-thm spr_btn'>Premium olun</a>.";
                                 }
                                 ?>
                                 <h2 class="mt-0">{{$company->full_name}} ({{ $company['type'] === 'main'? 'Əsas Filial': 'Filial' }}) </h2>
@@ -80,10 +82,10 @@
                                         </ul>
                                     </li>
                                     <div class="price mt25 fn-lg">
-                                    @if($company['is_premium'] ==1)
+{{--                                    @if($company['is_premium'] ==1)--}}
                                             {!! $message !!}
 {{--                                            <a class="btn btn-thm spr_btn" href="#">Premiumu Artır</a>--}}
-                                    @endif
+{{--                                    @endif--}}
 {{--                                        <a class="btn btn-thm spr_btn" href="#">İrəli Çək</a>--}}
 
 {{--                                        <a class="btn btn-thm spr_btn" href="#">VIP</a>--}}

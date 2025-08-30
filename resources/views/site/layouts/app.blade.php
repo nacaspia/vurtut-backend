@@ -52,6 +52,25 @@
             background-color: #aaa;
             border-radius: 4px;
         }
+        .gold-btn {
+            background-color: #d4af37;
+            color: #000 !important;
+            font-weight: 600;
+            border-radius: 31px;
+            padding: 4px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: block;
+        }
+
+        .gold-btn:hover {
+            background-color: #c19a2b;   /* Hover zamanı daha tünd qızılı */
+            text-decoration: none;
+        }
+
     </style>
 </head>
 <body>

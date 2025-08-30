@@ -27,6 +27,12 @@
         .map-listing-item a:hover {
             text-decoration: underline;
         }
+        @media (max-width: 768px) {
+            .half_map_area_content {
+                display: none;
+            }
+        }
+
 
     </style>
     <link rel="stylesheet" href="{{ asset("site/css/bootstrap.min.css") }}">
