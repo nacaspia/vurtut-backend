@@ -26,7 +26,8 @@ class CompanyPostController extends Controller
     public function index()
     {
         $companyPosts = $this->companyPostRepository->getAll($this->company->id);
-        return view('site.company.company-post.index', compact('companyPosts'));
+        $company = $this->company;
+        return view('site.company.company-post.index', compact('companyPosts','company'));
     }
 
     public function create()
