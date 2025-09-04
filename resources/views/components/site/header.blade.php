@@ -96,7 +96,7 @@
                                 <div class="user_setting_content">
                                     @if (!empty(auth('company')->user()->country_id) && !empty(auth('company')->user()->city_id))
                                         @if(auth('company')->user()->is_premium != 1)
-                                            <a class="dropdown-item gold-btn mt-2" href="#" data-toggle="modal" data-target="#premiumCompany" style="color: #484848;">Premium Hesab</a>
+                                            <a class="dropdown-item gold-btn mt-2" href="{{ route('site.pricing') }}" style="color: #484848;">Premium Hesab</a>
                                         @endif
                                         <a class="dropdown-item active" style="color: #484848;!important;" href="{{ route('site.company.index') }}">Hesabım</a>
 
@@ -223,7 +223,7 @@
             </li>
             @if(!empty(auth('company')->user()->id) && auth('company')->user()->is_premium != 1)
                 <li>
-                    <a href="#" data-toggle="modal" data-target="#premiumCompany" ><span class="title">Premium Hesab</span></a>
+                    <a href="{{ route('site.pricing') }}" ><span class="title">Premium Hesab</span></a>
                 </li>
             @endif
             {{--<li>

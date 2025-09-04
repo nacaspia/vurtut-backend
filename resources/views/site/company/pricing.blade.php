@@ -52,7 +52,7 @@
                         </div>
                         <div class="pricing_footer">
                             @if(auth('company')->user()->is_premium != 1)
-                                <a class="btn pricing_btn btn-block" href="#" data-toggle="modal" data-target="#premiumCompany">Paketi aktivləşdir</a>
+                                <a class="btn pricing_btn btn-block" href="#" data-toggle="modal" data-target="#premiumCompany" data-plan="30d">Paketi aktivləşdir</a>
                             @endif
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="pricing_footer">
                             @if(auth('company')->user()->is_premium != 1)
-                                <a class="btn pricing_btn btn-block" href="#" data-toggle="modal" data-target="#premiumCompany">Paketi aktivləşdir</a>
+                                <a class="btn pricing_btn btn-block" href="#" data-toggle="modal" data-target="#premiumCompany" data-plan="6m">Paketi aktivləşdir</a>
                             @endif
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                         </div>
                         <div class="pricing_footer">
                             @if(auth('company')->user()->is_premium != 1)
-                                <a class="btn pricing_btn btn-block" href="#" data-toggle="modal" data-target="#premiumCompany">Paketi aktivləşdir</a>
+                                <a class="btn pricing_btn btn-block" href="#" data-toggle="modal" data-target="#premiumCompany" data-plan="1y">Paketi aktivləşdir</a>
                             @endif
                         </div>
                     </div>
@@ -179,4 +179,13 @@
     <script src="{{ asset("site/js/timepicker.js") }}"></script>
     <!-- Custom script for all pages -->
     <script src="{{ asset("site/js/script.js") }}"></script>
+    <script>
+        $('#premiumCompany').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // kliklənən düymə
+            var plan = button.data('plan'); // düymənin data-plan dəyəri
+
+            var modal = $(this);
+            modal.find('#premiumDuration').val(plan); // selecti seçilmiş edirik
+        });
+    </script>
 @endsection
