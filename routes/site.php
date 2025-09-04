@@ -51,6 +51,9 @@ Route::get('/forgot-password', 'AuthController@forgotPassword')->name('forgotPas
 Route::post('/forgot-set-password', 'AuthController@forgotSetPassword')->name('forgotSetPassword');
 ///login register
 
+Route::get('social/{provider}/redirect/{type}', 'SocialController@redirect')->name('social.redirect');
+Route::get('social/{provider}/callback/{type}', 'SocialController@redirect')->name('social.callback');
+
 Route::prefix('/company')->middleware('company')->group(function () {
     Route::get('/logout', 'Company\CompanyController@logout')->name('company.logout');
     Route::get('/account', 'Company\CompanyController@index')->name('company.index');

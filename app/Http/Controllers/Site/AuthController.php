@@ -81,8 +81,6 @@ class AuthController extends Controller
 
                 $company = new Company();
                 $company->category_id = null;
-//                $company->parent_id = !empty($registerRequest->parent_id)??null;
-//                $company->type = !empty($registerRequest->parent_id)? 'branch': 'main';
                 $company->full_name = $registerRequest->full_name;
                 $company->slug = Str::slug($registerRequest->slug);
                 $company->phone = $registerRequest->phone;
