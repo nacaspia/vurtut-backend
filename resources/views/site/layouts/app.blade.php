@@ -53,21 +53,31 @@
             border-radius: 4px;
         }
         .gold-btn {
-            background-color: #d4af37;
+            background: radial-gradient(
+            47.12% 309% at 47.12% 40.18%,
+            rgba(254, 255, 134, 0.7) 0%,
+            rgba(251, 206, 61, 0.7) 50.48%,
+            rgba(132, 77, 32, 0.7) 100%
+            );
+            background-size: 200% 200%; 
+            background-position: left center; 
+            /* background-color: #d4af37; */
             color: #000 !important;
             font-weight: 600;
             border-radius: 31px;
-            padding: 4px 12px;
+            padding: 8px 12px;
             display: flex;
             align-items: center;
             gap: 6px;
             transition: all 0.3s ease;
             text-align: center;
             display: block;
+            width: 240px;
         }
 
         .gold-btn:hover {
-            background-color: #c19a2b;   /* Hover zamanı daha tünd qızılı */
+            /* background-color: #c19a2b;   Hover zamanı daha tünd qızılı */
+             background-position: right center;
             text-decoration: none;
         }
 

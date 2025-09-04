@@ -52,7 +52,7 @@
                     <div class="single_property_title mt30-767">
                         <div class="media">
                             <img class="mr-3" src="{{ !empty($company->image)? asset("uploads/company/".$company->image): asset('site/images/Vurtut logo icon/account.png') }}" style="width:145px; height:145px; border-radius:50%; object-fit:cover; display:block; margin-bottom:10px;" oading="lazy">
-                            <div class="media-body mt20">
+                            <div class="media-body mt20 ">
                                 <?php
                                 $expiresAt = Carbon::parse($company->premium_expires_at); // Tarixi modeldən götürürük
                                 $now = Carbon::now();
@@ -60,11 +60,11 @@
                                 $daysLeft = $now->diffInDays($expiresAt, false); // false - mənfi dəyəri göstərmək üçün
 
                                 if ($daysLeft > 0) {
-                                    $message = "Premium bitməsinə $daysLeft gün qalıb. <a href='#' data-toggle='modal' data-target='#premiumCompany'  class='btn btn-thm spr_btn'>İndi artırın</a>.";
+                                    $message = "Premium bitməsinə $daysLeft gün qalıb. <a href='#' data-toggle='modal' data-target='#premiumCompany'  class='btn gold-btn spr_btn '>İndi artırın</a>.";
                                 } elseif($daysLeft < 0) {
-                                    $message = "Premium müddəti bitib. <a href='#' data-toggle='modal' data-target='#premiumCompany'  class='btn btn-thm spr_btn'>Yenidən Premium olun</a>.";
+                                    $message = "Premium müddəti bitib. <a href='#' data-toggle='modal' data-target='#premiumCompany'  class='btn gold-btn spr_btn '>Yenidən Premium olun</a>.";
                                 } else {
-                                    $message = "<a href='#' data-toggle='modal' data-target='#premiumCompany'  class='btn btn-thm spr_btn'>Premium olun</a>.";
+                                    $message = "<a href='#' data-toggle='modal' data-target='#premiumCompany'  class='btn gold-btn spr_btn '>Premium olun</a>.";
                                 }
                                 ?>
                                 <h2 class="mt-0">{{$company->full_name}} ({{ $company['type'] === 'main'? 'Əsas Filial': 'Filial' }}) </h2>
