@@ -96,8 +96,7 @@ class ServicesController extends Controller
             return response()->json(['success' => false, 'error' => $valdate->errors()],422);
         }
         $company =  $this->company;
-//        dd($servicesRequest->category_id);
-//        try {
+        try {
             if (!empty($servicesRequest->category_id)) {
                 $category = Category::where(['parent_id' => $company->category_id,'id' => $servicesRequest->category_id])->first();
                 $categoryId = $category->id;;
@@ -147,18 +146,18 @@ class ServicesController extends Controller
             ];
             LogsHelper::convert($log);
             return response()->json(['success' => true, 'message' =>Lang::get('site.success_up')],200);
-//        } catch (\Exception $exception) {
-//            $log = [
-//                'obj_id' => $company->id,
-//                'subj_id' => null,
-//                'subj_table' => 'company_services',
-//                'actions' => 'store',
-//                'type' => 'company',
-//                'note' => 'errors '. $exception->getMessage()
-//            ];
-//            LogsHelper::convert($log);
-//            return response()->json(['success' => false, 'error' =>  Lang::get('site.error_up')],422);
-//        }
+        } catch (\Exception $exception) {
+            $log = [
+                'obj_id' => $company->id,
+                'subj_id' => null,
+                'subj_table' => 'company_services',
+                'actions' => 'store',
+                'type' => 'company',
+                'note' => 'errors '. $exception->getMessage()
+            ];
+            LogsHelper::convert($log);
+            return response()->json(['success' => false, 'error' =>  Lang::get('site.error_up')],422);
+        }
     }
 
     /**
@@ -216,7 +215,7 @@ class ServicesController extends Controller
 
             if (!empty($servicesRequest->person_id)) {
                 $person_id = CompanyPerson::where(['company_id' => $company->id,  'id' => $servicesRequest->person_id])->first();
-                $person_id = $person_id->id;;
+                $person_id = $person_id->id ?? null;
             }else {
                 $person_id = $companyService->person_id ?? null;
             }
