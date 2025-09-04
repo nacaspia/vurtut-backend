@@ -51,7 +51,9 @@
                             </ul>
                         </div>
                         <div class="pricing_footer">
-                            <a class="btn pricing_btn btn-block" href="#">Paketi aktivləşdir</a>
+                            @if(auth('company')->user()->is_premium != 1)
+                                <a class="btn pricing_btn btn-block" href="#" data-toggle="modal" data-target="#premiumCompany">Paketi aktivləşdir</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -70,7 +72,9 @@
                             </ul>
                         </div>
                         <div class="pricing_footer">
-                            <a class="btn pricing_btn btn-block" href="#">Paketi aktivləşdir</a>
+                            @if(auth('company')->user()->is_premium != 1)
+                                <a class="btn pricing_btn btn-block" href="#" data-toggle="modal" data-target="#premiumCompany">Paketi aktivləşdir</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -89,7 +93,9 @@
                             </ul>
                         </div>
                         <div class="pricing_footer">
-                            <a class="btn pricing_btn btn-block" href="#">Paketi aktivləşdir</a>
+                            @if(auth('company')->user()->is_premium != 1)
+                                <a class="btn pricing_btn btn-block" href="#" data-toggle="modal" data-target="#premiumCompany">Paketi aktivləşdir</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -109,12 +115,48 @@
                 </div>
                 <div class="col-lg-4 pr10">
                     <div class="parner_reg_btn text-right tac-smd">
-                        <a class="btn" href="#">Müraciət et!</a>
+                        <a class="btn" href="{{ route('site.contact') }}">Müraciət et!</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <div class="modal fade" id="premiumCompany" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="max-width: 500px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Premium Hesab Al</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('site.company.premium.redirectToBank') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <p>Premium hesab alaraq hesabınızı önə çıxarın və daha çox istifadəçiyə çata bilərsiniz.</p>
+
+                        <div class="form-group">
+                            <label for="premiumDuration">Premium müddəti:</label>
+                            <select name="plan" id="premiumDuration" class="form-control" required>
+                                @foreach(config("premium.limits") as $planKey => $plan)
+                                    <option value="{{ $planKey }}">{{ $plan['label'] }}: {{ $plan['amount'] }} AZN
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="alert alert-info mt-3">
+                            Korporativ tərəfdaşlıqlar üçün strateji əməkdaşlıq imkanları mövcuddur. Ətraflı məlumat üçün bizimlə rəsmi əlaqə saxlayın.
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
+                        <button type="submit" class="btn btn-primary">Ödənişə keç</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('site.js')
     <script src="{{ asset("site/js/jquery-3.6.0.js") }}"></script>
