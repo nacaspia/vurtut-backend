@@ -114,7 +114,7 @@ class ServicesController extends Controller
 
             if (!empty($servicesRequest->person_id)) {
                 $person_id = CompanyPerson::where(['company_id' => $company->id,  'id' => $servicesRequest->person_id])->first();
-                $person_id = $person_id->id;;
+                $person_id = $person_id->id ?? null;
             }else {
                 $person_id = $company->person_id ?? null;
             }
