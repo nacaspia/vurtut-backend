@@ -55,6 +55,7 @@ Route::get('social/{provider}/redirect/{type}', 'SocialController@redirect')->na
 Route::get('social/{provider}/callback/{type}', 'SocialController@redirect')->name('social.callback');
 
 Route::prefix('/company')->middleware('company')->group(function () {
+    Route::get('/pricing','Company\CompanyController@pricing')->name('pricing');
     Route::get('/logout', 'Company\CompanyController@logout')->name('company.logout');
     Route::get('/account', 'Company\CompanyController@index')->name('company.index');
     Route::get('/announcements', 'Company\CompanyController@announcements')->name('company.announcements');

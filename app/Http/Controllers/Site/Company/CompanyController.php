@@ -91,6 +91,9 @@ class CompanyController extends Controller
         return view('site.company.statistics',compact('company'));
     }
 
+    public function pricing() {
+        return view('site.company.pricing');
+    }
     public function logout()
     {
         auth('company')->logout(); // Logout the user
