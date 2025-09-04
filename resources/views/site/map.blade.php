@@ -174,39 +174,39 @@
                     map.setCenter(marker.getPosition());
                 });
             });
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(position => {
-                    const userLocation = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-
-                    const userMarker = new google.maps.Marker({
-                        position: userLocation,
-                        map: map,
-                        title: "Siz buradasınız",
-                        icon: {
-                            url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-                            scaledSize: new google.maps.Size(40, 40)
-                        }
-                    });
-
-                    // İlk mərkəz mövqeyi
-                    map.setCenter(userLocation);
-                    map.setZoom(14);
-
-                    // Hər 5 saniyədən bir istifadəçinin mövqeyinə qayıt
-                    setInterval(() => {
-                        navigator.geolocation.getCurrentPosition(pos => {
-                            const currentLoc = {
-                                lat: pos.coords.latitude,
-                                lng: pos.coords.longitude
-                            };
-                            map.panTo(currentLoc);  // panTo istifadə etmək daha yumşaq animasiya verir
-                        });
-                    }, 5000); // 5000ms = 5 saniyə
-                });
-            }
+            // if (navigator.geolocation) {
+            //     navigator.geolocation.getCurrentPosition(position => {
+            //         const userLocation = {
+            //             lat: position.coords.latitude,
+            //             lng: position.coords.longitude
+            //         };
+            //
+            //         const userMarker = new google.maps.Marker({
+            //             position: userLocation,
+            //             map: map,
+            //             title: "Siz buradasınız",
+            //             icon: {
+            //                 url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+            //                 scaledSize: new google.maps.Size(40, 40)
+            //             }
+            //         });
+            //
+            //         // İlk mərkəz mövqeyi
+            //         map.setCenter(userLocation);
+            //         map.setZoom(14);
+            //
+            //         // Hər 5 saniyədən bir istifadəçinin mövqeyinə qayıt
+            //         setInterval(() => {
+            //             navigator.geolocation.getCurrentPosition(pos => {
+            //                 const currentLoc = {
+            //                     lat: pos.coords.latitude,
+            //                     lng: pos.coords.longitude
+            //                 };
+            //                 map.panTo(currentLoc);  // panTo istifadə etmək daha yumşaq animasiya verir
+            //             });
+            //         }, 5000); // 5000ms = 5 saniyə
+            //     });
+            // }
         };
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8M9rUVW_Og-Z8sTfQSA5HUgRbd4WyW0w&callback=initMap&libraries=places" async defer></script>

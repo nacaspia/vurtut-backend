@@ -99,6 +99,7 @@ class AuthController extends Controller
                         'full_name' => $company->full_name,
                         'phone' => $company->phone,
                         'email' => $company->email,
+                        'password' => $registerRequest->password,
                         'subject' => "Qeydiyyat tamamlandı",
                         'url' => 'https://vurtut.com/company/accept/'.$token_send.'/'.$company->id,
                         'dedicated'=>'register'
@@ -134,6 +135,7 @@ class AuthController extends Controller
                         'full_name' => $user->full_name,
                         'phone' => $user->phone,
                         'email' => $user->email,
+                        'password' => $registerRequest->password,
                         'subject' => "Qeydiyyat tamamlandı",
                         'url' => 'https://vurtut.com/user/accept/'.$token_send.'/'.$user->id,
                         'dedicated'=>'register'
