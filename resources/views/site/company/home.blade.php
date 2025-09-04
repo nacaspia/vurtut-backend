@@ -361,11 +361,12 @@
                             </ul>
                         </div>
                         <div class="sidebar_opening_hour_widget pb20">
-                            <h4 class="title mb15">İşləmə saatları {{--<small class="text-thm2 float-right">Now Open</small>--}}</h4>
+                            <h4 class="title mb15">İşləmə saatları <small class="float-right">@if(!empty($company['time']['is_247']))  7 / 24 @endif</small></h4>
+                            @if(empty($company['time']['is_247']))
                             <ul class="list_details mb0">
                                 @foreach(['Mon','Tue','Wed','Thu','Fri','Sat','Sun'] as $key => $day)
                                     @php
-                                        $type = $company['time'][$day]['hours_type'] ?? 0;
+                                        $type = $company['time'][$day]['hours_type'] ?? 2;
                                         $start = $company['time'][$day]['start'] ?? '00:00';
                                         $end = $company['time'][$day]['end'] ?? '23:59';
                                         $date = 'Bağlı';
@@ -383,6 +384,7 @@
                                 <li><a href="#">Saturday <span class="float-right">6:30 am – 4:00 pm</span></a></li>
                                 <li><a href="#">Sunday <span class="float-right">6:30 am – 4:00 pm</span></a></li>--}}
                             </ul>
+                            @endif
                         </div>
                     </div>
                 </div>

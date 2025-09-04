@@ -59,7 +59,7 @@
     <section class="about-section">
         <div class="container">
             <div class="row">
-                @if(count($companyPosts) <3 && $company['is_premium'] != 1)
+                @if($company['is_premium'] == 1 || count($companyPosts) < 3)
                     <div class="col-sm-6 col-md-6 col-lg-4 post-image-card">
                         <div class="my_dashboard_review" style="padding: 62px;!important;">
                             <form id="companyPost" enctype="multipart/form-data" class="upload-card">
@@ -98,45 +98,45 @@
 
                         </div>
                     </div>
-                @else
-                    <div class="col-sm-6 col-md-6 col-lg-4 post-image-card">
-                        <div class="my_dashboard_review" style="padding: 62px;!important;">
-                            <form id="companyPost" enctype="multipart/form-data" class="upload-card">
-                                @csrf
-                                <label for="image" class="upload-label" id="uploadLabel">
-                                    <div class="upload-placeholder">
-                                        <i class="fa fa-plus"></i>
-                                        <span>Şəkil yüklə</span>
-                                    </div>
-                                </label>
+{{--                @else--}}
+{{--                    <div class="col-sm-6 col-md-6 col-lg-4 post-image-card">--}}
+{{--                        <div class="my_dashboard_review" style="padding: 62px;!important;">--}}
+{{--                            <form id="companyPost" enctype="multipart/form-data" class="upload-card">--}}
+{{--                                @csrf--}}
+{{--                                <label for="image" class="upload-label" id="uploadLabel">--}}
+{{--                                    <div class="upload-placeholder">--}}
+{{--                                        <i class="fa fa-plus"></i>--}}
+{{--                                        <span>Şəkil yüklə</span>--}}
+{{--                                    </div>--}}
+{{--                                </label>--}}
 
-                                <input type="file" class="d-none" name="image" id="image" accept="image/*">
+{{--                                <input type="file" class="d-none" name="image" id="image" accept="image/*">--}}
 
-                                <div id="previewContainer" class="text-center mt-3" style="display: none;">
-                                    <img id="imagePreview" src="#" alt="Şəkil"
-                                         class="rounded mb-2"
-                                         style="max-width: 200px; max-height: 200px; object-fit: cover; border-radius: 8px;">
+{{--                                <div id="previewContainer" class="text-center mt-3" style="display: none;">--}}
+{{--                                    <img id="imagePreview" src="#" alt="Şəkil"--}}
+{{--                                         class="rounded mb-2"--}}
+{{--                                         style="max-width: 200px; max-height: 200px; object-fit: cover; border-radius: 8px;">--}}
 
-                                    <!-- Sil düyməsi (sol yuxarıda) -->
-                                    <button type="button" id="removeImage"
-                                            class="btn btn-sm btn-danger"
-                                            style="position: absolute; top: 8px; left: 28px; z-index: 5;">
-                                        Sil
-                                    </button>
+{{--                                    <!-- Sil düyməsi (sol yuxarıda) -->--}}
+{{--                                    <button type="button" id="removeImage"--}}
+{{--                                            class="btn btn-sm btn-danger"--}}
+{{--                                            style="position: absolute; top: 8px; left: 28px; z-index: 5;">--}}
+{{--                                        Sil--}}
+{{--                                    </button>--}}
 
-                                    <!-- Yadda saxla düyməsi (sağ yuxarıda) -->
-                                    <button type="submit" id="saveImage"
-                                            class="btn btn-sm btn-success"
-                                            style="position: absolute; top: 8px; right: 26px; z-index: 5;">
-                                        Yadda saxla
-                                    </button>
-                                </div>
+{{--                                    <!-- Yadda saxla düyməsi (sağ yuxarıda) -->--}}
+{{--                                    <button type="submit" id="saveImage"--}}
+{{--                                            class="btn btn-sm btn-success"--}}
+{{--                                            style="position: absolute; top: 8px; right: 26px; z-index: 5;">--}}
+{{--                                        Yadda saxla--}}
+{{--                                    </button>--}}
+{{--                                </div>--}}
 
-                                <div class="invalid-feedback" id="imageError"></div>
-                            </form>
+{{--                                <div class="invalid-feedback" id="imageError"></div>--}}
+{{--                            </form>--}}
 
-                        </div>
-                    </div>
+{{--                        </div>--}}
+{{--                    </div>--}}
                 @endif
                 @if(!empty($companyPosts[0]))
                     @foreach($companyPosts as $post)

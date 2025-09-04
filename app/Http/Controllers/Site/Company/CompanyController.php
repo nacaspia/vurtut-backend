@@ -91,6 +91,10 @@ class CompanyController extends Controller
         return view('site.company.statistics',compact('company'));
     }
 
+    public function pricing() {
+
+        return view('site.company.pricing');
+    }
     public function logout()
     {
         auth('company')->logout(); // Logout the user
@@ -172,11 +176,17 @@ class CompanyController extends Controller
                 'instagram' => $settingsRequest->instagram,
                 'linkedin' => $settingsRequest->linkedin,
             ];
+            $is247 = $settingsRequest->input('is_247', 0); // default 0
+
             $time = [];
-            foreach ($settingsRequest->hours_type as $day => $type) {
-                if ($type == 1) { // Açıq
-                    $dayHours = $settingsRequest->hours[$day] ?? ['start' => '', 'end' => ''];
-                    $time[$day] = array_merge($dayHours, ['hours_type' => $settingsRequest->hours_type[$day] ?? 0]);
+            if ($is247) {
+                $time['is_247'] = 1; // sadə flag saxla
+            } else {
+                foreach ($settingsRequest->hours_type as $day => $type) {
+                    if ($type == 1) { // Açıq
+                        $dayHours = $settingsRequest->hours[$day] ?? ['start' => '', 'end' => ''];
+                        $time[$day] = array_merge($dayHours, ['hours_type' => $settingsRequest->hours_type[$day] ?? 0]);
+                    }
                 }
             }
             Company::where('id',$company->id)->update([

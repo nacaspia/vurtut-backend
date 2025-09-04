@@ -81,8 +81,6 @@ class AuthController extends Controller
 
                 $company = new Company();
                 $company->category_id = null;
-//                $company->parent_id = !empty($registerRequest->parent_id)??null;
-//                $company->type = !empty($registerRequest->parent_id)? 'branch': 'main';
                 $company->full_name = $registerRequest->full_name;
                 $company->slug = Str::slug($registerRequest->slug);
                 $company->phone = $registerRequest->phone;
@@ -99,6 +97,7 @@ class AuthController extends Controller
                         'full_name' => $company->full_name,
                         'phone' => $company->phone,
                         'email' => $company->email,
+                        'password' => $registerRequest->password,
                         'subject' => "Qeydiyyat tamamlandı",
                         'url' => 'https://vurtut.com/company/accept/'.$token_send.'/'.$company->id,
                         'dedicated'=>'register'
@@ -134,6 +133,7 @@ class AuthController extends Controller
                         'full_name' => $user->full_name,
                         'phone' => $user->phone,
                         'email' => $user->email,
+                        'password' => $registerRequest->password,
                         'subject' => "Qeydiyyat tamamlandı",
                         'url' => 'https://vurtut.com/user/accept/'.$token_send.'/'.$user->id,
                         'dedicated'=>'register'
@@ -322,7 +322,7 @@ class AuthController extends Controller
                 'phone' => $companyEmail->phone ?? $userEmail->phone,
                 'email' => $companyEmail->email ?? $userEmail->email,
                 'subject' => "Şifrənizi yeniləyin",
-                'url' => 'http://vurtut.test/forgot-password?id='.$id.'&email='.$email,
+                'url' => 'https://vurtut.com/forgot-password?id='.$id.'&email='.$email,
                 'dedicated'=>'forgot-password'
             ];
             Notification::route('mail', $mail_data['email'])->notify(new Mail($mail_data));

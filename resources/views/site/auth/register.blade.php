@@ -31,13 +31,13 @@
                         <div class="invalid-feedback" id="passwordUserError"></div>
                     </div>
                     <button type="submit" id="userRegisterBtn" class="btn btn-log btn-block btn-thm">Qeydiyyat olun</button>
-                    {{--<hr>
+                   {{-- <hr>
                     <div class="row">
                         <div class="col-lg-6">
-                            <button type="submit" class="btn btn-block btn-fb"><i class="fa fa-facebook float-left mt5"> Facebook ilə giriş edin</i></button>
+                            <a href="{{ route('site.social.redirect', ['provider'=>'facebook','type'=>'user']) }}" class="btn btn-block btn-fb"><i class="fa fa-facebook float-left mt5"> Facebook ilə giriş edin</i></a>
                         </div>
                         <div class="col-lg-6">
-                            <button type="submit" class="btn btn-block btn-googl"><i class="fa fa-google float-left mt5"></i> Google ilə giriş edin</button>
+                            <a href="{{ route('site.social.redirect', ['provider'=>'google','type'=>'user']) }}" class="btn btn-block btn-googl"><i class="fa fa-google float-left mt5"></i> Google ilə giriş edin</a>
                         </div>
                     </div>--}}
                 </form>
@@ -67,10 +67,10 @@
                     {{--<hr>
                     <div class="row">
                         <div class="col-lg-6">
-                            <button type="submit" class="btn btn-block btn-fb"><i class="fa fa-facebook float-left mt5"> Facebook ilə giriş edin</i></button>
+                            <a href="{{ route('site.social.redirect', ['provider'=>'facebook','type'=>'company']) }}" class="btn btn-block btn-fb"><i class="fa fa-facebook float-left mt5"> Facebook ilə giriş edin</i></a>
                         </div>
                         <div class="col-lg-6">
-                            <button type="submit" class="btn btn-block btn-googl"><i class="fa fa-google float-left mt5"></i> Google ilə giriş edin</button>
+                            <a href="{{ route('site.social.redirect', ['provider'=>'google','type'=>'company']) }}" class="btn btn-block btn-googl"><i class="fa fa-google float-left mt5"></i> Google ilə giriş edin</a>
                         </div>
                     </div>--}}
                 </form>

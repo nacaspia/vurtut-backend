@@ -32,8 +32,9 @@ class ServicesController extends Controller
         $currentLang = $this->currentLang;
         $mainCompaniesCategory = Category::whereNull('sub_category_id')->where(['status' => 1,'parent_id' => $this->company->category_id])->get();
         $companyPersons = CompanyPerson::where('company_id', $this->company->id)->get();
-
-        $subCompaniesCategory = Category::whereNotNull('sub_category_id')->where(['status' => 1, 'parent_id' => $this->company->category_id])->get();
+        $mainategory = Category::whereNull('sub_category_id')->where(['status' => 1,'parent_id' => $this->company->category_id])->first();
+        $subCompaniesCategory = Category::whereNotNull('sub_category_id')->where(['status' => 1, 'parent_id' => $this->company->category_id, 'sub_category_id' => $mainategory['id'] ])->get();
+//        dd($subCompaniesCategory);
         $query = CompanyService::with('subCategory')->where('company_id', $this->company->id);
 
         if (!empty($request->filter_category_id)) {
@@ -112,7 +113,7 @@ class ServicesController extends Controller
 
             if (!empty($servicesRequest->person_id)) {
                 $person_id = CompanyPerson::where(['company_id' => $company->id,  'id' => $servicesRequest->person_id])->first();
-                $person_id = $person_id->id;;
+                $person_id = $person_id->id ?? null;
             }else {
                 $person_id = $company->person_id ?? null;
             }
@@ -155,7 +156,7 @@ class ServicesController extends Controller
                 'note' => 'errors '. $exception->getMessage()
             ];
             LogsHelper::convert($log);
-            return response()->json(['success' => false, 'message' =>  Lang::get('site.error_up')],422);
+            return response()->json(['success' => false, 'error' =>  Lang::get('site.error_up')],422);
         }
     }
 
@@ -214,7 +215,7 @@ class ServicesController extends Controller
 
             if (!empty($servicesRequest->person_id)) {
                 $person_id = CompanyPerson::where(['company_id' => $company->id,  'id' => $servicesRequest->person_id])->first();
-                $person_id = $person_id->id;;
+                $person_id = $person_id->id ?? null;
             }else {
                 $person_id = $companyService->person_id ?? null;
             }

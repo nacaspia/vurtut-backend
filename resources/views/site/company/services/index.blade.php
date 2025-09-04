@@ -172,7 +172,7 @@
                         <div class="row mt40 tab-pane fade show active pl20 pr20" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="col-lg-12">
                                 <div class="login_form">
-                                    <div class="text-danger text-center mt-2" id="generalError" style="font-weight: bold;!important;"></div>
+                                    <div class="text-danger text-center mt-2" id="generalStoreError" style="font-weight: bold;!important;"></div>
                                     <div class="text-success text-center mt-2" id="generalSuccess" style="font-weight: bold;!important;"></div>
                                     <div class="text-danger text-center mt-2" id="editgeneralError" style="font-weight: bold;!important;"></div>
                                     <div class="text-success text-center mt-2" id="editgeneralSuccess" style="font-weight: bold;!important;"></div>
@@ -288,17 +288,13 @@
         // Pagination kliklənəndə işləsin
         $(document).on('click', '.page-link', function (e) {
             e.preventDefault();
-
             const url = $(this).attr('href');
             if (url === '#' || $(this).parent().hasClass('disabled')) return;
-
             fetchFilteredServices(url); // kliklənmiş səhifənin linki ilə sorğu
         });
 
-
         document.addEventListener('DOMContentLoaded', function () {
             const detailButtons = document.querySelectorAll('.viewProductDetail');
-
             detailButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
@@ -320,7 +316,7 @@
         $('#productForm').on('submit', function (e) {
             e.preventDefault();
             $('.form-control').removeClass('is-invalid');
-            $('#categoryError, #subCategoryError, #productNameError, #priceError, #imageError, #descriptionError, #generalError, #generalSuccess').text('');
+            $('#categoryError, #subCategoryError, #productNameError, #priceError, #imageError, #descriptionError, #generalStoreError, #generalSuccess').text('');
             let formData = new FormData();
             $('#serviceButton').prop('disabled', false).html('Gözləyin...');
             formData.append('category_id', $('#category_id').val());
@@ -377,12 +373,14 @@
                                 $('#imageError').removeClass('d-none').addClass('d-block').text(res.errors.image[0]);
                             }
 
-                        } else if (res.message) {
-                            $('#generalError').removeClass('d-none').addClass('d-block').text(res.message);
+                        } else if (res.error) {
+                            console.log(res.error)
+                            // $('#generalError').text(res.error);
+                            $('#generalStoreError').removeClass('d-none').addClass('d-block').text(res.error);
                             $('.settings_modal').modal('show'); // modalı göstər
                         }
                     } else {
-                        $('#generalError').removeClass('d-none').addClass('d-block').text('Naməlum xəta baş verdi.');
+                        $('#generalStoreError').removeClass('d-none').addClass('d-block').text('Naməlum xəta baş verdi.');
                         $('.settings_modal').modal('show'); // modalı göstər
                     }
                 }

@@ -1,42 +1,5 @@
 <!-- Premium Hesab Modal -->
-<div class="modal fade" id="premiumCompany" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document" style="max-width: 500px;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Premium Hesab Al</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
 
-            <form action="{{ route('site.company.premium.redirectToBank') }}" method="POST">
-                @csrf
-                <div class="modal-body">
-                    <p>Premium hesab alaraq hesabınızı önə çıxarın və daha çox istifadəçiyə çata bilərsiniz.</p>
-
-                    <div class="form-group">
-                        <label for="premiumDuration">Premium müddəti:</label>
-                        <select name="plan" id="premiumDuration" class="form-control" required>
-                            @foreach(config("premium.limits") as $planKey => $plan)
-                                <option value="{{ $planKey }}">
-                                    {{ $plan['label'] }}: {{ $plan['amount'] }} AZN
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="alert alert-info mt-3">
-                        Korporativ tərəfdaşlıqlar üçün strateji əməkdaşlıq imkanları mövcuddur. Ətraflı məlumat üçün bizimlə rəsmi əlaqə saxlayın.
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Bağla</button>
-                    <button type="submit" class="btn btn-primary">Ödənişə keç</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 <section class="footer_one home2">
     <div class="container pb70">
         <div class="row">

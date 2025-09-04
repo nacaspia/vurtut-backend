@@ -16,7 +16,7 @@
     <!-- Bootstrap & jQuery (əgər daxil edilməyibsə) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection
 @section('company.content')
     <!-- Our Dashbord -->
@@ -174,6 +174,10 @@
 
                                         <div class="col-lg-15">
                                             <h4 class="float-left fn-414 mb30">İş vaxtı</h4>
+                                            <div class="form-check mb30" style="left: 37px;!important;">
+                                                <input type="checkbox" id="is247" name="is247" @if(!empty($company['time']['is_247'])) checked @endif class="form-check-input" value="1">
+                                                <label for="is247" class="form-check-label">7/24 Açıq</label>
+                                            </div>
                                             <div class="opening_hour_day_list float-right">
                                                 <ul class="mb0 nav nav-tabs" id="dayTabs" role="tablist">
                                                     @foreach(['Mon','Tue','Wed','Thu','Fri','Sat','Sun'] as $key => $day)
@@ -205,7 +209,7 @@
                                                                     <select class="form-control hours_type" name="hours_type[{{ $day }}]">
                                                                         <option value="">Seçin</option>
                                                                         <option value="1" @if($type == 1) selected @endif>Açıq</option>
-                                                                        <option value="0" @if($type == 0) selected @endif>Bağlı</option>
+                                                                        <option value="2" @if($type == 2) selected @endif>Bağlı</option>
                                                                     </select>
 
                                                                     <input type="time" class="form-control start_date" name="hours[{{ $day }}][start]" value="{{ $start }}">
@@ -388,9 +392,6 @@
 @section('company.js')
     <script src="{{ asset('site/js/googlemaps1.js') }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8M9rUVW_Og-Z8sTfQSA5HUgRbd4WyW0w&callback=initMap&libraries=places" async defer></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <input type="text" id="date" class="form-control start_date" placeholder="Tarix">
-    <input type="text" id="date" class="form-control end_date" placeholder="Tarix">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         flatpickr(".start_date", {
@@ -408,25 +409,89 @@
         });
     </script>
     <script>
-        document.querySelectorAll('.hours_type').forEach(select => {
-            const container = select.closest('.form-inline');
-            const inputs = container.querySelectorAll('.start_date, .end_date');
+        document.addEventListener("DOMContentLoaded", function () {
+            const is247 = document.getElementById("is247");
+            const dayTabs = document.getElementById("dayTabs");
+            const dayTabContent = document.getElementById("dayTabContent");
 
-            function toggleInputs() {
+            // Günlər üzrə açıq/bağlı toggle
+            function toggleDayInputs(select) {
+                const container = select.closest('.form-inline');
+                const startInput = container.querySelector('.start_date');
+                const endInput = container.querySelector('.end_date');
+
                 if (select.value === "1") {
-                    inputs.forEach(i => i.style.display = "inline-block");
+                    // Açıq → inputlar görünsün
+                    startInput.style.display = "inline-block";
+                    endInput.style.display = "inline-block";
                 } else {
-                    inputs.forEach(i => i.style.display = "none");
+                    // Bağlı və ya boş → inputlar gizlənsin
+                    startInput.style.display = "none";
+                    endInput.style.display = "none";
                 }
             }
 
-            // səhifə yüklənəndə vəziyyəti yoxla
-            toggleInputs();
+            // Bütün select-ləri yoxla (ilk yüklənəndə)
+            document.querySelectorAll('.hours_type').forEach(select => {
+                toggleDayInputs(select);
+                select.addEventListener('change', function () {
+                    toggleDayInputs(this);
+                });
+            });
 
-            // seçim dəyişdikdə
-            select.addEventListener('change', toggleInputs);
+            // 7/24 checkbox
+            is247.addEventListener("change", function () {
+                if (this.checked) {
+                    // Günlərin tablarını gizlət
+                    dayTabs.style.display = "none";
+                    dayTabContent.style.display = "none";
+
+                    // Bütün günləri avtomatik açıq 00:00 - 23:59 qoy
+                    document.querySelectorAll('.hours_type').forEach(select => {
+                        select.value = "1"; // Açıq seç
+                        const container = select.closest('.form-inline');
+                        const startInput = container.querySelector('.start_date');
+                        const endInput = container.querySelector('.end_date');
+                        if (startInput && endInput) {
+                            startInput.value = "00:00";
+                            endInput.value = "23:59";
+                            startInput.style.display = "none"; // gizli saxla
+                            endInput.style.display = "none";   // gizli saxla
+                        }
+                    });
+                } else {
+                    // Günlərin tabları geri görünsün
+                    dayTabs.style.display = "flex";
+                    dayTabContent.style.display = "block";
+
+                    // Checkbox çıxanda hər günün seçiminə görə inputları yenidən göstər
+                    document.querySelectorAll('.hours_type').forEach(select => {
+                        toggleDayInputs(select);
+                    });
+                }
+            });
         });
     </script>
+    {{--    <script>
+            document.querySelectorAll('.hours_type').forEach(select => {
+                  const container = select.closest('.form-inline');
+                  const inputs = container.querySelectorAll('.start_date, .end_date');
+
+                  function toggleInputs() {
+                      if (select.value === "1") {
+                          inputs.forEach(i => i.style.display = "inline-block");
+                      } else {
+                          inputs.forEach(i => i.style.display = "none");
+                      }
+                  }
+
+                  // səhifə yüklənəndə vəziyyəti yoxla
+                  toggleInputs();
+
+                  // seçim dəyişdikdə
+                  select.addEventListener('change', toggleInputs);
+              });
+        </script>--}}
     <script>
 
         let map;
