@@ -86,6 +86,8 @@
         formData.append('instagram', $('#instagram').val());
         formData.append('linkedin', $('#linkedin').val());
         formData.append('tiktok', $('#tiktok').val());
+        // 7/24 checkbox dəyərini əlavə et
+        formData.append('is_247', $('#is247').is(':checked') ? 1 : 0);
         // Tüm saatleri (her gün için) FormData'ya ekle
         $('select[name^="hours_type"]').each(function () {
             let day = $(this).attr('name').match(/\[(.*?)\]/)[1]; // Mon, Tue vs.

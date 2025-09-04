@@ -97,13 +97,13 @@
 
             function locationData(locationImg, locationTitle, locationAddress, locationPhone, locationUrl) {
                 return `
-            <div class="map-listing-item" style="width:200px;">
-                <img src="${locationImg}" alt="${locationTitle}" style="width: 37%; height: 79px;"/>
-                <h3>${locationTitle}</h3>
-                <p>${locationAddress}</p>
-                <p>${locationPhone}</p>
-                <a href="${locationUrl}" target="_blank">Keçid et</a>
-            </div>
+        <div class="map-listing-item" style="width:200px;">
+            <img src="${locationImg}" alt="${locationTitle}" style="width: 37%; height: 79px;"/>
+            <h3>${locationTitle}</h3>
+            <p>${locationAddress}</p>
+            <p>${locationPhone}</p>
+            <a href="${locationUrl}" target="_blank">Keçid et</a>
+        </div>
         `;
             }
 
@@ -114,7 +114,7 @@
                 {
                     lat: {{ $category['mapCompany']['data']['lat'] ?? 0 }},
                     lng: {{ $category['mapCompany']['data']['lng'] ?? 0 }},
-                    img: "{{ asset('uploads/categories/'.$category['image'] ?? '') }}",
+                    img: "{{ asset('uploads/company/'.$category['mapCompany']['image'] ?? '') }}",
                     title: "{{ $category['mapCompany']['full_name'] }}",
                     address: "{{ $category['mapCompany']['data']['address'] ?? '' }}",
                     phone: "{{ $category['mapCompany']['social']['one_phone'] ?? '' }}",
@@ -129,22 +129,86 @@
                 zoom: 8
             });
 
-            locations.forEach(loc => {
+            // Şəkli dairəvi edən funksiya
+            function createCircularIcon(imgUrl, size = 40) {
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                const ctx = canvas.getContext('2d');
+
+                const image = new Image();
+                image.src = imgUrl;
+
+                return new Promise(resolve => {
+                    image.onload = () => {
+                        ctx.clearRect(0, 0, size, size);
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.arc(size/2, size/2, size/2, 0, Math.PI * 2, true);
+                        ctx.closePath();
+                        ctx.clip();
+                        ctx.drawImage(image, 0, 0, size, size);
+                        ctx.restore();
+                        resolve(canvas.toDataURL());
+                    };
+                });
+            }
+
+            // Marker əlavə etmək
+            locations.forEach(async loc => {
+                const circularImg = await createCircularIcon(loc.img, 40);
+
                 const marker = new google.maps.Marker({
                     position: { lat: loc.lat, lng: loc.lng },
                     map: map,
-                    title: loc.title
+                    title: loc.title,
+                    icon: {
+                        url: circularImg,
+                        scaledSize: new google.maps.Size(40, 40)
+                    }
                 });
 
                 marker.addListener("click", function() {
                     ib.setContent(locationData(loc.img, loc.title, loc.address, loc.phone, loc.url));
                     ib.open(map, marker);
-                    map.setCenter(marker.getPosition()); // marker üzərinə fokus
+                    map.setCenter(marker.getPosition());
                 });
             });
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    const userMarker = new google.maps.Marker({
+                        position: userLocation,
+                        map: map,
+                        title: "Siz buradasınız",
+                        icon: {
+                            url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+                            scaledSize: new google.maps.Size(40, 40)
+                        }
+                    });
+
+                    // İlk mərkəz mövqeyi
+                    map.setCenter(userLocation);
+                    map.setZoom(14);
+
+                    // Hər 5 saniyədən bir istifadəçinin mövqeyinə qayıt
+                    setInterval(() => {
+                        navigator.geolocation.getCurrentPosition(pos => {
+                            const currentLoc = {
+                                lat: pos.coords.latitude,
+                                lng: pos.coords.longitude
+                            };
+                            map.panTo(currentLoc);  // panTo istifadə etmək daha yumşaq animasiya verir
+                        });
+                    }, 5000); // 5000ms = 5 saniyə
+                });
+            }
         };
     </script>
-
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8M9rUVW_Og-Z8sTfQSA5HUgRbd4WyW0w&callback=initMap&libraries=places" async defer></script>
     @if(!empty(auth('user')->user()->id))
         <script>
