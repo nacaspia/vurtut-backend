@@ -322,7 +322,7 @@ class AuthController extends Controller
                 'phone' => $companyEmail->phone ?? $userEmail->phone,
                 'email' => $companyEmail->email ?? $userEmail->email,
                 'subject' => "Şifrənizi yeniləyin",
-                'url' => 'http://vurtut.test/forgot-password?id='.$id.'&email='.$email,
+                'url' => 'https://vurtut.com/forgot-password?id='.$id.'&email='.$email,
                 'dedicated'=>'forgot-password'
             ];
             Notification::route('mail', $mail_data['email'])->notify(new Mail($mail_data));
