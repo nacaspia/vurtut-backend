@@ -25,7 +25,7 @@ class SocialController extends Controller
 
     public function callback($provider, $type)
     {
-        try {
+//        try {
             $socialUser = Socialite::driver($provider)->stateless()->user();
 
             if($type == 'user'){
@@ -54,9 +54,9 @@ class SocialController extends Controller
             auth()->guard($type == 'user' ? 'web' : 'company')->login($account);
 
             return redirect('/'.$type.'/account'); // uyğun yönləndirmə
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-            return redirect('/')->with('error', 'Sosial giriş zamanı xəta baş verdi.');
-        }
+//        } catch (\Exception $e) {
+//            dd($e->getMessage());
+//            return redirect('/')->with('error', 'Sosial giriş zamanı xəta baş verdi.');
+//        }
     }
 }
