@@ -44,6 +44,7 @@ class SocialController extends Controller
                 $account = new $model();
                 $account->full_name = $socialUser->getName() ?? $socialUser->getNickname();
                 $account->email = $socialUser->getEmail();
+                $account->phone = '+994';
                 $account->password = Hash::make(Str::random(12));
                 $account->status = 1; // sosial giriş olduğu üçün aktiv
                 if($type == 'company'){
