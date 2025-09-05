@@ -22,7 +22,7 @@ class SocialController extends Controller
 
     public function callback($provider, $type)
     {
-//        try {
+        try {
             $socialUser = Socialite::driver($provider)->stateless()
                 ->with(['redirect_uri' => url("social/{$provider}/callback/{$type}")])->user();
             if ($type == 'user') {
@@ -34,8 +34,16 @@ class SocialController extends Controller
             }
 
             // Eyni email varsa, daxil et, yoxsa yarad
-            $account = $model::where('email', $socialUser->getEmail())->first();
-            if (!$account) {
+            $user = User::where('email', $socialUser->getEmail())->first();
+            $company = Company::where('email', $socialUser->getEmail())->first();
+            if (!empty($company)) {
+                // Email artıq şirkət hesabı ilə varsa, company-ni login et
+                $account = $company;
+            } elseif (!empty($user)) {
+                // Email user hesabı ilə varsa, user-ni login et
+                $account = $user;
+            } else {
+                // Yeni hesab yaradılır
                 $account = new $model();
                 $account->full_name = $socialUser->getName() ?? $socialUser->getNickname();
                 $account->email = $socialUser->getEmail();
@@ -47,12 +55,11 @@ class SocialController extends Controller
                 }
                 $account->save();
             }
-
-            // login
-            auth()->guard($type == 'user' ? 'user' : 'company')->login($account);
+            // Login
+            auth()->guard($account instanceof Company ? 'company' : 'user')->login($account);
             return redirect('/' . $type . '/account');
-       /* } catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect('/')->with('error', 'Sosial giriş zamanı xəta baş verdi.');
-        }*/
+        }
     }
 }
