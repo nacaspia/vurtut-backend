@@ -19,10 +19,7 @@ class SocialController extends Controller
         }
 
         $redirectUrl = url("social/{$provider}/callback/{$type}");
-
-        // Baxaq Google-a hansı URL göndərilir
-//        dd($redirectUrl);
-
+        dd($redirectUrl);
         return Socialite::driver($provider)->with(['redirect_uri' => $redirectUrl])->redirect();
     }
 
