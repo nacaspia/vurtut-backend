@@ -40,6 +40,7 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        // redirect burda olmasın!
+        'redirect' => env('APP_URL') . '/social/google/callback', // base URL qoy
+//        'redirect' => env('GOOGLE_REDIRECT'),
     ],
 ];

@@ -19,7 +19,7 @@ class SocialController extends Controller
         }
 
         $redirectUrl = url("social/{$provider}/callback/{$type}");
-        
+
         return Socialite::driver($provider)->with(['redirect_uri' => $redirectUrl])->redirect();
     }
 
