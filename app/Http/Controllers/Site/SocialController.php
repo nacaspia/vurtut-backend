@@ -17,7 +17,13 @@ class SocialController extends Controller
         if (!in_array($type, ['user','company'])) {
             abort(404);
         }
-        return Socialite::driver($provider)->redirect();
+
+        $redirectUrl = url("social/{$provider}/callback/{$type}");
+
+        // Baxaq Google-a hansı URL göndərilir
+//        dd($redirectUrl);
+
+        return Socialite::driver($provider)->with(['redirect_uri' => $redirectUrl])->redirect();
     }
 
     public function callback($provider, $type)
