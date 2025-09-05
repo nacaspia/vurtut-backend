@@ -19,13 +19,11 @@ class SocialController extends Controller
         }
 
         $redirectUrl = url("social/{$provider}/callback/{$type}");
-        dd($redirectUrl);
         return Socialite::driver($provider)->with(['redirect_uri' => $redirectUrl])->redirect();
     }
 
     public function callback($provider, $type)
     {
-        dd($provider, $type);
         try {
             $socialUser = Socialite::driver($provider)->stateless()->user();
 
