@@ -28,6 +28,7 @@ class SocialController extends Controller
 
     public function callback($provider, $type)
     {
+        dd($provider, $type);
         try {
             $socialUser = Socialite::driver($provider)->stateless()->user();
 
