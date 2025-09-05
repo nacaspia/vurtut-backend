@@ -26,8 +26,10 @@ class SocialController extends Controller
     public function callback($provider, $type)
     {
 //        try {
-            $socialUser = Socialite::driver($provider)->stateless()->user();
-
+        $socialUser = Socialite::driver($provider)
+            ->stateless()
+            ->with(['redirect_uri' => url("social/{$provider}/callback/{$type}")])
+            ->user();
             if($type == 'user'){
                 $model = User::class;
             } else if ($type == 'company'){
