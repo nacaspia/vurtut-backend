@@ -52,7 +52,7 @@ Route::post('/forgot-set-password', 'AuthController@forgotSetPassword')->name('f
 ///login register
 
 Route::get('social/{provider}/redirect/{type}', 'SocialController@redirect')->name('social.redirect');
-Route::get('social/{provider}/callback/{type}', 'SocialController@redirect')->name('social.callback');
+Route::get('social/{provider}/callback/{type}', 'SocialController@callback')->name('social.callback');
 
 Route::prefix('/company')->middleware('company')->group(function () {
     Route::get('/pricing','Company\CompanyController@pricing')->name('pricing');
