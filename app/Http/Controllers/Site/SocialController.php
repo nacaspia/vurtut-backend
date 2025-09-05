@@ -54,7 +54,7 @@ class SocialController extends Controller
             }
 
             // login
-            auth()->guard($type == 'user' ? 'web' : 'company')->login($account);
+            auth()->guard($type == 'user' ? 'user' : 'company')->login($account);
 
             return redirect('/'.$type.'/account'); // uyğun yönləndirmə
 //        } catch (\Exception $e) {
