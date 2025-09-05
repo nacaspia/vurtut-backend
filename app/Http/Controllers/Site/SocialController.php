@@ -57,7 +57,8 @@ class SocialController extends Controller
             }
             // Login
             auth()->guard($account instanceof Company ? 'company' : 'user')->login($account);
-            return redirect('/' . $type . '/account');
+            $router = $account instanceof Company ? '/company/account' : '/user/account';
+            return redirect($router);
         } catch (\Exception $e) {
             return redirect('/')->with('error', 'Sosial giriş zamanı xəta baş verdi.');
         }
