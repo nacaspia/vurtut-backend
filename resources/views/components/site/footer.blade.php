@@ -42,7 +42,7 @@
             <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
                 <div class="footer_social_widget home2 ">
                     <h4>Tezliklə</h4>
-                    <img src="{{ asset('site/images/Vurtut logo icon/store.svg') }}" style="max-height: 153px;!important; object-fit: cover; width: 50%;" alt="App Store">
+                    <img src="{{ asset('site/images/Vurtut logo icon/store.svg') }}" style="max-height: 126px;!important; object-fit: cover; width: 38%;" alt="App Store">
 {{--                    <form class="footer_mailchimp_form home2">--}}
 {{--                        <div class="form-row align-items-center">--}}
 {{--                            <div class="col-auto">--}}

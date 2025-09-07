@@ -6109,6 +6109,8 @@ form.listing_page_v9{
     font-family: 'Noto Sans', sans-serif;
   line-height: 1.2;
 }
+
+
 .my_profile_setting_textarea textarea{
   border: 1px solid #EAEAEA;
   border-radius: 8px;
@@ -11981,19 +11983,22 @@ a.btn_error{
   transition: transform 0.4s, -webkit-transform 0.4s;
 }
 .wrap-custom-file label span,
-.wrap-custom-file label.file-ok span {
+.wrap-custom-file label.file-ok span, #settingsPasswordButton, #settingsButton {
   background: linear-gradient(297.21deg, #2650D9 0%, #4567D5 92.82%);
-  border-radius: 8px;
+  border-radius: 40px !important;
   bottom: 20px;
   color: #ffffff;
   font-size: 16px;
-    font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   height: 55px;
   left: 150px;
-  line-height: 55px;
+  line-height: 16px !important;
   position: absolute;
   top: 30px;
-  width: 220px;
+  width: 180px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 .wrap-custom-file label i{
   color: #2650D9;
@@ -12068,7 +12073,7 @@ a.btn_error{
 .avatar-upload #imagePreview {
   background-color: #ffffff;
   border: 1px solid #ebebeb;
-  border-radius: 8px;
+  border-radius: 50%;
   height: 100%;
 }
 .portfolio_item{

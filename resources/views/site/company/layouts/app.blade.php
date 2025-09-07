@@ -18,6 +18,7 @@
             line-height: 23px;
             padding: 17px 21px 15px;
             border-radius: 50px;
+            text-decoration: none;
         }
     </style>
 @endsection
