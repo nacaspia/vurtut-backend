@@ -6611,9 +6611,6 @@ form.listing_page_v9{
 }
 .footer_one.home1:before,
 .footer_one.home3:before{
-  background-image: url(../images/icons/footer-bg.svg);
-  background-repeat: no-repeat;
-  background-position: center center;
   bottom: 0;
   content: "";
   left: 0;
@@ -6623,9 +6620,6 @@ form.listing_page_v9{
   top: 25px;
 }
 .footer_one.home2:before{
-  background-image: url(../images/icons/footer-bg2.svg);
-  background-repeat: no-repeat;
-  background-position: center center;
   bottom: 0;
   content: "";
   left: 0;
@@ -10322,9 +10316,12 @@ a.btn_error{
 }
 .ed_menu_list ul li a:hover{
   background-color: rgba(255,255,255, .15);
+    border-radius: 50px !important;
+
 }
 .ed_menu_list ul li a.active{
   background-color: rgba(255,255,255, .15);
+
 }
 .ed_menu_list ul li a span{
   font-size: 18px;

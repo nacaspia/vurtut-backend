@@ -15,7 +15,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6 col-lg-2 col-xl-3">
+            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
                 <div class="footer_qlink_widget home2">
                     <h4>Ətraflı</h4>
                     <ul class="list-unstyled">
@@ -28,7 +28,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-5 col-md-6 col-lg-2 col-xl-2">
+            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
                 <div class="footer_qlink_widget pl0 home2">
                     <h4>Lokaldan qlobala</h4>
                     <ul class="list-unstyled">
@@ -39,10 +39,10 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-7 col-md-6 col-lg-4 col-xl-4">
-                <div class="footer_social_widget home2 d-flex flex-column align-items-center justify-content-center w-100">
+            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3">
+                <div class="footer_social_widget home2 ">
                     <h4>Tezliklə</h4>
-                    <img src="{{ asset('site/images/Vurtut logo icon/store.svg') }}" style="max-height: 75px;!important;">
+                    <img src="{{ asset('site/images/Vurtut logo icon/store.svg') }}" style="max-height: 153px;!important; object-fit: cover; width: 50%;" alt="App Store">
 {{--                    <form class="footer_mailchimp_form home2">--}}
 {{--                        <div class="form-row align-items-center">--}}
 {{--                            <div class="col-auto">--}}
@@ -56,34 +56,34 @@
         </div>
     </div>
     <hr>
-    <div class="container pt20 pb30">
+    <div class="container">
         <div class="row">
-            <div class="col-md-4 col-lg-4">
+            <div class="col-md-4 col-lg-4 d-flex align-items-center ">
                 <div class="copyright-widget mt10 mb15-767 home2">
                     <a href="https://nacaspia.com" target="_blank">
                     <p>© By NACaspia Informaion Technologies MMC</p>
                     </a>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-4">
+            <div class="col-md-4 col-lg-4 d-flex align-items-center">
                 <div class="footer_logo_widget text-center mb15-767 home2">
                     <div class="wrapper">
                         <div class="logo text-center">
-                            <a href="https://nacaspia.com" target="_blank">
-                                <img style="max-width: 26%; border-radius: 50px!important;" src="{{ asset("site/images/Vurtut logo icon/na-logo.png") }}" alt=" NACaspia Informaion Technologies MMC">
+                            <a href="https://nacaspia.com" target="_blank" style="display: flex;align-items: center; width: 90%; height: 26%;" id="logoDiv">
+                                <img style="width: auto; max-width: 75%; heigt: 75%; border-radius: 50px!important;" src="{{ asset("site/images/Vurtut logo icon/na-logo.png") }}" alt=" NACaspia Informaion Technologies MMC">
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-4">
-                <div class="footer_social_widget text-right tac-smd mt10 home2">
+            <div class="col-md-4 col-lg-4 d-flex align-items-center ">
+                <div class="footer_social_widget text-right tac-smd mt10 home2 d-flex align-items-center ">
                     <ul class="mb0">
-                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['facebook']))? $settings['social']['facebook']: 'https://www.facebook.com/share/p/17EtUAhM9y/'}}"><i class="fa fa-facebook"></i></a></li>
-                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['youtube']))? $settings['social']['youtube']: 'https://www.youtube.com/@nacaspia'}}"><i class="fa fa-youtube"></i></a></li>
-                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['tiktok']))? $settings['social']['tiktok']: 'https://www.tiktok.com/@nacaspia?is_from_webapp=1&sender_device=pc'}}">T</a></li>
-                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['instagram']))? $settings['social']['instagram']: 'https://www.instagram.com/vurtut_com/'}}"><i class="fa fa-instagram"></i></a></li>
-                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['linkedin']))? $settings['social']['linkedin']: 'https://www.linkedin.com/showcase/vurtut-com/'}}"><i class="fa fa-linkedin"></i></a></li>
+                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['facebook']))? $settings['social']['facebook']: 'https://www.facebook.com/share/p/17EtUAhM9y/'}}" style="font-size: 20px;"><i class="fa-brands fa-square-facebook" style="font-size: 20px;"></i></a></li>
+                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['youtube']))? $settings['social']['youtube']: 'https://www.youtube.com/@nacaspia'}}" style="font-size: 20px;"><i class="fa-brands fa-youtube" style="font-size: 20px;"></i></a></li>
+                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['tiktok']))? $settings['social']['tiktok']: 'https://www.tiktok.com/@nacaspia?is_from_webapp=1&sender_device=pc'}}" style="font-size: 20px;"><i class="fa-brands fa-tiktok" style="font-size: 20px;"></i></a></li>
+                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['instagram']))? $settings['social']['instagram']: 'https://www.instagram.com/vurtut_com/'}}" style="font-size: 20px;"><i class="fa-brands fa-square-instagram" style="font-size: 20px;"></i></a></li>
+                        <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['linkedin']))? $settings['social']['linkedin']: 'https://www.linkedin.com/showcase/vurtut-com/'}}" style="font-size: 20px;"><i class="fa-brands fa-linkedin" style="font-size: 20px;"></i></a></li>
                     </ul>
                 </div>
             </div>
