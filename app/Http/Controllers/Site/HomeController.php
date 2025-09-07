@@ -274,7 +274,6 @@ class HomeController extends Controller
     {
         $currentLang = $this->currentLang;
         $mainCategory = Category::with('mapCompanies','mapCompany')->whereNull(['parent_id'])->where(['status' => 1])->get();
-
         return view('site.map',compact('currentLang', 'mainCategory'));
     }
 

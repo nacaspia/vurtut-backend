@@ -9,26 +9,60 @@
                             @if($companyCategory['is_premium'] == 1)<li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"> PEMIUM </a></li>@endif
 {{--                            <li class="list-inline-item"><a href="#">Open</a></li>--}}
                         </ul>
-                        <ul class="listing_reviews">
-                            <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white total_review">({{count($companyCategory['comments'])}} Rəy)</a></li>
-                        </ul>
+
+                        @if(!empty($companyCategory['comments']))
+                            <ul class="listing_reviews">
+                                <div class="list-inline-item sspd_review">
+                                        <?php
+                                        $comments = $companyCategory['comments'];
+
+                                        $avgCleanliness = round($comments->avg('cleanliness'), 1);
+                                        $avgComfort = round($comments->avg('comfort'), 1);
+                                        $avgStaff = round($comments->avg('staf'), 1);
+                                        $avgFacilities = round($comments->avg('facilities'), 1);
+                                        $overallAverage = round(collect([
+                                            $avgCleanliness, $avgComfort, $avgStaff, $avgFacilities
+                                        ])->filter()->avg(), 2);
+
+                                        $reviewCount = $comments->count();
+                                        ?>
+                                    @php
+                                        $categories = [
+                                            'Təmizlik' => $avgCleanliness,
+                                            'Heyət' => $avgStaff,
+                                            'Rahatlıq' => $avgComfort,
+                                            'İmkanlar' => $avgFacilities,
+                                        ];
+
+                                        // ümumi cəm
+                                        $totalScore = array_sum($categories);
+
+                                        // neçə kateqoriya varsa
+                                        $count = count($categories);
+
+                                        // orta qiymət
+                                        $averageScore = $count > 0 ? $totalScore / $count : 0;
+                                    @endphp
+
+                                    <div class="rating-stars">
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            <i class="fa fa-star{{ $i <= round($averageScore) ? '' : '-o' }}"></i>
+                                        @endfor
+                                    </div>
+                                </div>
+                            </ul>
+                        @endif
                     </div>
                 </div>
                 <div class="details">
                     <div class="tc_content">
-{{--                        <div class="badge_icon"><a href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}"><img src="{{ asset("site/images/icons/agent1.svg") }}" alt="agent1.svg"></a></div>--}}
                         <h4><a  href="{{ route('site.companyDetails',['slug' => $companyCategory['slug']]) }}">{{ $companyCategory['full_name'] }}</a></h4>
                         <p>{{ \Illuminate\Support\Str::limit($companyCategory['text'], 50, '...') }}</p>
                         @php
                             $data = $companyCategory['data'];
                         @endphp
                         <ul class="prop_details mb0">
-                            <li class="list-inline-item"><a href="tel:{{ $companyCategory['phone'] ?? '' }}"><span class="flaticon-phone pr5"></span> {{ $companyCategory['phone'] ?? '' }}</a></li>
+                            <li class="list-inline-item"><a href="tel:{{ $companyCategory['social']['one_phone'] ?? null }}"><span class="flaticon-phone pr5"></span> {{ $companyCategory['social']['one_phone'] ?? null }}</a></li>
                             <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                         </ul>
                     </div>

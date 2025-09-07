@@ -9,35 +9,6 @@
     <link rel="stylesheet" href="{{ asset("site/css/bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset("site/css/style.css") }}">
     <link rel="stylesheet" href="{{ asset("site/css/responsive.css") }}">
-    <style>
-        .flaticon-love.active {
-            color: red;
-        }
-
-        .fa-star-m {
-            color: #ffc401;
-            transition: color 0.3s;
-        }
-
-        .fa-star.text-warning,
-        .fa-star.checked {
-            color: #ffc401 !important;
-        }
-
-        .review_star i.text-warning {
-            color: #ffc107 !important;
-        }
-
-        .rating-stars {
-            display: flex;
-            gap: 3px;
-        }
-
-        .rating-stars i {
-            color: #ffc107; /* qızılı ulduz */
-            font-size: 16px;
-        }
-    </style>
 @endsection
 @section('site.content')
     <!-- Listing Single Property -->
@@ -56,9 +27,16 @@
                                 <h2 class="mt-0">{{$company->full_name}}
                                     ({{ $company['type'] === 'main'? 'Əsas Filial': 'Filial' }})</h2>
                                 <ul class="mb0 agency_profile_contact">
-                                    <li class="list-inline-item"><a href="#"><span
+                                    @if(!empty($company['social']['one_phone']))
+                                    <li class="list-inline-item"><a href="tel:{{$company['social']['one_phone']}}"><span
                                                 class="flaticon-phone"></span> {{ !empty($company['social']['one_phone'])? $company['social']['one_phone']: null }}
                                         </a></li>
+                                    @endif
+                                    @if(!empty($company['social']['two_phone']))
+                                    <li class="list-inline-item"><a href="tel:{{$company['social']['two_phone']}}"><span
+                                                class="flaticon-phone"></span> {{ !empty($company['social']['two_phone'])? $company['social']['two_phone']: null }}
+                                        </a></li>
+                                    @endif
                                     <li class="list-inline-item"><a href="#"><span
                                                 class="flaticon-pin"></span> {{ $company->mainCities['name'][$currentLang] }} @if(!empty($company->subRegion['name'][$currentLang]))
                                                 / {{ $company->subRegion['name'][$currentLang] }}

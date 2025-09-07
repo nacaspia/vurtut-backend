@@ -38,6 +38,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @yield('site.css')
     <style>
+        .flaticon-love.active {
+            color: red;
+        }
+
+        .fa-star-m {
+            color: #ffc401;
+            transition: color 0.3s;
+        }
+
+        .fa-star.text-warning,
+        .fa-star.checked {
+            color: #ffc401 !important;
+        }
+
+        .review_star i.text-warning {
+            color: #ffc107 !important;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .rating-stars i {
+            color: #ffc107; /* qızılı ulduz */
+            font-size: 16px;
+        }
+    </style>
+    <style>
         .scrol-menu {
             max-height: 300px;
             overflow-y: auto;

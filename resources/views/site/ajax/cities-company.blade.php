@@ -8,14 +8,49 @@
                         <ul class="tag mb0">
                             @if($companyCity['is_premium'] == 1)<li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}"> PEMIUM </a></li>@endif
                         </ul>
-                        <ul class="listing_reviews">
-                            <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                            <li class="list-inline-item"><a class="text-white total_review">({{count($companyCity['comments'])}} Rəy)</a></li>
-                        </ul>
+
+                        @if(!empty($companyCity['comments']))
+                            <ul class="listing_reviews">
+                                <div class="list-inline-item sspd_review">
+                                        <?php
+                                        $comments = $companyCity['comments'];
+
+                                        $avgCleanliness = round($comments->avg('cleanliness'), 1);
+                                        $avgComfort = round($comments->avg('comfort'), 1);
+                                        $avgStaff = round($comments->avg('staf'), 1);
+                                        $avgFacilities = round($comments->avg('facilities'), 1);
+                                        $overallAverage = round(collect([
+                                            $avgCleanliness, $avgComfort, $avgStaff, $avgFacilities
+                                        ])->filter()->avg(), 2);
+
+                                        $reviewCount = $comments->count();
+                                        ?>
+                                    @php
+                                        $categories = [
+                                            'Təmizlik' => $avgCleanliness,
+                                            'Heyət' => $avgStaff,
+                                            'Rahatlıq' => $avgComfort,
+                                            'İmkanlar' => $avgFacilities,
+                                        ];
+
+                                        // ümumi cəm
+                                        $totalScore = array_sum($categories);
+
+                                        // neçə kateqoriya varsa
+                                        $count = count($categories);
+
+                                        // orta qiymət
+                                        $averageScore = $count > 0 ? $totalScore / $count : 0;
+                                    @endphp
+
+                                    <div class="rating-stars">
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            <i class="fa fa-star{{ $i <= round($averageScore) ? '' : '-o' }}"></i>
+                                        @endfor
+                                    </div>
+                                </div>
+                            </ul>
+                        @endif
                     </div>
                 </div>
                 <div class="details">
@@ -30,7 +65,7 @@
                             $data = $companyCity['data'];
                         @endphp
                         <ul class="prop_details mb0">
-                            <li class="list-inline-item"><a href="tel:{{ $companyCity['one_phone']?? $companyCity['phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyCity['one_phone'] ?? $companyCity['phone'] }}</a></li>
+                            <li class="list-inline-item"><a href="tel:{{ $companyCity['social']['one_phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyCity['social']['one_phone'] }}</a></li>
                             <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? null }}</a></li>
                         </ul>
                     </div>

@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="{{ asset("site/css/bootstrap.min.css") }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset("site/css/style.css") }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset("site/css/responsive.css") }}?v={{ time() }}">
-  {{--  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
 @endsection
 @section('site.content')
     <section class="home-one home1-overlay bg-img2">
@@ -160,14 +158,48 @@
                                                             <ul class="tag mb0">
                                                                 <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">PEMIUM</a></li>
                                                             </ul>
+                                                            @if(!empty($companyIsPremium['comments']))
                                                             <ul class="listing_reviews">
-                                                                <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                                                                <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                                                                <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                                                                <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                                                                <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                                                                <li class="list-inline-item"><a class="text-white total_review">({{count($companyIsPremium['comments'])}} Rəy)</a></li>
+                                                                    <div class="list-inline-item sspd_review">
+                                                                            <?php
+                                                                            $comments = $companyIsPremium['comments'];
+
+                                                                            $avgCleanliness = round($comments->avg('cleanliness'), 1);
+                                                                            $avgComfort = round($comments->avg('comfort'), 1);
+                                                                            $avgStaff = round($comments->avg('staf'), 1);
+                                                                            $avgFacilities = round($comments->avg('facilities'), 1);
+                                                                            $overallAverage = round(collect([
+                                                                                $avgCleanliness, $avgComfort, $avgStaff, $avgFacilities
+                                                                            ])->filter()->avg(), 2);
+
+                                                                            $reviewCount = $comments->count();
+                                                                            ?>
+                                                                        @php
+                                                                            $categories = [
+                                                                                'Təmizlik' => $avgCleanliness,
+                                                                                'Heyət' => $avgStaff,
+                                                                                'Rahatlıq' => $avgComfort,
+                                                                                'İmkanlar' => $avgFacilities,
+                                                                            ];
+
+                                                                            // ümumi cəm
+                                                                            $totalScore = array_sum($categories);
+
+                                                                            // neçə kateqoriya varsa
+                                                                            $count = count($categories);
+
+                                                                            // orta qiymət
+                                                                            $averageScore = $count > 0 ? $totalScore / $count : 0;
+                                                                        @endphp
+
+                                                                        <div class="rating-stars">
+                                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                                <i class="fa fa-star{{ $i <= round($averageScore) ? '' : '-o' }}"></i>
+                                                                            @endfor
+                                                                        </div>
+                                                                    </div>
                                                             </ul>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     <div class="details">
@@ -176,7 +208,7 @@
                                                             <p>{{ \Illuminate\Support\Str::limit($companyIsPremium['text'], 50, '...') }}</p>
                                                             @php $data = $companyIsPremium['data']; @endphp
                                                             <ul class="prop_details mb0">
-                                                                <li class="list-inline-item"><a href="tel:{{ $companyIsPremium['phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyIsPremium['phone'] }}</a></li>
+                                                                <li class="list-inline-item"><a href="tel:{{ $companyIsPremium['social']['one_phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyIsPremium['social']['one_phone'] }}</a></li>
                                                                 <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                                                             </ul>
                                                         </div>
@@ -227,14 +259,48 @@
                                                                     <ul class="tag mb0">
                                                                         <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">PEMIUM</a></li>
                                                                     </ul>
-                                                                    <ul class="listing_reviews">
-                                                                        <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                                                                        <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                                                                        <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                                                                        <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                                                                        <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
-                                                                        <li class="list-inline-item"><a class="text-white total_review">({{count($companyIsPremium['comments'])}} Rəy)</a></li>
-                                                                    </ul>
+                                                                    @if(!empty($companyIsPremium['comments']))
+                                                                        <ul class="listing_reviews">
+                                                                            <div class="list-inline-item sspd_review">
+                                                                                    <?php
+                                                                                    $comments = $companyIsPremium['comments'];
+
+                                                                                    $avgCleanliness = round($comments->avg('cleanliness'), 1);
+                                                                                    $avgComfort = round($comments->avg('comfort'), 1);
+                                                                                    $avgStaff = round($comments->avg('staf'), 1);
+                                                                                    $avgFacilities = round($comments->avg('facilities'), 1);
+                                                                                    $overallAverage = round(collect([
+                                                                                        $avgCleanliness, $avgComfort, $avgStaff, $avgFacilities
+                                                                                    ])->filter()->avg(), 2);
+
+                                                                                    $reviewCount = $comments->count();
+                                                                                    ?>
+                                                                                @php
+                                                                                    $categories = [
+                                                                                        'Təmizlik' => $avgCleanliness,
+                                                                                        'Heyət' => $avgStaff,
+                                                                                        'Rahatlıq' => $avgComfort,
+                                                                                        'İmkanlar' => $avgFacilities,
+                                                                                    ];
+
+                                                                                    // ümumi cəm
+                                                                                    $totalScore = array_sum($categories);
+
+                                                                                    // neçə kateqoriya varsa
+                                                                                    $count = count($categories);
+
+                                                                                    // orta qiymət
+                                                                                    $averageScore = $count > 0 ? $totalScore / $count : 0;
+                                                                                @endphp
+
+                                                                                <div class="rating-stars">
+                                                                                    @for ($i = 1; $i <= 5; $i++)
+                                                                                        <i class="fa fa-star{{ $i <= round($averageScore) ? '' : '-o' }}"></i>
+                                                                                    @endfor
+                                                                                </div>
+                                                                            </div>
+                                                                        </ul>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                             <div class="details">
@@ -243,7 +309,7 @@
                                                                     <p>{{ \Illuminate\Support\Str::limit($companyIsPremium['text'], 50, '...') }}</p>
                                                                     @php $data = $companyIsPremium['data']; @endphp
                                                                     <ul class="prop_details mb0">
-                                                                        <li class="list-inline-item"><a href="tel:{{ $companyIsPremium['phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyIsPremium['phone'] }}</a></li>
+                                                                        <li class="list-inline-item"><a href="tel:{{ $companyIsPremium['social']['one_phone'] ?? null }}"><span class="flaticon-phone pr5"></span> {{ $companyIsPremium['social']['one_phone'] ?? null }}</a></li>
                                                                         <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                                                                     </ul>
                                                                 </div>

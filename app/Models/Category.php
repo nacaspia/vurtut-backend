@@ -41,7 +41,7 @@ class Category extends Model
     }
     public function mapCompany()
     {
-        return $this->hasOne(Company::class,'category_id','id')->with('category','mainCities')->where(['status'=>1]);
+        return $this->hasOne(Company::class,'category_id','id')->whereNotNull(['image','category_id','country_id','city_id'])->with('category','mainCities')->where(['status'=>1]);
     }
     public function mapCompanies()
     {
