@@ -1,6 +1,7 @@
 @extends('site.user.layouts.app')
 @section('user.css')
     <link rel="stylesheet" href="{{ asset("site/css/bootstrap.min.css") }}">
+    
     <style>
         #imageLabel {
             transition: transform 0.3s ease;
@@ -37,13 +38,17 @@
                                         <div class="col-lg-12">
                                             <div class="wrap-custom-file mb50">
                                                 <input type="file"  class="form-control"  name="image_settings" id="image_settings" accept=".gif, .jpg, .png, .svg, .jpge" hidden />
-                                                <label for="image_settings" class="custom-file-label" id="imageLabel" @if(!empty($user['image'])) style="background-image: url('{{ asset('uploads/user/'.$user['image']) }}');" @endif>
-                                                    <span>Profil şəkili yüklə</span>
-                                                    <small class="file_title">Maksimum 15 MB</small>
-                                                </label>
-                                                <div id="previewContainer" style="margin-top: 10px; display: none;">
-                                                    <img id="imagePreview" src="@if(empty($user['image']))#@else {{ asset('uploads/user/'.$user['image']) }}@endif" alt="Şəkil" style="max-width: 145px;display: block; margin-bottom: 10px; border-radius: 117px;!important;" />
-                                                    <button type="button" id="removeImage" class="btn btn-danger btn-sm">Sil</button>
+                                              <label for="image_settings" 
+                                                 class="custom-file-label" 
+                                                 id="imageLabel"
+                                                 style="background-image: url('{{ !empty($user['image']) ? asset('uploads/user/'.$user['image']) : asset('uploads/user/1751262064.png') }}');">
+                                                  <span>Profil şəkili yüklə</span>
+                                                  <small class="file_title">Maksimum 15 MB</small>
+                                               </label>
+                                                <div id="previewContainer" style="margin-top: 10px; display: none; ">
+                                                    <img id="imagePreview"
+                                                     src="@if(empty($user['image'])){{ asset('uploads/user/1751262064.png') }}@else {{ asset('uploads/user/'.$user['image']) }}@endif" alt="Şəkil" style="width: 120px; height: 120px; display: block; margin-bottom: 10px; border-radius: 117px;!important;" />
+                                                    <button type="button" id="removeImage" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
                                                 </div>
                                             </div>
                                             <div class="invalid-feedback" id="imageSettingsError"></div>
@@ -106,7 +111,7 @@
                                         </div>
 
                                         <div class="col-xl-12">
-                                            <div class="my_profile_setting_input">
+                                            <div class="my_profile_setting_input"  style="height: 80px;">
                                                 <button type="submit" id="settingsButton" class="btn update_btn">Yadda saxla</button>
                                             </div>
                                         </div>
@@ -141,7 +146,7 @@
                                             <div class="invalid-feedback" id="confNewPasswordError"></div>
                                         </div>
                                         <div class="col-xl-12">
-                                            <div class="my_profile_setting_input">
+                                            <div class="my_profile_setting_input" style="height: 80px;">
                                                 <button type="submit" id="settingsPasswordButton" class="btn update_btn style2">Şifrəni dəyiş</button>
                                             </div>
                                         </div>

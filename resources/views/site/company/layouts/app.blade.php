@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset("site/css/style.css") }}">
     <link rel="stylesheet" href="{{ asset('site/css/dashbord_navitaion.css') }}">
     <link rel="stylesheet" href="{{ asset("site/css/responsive.css") }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @yield('company.css')
     <style>
         .ed_menu_list ul li a {
@@ -15,7 +16,9 @@
             font-size: 16px;
             font-weight: 400;
             line-height: 23px;
-            padding: 25px 23px 19px;
+            padding: 17px 21px 15px;
+            border-radius: 50px;
+            text-decoration: none;
         }
     </style>
 @endsection
@@ -27,16 +30,16 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="ed_menu_list mt5">
-                            <ul style="display:flex;list-style:none;padding:0;margin:0;gap:20px;align-items:center;">
-                                <li><a class="{{ Route::currentRouteName() === 'site.company.index' ? 'active' : '' }}" href="{{ route('site.company.index') }}"><span class="flaticon-web-page"></span>Müəssisəm</a></li>
-                                <li><a class="{{ Route::currentRouteName() === 'site.company.settings' ? 'active' : '' }}" href="{{ route('site.company.settings') }}"><span class="flaticon-avatar"></span>Parametrlər</a></li>
-                                <li><a class="{{ Route::currentRouteName() === 'site.company.announcements' ? 'active' : '' }}" href="{{ route('site.company.announcements') }}"><span class="flaticon-list"></span>Bildirişlərim</a></li>
-                                <li><a class="{{ Route::currentRouteName() === 'site.company-post.index' ? 'active' : '' }}" href="{{ route('site.company-post.index') }}"><span class="flaticon-image"></span>Qalereya</a></li>
-                                <li><a class="{{ Route::currentRouteName() === 'site.company-services.index' ? 'active' : '' }}" href="{{ route('site.company-services.index') }}"><span class="flaticon-list"></span>Kataloq</a></li>
+                            <ul style="display:flex;list-style:none;padding:0;margin:0;gap:20px;align-items:center; padding: 10px 0;">
+                                <li><a class="{{ Route::currentRouteName() === 'site.company.index' ? 'active' : '' }}" href="{{ route('site.company.index') }}"><i class="fa-solid fa-landmark" style="padding-right: 5px;"></i>Müəssisəm</a></li>
+                                <li><a class="{{ Route::currentRouteName() === 'site.company.settings' ? 'active' : '' }}" href="{{ route('site.company.settings') }}"><i class="fa-solid fa-gear" style="padding-right: 5px;"></i>Parametrlər</a></li>
+                                <li><a class="{{ Route::currentRouteName() === 'site.company.announcements' ? 'active' : '' }}" href="{{ route('site.company.announcements') }}"><i class="fa-solid fa-bell" style="padding-right: 5px;"></i>Bildirişlərim</a></li>
+                                <li><a class="{{ Route::currentRouteName() === 'site.company-post.index' ? 'active' : '' }}" href="{{ route('site.company-post.index') }}"><i class="fa-regular fa-image" style="padding-right: 5px;"></i>Qalereya</a></li>
+                                <li><a class="{{ Route::currentRouteName() === 'site.company-services.index' ? 'active' : '' }}" href="{{ route('site.company-services.index') }}"><i class="fa-solid fa-layer-group" style="padding-right: 5px;"></i>Kataloq</a></li>
                                 @if($company['is_premium'] == 1 && $company['category']['is_reservation']== true)
-                                    <li><a class="{{ Route::currentRouteName() === 'site.company.reservation' ? 'active' : '' }}" href="{{ route('site.company.reservation') }}"><span class="flaticon-date"></span>Rezervasiyalarım</a></li>
+                                    <li><a class="{{ Route::currentRouteName() === 'site.company.reservation' ? 'active' : '' }}" href="{{ route('site.company.reservation') }}"><span class="flaticon-date" style="padding-right: 5px;"></span>Rezervasiyalarım</a></li>
                                 @endif
-                                <li><a class="{{ Route::currentRouteName() === 'site.company.statistics' ? 'active' : '' }}" href="{{ route('site.company.statistics') }}"><span class="flaticon-bar-chart"></span>Statistikalar</a></li>
+                                <li><a class="{{ Route::currentRouteName() === 'site.company.statistics' ? 'active' : '' }}" href="{{ route('site.company.statistics') }}"><i class="fa-solid fa-chart-line" style="padding-right: 5px;"></i>Statistikalar</a></li>
                             </ul>
 
                         </div>

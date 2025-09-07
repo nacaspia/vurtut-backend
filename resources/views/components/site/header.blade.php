@@ -152,11 +152,11 @@
     </div><!-- /.mobile-menu -->
 --}}
     <div class="mobile-menu">
-        <div class="header stylehome1">
-            <div class="main_logo_home2 text-left" id="logoDiv">
-                    <img class="nav_logo_img img-fluid mt15" src="{{ asset('site/images/Vurtut logo icon/Vurtut.com.png') }}" alt="Vurtut"
+        <div class="header stylehome1 d-flex justify-content-between align-items-center">
+            <div class="main_logo_home2 text-left d-flex align-items-center" id="logoDiv">
+                    <img class="nav_logo_img img-fluid " src="{{ asset('site/images/Vurtut logo icon/Vurtut.com.png') }}" alt="Vurtut"
                          style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
-                    <span class="mt15" style="margin-left: 8px;">vurtut</span>
+                    <span class="mb-4" style="margin-left: 8px; ">vurtut</span>
             </div>
 
             <ul class="menu_bar_home2">
