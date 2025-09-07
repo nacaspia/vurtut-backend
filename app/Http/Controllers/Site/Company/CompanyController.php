@@ -92,7 +92,6 @@ class CompanyController extends Controller
     }
 
     public function pricing() {
-
         return view('site.company.pricing');
     }
     public function logout()

@@ -63,16 +63,50 @@
                                                 class="flaticon-pin"></span> {{ $company->mainCities['name'][$currentLang] }} @if(!empty($company->subRegion['name'][$currentLang]))
                                                 / {{ $company->subRegion['name'][$currentLang] }}
                                             @endif</a></li>
-                                    <li class="list-inline-item sspd_review">
-                                        <ul class="mb0">
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
-                                            <li class="list-inline-item">({{ count($company['comments']) }} rəy)</li>
-                                        </ul>
-                                    </li>
+
+                                    @if(!empty($company['comments']))
+                                        <div class="list-inline-item sspd_review">
+                                                <?php
+                                                $comments = $company['comments'];
+
+                                                $avgCleanliness = round($comments->avg('cleanliness'), 1);
+                                                $avgComfort = round($comments->avg('comfort'), 1);
+                                                $avgStaff = round($comments->avg('staf'), 1);
+                                                $avgFacilities = round($comments->avg('facilities'), 1);
+                                                $overallAverage = round(collect([
+                                                    $avgCleanliness, $avgComfort, $avgStaff, $avgFacilities
+                                                ])->filter()->avg(), 2);
+
+                                                $reviewCount = $comments->count();
+                                                ?>
+                                            @php
+                                                $categories = [
+                                                    'Təmizlik' => $avgCleanliness,
+                                                    'Heyət' => $avgStaff,
+                                                    'Rahatlıq' => $avgComfort,
+                                                    'İmkanlar' => $avgFacilities,
+                                                ];
+
+                                                // ümumi cəm
+                                                $totalScore = array_sum($categories);
+
+                                                // neçə kateqoriya varsa
+                                                $count = count($categories);
+
+                                                // orta qiymət
+                                                $averageScore = $count > 0 ? $totalScore / $count : 0;
+                                            @endphp
+
+                                            <div class="rating-stars">
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    <i class="fa fa-star{{ $i <= round($averageScore) ? '' : '-o' }}"></i>
+                                                @endfor
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <div class="list-inline-item"><i class="fa fa-street-view"></i> {{ $company['reads'] }} </div>
+                                    <div class="list-inline-item"><i class="fa fa-comment"></i> {{ count($company['comments']) }} </div>
+                                    <div class="list-inline-item"><i class="fa fa-share"></i> {{  $company['share'] }} </div>
                                     @if($company['is_premium'] ==1)
                                         <li class="list-inline-item"><a class="price_range" href="#">PREMIUM</a></li>
                                     @endif

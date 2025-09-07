@@ -121,7 +121,7 @@
                     $('#generalSettingsSuccess').text(response.message);
                     $('.settings_modal').modal('show'); // modalı göstər
                     $('.settings_modal .close').on('click', function () {
-                        window.location.href;
+                        window.location.href = window.location.href; // cari səhifəni yenidən yükləyir
                     });
                 }
             },

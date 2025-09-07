@@ -35,6 +35,7 @@
     <link rel="canonical" href="https://vurtut.com">
     <link href="{{ asset("site/images/Vurtut logo icon/Vurtut.com.ico") }}" sizes="128x128" rel="shortcut icon" type="image/x-icon" />
     <link href="{{ asset("site/images/Vurtut logo icon/Vurtut.com.ico") }}" sizes="128x128" rel="shortcut icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @yield('site.css')
     <style>
         .scrol-menu {
@@ -59,8 +60,8 @@
             rgba(251, 206, 61, 0.7) 50.48%,
             rgba(132, 77, 32, 0.7) 100%
             );
-            background-size: 200% 200%; 
-            background-position: left center; 
+            background-size: 200% 200%;
+            background-position: left center;
             /* background-color: #d4af37; */
             color: #000 !important;
             font-weight: 600;

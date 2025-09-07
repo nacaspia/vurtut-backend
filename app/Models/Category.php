@@ -45,12 +45,12 @@ class Category extends Model
     }
     public function mapCompanies()
     {
-        return $this->hasMany(Company::class,'category_id','id')->with('category')->where(['status'=>1])->orderBy('is_premium','DESC');
+        return $this->hasMany(Company::class,'category_id','id')->whereNotNull(['image','category_id','country_id','city_id'])->with('category')->where(['status'=>1])->orderBy('is_premium','DESC');
     }
 
     public function companiesIsPremium()
     {
-        return $this->hasMany(Company::class,'category_id','id')->where(['is_premium'=>1, 'status'=>1])->orderBy('id','DESC');
+        return $this->hasMany(Company::class,'category_id','id')->whereNotNull(['image','category_id','country_id','city_id'])->where(['is_premium'=>1, 'status'=>1])->orderBy('id','DESC');
     }
 
     public function companyServices() {

@@ -58,11 +58,9 @@
     <hr>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-lg-4 d-flex align-items-center ">
+            <div class="col-md-5 col-lg-5 d-flex align-items-center ">
                 <div class="copyright-widget mt10 mb15-767 home2">
-                    <a href="https://nacaspia.com" target="_blank">
-                    <p>© By NACaspia Informaion Technologies MMC</p>
-                    </a>
+                    <p>© <?= date('Y') ?> Bütün hüquqlar qorunur.By <a href="https://nacaspia.com" target="_blank">NACASPIA.COM</a></p>
                 </div>
             </div>
             <div class="col-md-4 col-lg-4 d-flex align-items-center">
@@ -76,7 +74,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-4 d-flex align-items-center ">
+            <div class="col-md-3 col-lg-3 d-flex align-items-center ">
                 <div class="footer_social_widget text-right tac-smd mt10 home2 d-flex align-items-center ">
                     <ul class="mb0">
                         <li class="list-inline-item"><a target="_blank" href="{{(!empty($settings['social']) &&  !empty($settings['social']['facebook']))? $settings['social']['facebook']: 'https://www.facebook.com/share/p/17EtUAhM9y/'}}" style="font-size: 20px;"><i class="fa-brands fa-square-facebook" style="font-size: 20px;"></i></a></li>

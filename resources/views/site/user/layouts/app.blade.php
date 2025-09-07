@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="{{ asset("site/css/style.css") }}">
     <link rel="stylesheet" href="{{ asset('site/css/dashbord_navitaion.css') }}">
     <link rel="stylesheet" href="{{ asset("site/css/responsive.css") }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    {{--<script src="http://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>--}}
     @yield('user.css')
 @endsection
 @section('site.content')

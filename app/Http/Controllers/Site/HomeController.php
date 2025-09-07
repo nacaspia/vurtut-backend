@@ -36,7 +36,7 @@ class HomeController extends Controller
             ->with('companies','companiesIsPremium')->where(['status' => 1])
             ->orderBy('title->'.$this->currentLang,'ASC')->get();
 
-        $allCompaniesIsPremium = Company::where(['is_premium'=>1, 'status'=>1])->orderBy('id','DESC')->get();
+        $allCompaniesIsPremium = Company::where(['is_premium'=>1, 'status'=>1])->whereNotNull(['image','category_id','country_id','city_id'])->orderBy('id','DESC')->get();
         $cities = City::whereNotNull(['image'])
             ->whereNull(['sub_region_id'])
             ->with('companies')->where(['status' => 1])
@@ -71,6 +71,7 @@ class HomeController extends Controller
             $query = Company::where([ 'status' => 1]);
         }
 
+        $query->whereNotNull(['image','category_id','country_id','city_id']);
         // 🔍 Filtrlər (AJAX və normal üçün eyni)
         if ($request->filled('search')) {
             $query->where('full_name', 'like', '%' . $request->search . '%');
@@ -146,6 +147,7 @@ class HomeController extends Controller
             $query = Company::where(['status' => 1]);
         }
 
+        $query->whereNotNull(['image','category_id','country_id','city_id']);
         // 🔍 Filtrlər (AJAX və normal üçün eyni)
         if ($request->filled('search')) {
             $query->where('full_name', 'like', '%' . $request->search . '%');
@@ -200,6 +202,7 @@ class HomeController extends Controller
             $query = Company::where(['status' => 1]);
         }
 
+        $query->whereNotNull(['image','category_id','country_id','city_id']);
         // 🔍 Filtrlər (AJAX və normal üçün eyni)
         if ($request->filled('search')) {
             $query->where('full_name', 'like', '%' . $request->search . '%');
@@ -243,7 +246,10 @@ class HomeController extends Controller
 
     public function companyDetails($slug) {
         $currentLang = $this->currentLang;
-        $company = Company::with('category', 'comments','posts')->whereNotNull('image')->where(['slug' => $slug, 'status' => 1])->first();
+        $company = Company::with('category', 'comments','posts')->whereNotNull(['image','slug'])->where(['slug' => $slug, 'status' => 1])->first();
+        if (empty($company)) {
+            return redirect()->back();
+        }
         $this->companyId = $company->id;
         $serviceTypes = ServiceType::where(['status' => 1])->orderBy('name->' . $this->currentLang, 'ASC')->get();
         $categories = Category::whereNotNull(['sub_category_id'])->where(['status' => 1])
