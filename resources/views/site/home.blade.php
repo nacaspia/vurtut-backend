@@ -257,7 +257,7 @@
                                                                 <img class="img-whp" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; background-color: #f9f9f9;!important; object-fit: cover;" src="{{ asset("uploads/company/".$companyIsPremium['image']) }}" alt="fp1.jpg">
                                                                 <div class="thmb_cntnt">
                                                                     <ul class="tag mb0">
-                                                                        <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}" style="background: radial-gradient(47.12% 309% at 47.12% 40.18%, rgba(254, 255, 134, 0.7) 0%, rgba(251, 206, 61, 0.7) 50.48%, rgba(132, 77, 32, 0.7) 100%);">Premium</a></li>
+                                                                        <li class="list-inline-item" style="background: radial-gradient(47.12% 309% at 47.12% 40.18%, rgba(254, 255, 134, 0.7) 0%, rgba(251, 206, 61, 0.7) 50.48%, rgba(132, 77, 32, 0.7) 100%); border:none !important;" ><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}" style="font-size: 12px !important;">Premium</a></li>
                                                                     </ul>
                                                                     @if(!empty($companyIsPremium['comments']))
                                                                         <ul class="listing_reviews">

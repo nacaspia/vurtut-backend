@@ -115,42 +115,6 @@
 </header>
 @include('site.layouts.login_register')
 <div id="page" class="stylehome1 h0">
-    {{--<div class="mobile-menu">
-        <div class="header stylehome1">
-            <div class="main_logo_home2 text-left">
-                <a href="{{ route('site.index') }}" style="display: inline-flex; align-items: center; text-decoration: none;width: 56px;
-    height: 57px;
-    padding: 0px;
-    top: 0px;
-    right: 310px;!important;">
-                    <img class="nav_logo_img img-fluid mt15" src="{{ asset('site/images/Vurtut logo icon/Vurtut.com.png') }}" alt="Vurtut" style=" width: 50px;       /* eni */
-    height: 50px;      /* hündürlüyü */
-    border-radius: 50%; /* dairəvi etmək üçün */
-    object-fit: cover;  /* şəkli çərçivəyə sığışdırmaq */
-    display: block;">
-                    <span class="mt15" style="text-transform: lowercase !important; margin-left: 8px;">vurtut.com</span>
-                </a>
-            </div>
-
-            <ul class="menu_bar_home2">
-                <li class="list-inline-item"><a class="custom_search_with_menu_trigger msearch_icon" href="#" data-toggle="modal" data-target="#staticBackdrop"></a></li>
-                @if(!empty(auth('user')->user()->id))
-                    <li class="list-inline-item"><a class="muser_icon" href="{{ route('site.user.index') }}"><span class="flaticon-avatar"></span></a></li>
-                    
-                @elseif(!empty(auth('company')->user()->id))
-                    <li class="list-inline-item">
-                        <a class="muser_icon" href="{{ route('site.company.index') }}"><span class="flaticon-avatar"></span></a>
-                    </li>
-                @else
-                    <li class="list-inline-item">
-                        <a href="#" class="muser_icon"  data-toggle="modal" data-target=".bd-example-modal-lg"><span class="flaticon-avatar"></span></a>
-                    </li>
-                @endif
-                <li class="list-inline-item"><a class="menubar" href="#menu"><span></span></a></li>
-            </ul>
-        </div>
-    </div><!-- /.mobile-menu -->
---}}
     <div class="mobile-menu">
         <div class="header stylehome1 d-flex justify-content-between align-items-center">
             <div class="main_logo_home2 text-left d-flex align-items-center" id="logoDiv">
@@ -158,35 +122,28 @@
                          style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
                     <span class="" style="margin-left: 8px; ">vurtut</span>
             </div>
-
             <ul class="menu_bar_home2">
                 <li class="list-inline-item"><a class="custom_search_with_menu_trigger msearch_icon" href="#" data-toggle="modal" data-target="#staticBackdrop"></a></li>
                 @if(!empty(auth('user')->user()->id))
                     <li class="list-inline-item"><a class="muser_icon" href="{{ route('site.user.index') }}"><span class="flaticon-avatar"></span></a></li>
                 @elseif(!empty(auth('company')->user()->id))
-                    <!-- <li class="list-inline-item">
-                        <a class="muser_icon" href="{{ route('site.company.index') }}"><span class="flaticon-avatar"></span></a>
-                    </li> -->
-                    <li class="user_setting" style="width: 60px;height: 60px;display: flex;justify-content: center;align-items: center;top: 26px;     right: 35px;">
+                    <li class="user_setting" style="width: 60px;height: 60px;display: flex;justify-content: center;align-items: center;top: 26px; right: 35px;">
                         <div class="dropdown" style="width: 100%;height: 100%;">
                             <a class="btn dropdown-toggle" href="#" data-toggle="dropdown" style="width: 100%;height: 100%;">
                                 <img class="rounded-circle" style="max-height: 100%;!important; width: 100%; object-fit: cover;"  src="{{ !empty(auth('company')->user()->image)? asset("uploads/company/".auth('company')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
-                                <!-- <span class="dn-1366"> {{auth('company')->user()->full_name}} <span class="fa fa-angle-down"></span></span> -->
+                                <span class="dn-1366"> {{auth('company')->user()->full_name}} <span class="fa fa-angle-down"></span></span>
                             </a>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu" style="width: 45%; ">
                                 <div class="user_set_header">
                                     <img class="float-left" style="max-height: 60px;border-radius: 50%;!important; width: 60px; object-fit: cover;" src="{{ !empty(auth('company')->user()->image)? asset("uploads/company/".auth('company')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
-                                    <p> {{auth('company')->user()->full_name}}</p>
                                 </div>
-                                <div class="user_setting_content" style="width: 100%;height: 100%; display: flex;flex-direction: column;justify-content: center;align-items: center; gap: 10px; ">
+                                <div class="user_setting_content" style="width: 100px; height: 76px; display: flex;flex-direction: column;justify-content: center;align-items: center; gap: 10px; ">
                                     @if (!empty(auth('company')->user()->country_id) && !empty(auth('company')->user()->city_id))
-                                        @if(auth('company')->user()->is_premium != 1)
-                                            <a class="dropdown-item gold-btn mt-2" href="{{ route('site.pricing') }}" style="color: #484848;">Premium Hesab</a>
-                                        @endif
-                                        <a class="dropdown-item active" style="color: #484848;!important;" href="{{ route('site.company.index') }}" style=" top: 65%; right: 79%;">Hesabım</a>
-
+                                        <a class="dropdown-item" href="{{ route('site.company.index') }}" style="top: 54%; right: 64%;color: #484848;!important;">Hesabım</a>
+                                    @else
+                                        <a class="dropdown-item" href="{{ route('site.company.settings') }}" style="top: 54%; right: 64%;color: #484848;!important;">Hesabım</a>
                                     @endif
-                                    <a class="dropdown-item" style="color: #484848;!important;" href="{{ route('site.company.logout') }}" style="top: 49%; right: 79%;">Çıxış</a>
+                                    <a class="dropdown-item" href="{{ route('site.company.logout') }}" style="top: 75%; right: 64%;color: #484848;!important;">Çıxış</a>
                                 </div>
                             </div>
                         </div>
@@ -245,29 +202,6 @@
             <li>
                 <a href="{{ route('site.map') }}"><span class="title">Yaxında nə var?</span></a>
             </li>
-            @if(!empty(auth('company')->user()->id) && auth('company')->user()->is_premium != 1)
-                <li>
-                    <a href="{{ route('site.pricing') }}" ><span class="title">Premium Hesab</span></a>
-                </li>
-            @endif
-            {{--<li>
-                <a href="{{ route('site.news') }}"><span class="title">Bloq və xəbərlər!</span></a>
-            </li>--}}
-
-   {{--         @if(!empty(auth('user')->user()->id))
---}}{{--                <li class="cl_btn"><a class="btn btn-block btn-lg btn-thm rounded" href="#"><span class="icon">+</span>Əlavə et</a></li>--}}{{--
-
-            @elseif(!empty(auth('company')->user()->id))
-                <li>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#premiumCompany" style="color: #484848;">Premium Hesab</a>
-                </li>
-            @else
-                <li>
-                    <a href="#" class="btn flaticon-avatar" data-toggle="modal" data-target=".bd-example-modal-lg">
-                        <span class="title">Giriş/Qeydiyyat</span>
-                    </a>
-                </li>
-            @endif--}}
         </ul>
     </nav>
 </div>

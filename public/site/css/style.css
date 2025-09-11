@@ -10758,6 +10758,7 @@ a.btn_error{
   -o-box-shadow:0px 0px 50px 0px rgba(32, 32, 32, 0.15);
   box-shadow:0px 0px 50px 0px rgba(32, 32, 32, 0.15);
   width: 300px;
+  left: 92px !important;
 }
 .user_setting .dropdown-menu.show:before {
   background-color: #ffffff;
