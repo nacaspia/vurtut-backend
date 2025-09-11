@@ -91,12 +91,12 @@
                         @if(!empty($companies[0]))
                             @foreach($companies as $company)
                                 <div class="col-md-6 col-lg-6">
-                                    <div class="feat_property"{{-- style="min-height: 404px;max-height: 404px;!important;"--}}>
+                                    <div class="feat_property" style="height: 464px; width: 350px;">
                                         <div class="thumb">
-                                            <img class="img-whp" style="width: 100%; max-height: 164px; object-fit: contain; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$company['image']) }}" alt="{{ $company['full_name'] }}">
+                                            <img class="img-whp" style="width: 100%; max-height: 163px; object-fit: cover; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$company['image']) }}" alt="{{ $company['full_name'] }}">
                                             <div class="thmb_cntnt">
                                                 <ul class="tag mb0">
-                                                    @if($company['is_premium'] == 1)<li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}"> PEMIUM </a></li>@endif
+                                                    @if($company['is_premium'] == 1)<li class="list-inline-item" style="background: radial-gradient(47.12% 309% at 47.12% 40.18%, rgba(254, 255, 134, 0.7) 0%, rgba(251, 206, 61, 0.7) 50.48%, rgba(132, 77, 32, 0.7) 100%); border:none !important;"><a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}" > Premium </a></li>@endif
                                                 </ul>
                                                 <ul class="listing_reviews">
                                                     <li class="list-inline-item"><a class="text-white"><span class="fa fa-star"></span></a></li>
@@ -108,8 +108,8 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="details">
-                                            <div class="tc_content">
+                                        <div class="details" style="display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
+                                            <div class="tc_content" style="height: 158px;">
                                                 <h4>
                                                     <a href="{{ route('site.companyDetails',['slug' => $company['slug']]) }}">
                                                         {{ $company['full_name'] }}
@@ -119,12 +119,12 @@
                                                 @php
                                                     $data = $company['data'];
                                                 @endphp
-                                                <ul class="prop_details mb0">
+                                                <ul class="prop_details mb0"  style="min-height: 60px; display: flex; flex-direction: column; ">
                                                     <li class="list-inline-item"><a href="tel:{{ $company['one_phone']?? $company['phone'] }}"><span class="flaticon-phone pr5"></span> {{ $company['one_phone'] ?? $company['phone'] }}</a></li>
                                                     <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? null }}</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="fp_footer">
+                                            <div class="fp_footer" style="width: 100%; display: flex; justify-content: space-between; ">
                                                 <ul class="fp_meta float-left mb0">
                                                     @if(!empty($company['category']['image']))
                                                         <li class="list-inline-item">

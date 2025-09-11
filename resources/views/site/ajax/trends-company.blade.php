@@ -1,12 +1,12 @@
 @if(!empty($allCompaniesByTrends[0]))
     @foreach($allCompaniesByTrends as $companyCity)
         <div class="col-md-6 col-lg-6">
-            <div class="feat_property"{{-- style="min-height: 404px;max-height: 404px;!important;"--}}>
+            <div class="feat_property" style="height: 464px;">
                 <div class="thumb">
-                    <img class="img-whp" style="width: 100%; max-height: 164px; object-fit: contain; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$companyCity['image']) }}" alt="{{ $companyCity['full_name'] }}">
+                    <img class="img-whp" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$companyCity['image']) }}" alt="{{ $companyCity['full_name'] }}">
                     <div class="thmb_cntnt">
                         <ul class="tag mb0">
-                            @if($companyCity['is_premium'] == 1)<li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}"> PEMIUM </a></li>@endif
+                            @if($companyCity['is_premium'] == 1)<li class="list-inline-item" style="background: radial-gradient(47.12% 309% at 47.12% 40.18%, rgba(254, 255, 134, 0.7) 0%, rgba(251, 206, 61, 0.7) 50.48%, rgba(132, 77, 32, 0.7) 100%); border:none !important;"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}" > Premium </a></li>@endif
                         </ul>
 
                         @if(!empty($companyCity['comments']))
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 <div class="details">
-                    <div class="tc_content">
+                    <div class="tc_content" style="height: 120px;"  >
                         <h4>
                             <a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}">
                                 {{ $companyCity['full_name'] }}

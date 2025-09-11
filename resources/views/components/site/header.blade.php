@@ -65,17 +65,16 @@
                     <li class="user_setting">
                         <div class="dropdown">
                             <a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
-                                <img class="rounded-circle" style="max-height: 51px;!important;"  src="{{ !empty(auth('user')->user()->image)? asset("uploads/user/".auth('user')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
+                                <img class="rounded-circle" style="max-height: 51px;!important; width: 51px; object-fit: cover;"  src="{{ !empty(auth('user')->user()->image)? asset("uploads/user/".auth('user')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
                                 <span class="dn-1366"> {{auth('user')->user()->full_name}} <span class="fa fa-angle-down"></span></span>
                             </a>
                             <div class="dropdown-menu">
                                 <div class="user_set_header">
-                                    <img class="float-left" style="max-height: 51px;border-radius: 50%;!important;" src="{{ !empty(auth('user')->user()->image)? asset("uploads/user/".auth('user')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
+                                    <img class="float-left" style="max-height: 51px;border-radius: 50%;!important; width: 51px; object-fit: cover;" src="{{ !empty(auth('user')->user()->image)? asset("uploads/user/".auth('user')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
                                     <p> {{auth('user')->user()->full_name}}</p>
                                 </div>
                                 <div class="user_setting_content">
                                     <a class="dropdown-item active" style="color: #484848;!important;" href="{{ route('site.user.index') }}">Hesabım</a>
-{{--                                    <a class="dropdown-item" style="color: #484848;!important;" href="#">Kömək</a>--}}
                                     <a class="dropdown-item" style="color: #484848;!important;" href="{{ route('site.user.logout') }}">Çıxış</a>
                                 </div>
                             </div>
@@ -85,12 +84,12 @@
                     <li class="user_setting">
                         <div class="dropdown">
                             <a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
-                                <img class="rounded-circle" style="max-height: 51px;!important;"  src="{{ !empty(auth('company')->user()->image)? asset("uploads/company/".auth('company')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
+                                <img class="rounded-circle" style="max-height: 51px;!important; width: 51px; object-fit: cover;"  src="{{ !empty(auth('company')->user()->image)? asset("uploads/company/".auth('company')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
                                 <span class="dn-1366"> {{auth('company')->user()->full_name}} <span class="fa fa-angle-down"></span></span>
                             </a>
                             <div class="dropdown-menu">
                                 <div class="user_set_header">
-                                    <img class="float-left" style="max-height: 51px;border-radius: 50%;!important;" src="{{ !empty(auth('company')->user()->image)? asset("uploads/company/".auth('company')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
+                                    <img class="float-left" style="max-height: 51px;border-radius: 50%;!important; width: 51px; object-fit: cover;" src="{{ !empty(auth('company')->user()->image)? asset("uploads/company/".auth('company')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
                                     <p> {{auth('company')->user()->full_name}}</p>
                                 </div>
                                 <div class="user_setting_content">
@@ -137,6 +136,7 @@
                 <li class="list-inline-item"><a class="custom_search_with_menu_trigger msearch_icon" href="#" data-toggle="modal" data-target="#staticBackdrop"></a></li>
                 @if(!empty(auth('user')->user()->id))
                     <li class="list-inline-item"><a class="muser_icon" href="{{ route('site.user.index') }}"><span class="flaticon-avatar"></span></a></li>
+                    
                 @elseif(!empty(auth('company')->user()->id))
                     <li class="list-inline-item">
                         <a class="muser_icon" href="{{ route('site.company.index') }}"><span class="flaticon-avatar"></span></a>
@@ -156,7 +156,7 @@
             <div class="main_logo_home2 text-left d-flex align-items-center" id="logoDiv">
                     <img class="nav_logo_img img-fluid " src="{{ asset('site/images/Vurtut logo icon/Vurtut.com.png') }}" alt="Vurtut"
                          style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
-                    <span class="mb-4" style="margin-left: 8px; ">vurtut</span>
+                    <span class="" style="margin-left: 8px; ">vurtut</span>
             </div>
 
             <ul class="menu_bar_home2">
@@ -164,8 +164,32 @@
                 @if(!empty(auth('user')->user()->id))
                     <li class="list-inline-item"><a class="muser_icon" href="{{ route('site.user.index') }}"><span class="flaticon-avatar"></span></a></li>
                 @elseif(!empty(auth('company')->user()->id))
-                    <li class="list-inline-item">
+                    <!-- <li class="list-inline-item">
                         <a class="muser_icon" href="{{ route('site.company.index') }}"><span class="flaticon-avatar"></span></a>
+                    </li> -->
+                    <li class="user_setting" style="width: 60px;height: 60px;display: flex;justify-content: center;align-items: center;top: 26px;     right: 35px;">
+                        <div class="dropdown" style="width: 100%;height: 100%;">
+                            <a class="btn dropdown-toggle" href="#" data-toggle="dropdown" style="width: 100%;height: 100%;">
+                                <img class="rounded-circle" style="max-height: 100%;!important; width: 100%; object-fit: cover;"  src="{{ !empty(auth('company')->user()->image)? asset("uploads/company/".auth('company')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
+                                <!-- <span class="dn-1366"> {{auth('company')->user()->full_name}} <span class="fa fa-angle-down"></span></span> -->
+                            </a>
+                            <div class="dropdown-menu">
+                                <div class="user_set_header">
+                                    <img class="float-left" style="max-height: 60px;border-radius: 50%;!important; width: 60px; object-fit: cover;" src="{{ !empty(auth('company')->user()->image)? asset("uploads/company/".auth('company')->user()->image): asset('site/images/Vurtut logo icon/account.png') }}" alt="e1.png">
+                                    <p> {{auth('company')->user()->full_name}}</p>
+                                </div>
+                                <div class="user_setting_content" style="width: 100%;height: 100%; display: flex;flex-direction: column;justify-content: center;align-items: center; gap: 10px; ">
+                                    @if (!empty(auth('company')->user()->country_id) && !empty(auth('company')->user()->city_id))
+                                        @if(auth('company')->user()->is_premium != 1)
+                                            <a class="dropdown-item gold-btn mt-2" href="{{ route('site.pricing') }}" style="color: #484848;">Premium Hesab</a>
+                                        @endif
+                                        <a class="dropdown-item active" style="color: #484848;!important;" href="{{ route('site.company.index') }}" style=" top: 65%; right: 79%;">Hesabım</a>
+
+                                    @endif
+                                    <a class="dropdown-item" style="color: #484848;!important;" href="{{ route('site.company.logout') }}" style="top: 49%; right: 79%;">Çıxış</a>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 @else
                     <li class="list-inline-item">

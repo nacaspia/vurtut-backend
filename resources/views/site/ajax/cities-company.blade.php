@@ -1,12 +1,12 @@
 @if(!empty($allCompaniesByCity[0]))
     @foreach($allCompaniesByCity as $companyCity)
         <div class="col-md-6 col-lg-6">
-            <div class="feat_property"{{-- style="min-height: 404px;max-height: 404px;!important;"--}}>
+            <div class="feat_property" style="height: 464px;">
                 <div class="thumb">
-                    <img class="img-whp" style="width: 100%; max-height: 164px; object-fit: contain; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$companyCity['image']) }}" alt="{{ $companyCity['full_name'] }}">
+                    <img class="img-whp" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$companyCity['image']) }}" alt="{{ $companyCity['full_name'] }}">
                     <div class="thmb_cntnt">
                         <ul class="tag mb0">
-                            @if($companyCity['is_premium'] == 1)<li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}"> PEMIUM </a></li>@endif
+                            @if($companyCity['is_premium'] == 1)<li class="list-inline-item" style="background: radial-gradient(47.12% 309% at 47.12% 40.18%, rgba(254, 255, 134, 0.7) 0%, rgba(251, 206, 61, 0.7) 50.48%, rgba(132, 77, 32, 0.7) 100%); border:none !important;"><a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}" > Premium </a></li>@endif
                         </ul>
 
                         @if(!empty($companyCity['comments']))
@@ -53,8 +53,8 @@
                         @endif
                     </div>
                 </div>
-                <div class="details">
-                    <div class="tc_content">
+                <div class="details" style="display: flex; flex-direction: column; justify-content: space-between; gap: 20px;">
+                    <div class="tc_content" style="height: 158px;"  >
                         <h4>
                             <a href="{{ route('site.companyDetails',['slug' => $companyCity['slug']]) }}">
                             {{ $companyCity['full_name'] }}
@@ -64,7 +64,7 @@
                         @php
                             $data = $companyCity['data'];
                         @endphp
-                        <ul class="prop_details mb0">
+                        <ul class="prop_details mb0" style="min-height: 60px; display: flex; flex-direction: column; ">
                             <li class="list-inline-item"><a href="tel:{{ $companyCity['social']['one_phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyCity['social']['one_phone'] }}</a></li>
                             <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? null }}</a></li>
                         </ul>
