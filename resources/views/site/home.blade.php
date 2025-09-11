@@ -151,12 +151,12 @@
                                     @if(!empty($allCompaniesIsPremium[0]))
                                         @foreach($allCompaniesIsPremium as $companyIsPremium)
                                             <div class="item">
-                                                <div class="feat_property" >
+                                                <div class="feat_property" style="height: 430px;">
                                                     <div class="thumb">
-                                                        <img class="img-whp" style="width: 100%; max-height: 164px; object-fit: contain; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$companyIsPremium['image']) }}" alt="fp1.jpg">
+                                                        <img class="img-whp" style="width: 100%; max-height: 163px; object-fit: cover; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$companyIsPremium['image']) }}" alt="fp1.jpg">
                                                         <div class="thmb_cntnt">
                                                             <ul class="tag mb0">
-                                                                <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">PEMIUM</a></li>
+                                                                <li class="list-inline-item" style="background: radial-gradient(47.12% 309% at 47.12% 40.18%, rgba(254, 255, 134, 0.7) 0%, rgba(251, 206, 61, 0.7) 50.48%, rgba(132, 77, 32, 0.7) 100%); border:none !important;" ><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}" style="font-size: 12px !important;">Premium</a></li>
                                                             </ul>
                                                             @if(!empty($companyIsPremium['comments']))
                                                             <ul class="listing_reviews">
@@ -203,13 +203,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="details">
-                                                        <div class="tc_content">
+                                                        <div class="tc_content" style="height:181px; padding-bottom: 5px;">
                                                             <h4><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">{{ $companyIsPremium['full_name'] }}</a></h4>
                                                             <p>{{ \Illuminate\Support\Str::limit($companyIsPremium['text'], 50, '...') }}</p>
                                                             @php $data = $companyIsPremium['data']; @endphp
                                                             <ul class="prop_details mb0">
                                                                 <li class="list-inline-item"><a href="tel:{{ $companyIsPremium['social']['one_phone'] }}"><span class="flaticon-phone pr5"></span> {{ $companyIsPremium['social']['one_phone'] }}</a></li>
-                                                                <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
+                                                                <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span> {{ $data['address'] ?? '' }}</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="fp_footer">
@@ -224,7 +224,7 @@
                                                                 <li class="list-inline-item"><a href="{{ route('site.category',['categorySlug' => $companyIsPremium['category']['slug'][$currentLang]]) }}">{{ $companyIsPremium['category']['title'][$currentLang] }}</a></li>
                                                             </ul>
                                                             <ul class="fp_meta float-right mb0">
-                                                                <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}"><span class="flaticon-zoom"></span> Daha ətraflı</a></li>
+                                                                <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}"><span class="flaticon-zoom" style="color:#777777;"></span> Daha ətraflı</a></li>
 
                                                                 @if(!empty(auth('user')->user()->id))
                                                                 <li class="list-inline-item">
@@ -254,10 +254,10 @@
                                                     <div class="item">
                                                         <div class="feat_property" >
                                                             <div class="thumb">
-                                                                <img class="img-whp" style="width: 100%; max-height: 164px; object-fit: contain; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$companyIsPremium['image']) }}" alt="fp1.jpg">
+                                                                <img class="img-whp" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; background-color: #f9f9f9;!important; object-fit: cover;" src="{{ asset("uploads/company/".$companyIsPremium['image']) }}" alt="fp1.jpg">
                                                                 <div class="thmb_cntnt">
                                                                     <ul class="tag mb0">
-                                                                        <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">PEMIUM</a></li>
+                                                                        <li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}" style="background: radial-gradient(47.12% 309% at 47.12% 40.18%, rgba(254, 255, 134, 0.7) 0%, rgba(251, 206, 61, 0.7) 50.48%, rgba(132, 77, 32, 0.7) 100%);">Premium</a></li>
                                                                     </ul>
                                                                     @if(!empty($companyIsPremium['comments']))
                                                                         <ul class="listing_reviews">
@@ -304,9 +304,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="details">
-                                                                <div class="tc_content">
+                                                                <div class="tc_content" style="height: 200px;">
                                                                     <h4><a href="{{ route('site.companyDetails',['slug' => $companyIsPremium['slug']]) }}">{{ $companyIsPremium['full_name'] }}</a></h4>
-                                                                    <p>{{ \Illuminate\Support\Str::limit($companyIsPremium['text'], 50, '...') }}</p>
+                                                                    <p style="width:90%;">{{ \Illuminate\Support\Str::limit($companyIsPremium['text'], 50, '...') }}</p>
                                                                     @php $data = $companyIsPremium['data']; @endphp
                                                                     <ul class="prop_details mb0">
                                                                         <li class="list-inline-item"><a href="tel:{{ $companyIsPremium['social']['one_phone'] ?? null }}"><span class="flaticon-phone pr5"></span> {{ $companyIsPremium['social']['one_phone'] ?? null }}</a></li>

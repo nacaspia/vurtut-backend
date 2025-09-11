@@ -97,8 +97,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="dn db-lg mt30 mb0 tac-767">
-            <div id="main2">
-                <span id="open2" class="fa fa-filter filter_open_btn style2"> Axtarış</span>
+            <div id="main2" class="d-flex justify-content-center">
+                <button class="filter_open_btn style2" style="outline:none;border:none; display:flex; align-items:center; justify-content: center; gap: 5px;"><i class="fa-solid fa-filter"></i>Axtarış</button>
+
             </div>
         </div>
     </div>

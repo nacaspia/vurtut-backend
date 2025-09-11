@@ -67,8 +67,8 @@
                 <div class="footer_logo_widget text-center mb15-767 home2">
                     <div class="wrapper">
                         <div class="logo text-center">
-                            <a href="https://nacaspia.com" target="_blank" style="display: flex;align-items: center; width: 90%; height: 26%;" id="logoDiv">
-                                <img style="width: auto; max-width: 75%; heigt: 75%; border-radius: 50px!important;" src="{{ asset("site/images/Vurtut logo icon/na-logo.png") }}" alt=" NACaspia Informaion Technologies MMC">
+                            <a href="https://nacaspia.com" target="_blank" style="display: flex;align-items: center; width: 200px; height: 110px;" id="logoDiv">
+                                <img style="width: auto; max-width: 100%; height: 100%; border-radius: 50px !important;" src="{{ asset("site/images/Vurtut logo icon/na-logo.png") }}" alt=" NACaspia Informaion Technologies MMC">
                             </a>
                         </div>
                     </div>
