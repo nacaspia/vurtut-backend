@@ -414,15 +414,24 @@
     /*  Testimonial-Slider-Owl-carousel  */
     if($('.popular_listing_slider1').length){
         $('.popular_listing_slider1').owlCarousel({
-            loop:true,
-            margin:0,
-            dots:true,
-            nav:false,
-            rtl:false,
-            autoplayHoverPause:false,
+            loop: false, // loop true edirsənsə, element sayı kifayət qədər olmalıdır
+            margin: 30,
+            dots: false,
+            nav: true,
+            rtl: false,
+            autoplayHoverPause: false,
             autoplay: false,
-            singleItem: true,
             smartSpeed: 1200,
+
+            // loop:true,
+            // margin:0,
+            // dots:true,
+            // nav:false,
+            // rtl:false,
+            // autoplayHoverPause:false,
+            // autoplay: false,
+            singleItem: true,
+            // smartSpeed: 1200,
             navText: [
               '<i class="fa fa-arrow-left"></i>',
               '<i class="fa fa-arrow-right"></i>'

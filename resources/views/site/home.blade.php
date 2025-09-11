@@ -135,7 +135,7 @@
                 <div class="col-lg-12">
                     <div class="popular_listing_sliders row">
                         <!-- Nav tabs -->
-                        <div class="nav nav-tabs mb50 col-lg-12 justify-content-center" role="tablist">
+                        <div class="nav nav-tabs mb50 col-lg-12 justify-content-center " role="tablist">
                             <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Bütün Kateqoriyalar</a>
                             @if(!empty($mainCategories[0]))
                                 @foreach($mainCategories as $catKey=>$category)
