@@ -5,7 +5,7 @@
     /* ----- Preloader ----- */
     function preloaderLoad() {
         if($('.preloader').length){
-            $('.preloader').delay(200).fadeOut(300);
+            $('.preloader').delay(50).fadeOut(100);
         }
         $(".preloader_disabler").on('click', function() {
             $("#preloader").hide();
