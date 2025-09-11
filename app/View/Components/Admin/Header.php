@@ -23,6 +23,8 @@ class Header extends Component
      */
     public function render()
     {
-        return view('components.admin.header');
+        $cms_user = auth('admin')->user();
+
+        return view('components.admin.header', compact('cms_user'));
     }
 }

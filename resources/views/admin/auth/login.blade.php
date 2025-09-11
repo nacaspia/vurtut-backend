@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vurtut-@lang('admin.login')</title>
-
-    <link rel="shortcut icon" href="{{ asset('admin/favicon.png') }}">
+    <title>NACaspia - @lang('admin.login')</title>
+    <link rel="shortcut icon" href="{{ asset('admin/images/na-logo.png') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/css/OverlayScrollbars.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/vendor/css/bootstrap.min.css') }}">
@@ -32,7 +31,7 @@
             <div class="login-body">
                 <div class="top d-flex justify-content-between align-items-center">
                     <div class="logo">
-                        <img src="{{ asset('admin/assets/images/logo-black.png') }}" alt="Logo">
+                        <img src="{{ asset('admin/images/na-logo.png') }}" alt="Logo">
                     </div>
                     <a href="{{ route('admin.index') }}"><i class="fa-duotone fa-house-chimney"></i></a>
                 </div>
@@ -59,7 +58,7 @@
 
     <!-- footer start -->
     <div class="footer">
-        <p>Copyright© <script>document.write(new Date().getFullYear())</script> All Rights Reserved By <span class="text-primary">Digiboard</span></p>
+        <p>© <script>document.write(new Date().getFullYear())</script>  Bütün hüquqlar qorunur.By <a href="https://nacaspia.com" target="_blank">NACASPIA.COM</a></p>
     </div>
     <!-- footer end -->
 </div>

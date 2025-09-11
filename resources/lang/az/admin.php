@@ -71,6 +71,7 @@ return [
     'private_information' => 'Özəl məlumatlar',
 
     //messges
+    'error_login' => 'Username və ya şifrə düzgün deyildir',
     'success_login' => 'Xoş gəldiz.',
     'add_success' => 'Əlavə edilən məlumatlar uğurla qeydə alındı.',
     'add_error' => 'Əlavə edilən məlumatlar uğurla qeydə alınmadı.',

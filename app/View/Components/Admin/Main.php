@@ -24,6 +24,7 @@ class Main extends Component
      */
     public function render()
     {
-        return view('components.admin.left-sidebar');
+        $cms_user = auth('admin')->user();
+        return view('components.admin.left-sidebar',compact('cms_user'));
     }
 }

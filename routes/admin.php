@@ -22,6 +22,8 @@ Route::middleware('admin')->group(function () {
 
     Route::resource('companies', 'CompaniesController');
     Route::get('companies/logs/{id}', 'CompaniesController@logs')->name('companies.logs');
+    Route::post('companies/service/status', 'CompaniesController@companyServiceSetStatus')->name('companies.companyServiceSetStatus');
+    Route::post('companies/person/status', 'CompaniesController@companyPerson')->name('companies.companyPerson');
 
     Route::resource('users', 'UsersController');
     Route::get('users/logs/{id}', 'UsersController@logs')->name('users.logs');

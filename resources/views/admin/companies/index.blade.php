@@ -13,15 +13,13 @@
         <div class="row">
             <div class="col-12">
                 <div class="panel">
-
                     <div class="panel-header">
                         <h5>@lang('admin.companies')</h5>
                         <div class="btn-box d-flex flex-wrap gap-2">
                             <div id="tableSearch"></div>
-
-                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                           {{-- <button class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#addTaskModal"><i class="fa-light fa-plus"></i> @lang('admin.add')
-                            </button>
+                            </button>--}}
                         </div>
                     </div>
                     <div class="panel-body">
@@ -58,8 +56,7 @@
                                 </div>
                             </div>
                         </div>
-                        <table class="table table-dashed table-hover digi-dataTable task-table table-striped"
-                               id="taskTable">
+                        <table class="table table-dashed table-hover digi-dataTable task-table table-striped" id="taskTable">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -86,8 +83,8 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>{!! $data['phone'] !!}</td>
-                                        <td>{!! $data['email'] !!}</td>
+                                        <td>{{$data['phone']}}</td>
+                                        <td>{{$data['email']}}</td>
                                         <td>
                                             <div class="btn-box">
                                                 <a href="{{ route('admin.companies.logs',$data['id']) }}"
@@ -95,8 +92,8 @@
                                                    title="@lang('admin.logs')"><i
                                                         class="fa-light fa-lock"></i>
                                                 </a>
-                                                <a href="{{ route('admin.companies.edit',$data['id']) }}" class="btn btn-sm btn-icon btn-primary" title="@lang('admin.edit')"><i
-                                                        class="fa-light fa-edit"></i>
+                                                <a href="{{ route('admin.companies.edit',$data['id']) }}" class="btn btn-sm btn-icon btn-primary" title="@lang('admin.edit')">
+                                                    <i class="fa-light fa-edit"></i>
                                                 </a>
 
                                                 <button class="btn btn-sm btn-icon btn-danger" data-bs-toggle="modal" data-bs-target="#deletecategory{{$data['id']}}" title="@lang('admin.delete')">

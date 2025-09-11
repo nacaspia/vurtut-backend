@@ -1,10 +1,9 @@
 <!-- footer start -->
 <div class="footer">
-    <p>Copyright© <script>document.write(new Date().getFullYear())</script> All Rights Reserved By <span class="text-primary">Digiboard</span></p>
+    <p>© <script>document.write(new Date().getFullYear())</script>  Bütün hüquqlar qorunur.By <a href="https://nacaspia.com" target="_blank">NACASPIA.COM</a></p>
 </div>
 <!-- footer end -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 <script src="{{ asset('admin/assets/vendor/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ asset('admin/assets/vendor/js/jquery.overlayScrollbars.min.js') }}"></script>
 <script src="{{ asset('admin/assets/vendor/js/apexcharts.js') }}"></script>

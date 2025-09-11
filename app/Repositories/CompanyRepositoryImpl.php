@@ -28,7 +28,7 @@ class CompanyRepositoryImpl implements CompanyRepository
 
     public function edit($id)
     {
-        return $this->model->whereId($id)->with(['category','country','mainCities','subRegion','userLikes','comments','posts'])->first();
+        return $this->model->whereId($id)->with(['category','country','mainCities','subRegion','userLikes','comments','posts','companyService','companyPersons'])->first();
     }
 
     public function update($id, array $data)

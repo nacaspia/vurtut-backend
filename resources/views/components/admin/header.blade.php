@@ -3,25 +3,25 @@
         <div class="col-xxl-6 col-xl-5 col-4 d-flex align-items-center gap-20">
             <div class="main-logo d-lg-block d-none">
                 <div class="logo-big">
-                    <a href="index.html">
-                        <img src="{{ asset('admin/assets/images/logo-black.png') }}" alt="Logo">
+                    <a href="{{ route('admin.index') }}">
+                        <img src="{{ asset('admin/images/na-logo.png') }}" alt="Logo">
                     </a>
                 </div>
                 <div class="logo-small">
-                    <a href="index.html">
-                        <img src="{{ asset('admin/assets/images/logo-small.png') }}" alt="Logo">
+                    <a href="{{ route('admin.index') }}">
+                        <img src="{{ asset('admin/images/na-logo.png') }}" alt="Logo">
                     </a>
                 </div>
             </div>
             <div class="nav-close-btn">
                 <button id="navClose"><i class="fa-light fa-bars-sort"></i></button>
             </div>
-            <a href="#" target="_blank" class="btn btn-sm btn-primary site-view-btn"><i class="fa-light fa-globe me-1"></i> <span>View Website</span></a>
+            <a href="{{ route('site.index') }}" target="_blank" class="btn btn-sm btn-primary site-view-btn"><i class="fa-light fa-globe me-1"></i> <span>Veb Sayt</span></a>
         </div>
         <div class="col-4 d-lg-none">
             <div class="mobile-logo">
-                <a href="index.html">
-                    <img src="{{ asset('admin/assets/images/logo-black.png') }}" alt="Logo">
+                <a href="{{ route('admin.index') }}">
+                    <img src="{{ asset('admin/images/na-logo.png') }}" alt="Logo">
                 </a>
             </div>
         </div>
@@ -29,19 +29,11 @@
             <div class="header-right-btns d-flex justify-content-end align-items-center">
                 <div class="header-collapse-group">
                     <div class="header-right-btns d-flex justify-content-end align-items-center p-0">
-                        <form class="header-form">
+                        {{--<form class="header-form">
                             <input type="search" name="search" placeholder="Search..." required>
                             <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </form>
+                        </form>--}}
                         <div class="header-right-btns d-flex justify-content-end align-items-center p-0">
-                            <div class="lang-select">
-                                <span>Language:</span>
-                                <select>
-                                    <option value="">EN</option>
-                                    <option value="">BN</option>
-                                    <option value="">FR</option>
-                                </select>
-                            </div>
                             <div class="header-btn-box">
                                 <button class="header-btn" id="messageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-light fa-comment-dots"></i>
@@ -160,53 +152,6 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="header-btn-box">
-                                <div class="dropdown">
-                                    <button class="header-btn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                                        <i class="fa-light fa-calculator"></i>
-                                    </button>
-                                    <ul class="dropdown-menu calculator-dropdown">
-                                        <div class="dgb-calc-box">
-                                            <div>
-                                                <input type="text" id="dgbCalcResult" placeholder="0" autocomplete="off" readonly>
-                                            </div>
-                                            <table>
-                                                <tbody>
-                                                <tr>
-                                                    <td class="bg-danger">C</td>
-                                                    <td class="bg-secondary">CE</td>
-                                                    <td class="dgb-calc-oprator bg-primary">/</td>
-                                                    <td class="dgb-calc-oprator bg-primary">*</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>7</td>
-                                                    <td>8</td>
-                                                    <td>9</td>
-                                                    <td class="dgb-calc-oprator bg-primary">-</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>4</td>
-                                                    <td>5</td>
-                                                    <td>6</td>
-                                                    <td class="dgb-calc-oprator bg-primary">+</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>2</td>
-                                                    <td>3</td>
-                                                    <td rowspan="2" class="dgb-calc-sum bg-primary">=</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2">0</td>
-                                                    <td>.</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </ul>
-                                </div>
-                            </div>
-                            <button class="header-btn fullscreen-btn" id="btnFullscreen"><i class="fa-light fa-expand"></i></button>
                         </div>
                     </div>
                 </div>
@@ -219,20 +164,14 @@
                     <ul class="dropdown-menu profile-dropdown-menu">
                         <li>
                             <div class="dropdown-txt text-center">
-                                <p class="mb-0">Shaikh Abu Dardah</p>
-                                <span class="d-block">Web Developer</span>
-                                <div class="d-flex justify-content-center">
-                                    <div class="form-check pt-3">
-                                        <input class="form-check-input" type="checkbox" id="seeProfileAsSidebar">
-                                        <label class="form-check-label" for="seeProfileAsSidebar">See as sidebar</label>
-                                    </div>
-                                </div>
+                                <p class="mb-0">{{$cms_user['name']}} {{$cms_user['surname']}}</p>
+                                <span class="d-block">{{$cms_user->getRoleNames()->first()}}</span>
                             </div>
                         </li>
-                        <li><a class="dropdown-item" href="view-profile.html"><span class="dropdown-icon"><i class="fa-regular fa-circle-user"></i></span> Profile</a></li>
-                        <li><a class="dropdown-item" href="chat.html"><span class="dropdown-icon"><i class="fa-regular fa-message-lines"></i></span> Message</a></li>
-                        <li><a class="dropdown-item" href="task.html"><span class="dropdown-icon"><i class="fa-regular fa-calendar-check"></i></span> Taskboard</a></li>
-                        <li><a class="dropdown-item" href="#"><span class="dropdown-icon"><i class="fa-regular fa-circle-question"></i></span> Help</a></li>
+{{--                        <li><a class="dropdown-item" href="view-profile.html"><span class="dropdown-icon"><i class="fa-regular fa-circle-user"></i></span> Profile</a></li>--}}
+{{--                        <li><a class="dropdown-item" href="chat.html"><span class="dropdown-icon"><i class="fa-regular fa-message-lines"></i></span> Message</a></li>--}}
+{{--                        <li><a class="dropdown-item" href="task.html"><span class="dropdown-icon"><i class="fa-regular fa-calendar-check"></i></span> Taskboard</a></li>--}}
+{{--                        <li><a class="dropdown-item" href="#"><span class="dropdown-icon"><i class="fa-regular fa-circle-question"></i></span> Help</a></li>--}}
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="edit-profile.html"><span class="dropdown-icon"><i class="fa-regular fa-gear"></i></span> Settings</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.logout') }}"><span class="dropdown-icon"><i class="fa-regular fa-arrow-right-from-bracket"></i></span> Logout</a></li>

@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\Company\SettingsRequest;
 use App\Models\CmsLog;
 use App\Models\Company;
+use App\Models\CompanyPerson;
+use App\Models\CompanyService;
 use App\Models\Log;
 use App\Repositories\CompanyRepositoryImpl;
 use Illuminate\Http\Request;
@@ -31,7 +33,6 @@ class CompaniesController extends Controller
             } else {
                 $status = 1;
             }
-
             $type = $request['type'];
             $companies = Company::where(function($query) use ($status, $type) {
                 $query->where('status', 'LIKE', $status)->where('type', 'LIKE', $type);
@@ -68,7 +69,6 @@ class CompaniesController extends Controller
     public function edit($id)
     {
         $company = $this->companyRepository->edit($id);
-//        dd($company);
         return view('admin.companies.edit',compact('company'));
     }
 
@@ -177,5 +177,53 @@ class CompaniesController extends Controller
             CmsLogsHelper::convert($log);
             return redirect()->back()->with('errors','errors '. $exception->getMessage());
         }
+    }
+
+    //ajax
+    public function companyServiceSetStatus(Request $request)
+    {
+        $companyId = $request->company_id;
+        $company = $this->companyRepository->edit($companyId);
+        if (empty($company)){
+            return response()->json(['success' => false, 'error' => 'Müəssisə məlumatı tapılmadı'],422);
+        }
+
+        $id = $request->id;
+        $companyService = CompanyService::where(['company_id' => $companyId, 'id' => $id])->first();
+        if (empty($companyService)){
+            return response()->json(['success' => false, 'error' => 'Kataloq məlumatı tapılmadı'],422);
+        }
+
+        $status = $companyService->status;
+        if ($status == 0){
+            $companyService->status = 1;
+        } else {
+            $companyService->status = 0;
+        }
+        $companyService->save();
+        return response()->json(['success' => true, 'message' => 'Kataloq məlumatı yeniləndi'],200);
+    }
+    public function companyPerson(Request $request)
+    {
+        $companyId = $request->company_id;
+        $company = $this->companyRepository->edit($companyId);
+        if (empty($company)){
+            return response()->json(['success' => false, 'error' => 'Müəssisə məlumatı tapılmadı'],422);
+        }
+
+        $id = $request->id;
+        $companyPerson = CompanyPerson::where(['company_id' => $companyId, 'id' => $id])->first();
+        if (empty($companyPerson)){
+            return response()->json(['success' => false, 'error' => 'Usta məlumatı tapılmadı'],422);
+        }
+
+        $status = $companyPerson->status;
+        if ($status == 0){
+            $companyPerson->status = 1;
+        } else {
+            $companyPerson->status = 0;
+        }
+        $companyPerson->save();
+        return response()->json(['success' => true, 'message' => 'Usta məlumatı yeniləndi'],200);
     }
 }
