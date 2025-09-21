@@ -68,14 +68,14 @@ class UserController extends Controller
     public function favorites()
     {
         $currentLang = $this->currentLang;
-        $likeCompanies = Company::select([
+        /*$likeCompanies = Company::select([
             'companies.*',
             'user_likes.user_id AS user_id',
             'user_likes.item_id AS company_id',
         ])->join('user_likes','user_likes.item_id','=','companies.id')->
         where(['user_likes.user_id'=>$this->user->id, 'user_likes.item_type' => 'company', 'companies.status'=>1])->
-        orderBy('user_likes.id','DESC')->get();
-
+        orderBy('user_likes.id','DESC')->get();*/
+        $likeCompanies = User::where(['id' => $this->user->id])->with('userLikes')->first();
         return view('site.user.favorites',compact('currentLang','likeCompanies'));
     }
 

@@ -50,7 +50,7 @@
                                         <div class="thumb">
                                             <img class="img-whp"  style="width: 100%; max-height: 164px; object-fit: contain; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$like['companyItem']['image']) }}" alt="{{ $like['companyItem']['full_name'] }}">
                                             <div class="thmb_cntnt">
-                                                <ul class="tag mb0"> 
+                                                <ul class="tag mb0">
                                                     @if($like['companyItem']['is_premium'] == 1)<li class="list-inline-item"><a href="{{ route('site.companyDetails',['slug' => $like['companyItem']['slug']]) }}" style="background: radial-gradient(47.12% 309% at 47.12% 40.18%, rgba(254, 255, 134, 0.7) 0%, rgba(251, 206, 61, 0.7) 50.48%, rgba(132, 77, 32, 0.7) 100%); border:none !important;"> Premium </a></li>@endif
                                                 </ul>
                                                 <ul class="listing_reviews">
