@@ -252,7 +252,7 @@
                                             @if(!empty($category['companiesIsPremium'][0]))
                                                 @foreach($category['companiesIsPremium'] as $companyIsPremium)
                                                     <div class="item">
-                                                        <div class="feat_property" style="height: 430px;width: 374px;">
+                                                        <div class="feat_property" style="width: 374px;">
                                                             <div class="thumb">
                                                                 <img class="img-whp" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; background-color: #f9f9f9;!important; object-fit: cover;" src="{{ asset("uploads/company/".$companyIsPremium['image']) }}" alt="fp1.jpg">
                                                                 <div class="thmb_cntnt">
