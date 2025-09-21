@@ -19,8 +19,8 @@
                 <div class="col-lg-12">
                     <div class="home_content home1">
                         <div class="home-text text-center">
-                            <h2 class="fz50">SƏNİN ŞƏHƏRİN, SƏNİN SEÇİMLƏRİN!</h2>
-                            <p class="fz18 color-white">Ən yaxşısını axtarırsansa, doğru yerdəsən, işinin ən yaxşıları bizimlədir - seç, müqayisə et və məkanını tap!</p>
+                            <h2 class="fz50">Həyatını asanlaşdır!</h2>
+                            <p class="fz18 color-white">Keyfiyyətli seçim və vaxta qənaət!</p>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-lg-10 col-xl-8">
