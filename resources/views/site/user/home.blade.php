@@ -43,9 +43,8 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="popular_listing_slider1">
-                        @if(!empty($user['userLikes'][0]))
-                            @foreach($user['userLikes'] as $companyCategory)
-                                @dd($companyCategory['slug'])
+                        @if(!empty($likeCompanies[0]))
+                            @foreach($likeCompanies as $companyCategory)
                                 <div class="item">
                                     <div class="feat_property" style="height: 464px;">
                                         <div class="thumb">

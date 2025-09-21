@@ -43,7 +43,14 @@ class UserController extends Controller
         if ($user['country_id'] == null && $user['city_id'] == null) {
             return self::settings();
         }
-        return view('site.user.home', compact('currentLang','user'));
+        $likeCompanies = Company::select([
+            'companies.*',
+            'user_likes.user_id AS user_id',
+            'user_likes.item_id AS company_id',
+        ])->join('user_likes','user_likes.item_id','=','companies.id')->
+        where(['user_likes.user_id'=>$this->user->id, 'user_likes.item_type' => 'company', 'companies.status'=>1])->
+        orderBy('user_likes.id','DESC')->get();
+        return view('site.user.home', compact('currentLang','user','likeCompanies'));
     }
 
     public function settings()
