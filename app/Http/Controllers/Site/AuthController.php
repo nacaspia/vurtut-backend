@@ -77,8 +77,6 @@ class AuthController extends Controller
             }
 
             if ($type=='company'){
-
-
                 $company = new Company();
                 $company->category_id = null;
                 $company->full_name = $registerRequest->full_name;
@@ -112,6 +110,12 @@ class AuthController extends Controller
                         'note' =>  $company->full_name.' - '.Lang::get('site.has_register_email'),
                     ];
                     LogsHelper::convert($companyLog);
+                    $loginState = [
+                        'email' => $company->email,
+                        'password' => $registerRequest->password,
+                        'status' => 1
+                    ];
+                    auth('company')->attempt($loginState);
                     return response()->json(['success' => true,'message' =>  Lang::get('site.has_register_email'),'router' => route('site.company.settings')], 200);
                 }
             }elseif ($type=='user'){
