@@ -212,7 +212,7 @@
                                                                 <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span> {{ $data['address'] ?? '' }}</a></li>
                                                             </ul>
                                                         </div>
-                                                        <div class="fp_footer">
+                                                        <div class="fp_footer" style="width: 107%; display: flex; justify-content: space-between; ">
                                                             <ul class="fp_meta float-left mb0">
                                                                 @if(!empty($companyIsPremium['category']['image']))
                                                                 <li class="list-inline-item">
@@ -313,7 +313,7 @@
                                                                         <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                                                                     </ul>
                                                                 </div>
-                                                                <div class="fp_footer">
+                                                                <div class="fp_footer" style="width: 107%; display: flex; justify-content: space-between; ">
                                                                     <ul class="fp_meta float-left mb0">
                                                                         @if(!empty($companyIsPremium['category']['image']))
                                                                             <li class="list-inline-item">
