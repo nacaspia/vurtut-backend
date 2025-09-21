@@ -151,7 +151,7 @@
                                     @if(!empty($allCompaniesIsPremium[0]))
                                         @foreach($allCompaniesIsPremium as $companyIsPremium)
                                             <div class="item">
-                                                <div class="feat_property" style="height: 430px;">
+                                                <div class="feat_property" style="height: 430px;width: 374px;">
                                                     <div class="thumb">
                                                         <img class="img-whp" style="width: 100%; max-height: 163px; object-fit: cover; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$companyIsPremium['image']) }}" alt="fp1.jpg">
                                                         <div class="thmb_cntnt">
@@ -212,7 +212,7 @@
                                                                 <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span> {{ $data['address'] ?? '' }}</a></li>
                                                             </ul>
                                                         </div>
-                                                        <div class="fp_footer" style="width: 107%; display: flex; justify-content: space-between; ">
+                                                        <div class="fp_footer" >
                                                             <ul class="fp_meta float-left mb0">
                                                                 @if(!empty($companyIsPremium['category']['image']))
                                                                 <li class="list-inline-item">
@@ -252,7 +252,7 @@
                                             @if(!empty($category['companiesIsPremium'][0]))
                                                 @foreach($category['companiesIsPremium'] as $companyIsPremium)
                                                     <div class="item">
-                                                        <div class="feat_property" >
+                                                        <div class="feat_property" style="height: 430px;width: 374px;">
                                                             <div class="thumb">
                                                                 <img class="img-whp" style="width: 100%; max-height: 200px; object-fit: cover; border-radius: 8px; background-color: #f9f9f9;!important; object-fit: cover;" src="{{ asset("uploads/company/".$companyIsPremium['image']) }}" alt="fp1.jpg">
                                                                 <div class="thmb_cntnt">
@@ -313,7 +313,7 @@
                                                                         <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                                                                     </ul>
                                                                 </div>
-                                                                <div class="fp_footer" style="width: 107%; display: flex; justify-content: space-between; ">
+                                                                <div class="fp_footer">
                                                                     <ul class="fp_meta float-left mb0">
                                                                         @if(!empty($companyIsPremium['category']['image']))
                                                                             <li class="list-inline-item">
