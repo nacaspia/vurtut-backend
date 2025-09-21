@@ -111,7 +111,7 @@
                                                     <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="fp_footer" style="width: 100%; display: flex; justify-content: space-between; ">
+                                            <div class="fp_footer" style="width: 107%; display: flex; justify-content: space-between; ">
                                                 <ul class="fp_meta float-left mb0">
                                                     @if(!empty($companyCategory['category']['image']))
                                                         <li class="list-inline-item">
