@@ -22,7 +22,7 @@
                 @if(!empty($likeCompanies[0]))
                     @foreach($likeCompanies as $companyCategory)
                         <div class="col-md-6 col-lg-4">
-                            <div class="feat_property" style="height: 464px;">
+                            <div class="feat_property" style="height: 430px;width: 374px;">
                                 <div class="thumb">
                                     <img class="img-whp" style="width: 100%; max-height: 163px; object-fit: cover; border-radius: 8px; background-color: #f9f9f9;!important;" src="{{ asset("uploads/company/".$companyCategory['image']) }}" alt="{{ $companyCategory['full_name'] }}">
                                     <div class="thmb_cntnt">
@@ -87,7 +87,7 @@
                                             <li class="list-inline-item"><a><span class="flaticon-pin pr5"></span>{{ $data['address'] ?? '' }}</a></li>
                                         </ul>
                                     </div>
-                                    <div class="fp_footer" style="width: 100%; display: flex; justify-content: space-between; ">
+                                    <div class="fp_footer" >
                                         <ul class="fp_meta float-left mb0">
                                             @if(!empty($companyCategory['category']['image']))
                                                 <li class="list-inline-item">
