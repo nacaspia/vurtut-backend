@@ -117,14 +117,13 @@ class AuthController extends Controller
                     ];
                     if (!empty(auth('company')->attempt($loginState)) && auth('company')->user()->status == 1) {
                         $user = auth('company')->user();
-                        $userToken = CompanyToken::where(['company_id' => $user['id']])->orderBy('created_at', 'desc')->first();
                         if (!empty($user['country_id']) && !empty($user['city_id'])) {
                             $route = route('site.company.index');
                         } else {
                             $route = route('site.company.settings');
                         }
                     }
-                        return response()->json(['success' => true,'message' =>  Lang::get('site.has_register_email'),'route' => $route], 200);
+                    return response()->json(['success' => true,'message' =>  Lang::get('site.has_register_email'),'route' => $route], 200);
                 }
             }elseif ($type=='user'){
 
