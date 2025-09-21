@@ -86,7 +86,7 @@ class AuthController extends Controller
                 $company->phone = $registerRequest->phone;
                 $company->email = $registerRequest->email;
                 $company->password = Hash::make($registerRequest->password);
-                $company->status = 0;
+                $company->status = 1;
                 $company->save();
 
                 if (!empty($company)){
@@ -102,7 +102,7 @@ class AuthController extends Controller
                         'url' => 'https://vurtut.com/company/accept/'.$token_send.'/'.$company->id,
                         'dedicated'=>'register'
                     ];
-                    Notification::route('mail', $mail_data['email'])->notify(new Mail($mail_data));
+                    //Notification::route('mail', $mail_data['email'])->notify(new Mail($mail_data));
                     $companyLog = [
                         'obj_id' => $company->id,
                         'subj_id' => $company->id,
@@ -112,7 +112,7 @@ class AuthController extends Controller
                         'note' =>  $company->full_name.' - '.Lang::get('site.has_register_email'),
                     ];
                     LogsHelper::convert($companyLog);
-                    return response()->json(['success' => true,'message' =>  Lang::get('site.has_register_email')], 200);
+                    return response()->json(['success' => true,'message' =>  Lang::get('site.has_register_email'),'router' => route('site.company.settings')], 200);
                 }
             }elseif ($type=='user'){
 

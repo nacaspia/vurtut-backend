@@ -329,6 +329,7 @@
                     $('#generalCompanyRegisterSuccess').text(response.message);// Formun bütün inputlarını təmizlə
                     $('#companyRegister')[0].reset(); // loginForm -> sənin formanın ID-si
                     $('#companyRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
+                    window.location.href = response.route;
                 }else {
                     $('#companyRegisterBtn').prop('disabled', false).html('Qeydiyyat olun');
                 }
