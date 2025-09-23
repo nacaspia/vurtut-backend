@@ -268,49 +268,24 @@
                                                                         </div>
                                                                         <button class="btn btn-block btn-thm viewProductDetail"
                                                                             data-toggle="modal"
-                                                                            data-target="#productInfoModal">
+                                                                            data-target="#productInfoModal"
+                                                                            data-category="{{$service['subCategory']['title'][$currentLang]}}"
+                                                                            @if(!empty($service['person']))
+                                                                                data-person-image="{{ asset('uploads/company-persons/'.$service['person']['image']) }}"
+                                                                                data-person="{{$service['person']['name'] ?? null}}"
+                                                                                data-age="{{$service['person']['age'] ?? ''}}"
+                                                                                data-experience="{{$service['person']['experience'] ?? null}}"
+                                                                                data-person-description="{{$service['person']['text'] ?? null}}"
+                                                                            @endif
+                                                                            data-name="{{$service['title']}}" data-price="{{$service['price']}}"
+                                                                            data-description="{{$service['description']}}"
+                                                                            data-image="{{ asset('uploads/company-services/'.$service['image']) }}">
                                                                             <span class="flaticon-view"></span> Ətraflı
                                                                         </button>
                                                                     </div>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="modal fade" id="productInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
-                                                                <div class="modal-dialog" role="document" style="max-width: 500px;">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <h5 class="modal-title"></h5>
-                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
-                                                                                <span aria-hidden="true">&times;</span>
-                                                                            </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <div class="row">
-                                                                                <div class="col-lg-4 col-xl-4">
-                                                                                    <img src="{{ asset('uploads/company-services/'.$service['image']) }}" alt="Şəkli" class="img-fluid rounded mt-2"
-                                                                                         style="max-height: 150px;!important;">
-                                                                                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
-                                                                                        <img src="{{ asset('uploads/company-persons/'.$service['person']['image']) }}" alt="" class="img-fluid rounded mt-2"
-                                                                                             style="max-height: 150px;!important;">
-                                                                                    @endif
-                                                                                </div>
-                                                                                <div class="col-lg-6 col-xl-6">
-                                                                                    <p><strong>Kateqoriya:</strong> <span>{{$service['subCategory']['title'][$currentLang]}}</span></p>
-                                                                                    <p><strong>Xidmətin Adı:</strong> <span>{{$service['title']}}</span></p>
-                                                                                    <p><strong>Qiymət:</strong> <span>{{$service['price']}}</span></p>
-                                                                                    <p><strong>Xidmətin Təsvir:</strong> <br><span>{{$service['description']}}</span></p>
-                                                                                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
-                                                                                        <p><strong>Ustanın Adı:</strong> <span>{{$service['person']['name'] ?? null}}</span></p>
-                                                                                        <p><strong>Ustanın Yaşı:</strong> <span>{{$service['person']['age'] ?? ''}}</span></p>
-                                                                                        <p><strong>Ustanın Təcrübəsi:</strong> <span>{{$service['person']['experience'] ?? ''}}</span></p>
-                                                                                        <p><strong>Ətraflı məlumat:</strong> <span>{{$service['person']['text'] ?? ''}}</span></p>
-                                                                                    @endif
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         @endforeach
                                                     @endif
                                                 </div>
@@ -668,6 +643,42 @@
         </div>
     </section>
 
+    <div class="modal fade" id="productInfoModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="max-width: 500px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Bağla">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-4 col-xl-4">
+                            <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2"
+                                 style="max-height: 150px;!important;">
+                            @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                            <img id="infoPersonImage" src="" alt="" class="img-fluid rounded mt-2"
+                                 style="max-height: 150px;!important;">
+                            @endif
+                        </div>
+                        <div class="col-lg-6 col-xl-6">
+                            <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
+                            <p><strong>Xidmətin Adı:</strong> <span id="infoName"></span></p>
+                            <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
+                            <p><strong>Xidmətin Təsvir:</strong> <br><span id="infoDescription"></span></p>
+                            @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                                <p><strong>Ustanın Adı:</strong> <span id="infoPerson"></span></p>
+                                <p><strong>Ustanın Yaşı:</strong> <span id="infoPersonAge"></span></p>
+                                <p><strong>Ustanın Təcrübəsi:</strong> <span id="infoPersonExperience"></span></p>
+                                <p><strong>Ətraflı məlumat:</strong> <span id="infoPersonDescription"></span></p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="settings_modal modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-md mt100" role="document">
@@ -865,32 +876,25 @@
         google.maps.event.addDomListener(window, 'load', initialize);
 
         document.addEventListener('DOMContentLoaded', function () {
-            $('#productInfoModal').on('show.bs.modal', function (event) {
+            const detailButtons = document.querySelectorAll('.viewProductDetail');
+
+            detailButtons.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
+                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                    document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image');
+                    document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
+                    document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age');
+                    document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience');
+                    document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description');
+                    @endif
+                    document.getElementById('infoName').innerText = btn.getAttribute('data-name');
+                    document.getElementById('infoPrice').innerText = btn.getAttribute('data-price');
+                    document.getElementById('infoDescription').innerText = btn.getAttribute('data-description');
+                    document.getElementById('infoImage').src = btn.getAttribute('data-image');
+                });
             });
         });
-
-        /*   document.addEventListener('DOMContentLoaded', function () {
-               const detailButtons = document.querySelectorAll('.viewProductDetail');
-
-               detailButtons.forEach(function (btn) {
-                   btn.addEventListener('click', function () {
-                       console.log("CLICK işlədi!", btn.getAttribute('data-name'));
-                       document.getElementById('infoCategory').innerText = btn.getAttribute('data-category') || '';
-                       document.getElementById('infoName').innerText = btn.getAttribute('data-name') || '';
-                       document.getElementById('infoPrice').innerText = btn.getAttribute('data-price') || '';
-                       document.getElementById('infoDescription').innerText = btn.getAttribute('data-description') || '';
-                       document.getElementById('infoImage').src = btn.getAttribute('data-image') || '';
-                       // Əgər person atributları varsa doldur
-                       if (btn.hasAttribute('data-person')) {
-                           document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image') || '';
-                           document.getElementById('infoPerson').innerText = btn.getAttribute('data-person') || '';
-                           document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age') || '';
-                           document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience') || '';
-                           document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description') || '';
-                       }
-                   });
-               });
-           });*/
     </script>
     @if(!empty(auth('user')->user()->id))
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
