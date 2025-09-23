@@ -58,7 +58,7 @@
                                                 $reviewCount = $comments->count();
                                                 ?>
                                             @php
-                                                $categories = [
+                                                $categoriesType = [
                                                     'Təmizlik' => $avgCleanliness,
                                                     'Heyət' => $avgStaff,
                                                     'Rahatlıq' => $avgComfort,
@@ -66,10 +66,10 @@
                                                 ];
 
                                                 // ümumi cəm
-                                                $totalScore = array_sum($categories);
+                                                $totalScore = array_sum($categoriesType);
 
                                                 // neçə kateqoriya varsa
-                                                $count = count($categories);
+                                                $count = count($categoriesType);
 
                                                 // orta qiymət
                                                 $averageScore = $count > 0 ? $totalScore / $count : 0;
@@ -318,7 +318,7 @@
                                         <h4 class="mb25">{{ $overallAverage }} ({{ $reviewCount }} rəy)</h4>
                                     </div>
                                     @php
-                                        $categories = [
+                                        $categoriesType = [
                                             'Təmizlik' => $avgCleanliness,
                                             'Heyət' => $avgStaff,
                                             'Rahatlıq' => $avgComfort,
@@ -326,7 +326,7 @@
                                         ];
                                     @endphp
 
-                                    @foreach($categories as $title => $score)
+                                    @foreach($categoriesType as $title => $score)
                                         <div class="col-lg-3 col-md-6 mb-3 d-flex align-items-center">
                                             <div class="me-2" style="width: 90px;">{{ $title }}</div>
                                             <div class="rating-stars">
