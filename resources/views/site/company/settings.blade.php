@@ -216,17 +216,6 @@
                                                                     <span> </span>
                                                                     <input type="time" class="form-control end_date" name="hours[{{ $day }}][end]" value="{{ $end }}">
                                                                 </div>
-
-                                                                {{--<select class="form-control hours_type" id="hours_type{{ $day }}" name="hours_type[{{ $day }}]">
-                                                                    <option value="">Seçin</option>
-                                                                    <option value="1" @if(isset($company['time'][$day]) && $company['time'][$day] == 0) selected @endif>Açıq</option>
-                                                                    <option value="0" @if(isset($company['time'][$day]) && $company['time'][$day] == 0) selected @endif>Bağlı</option>
-                                                                </select>
-                                                                <input  type="time" class="form-control start_date" id="start_time{{ $day }}"
-                                                                       name="hours[{{ $day }}][start]" value="00:00">
-                                                                <span>-</span>
-                                                                <input  type="time"  class="form-control end_date" id="end_time{{ $day }}"
-                                                                       name="hours[{{ $day }}][end]" value="23:59">--}}
                                                             </div>
                                                         </div>
                                                         <div class="invalid-feedback" id="hoursSettingsError"></div>
@@ -281,9 +270,9 @@
                             <div class="my_dashboard_profile">
                                 <h4 class="mb20">Qeydiyyat məlumatları</h4>
                                 <form id="registerSettings">
-                                    <input type="hidden" id="latitude" name="latitude">
-                                    <input type="hidden" id="longitude" name="longitude">
                                     <div class="row">
+                                        <input type="hidden" id="latitude" name="latitude">
+                                        <input type="hidden" id="longitude" name="longitude">
                                         <div class="col-md-12">
                                             <div class="my_profile_setting_input ui_kit_select_search form-group">
                                                 <label for="emailRegister">E-mail</label>
