@@ -303,7 +303,7 @@
                                                                                         <p><strong>Ustanın Adı:</strong> <span>{{$service['person']['name'] ?? null}}</span></p>
                                                                                         <p><strong>Ustanın Yaşı:</strong> <span>{{$service['person']['age'] ?? ''}}</span></p>
                                                                                         <p><strong>Ustanın Təcrübəsi:</strong> <span>{{$service['person']['experience'] ?? ''}}</span></p>
-                                                                                        <p><strong>Ətraflı məlumat:</strong> <span>{{$service['person']['description'] ?? ''}}</span></p>
+                                                                                        <p><strong>Ətraflı məlumat:</strong> <span>{{$service['person']['text'] ?? ''}}</span></p>
                                                                                     @endif
                                                                                 </div>
                                                                             </div>
