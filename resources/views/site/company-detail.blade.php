@@ -270,13 +270,13 @@
                                                                             data-toggle="modal"
                                                                             data-target="#productInfoModal"
                                                                             data-category="{{$service['subCategory']['title'][$currentLang]}}"
-{{--                                                                            @if(!empty($service['person']))--}}
-{{--                                                                                data-person-image="{{ asset('uploads/company-persons/'.$service['person']['image']) }}"--}}
-{{--                                                                                data-person="{{$service['person']['name'] ?? null}}"--}}
-{{--                                                                                data-age="{{$service['person']['age'] ?? ''}}"--}}
-{{--                                                                                data-experience="{{$service['person']['experience'] ?? null}}"--}}
-{{--                                                                                data-person-description="{{$service['person']['description'] ?? null}}"--}}
-{{--                                                                            @endif--}}
+                                                                            @if(!empty($service['person']))
+                                                                                data-person-image="{{ asset('uploads/company-persons/'.$service['person']['image']) }}"
+                                                                                data-person="{{$service['person']['name'] ?? null}}"
+                                                                                data-age="{{$service['person']['age'] ?? ''}}"
+                                                                                data-experience="{{$service['person']['experience'] ?? null}}"
+                                                                                data-person-description="{{$service['person']['description'] ?? null}}"
+                                                                            @endif
                                                                             data-name="{{$service['title']}}" data-price="{{$service['price']}}"
                                                                             data-description="{{$service['description']}}"
                                                                             data-image="{{ asset('uploads/company-services/'.$service['image']) }}">
@@ -880,18 +880,20 @@
 
             detailButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
-                    document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
-                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
-                    document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image');
-                    document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
-                    document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age');
-                    document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience');
-                    document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description');
-                    @endif
-                    document.getElementById('infoName').innerText = btn.getAttribute('data-name');
-                    document.getElementById('infoPrice').innerText = btn.getAttribute('data-price');
-                    document.getElementById('infoDescription').innerText = btn.getAttribute('data-description');
-                    document.getElementById('infoImage').src = btn.getAttribute('data-image');
+                    document.getElementById('infoCategory').innerText = btn.getAttribute('data-category') || '';
+                    document.getElementById('infoName').innerText = btn.getAttribute('data-name') || '';
+                    document.getElementById('infoPrice').innerText = btn.getAttribute('data-price') || '';
+                    document.getElementById('infoDescription').innerText = btn.getAttribute('data-description') || '';
+                    document.getElementById('infoImage').src = btn.getAttribute('data-image') || '';
+
+                    // Əgər person atributları varsa doldur
+                    if (btn.hasAttribute('data-person')) {
+                        document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image') || '';
+                        document.getElementById('infoPerson').innerText = btn.getAttribute('data-person') || '';
+                        document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age') || '';
+                        document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience') || '';
+                        document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description') || '';
+                    }
                 });
             });
         });
