@@ -54,6 +54,6 @@ class Category extends Model
     }
 
     public function companyServices() {
-        return $this->hasMany(CompanyService::class,'sub_category_id','id')->where('status',1)->orderBy('id','DESC');
+        return $this->hasMany(CompanyService::class,'sub_category_id','id')->where('status',1)->with('person')->orderBy('id','DESC');
     }
 }
