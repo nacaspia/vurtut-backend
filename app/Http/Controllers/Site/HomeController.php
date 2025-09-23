@@ -261,7 +261,7 @@ class HomeController extends Controller
                 $q->where('company_id', $this->companyId)->where('status', 1);
             }])->
             orderBy('title->' . $this->currentLang, 'ASC')->get();
-        dd($categories);
+
         $sessionKey = 'viewed_company_' . $company->id;
         if (!session()->has($sessionKey)) {
             $company->increment('reads');
