@@ -231,7 +231,6 @@
                             <div class="popular_listing_sliders row">
                                 <!-- Nav tabs -->
                                 <div class="nav nav-tabs mb50 col-lg-12 justify-content-center" role="tablist">
-
                                     @if(!empty($categories[0]))
                                         @foreach($categories as $catKey=>$category)
                                             <a class="nav-link @if(++$catKey ==1) active @endif"
@@ -658,7 +657,7 @@
                         <div class="col-lg-4 col-xl-4">
                             <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2"
                                  style="max-height: 150px;!important;">
-                            @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                            @if($company['category']['is_persons'] ==true)
                             <img id="infoPersonImage" src="" alt="" class="img-fluid rounded mt-2"
                                  style="max-height: 150px;!important;">
                             @endif
@@ -668,7 +667,7 @@
                             <p><strong>Xidmətin Adı:</strong> <span id="infoName"></span></p>
                             <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
                             <p><strong>Xidmətin Təsvir:</strong> <br><span id="infoDescription"></span></p>
-                            @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                            @if($company['category']['is_persons'] ==true)
                                 <p><strong>Ustanın Adı:</strong> <span id="infoPerson"></span></p>
                                 <p><strong>Ustanın Yaşı:</strong> <span id="infoPersonAge"></span></p>
                                 <p><strong>Ustanın Təcrübəsi:</strong> <span id="infoPersonExperience"></span></p>
@@ -882,7 +881,7 @@
             detailButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
-                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                    @if($company['category']['is_persons'] == true)
                     document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image');
                     document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
                     document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age');
