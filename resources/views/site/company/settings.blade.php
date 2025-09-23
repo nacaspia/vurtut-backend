@@ -310,7 +310,7 @@
                                     </div>
                                 </form>
                             </div>
-
+                            <br><br>
                             <div class="my_dashboard_profile">
                                 <h4 class="mb20">Şifrəni dəyiş</h4>
                                 <form id="settingsPassword">
