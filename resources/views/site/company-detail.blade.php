@@ -267,8 +267,7 @@
                                                                             <p class="price">{{$service['price']}}
                                                                                 AZN</p>
                                                                         </div>
-                                                                        <button
-                                                                            class="btn btn-block btn-thm viewProductDetail"
+                                                                        <button class="btn btn-block btn-thm viewProductDetail"
                                                                             data-toggle="modal"
                                                                             data-target="#productInfoModal"
                                                                             data-category="{{$service['subCategory']['title'][$currentLang]}}"
@@ -283,7 +282,6 @@
                                                                             data-description="{{$service['description']}}"
                                                                             data-image="{{ asset('uploads/company-services/'.$service['image']) }}">
                                                                             <span class="flaticon-view"></span> Ətraflı
-                                                                            Ətraflı
                                                                         </button>
                                                                     </div>
                                                                 </div>
@@ -661,7 +659,7 @@
                             <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2"
                                  style="max-height: 150px;!important;">
                             @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
-                            <img id="infoPersonImage" src="" alt="Şəkli" class="img-fluid rounded mt-2"
+                            <img id="infoPersonImage" src="" alt="" class="img-fluid rounded mt-2"
                                  style="max-height: 150px;!important;">
                             @endif
                         </div>
@@ -884,6 +882,10 @@
             detailButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
+                    document.getElementById('infoImage').src = btn.getAttribute('data-image');
+                    document.getElementById('infoName').innerText = btn.getAttribute('data-name');
+                    document.getElementById('infoPrice').innerText = btn.getAttribute('data-price');
+                    document.getElementById('infoDescription').innerText = btn.getAttribute('data-description');
                     @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
                     document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image');
                     document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
@@ -891,10 +893,6 @@
                     document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience');
                     document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description');
                     @endif
-                    document.getElementById('infoName').innerText = btn.getAttribute('data-name');
-                    document.getElementById('infoPrice').innerText = btn.getAttribute('data-price');
-                    document.getElementById('infoDescription').innerText = btn.getAttribute('data-description');
-                    document.getElementById('infoImage').src = btn.getAttribute('data-image');
                 });
             });
         });
