@@ -267,6 +267,7 @@
                         </div>
 
                         <div class="col-xl-4">
+                            <div class="row">
                             <div class="my_dashboard_profile">
                                 <h4 class="mb20">Qeydiyyat məlumatları</h4>
                                 <form id="registerSettings">
@@ -311,6 +312,8 @@
                                 </form>
                             </div>
 
+                            </div>
+                            <div class="row">
                             <div class="my_dashboard_profile">
                                 <h4 class="mb20">Şifrəni dəyiş</h4>
                                 <form id="settingsPassword">
@@ -343,6 +346,7 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
                             </div>
                         </div>
                     </div>
