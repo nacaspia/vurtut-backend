@@ -304,13 +304,13 @@
                                         </div>
                                         <div class="col-xl-12">
                                             <div class="my_profile_setting_input">
-                                                <button type="submit" id="settingsButton" class="btn update_btn style2">Məlumatları yenilə</button>
+                                                <button type="submit" id="settingsButton" class="btn update_btn">Məlumatları yenilə</button>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                            <br><br>
+
                             <div class="my_dashboard_profile">
                                 <h4 class="mb20">Şifrəni dəyiş</h4>
                                 <form id="settingsPassword">
