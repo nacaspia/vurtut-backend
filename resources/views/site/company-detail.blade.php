@@ -281,6 +281,7 @@
                                                                             data-description="{{$service['description']}}"
                                                                             data-image="{{ asset('uploads/company-services/'.$service['image']) }}">
                                                                             <span class="flaticon-view"></span> Ətraflı
+                                                                            Ətraflı
                                                                         </button>
                                                                     </div>
                                                                 </div>
