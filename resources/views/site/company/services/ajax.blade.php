@@ -69,7 +69,7 @@
                     <div class="modal-body">
                         <form  id="productEditForm{{$service['id']}}" enctype="multipart/form-data">
                             <input type="hidden" id="editId{{$service['id']}}" value="{{$service['id']}}">
-                            <input type="hidden" id="edit_category_id" name="edit_category_id" value="{{ $subCompaniesCategory[0]['sub_category_id'] }}">
+                            <input type="hidden" id="edit_category_id" name="edit_category_id" value="{{ $service['parent_category_id'] }}">
                             <div class="form-group">
                                 <label for="sub_category_id">Kateqoriyalar</label>
                                 <select class="form-control" id="edit_sub_category_id" name="edit_sub_category_id">
