@@ -882,17 +882,17 @@
             detailButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
-                    document.getElementById('infoImage').src = btn.getAttribute('data-image');
-                    document.getElementById('infoName').innerText = btn.getAttribute('data-name');
-                    document.getElementById('infoPrice').innerText = btn.getAttribute('data-price');
-                    document.getElementById('infoDescription').innerText = btn.getAttribute('data-description');
                     @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
-                    // document.getElementById('infoPersonImg').src = btn.getAttribute('data-person-image');
+                    document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image');
                     document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
                     document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age');
                     document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience');
                     document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description');
                     @endif
+                    document.getElementById('infoName').innerText = btn.getAttribute('data-name');
+                    document.getElementById('infoPrice').innerText = btn.getAttribute('data-price');
+                    document.getElementById('infoDescription').innerText = btn.getAttribute('data-description');
+                    document.getElementById('infoImage').src = btn.getAttribute('data-image');
                 });
             });
         });
