@@ -271,17 +271,17 @@
                                                                             data-target="#productInfoModal"
                                                                             data-category="{{$service['subCategory']['title'][$currentLang]}}"
                                                                             @if(!empty($service['person']))
-                                                                                data-person-image="{{ asset('uploads/company-persons/'.$service['person']['image']) }}"
-                                                                                data-person="{{$service['person']['name'] ?? null}}"
+                                                                                data-person-image="{{ asset('uploads/company-persons/'.$service['person']['image'] ?? '') }}"
+                                                                                data-person="{{$service['person']['name'] ?? ''}}"
                                                                                 data-age="{{$service['person']['age'] ?? ''}}"
-                                                                                data-experience="{{$service['person']['experience'] ?? null}}"
-                                                                                data-person-description="{{$service['person']['text'] ?? null}}"
+                                                                                data-experience="{{$service['person']['experience'] ?? ''}}"
+                                                                                data-person-description="{{$service['person']['text'] ?? ''}}"
                                                                             @endif
-                                                                            data-name="{{$service['title']}}" data-price="{{$service['price']}}"
+                                                                            data-name="{{$service['title']}}"
+                                                                            data-price="{{$service['price']}}"
                                                                             data-description="{{$service['description']}}"
                                                                             data-image="{{ asset('uploads/company-services/'.$service['image']) }}">
                                                                             <span class="flaticon-view"></span> Ətraflı
-                                                                            Ətraflı
                                                                         </button>
                                                                     </div>
                                                                 </div>
