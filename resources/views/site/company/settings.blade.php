@@ -267,7 +267,7 @@
                         </div>
 
                         <div class="col-xl-4">
-                            <div class="my_dashboard_profile">
+                            <div class="my_dashboard_profile" style="height: 769px;!important;">
                                 <h4 class="mb20">Qeydiyyat məlumatları</h4>
                                 <form id="registerSettings">
                                     <div class="row">
@@ -310,6 +310,7 @@
                                     </div>
                                 </form>
                             </div>
+                            <br>
                             <div class="my_dashboard_profile">
                                 <h4 class="mb20">Şifrəni dəyiş</h4>
                                 <form id="settingsPassword">
