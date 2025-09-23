@@ -657,22 +657,22 @@
                         <div class="col-lg-4 col-xl-4">
                             <img id="infoImage" src="" alt="Şəkli" class="img-fluid rounded mt-2"
                                  style="max-height: 150px;!important;">
-{{--                            @if(!empty($company['category']) && $company['category']['is_persons'] ==true)--}}
-{{--                            <img id="infoPersonImage" src="" alt="" class="img-fluid rounded mt-2"--}}
-{{--                                 style="max-height: 150px;!important;">--}}
-{{--                            @endif--}}
+                            @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                            <img id="infoPersonImage" src="" alt="" class="img-fluid rounded mt-2"
+                                 style="max-height: 150px;!important;">
+                            @endif
                         </div>
                         <div class="col-lg-6 col-xl-6">
                             <p><strong>Kateqoriya:</strong> <span id="infoCategory"></span></p>
                             <p><strong>Xidmətin Adı:</strong> <span id="infoName"></span></p>
                             <p><strong>Qiymət:</strong> <span id="infoPrice"></span></p>
                             <p><strong>Xidmətin Təsvir:</strong> <br><span id="infoDescription"></span></p>
-{{--                            @if(!empty($company['category']) && $company['category']['is_persons'] ==true)--}}
-{{--                                <p><strong>Ustanın Adı:</strong> <span id="infoPerson"></span></p>--}}
-{{--                                <p><strong>Ustanın Yaşı:</strong> <span id="infoPersonAge"></span></p>--}}
-{{--                                <p><strong>Ustanın Təcrübəsi:</strong> <span id="infoPersonExperience"></span></p>--}}
-{{--                                <p><strong>Ətraflı məlumat:</strong> <span id="infoPersonDescription"></span></p>--}}
-{{--                            @endif--}}
+                            @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                                <p><strong>Ustanın Adı:</strong> <span id="infoPerson"></span></p>
+                                <p><strong>Ustanın Yaşı:</strong> <span id="infoPersonAge"></span></p>
+                                <p><strong>Ustanın Təcrübəsi:</strong> <span id="infoPersonExperience"></span></p>
+                                <p><strong>Ətraflı məlumat:</strong> <span id="infoPersonDescription"></span></p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -881,13 +881,13 @@
             detailButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
                     document.getElementById('infoCategory').innerText = btn.getAttribute('data-category');
-{{--                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)--}}
-{{--                    document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image');--}}
-{{--                    document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');--}}
-{{--                    document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age');--}}
-{{--                    document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience');--}}
-{{--                    document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description');--}}
-{{--                    @endif--}}
+                    @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
+                    document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image');
+                    document.getElementById('infoPerson').innerText = btn.getAttribute('data-person');
+                    document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age');
+                    document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience');
+                    document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description');
+                    @endif
                     document.getElementById('infoName').innerText = btn.getAttribute('data-name');
                     document.getElementById('infoPrice').innerText = btn.getAttribute('data-price');
                     document.getElementById('infoDescription').innerText = btn.getAttribute('data-description');
