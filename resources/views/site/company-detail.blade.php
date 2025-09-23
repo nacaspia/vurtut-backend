@@ -874,52 +874,53 @@
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
+
         document.addEventListener('DOMContentLoaded', function () {
-            document.addEventListener('click', function (e) {
-                const btn = e.target.closest('.viewProductDetail');
-                if (!btn) return; // klik başqa yerədirsə, dayandır
+            $('#productInfoModal').on('show.bs.modal', function (event) {
+                const btn = $(event.relatedTarget); // modalı açan düymə
 
-                console.log("CLICK işlədi!", btn.getAttribute('data-name'));
+                // console test
+                console.log("CLICK işlədi!", btn.data('name'));
 
-                document.getElementById('infoCategory').innerText = btn.getAttribute('data-category') || '';
-                document.getElementById('infoName').innerText = btn.getAttribute('data-name') || '';
-                document.getElementById('infoPrice').innerText = btn.getAttribute('data-price') || '';
-                document.getElementById('infoDescription').innerText = btn.getAttribute('data-description') || '';
-                document.getElementById('infoImage').src = btn.getAttribute('data-image') || '';
+                // məlumatları doldur
+                document.getElementById('infoCategory').innerText = btn.data('category') || '';
+                document.getElementById('infoName').innerText = btn.data('name') || '';
+                document.getElementById('infoPrice').innerText = btn.data('price') || '';
+                document.getElementById('infoDescription').innerText = btn.data('description') || '';
+                document.getElementById('infoImage').src = btn.data('image') || '';
 
-                // Əgər person atributları varsa doldur
-                if (btn.hasAttribute('data-person')) {
-                    document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image') || '';
-                    document.getElementById('infoPerson').innerText = btn.getAttribute('data-person') || '';
-                    document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age') || '';
-                    document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience') || '';
-                    document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description') || '';
+                if (btn.data('person')) {
+                    document.getElementById('infoPersonImage').src = btn.data('person-image') || '';
+                    document.getElementById('infoPerson').innerText = btn.data('person') || '';
+                    document.getElementById('infoPersonAge').innerText = btn.data('age') || '';
+                    document.getElementById('infoPersonExperience').innerText = btn.data('experience') || '';
+                    document.getElementById('infoPersonDescription').innerText = btn.data('person-description') || '';
                 }
             });
         });
 
-     /*   document.addEventListener('DOMContentLoaded', function () {
-            const detailButtons = document.querySelectorAll('.viewProductDetail');
+        /*   document.addEventListener('DOMContentLoaded', function () {
+               const detailButtons = document.querySelectorAll('.viewProductDetail');
 
-            detailButtons.forEach(function (btn) {
-                btn.addEventListener('click', function () {
-                    console.log("CLICK işlədi!", btn.getAttribute('data-name'));
-                    document.getElementById('infoCategory').innerText = btn.getAttribute('data-category') || '';
-                    document.getElementById('infoName').innerText = btn.getAttribute('data-name') || '';
-                    document.getElementById('infoPrice').innerText = btn.getAttribute('data-price') || '';
-                    document.getElementById('infoDescription').innerText = btn.getAttribute('data-description') || '';
-                    document.getElementById('infoImage').src = btn.getAttribute('data-image') || '';
-                    // Əgər person atributları varsa doldur
-                    if (btn.hasAttribute('data-person')) {
-                        document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image') || '';
-                        document.getElementById('infoPerson').innerText = btn.getAttribute('data-person') || '';
-                        document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age') || '';
-                        document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience') || '';
-                        document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description') || '';
-                    }
-                });
-            });
-        });*/
+               detailButtons.forEach(function (btn) {
+                   btn.addEventListener('click', function () {
+                       console.log("CLICK işlədi!", btn.getAttribute('data-name'));
+                       document.getElementById('infoCategory').innerText = btn.getAttribute('data-category') || '';
+                       document.getElementById('infoName').innerText = btn.getAttribute('data-name') || '';
+                       document.getElementById('infoPrice').innerText = btn.getAttribute('data-price') || '';
+                       document.getElementById('infoDescription').innerText = btn.getAttribute('data-description') || '';
+                       document.getElementById('infoImage').src = btn.getAttribute('data-image') || '';
+                       // Əgər person atributları varsa doldur
+                       if (btn.hasAttribute('data-person')) {
+                           document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image') || '';
+                           document.getElementById('infoPerson').innerText = btn.getAttribute('data-person') || '';
+                           document.getElementById('infoPersonAge').innerText = btn.getAttribute('data-age') || '';
+                           document.getElementById('infoPersonExperience').innerText = btn.getAttribute('data-experience') || '';
+                           document.getElementById('infoPersonDescription').innerText = btn.getAttribute('data-person-description') || '';
+                       }
+                   });
+               });
+           });*/
     </script>
     @if(!empty(auth('user')->user()->id))
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
