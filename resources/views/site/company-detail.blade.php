@@ -296,7 +296,7 @@
                                                                                 </div>
                                                                                 <div class="col-lg-6 col-xl-6">
                                                                                     <p><strong>Kateqoriya:</strong> <span>{{$service['subCategory']['title'][$currentLang]}}</span></p>
-                                                                                    <p><strong>Xidmətin Adı:</strong> <span>{{$service['name']}}</span></p>
+                                                                                    <p><strong>Xidmətin Adı:</strong> <span>{{$service['title']}}</span></p>
                                                                                     <p><strong>Qiymət:</strong> <span>{{$service['price']}}</span></p>
                                                                                     <p><strong>Xidmətin Təsvir:</strong> <br><span>{{$service['description']}}</span></p>
                                                                                     @if(!empty($company['category']) && $company['category']['is_persons'] ==true)
