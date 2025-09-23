@@ -880,12 +880,12 @@
 
             detailButtons.forEach(function (btn) {
                 btn.addEventListener('click', function () {
+                    console.log("CLICK işlədi!", btn.getAttribute('data-name'));
                     document.getElementById('infoCategory').innerText = btn.getAttribute('data-category') || '';
                     document.getElementById('infoName').innerText = btn.getAttribute('data-name') || '';
                     document.getElementById('infoPrice').innerText = btn.getAttribute('data-price') || '';
                     document.getElementById('infoDescription').innerText = btn.getAttribute('data-description') || '';
                     document.getElementById('infoImage').src = btn.getAttribute('data-image') || '';
-
                     // Əgər person atributları varsa doldur
                     if (btn.hasAttribute('data-person')) {
                         document.getElementById('infoPersonImage').src = btn.getAttribute('data-person-image') || '';
